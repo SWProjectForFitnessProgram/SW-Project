@@ -1,6 +1,6 @@
 Feature: sample1
   core...
   Given : nothing yet
-  When : kljdalkjf
+  When : another edit 2
   Then : kjsdalkf
   And : lksjdk
