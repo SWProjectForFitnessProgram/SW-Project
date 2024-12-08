@@ -4,113 +4,117 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2ef5e8e-ec42-4d13-b7ab-9655176c5cbd" name="Changes" comment="simple Edit just for insuring it's working" />
+    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2pP3cqlw5ebG1YfTuusOfXUwv2w" />
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Ghayda-Saify"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TalaAlhendi/SW-Project.git",
+    "accountId": "83da6505-7ab8-4b97-b7f8-45c77f0031ba"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2pwPd1L2y4Fc0WmV7zBXGrHcrBD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="sortKey" value="BY_TIME_DESCENDING" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/ASUS/IdeaProjects/Fitness/src/main/java/org/example/Main.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b2ef5e8e-ec42-4d13-b7ab-9655176c5cbd" name="Changes" comment="" />
-      <created>1732653965425</created>
+      <changelist id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="" />
+      <created>1733674248160</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732653965425</updated>
-      <workItem from="1732653966508" duration="498000" />
-      <workItem from="1732810331976" duration="1822000" />
-      <workItem from="1733166036494" duration="1881000" />
-      <workItem from="1733252923594" duration="38000" />
-      <workItem from="1733589645409" duration="1003000" />
-      <workItem from="1733667590426" duration="95000" />
-      <workItem from="1733667903727" duration="5082000" />
-      <workItem from="1733678185027" duration="39000" />
-      <workItem from="1733678524336" duration="66000" />
-      <workItem from="1733678637163" duration="848000" />
-      <workItem from="1733680259596" duration="65000" />
+      <updated>1733674248160</updated>
+      <workItem from="1733674249232" duration="741000" />
     </task>
-    <task id="LOCAL-00001" summary="simple Edit just for insuring it's working">
+    <task id="LOCAL-00001" summary="initial files">
       <option name="closed" value="true" />
-      <created>1732654104759</created>
+      <created>1733674415180</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1732654104759</updated>
+      <updated>1733674415180</updated>
     </task>
-    <task id="LOCAL-00002" summary="simple Edit just for insuring it's working">
+    <task id="LOCAL-00002" summary="initial files">
       <option name="closed" value="true" />
-      <created>1732810841597</created>
+      <created>1733674851426</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1732810841597</updated>
+      <updated>1733674851426</updated>
     </task>
-    <task id="LOCAL-00003" summary="simple Edit just for insuring it's working">
-      <option name="closed" value="true" />
-      <created>1732810928939</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1732810928939</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="simple Edit just for insuring it's working" />
-    <option name="LAST_COMMIT_MESSAGE" value="simple Edit just for insuring it's working" />
+    <MESSAGE value="initial files" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
