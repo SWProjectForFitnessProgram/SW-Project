@@ -6,10 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Fitness" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Fitness" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>
