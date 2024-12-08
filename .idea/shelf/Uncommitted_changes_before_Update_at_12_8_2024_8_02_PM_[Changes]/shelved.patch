@@ -1,0 +1,72 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"89b20c28-bd54-41cc-9b56-48eceaeb6f18\" name=\"Changes\" comment=\"initial files\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Pull.Settings\">\r\n    <option name=\"OPTIONS\">\r\n      <set>\r\n        <option value=\"REBASE\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <excluded-from-favorite>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"master\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </excluded-from-favorite>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2pwPd1L2y4Fc0WmV7zBXGrHcrBD\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"onboarding.tips.debug.path\": \"C:/Users/ASUS/IdeaProjects/Fitness/src/main/java/org/example/Main.java\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"fitness (1)\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"fitness (1)\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"89b20c28-bd54-41cc-9b56-48eceaeb6f18\" name=\"Changes\" comment=\"\" />\r\n      <created>1733674248160</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1733674248160</updated>\r\n      <workItem from=\"1733674249232\" duration=\"2706000\" />\r\n      <workItem from=\"1733678938093\" duration=\"274000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"initial files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733674415180</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733674415180</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"initial files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733674851426</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733674851426</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"initial files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733675136769</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733675136769</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"initial files\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"initial files\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d16ca0889ba83334526ed048d6ec2c4f8fbbd1fd)
++++ b/.idea/workspace.xml	(date 1733680948794)
+@@ -4,10 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-    </list>
++    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -35,6 +32,7 @@
+       </branch-storage>
+     </excluded-from-favorite>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+   &quot;lastFilter&quot;: {
+@@ -60,6 +58,7 @@
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "git-widget-placeholder": "main",
+     "ignore.virus.scanning.warn.message": "true",
+     "kotlin-language-version-configured": "true",
+@@ -107,7 +106,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1733674248160</updated>
+       <workItem from="1733674249232" duration="2706000" />
+-      <workItem from="1733678938093" duration="274000" />
++      <workItem from="1733678938093" duration="720000" />
+     </task>
+     <task id="LOCAL-00001" summary="initial files">
+       <option name="closed" value="true" />
+@@ -133,7 +132,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1733675136769</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="initial files">
++      <option name="closed" value="true" />
++      <created>1733680922759</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1733680922759</updated>
++    </task>
++    <task id="LOCAL-00005" summary="initial files">
++      <option name="closed" value="true" />
++      <created>1733680926499</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1733680926499</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">

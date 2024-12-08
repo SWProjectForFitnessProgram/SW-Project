@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +32,7 @@
       </branch-storage>
     </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -60,6 +58,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -107,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733674248160</updated>
       <workItem from="1733674249232" duration="2706000" />
-      <workItem from="1733678938093" duration="274000" />
+      <workItem from="1733678938093" duration="720000" />
     </task>
     <task id="LOCAL-00001" summary="initial files">
       <option name="closed" value="true" />
@@ -133,7 +132,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733675136769</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="initial files">
+      <option name="closed" value="true" />
+      <created>1733680922759</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733680922759</updated>
+    </task>
+    <task id="LOCAL-00005" summary="initial files">
+      <option name="closed" value="true" />
+      <created>1733680926499</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733680926499</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
