@@ -36,6 +36,7 @@ public class acceptanceTest {
     }
 
 
-
-
+    @When("instructor name or age or specialization or email or password was empty")
+    public void instructorNameOrAgeOrSpecializationOrEmailOrPasswordWasEmpty() {
+    }
 }
