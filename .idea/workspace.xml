@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminAdditionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/add.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/add.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/acceptanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/acceptanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Client/jhlkj.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +104,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Feature: add (1)">
+  <component name="RunManager" selected="JUnit.Test">
     <configuration name="Feature: add (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Admin/add.feature" />
@@ -175,7 +172,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: add (1)" />
         <item itemvalue="JUnit.Test" />
       </list>
     </recent_temporary>
