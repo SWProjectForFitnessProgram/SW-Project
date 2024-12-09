@@ -1,22 +1,25 @@
-Feature: Add
-  as an Admin I want to be able to add accounts of instructors and clients as well, I want the process to be fast , easy and accurate.
+Feature: Add Accounts
+  As an Admin, I want to add accounts for instructors and clients efficiently, ensuring the process is fast, user-friendly, and accurate.
 
   Scenario: add Instructor successfully
-    Given the admin has chosen add instructon option
-    When instructor name , age , specialization, email and password entered correctly
-    Then the admin will get a message tells that addition process is competed successfully
+    Given the admin has selected the "Add Instructor" option
+    When the instructor's name, age, specialization, email, and password are provided correctly
+    Then the system should display a message indicating that the instructor has been added successfully
 
-  Scenario: add Instructor but not all information was filled in.
-    Given the admin has chosen add instructon option
-    When instructor name or age or specialization or email or password was empty
-    Then  the admin will get a message tells that addition process is rejected
 
-  Scenario: add Client successfully
-    Given the admin has chosen add client option
-    When client name , age , email and password entered correctly
-    Then the admin will get a message tells that addition process is competed successfully
+  Scenario:Add Instructor with Missing Information
+    Given the admin has selected the "Add Instructor" option
+    When one or more fields (name, age, specialization, email, or password) are left empty
+    Then the system should display an error message indicating that the addition process has been rejected due to missing information
 
-  Scenario: add Client but not all information was filled in.
-    Given the admin has chosen add client option
-    When client name or age or email or password was empty
-    Then  the admin will get a message tells that addition process is rejected
+
+  Scenario: Add Client successfully
+    Given the admin has selected the "Add Client" option
+    When the client's name, age, email, and password are provided correctly
+    Then the system should display a message indicating that the client has been added successfully
+
+
+  Scenario: Add Client with Missing Information
+    Given the admin has selected the "Add Client" option
+    When one or more fields (name, age, email, or password) are left empty
+    Then the system should display an error message indicating that the addition process has been rejected due to missing information
