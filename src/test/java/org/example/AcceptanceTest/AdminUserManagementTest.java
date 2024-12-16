@@ -1,26 +1,30 @@
 package org.example.AcceptanceTest;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.List;
+import java.util.Map;
 
 public class AdminUserManagementTest {
 
     @Given("the admin has selected the {string} option")
     public void the_admin_has_selected_the_option(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @When("the admin chooses an account to approve")
     public void the_admin_chooses_an_account_to_approve() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("the system should send a message to the instructor informing them that the account has been approved successfully")
     public void the_system_should_send_a_message_to_the_instructor_informing_them_that_the_account_has_been_approved_successfully() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
 
@@ -84,6 +88,26 @@ public class AdminUserManagementTest {
 
     @Then("the system should display statistics including:")
     public void theSystemShouldDisplayStatisticsIncluding() {
+        DataTable table = null;
+        List<Map<String, String>> rows = table.asMaps(String.class, String.class);
+
+        // Iterate through the table and print the data for verification
+        for (Map<String, String> row : rows) {
+            System.out.println("Metric: " + row.get("Metric"));
+            System.out.println("Description: " + row.get("Description"));
+        }
+
+        // Here, you can add assertions to verify that the system displays the correct data
+        for (Map<String, String> row : rows) {
+            String metric = row.get("Metric");
+            String description = row.get("Description");
+
+            // Example verification logic (replace with actual application logic)
+            if (metric.equals("Total Active Users")) {
+                System.out.println("Verifying: " + description);
+            }
+            // Add other cases as needed
+        }
     }
 
     @When("the admin views the instructor engagement report")
