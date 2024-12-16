@@ -3,6 +3,7 @@ Feature: Account Management
   Background: User Logs In
     Given the user logs in with valid "validId" and "validPassword"
 
+
   Scenario: Create Profile
     Given I am logged in
     When I navigate to Create Profile
@@ -20,6 +21,7 @@ Feature: Account Management
     And I update my dietary preferences depends on 2 and "Vegetarian"
     And I update my dietary restrictions depends on 3 and "Lactose-Free"
     Then my profile should be customized successfully
+
 
 
   Scenario: View Profile

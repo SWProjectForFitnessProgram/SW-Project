@@ -22,7 +22,9 @@ public class User {
         this.password = password;
     }
 
-    // محاكاة تسجيل الدخول
+
+
+
     public boolean login(String id, String password) {
         if ("validId".equals(id) && "validPassword".equals(password)) {
             loggedIn = true;
@@ -31,13 +33,10 @@ public class User {
         return false;
     }
 
-    // التحقق من حالة تسجيل الدخول
     public boolean isLoggedIn() {
         return loggedIn;
     }
 
-    public void logout() {
-        loggedIn = false;
-    }
+
 }
 

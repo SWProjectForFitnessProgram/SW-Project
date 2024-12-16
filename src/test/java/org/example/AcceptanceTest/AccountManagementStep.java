@@ -18,11 +18,13 @@ public class AccountManagementStep {
 
     @Given("the user logs in with valid {string} and {string}")
     public void theUserLogsInWithValidAnd(String id, String password) {
-        user.setId(id); // استخدم القيم المدخلة في الاختبار
-        user.setPassword(password); // استخدم القيم المدخلة في الاختبار
-        boolean loggedIn = user.login(id, password); // تحقق من تسجيل الدخول باستخدام القيم المدخلة
-        Assert.assertTrue("User login failed", loggedIn); // تأكد من أن تسجيل الدخول ناجح
+        user.setId(id);
+        user.setPassword(password);
+        boolean loggedIn = user.login(id, password);
+        Assert.assertTrue("User login failed", loggedIn);
     }
+
+
 
     @Given("I am logged in")
     public void iAmLoggedIn() {
@@ -43,6 +45,7 @@ public class AccountManagementStep {
         profile.setName(name);
         System.out.println("Personal details entered: Name = " + name);
     }
+
 
     @When("I enter my age depends on {int} and {string}")
     public void iEnterMyAgeDependsOnAnd(Integer int1, String age) {
@@ -104,7 +107,7 @@ public class AccountManagementStep {
         Assert.assertNotNull("Profile should be updated", profile.getFitnessGoal());
         System.out.println("Profile customized successfully!");
     }
-
+///
 
     @Then("I should see my personal details including:")
     public void iShouldSeeMyPersonalDetailsIncluding(DataTable dataTable) {
@@ -120,8 +123,7 @@ public class AccountManagementStep {
         System.out.println("Profile Dietary Preferences: " + profile.getDietaryPreferences());
         System.out.println("Profile Dietary Restrictions: " + profile.getDietaryRestrictions());
 
-        // التحقق م
-        // ن القيم المتوقعة
+
         for (Map<String, String> row : dataTable.asMaps(String.class, String.class)) {
             String field = row.get("Field");
             String expectedValue = row.get("Value");
