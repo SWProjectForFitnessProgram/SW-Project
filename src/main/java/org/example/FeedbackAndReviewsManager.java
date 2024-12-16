@@ -22,6 +22,7 @@ public class FeedbackAndReviewsManager {
         return ratings.stream().mapToInt(Integer::intValue).average().orElse(0.0);
     }
 
+
     // Add a review for a program
     public void addReview(String programName, String review) {
         programReviews.computeIfAbsent(programName, k -> new ArrayList<>()).add(review);

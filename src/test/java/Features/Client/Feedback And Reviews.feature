@@ -8,6 +8,7 @@ Feature: Feedback and Reviews
     When I rate the program with a score of 4 out of 5
     Then the program should display an updated average rating
 
+
   Scenario: Write a review for a completed program
     Given I have completed a fitness program named "Advanced Muscle Building Plan"
     When I submit a review saying "This program really helped me build strength!"

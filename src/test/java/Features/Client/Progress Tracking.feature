@@ -24,6 +24,7 @@ Feature: Progress Tracking
       | 2024-10-01 | 70kg  | 24.5  | 80%        |
       | 2024-11-01 | 68kg  | 23.9  | 85%        |
 
+
   Scenario: View overall fitness progress summary
     Given I have completed multiple programs and entered various fitness milestones
     When I check my overall progress summary

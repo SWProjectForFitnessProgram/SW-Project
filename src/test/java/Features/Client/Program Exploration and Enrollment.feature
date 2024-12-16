@@ -21,6 +21,7 @@ Feature: Program Exploration and Enrollment
     Then I should see a confirmation message "You have successfully enrolled"
     And I should see the schedule for the program "Beginner Weight Loss Plan"
 
+
   Scenario: View program details
     Given I navigate to the "Programs" section
     And I select a program named "Advanced Muscle Building Plan"

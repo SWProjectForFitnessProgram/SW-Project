@@ -23,6 +23,7 @@ public class ProgramManager {
                 .collect(Collectors.toList());
     }
 
+
     public Map<String, String> getProgramDetails(String programName) {
         return programs.stream()
                 .filter(program -> program.get("Name").equals(programName))

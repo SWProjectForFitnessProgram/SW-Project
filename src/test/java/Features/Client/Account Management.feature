@@ -23,6 +23,7 @@ Feature: Account Management
     Then my profile should be customized successfully
 
 
+
   Scenario: View Profile
     Given I am logged in
     When I navigate to My Profile
