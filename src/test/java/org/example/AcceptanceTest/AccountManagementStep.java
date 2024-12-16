@@ -18,10 +18,10 @@ public class AccountManagementStep {
 
     @Given("the user logs in with valid {string} and {string}")
     public void theUserLogsInWithValidAnd(String id, String password) {
-        user.setId(id); // استخدم القيم المدخلة في الاختبار
-        user.setPassword(password); // استخدم القيم المدخلة في الاختبار
-        boolean loggedIn = user.login(id, password); // تحقق من تسجيل الدخول باستخدام القيم المدخلة
-        Assert.assertTrue("User login failed", loggedIn); // تأكد من أن تسجيل الدخول ناجح
+        user.setId(id);
+        user.setPassword(password);
+        boolean loggedIn = user.login(id, password);
+        Assert.assertTrue("User login failed", loggedIn);
     }
 
     @Given("I am logged in")
@@ -120,8 +120,7 @@ public class AccountManagementStep {
         System.out.println("Profile Dietary Preferences: " + profile.getDietaryPreferences());
         System.out.println("Profile Dietary Restrictions: " + profile.getDietaryRestrictions());
 
-        // التحقق م
-        // ن القيم المتوقعة
+
         for (Map<String, String> row : dataTable.asMaps(String.class, String.class)) {
             String field = row.get("Field");
             String expectedValue = row.get("Value");
