@@ -23,6 +23,8 @@ public class ProgramExplorationAndEnrollmentTest {
         System.out.println("Navigated to section: " + section);
     }
 
+
+
     @When("I filter programs by difficulty level {string}")
     public void iFilterProgramsByDifficultyLevel(String difficulty) {
         programsList = programManager.filterByDifficulty(difficulty);
