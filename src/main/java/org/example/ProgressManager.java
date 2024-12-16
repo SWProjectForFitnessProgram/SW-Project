@@ -32,6 +32,7 @@ public class ProgressManager {
         return achievements;
     }
 
+
     public void recordProgressHistory(String date, String weight, String bmi, String attendance) {
         Map<String, String> record = new HashMap<>();
         record.put("Date", date);
