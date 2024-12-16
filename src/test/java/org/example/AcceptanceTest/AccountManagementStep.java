@@ -104,7 +104,7 @@ public class AccountManagementStep {
         Assert.assertNotNull("Profile should be updated", profile.getFitnessGoal());
         System.out.println("Profile customized successfully!");
     }
-
+///
 
     @Then("I should see my personal details including:")
     public void iShouldSeeMyPersonalDetailsIncluding(DataTable dataTable) {
