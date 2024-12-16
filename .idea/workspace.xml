@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="Progress Tracking feature">
+    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="initial files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Client/jhlkj.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +50,12 @@
     &quot;assignee&quot;: &quot;Ghayda-Saify&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,
-    &quot;accountId&quot;: &quot;2a83b47a-856f-4135-9531-97786f7f19af&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TalaAlhendi/SW-Project.git",
+    "accountId": "2a83b47a-856f-4135-9531-97786f7f19af"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -73,7 +74,6 @@
     "Cucumber Java.Feature: add.executor": "Run",
     "JUnit.Test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
@@ -252,47 +252,7 @@
       <option name="project" value="LOCAL" />
       <updated>1733740165528</updated>
     </task>
-    <task id="LOCAL-00009" summary="Account Management feature">
-      <option name="closed" value="true" />
-      <created>1733754948059</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1733754948059</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Account Management feature">
-      <option name="closed" value="true" />
-      <created>1733755166642</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1733755166642</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Feedback And Reviews feature">
-      <option name="closed" value="true" />
-      <created>1734364759331</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1734364759331</updated>
-    </task>
-    <task id="LOCAL-00012" summary=" Program Exploration and enrollement feature">
-      <option name="closed" value="true" />
-      <created>1734365211661</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1734365211661</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Progress Tracking feature">
-      <option name="closed" value="true" />
-      <created>1734365374075</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1734365374075</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,10 +271,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial files" />
-    <MESSAGE value="Account Management feature" />
-    <MESSAGE value="Feedback And Reviews feature" />
-    <MESSAGE value=" Program Exploration and enrollement feature" />
-    <MESSAGE value="Progress Tracking feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial files" />
   </component>
 </project>
