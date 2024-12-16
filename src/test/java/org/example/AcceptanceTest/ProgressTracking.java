@@ -22,6 +22,8 @@ public class ProgressTracking {
 
 
 
+
+
     @Given("I am logged in and on the {string} page")
     public void iAmLoggedInAndOnThePage(String page) {
         System.out.println("Logged in and navigated to: " + page);

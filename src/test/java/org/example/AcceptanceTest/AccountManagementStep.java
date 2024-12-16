@@ -24,6 +24,8 @@ public class AccountManagementStep {
         Assert.assertTrue("User login failed", loggedIn);
     }
 
+
+
     @Given("I am logged in")
     public void iAmLoggedIn() {
         if (!user.isLoggedIn()) {
