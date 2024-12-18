@@ -5,15 +5,28 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.Admin;
+import org.example.Main;
 
 import java.util.List;
 import java.util.Map;
 
 public class AdminUserManagementTest {
 
+    Admin admin = new Admin();
+    Main app;
+    public AdminUserManagementTest(){
+        app = new Main();
+    }
     @Given("the admin has selected the {string} option")
     public void the_admin_has_selected_the_option(String string) {
         // Write code here that turns the phrase above into concrete actions
+        if(string.equals("new instructor request")){
+
+
+        }else if(string.equals("admin")){
+
+        }
 
     }
     @When("the admin chooses an account to approve")
