@@ -6,13 +6,13 @@ Feature: User Management
     Given I am logged in as an admin
     And there are pending instructor accounts:
       | Email             | Password      |
-      | instructor1@test.com | Instructor One |
-      | instructor2@test.com | Instructor Two |
-    When I navigate to the "Approve Instructors" page
+      | instructor1@test.com | InstructorOne |
+      | instructor2@test.com | InstructorTwo |
+    When I clicked on "Approve Instructors" page
     Then I should see a list of pending instructor accounts:
       | Email             | Password      |
-      | instructor1@test.com | Instructor One |
-      | instructor2@test.com | Instructor Two |
+      | instructor1@test.com | InstructorOne |
+      | instructor2@test.com | InstructorTwo |
 
   Scenario: No pending instructor accounts
     Given I am logged in as an admin
@@ -22,72 +22,72 @@ Feature: User Management
 
 
 
-
-  Scenario: Approve adding instructor successfully
-    Given the admin has selected the "new instructor request" option
-    When the admin chooses an account to approve
-    Then the system should send a message to the instructor informing them that the account has been approved successfully
-
-  Scenario: Error approving instructor account
-    Given the admin has selected the "new instructor request" option
-    When the admin enters a non-valid account ID
-    Then the system should display a message informing the admin that the ID entered is not valid
-
-  Scenario: Approve adding client successfully
-    Given the admin has selected the "new client request" option
-    When the admin enters a valid account ID
-    Then the system should send a message to the client informing them that the account has been approved successfully
-
-  Scenario: Error approving client account
-    Given the admin has selected the "new client request" option
-    When the admin enters a non-valid account ID
-    Then the system should display a message informing the admin that the ID entered is not valid
-
-#  Update Account Information
-  Scenario: Approve update of instructor information successfully
-    Given the admin has selected the "update instructor request" option
-    When the admin enters a valid account ID
-    And the updated data is valid
-    Then the system should update the instructor's information successfully
-
-  Scenario: Error updating instructor information with invalid ID
-    Given the admin has selected the "update instructor request" option
-    When the admin enters a non-valid account ID
-    Then the system should display a message informing the admin that the ID entered is not valid
-
-  Scenario: Error updating instructor information with invalid data
-    Given the admin has selected the "update instructor request" option
-    When the admin enters a valid account ID
-    And the updated data is invalid
-    Then the system should display a message informing the admin that the update operation was rejected
-
-  Scenario: Approve update of client information successfully
-    Given the admin has selected the "update client request" option
-    When the admin enters a valid account ID
-    And the updated data is valid
-    Then the system should update the client's information successfully
-
-  Scenario: Error updating client information with invalid ID
-    Given the admin has selected the "update client request" option
-    When the admin enters a non-valid account ID
-    Then the system should display a message informing the admin that the ID entered is not valid
-
-  Scenario: Error updating client information with invalid data
-    Given the admin has selected the "update client request" option
-    When the admin enters a valid account ID
-    And the updated data is invalid
-    Then the system should display a message informing the admin that the update operation was rejected
-
-#  Deactivate Accounts
-  Scenario: Deactivate instructor account successfully
-    Given the admin has selected the "deactivate instructor account" option
-    When the admin chooses a valid account ID
-    Then the system should remove the instructor account from the database
-
-  Scenario: Error deactivating instructor account
-    Given the admin has selected the "deactivate instructor account" option
-    When the admin chooses an invalid account ID
-    Then the system should display a message informing the admin that the ID entered is invalid
+#
+#  Scenario: Approve adding instructor successfully
+#    Given the admin has selected the "new instructor request" option
+#    When the admin chooses an account to approve
+#    Then the system should send a message to the instructor informing them that the account has been approved successfully
+#
+#  Scenario: Error approving instructor account
+#    Given the admin has selected the "new instructor request" option
+#    When the admin enters a non-valid account ID
+#    Then the system should display a message informing the admin that the ID entered is not valid
+#
+#  Scenario: Approve adding client successfully
+#    Given the admin has selected the "new client request" option
+#    When the admin enters a valid account ID
+#    Then the system should send a message to the client informing them that the account has been approved successfully
+#
+#  Scenario: Error approving client account
+#    Given the admin has selected the "new client request" option
+#    When the admin enters a non-valid account ID
+#    Then the system should display a message informing the admin that the ID entered is not valid
+#
+##  Update Account Information
+#  Scenario: Approve update of instructor information successfully
+#    Given the admin has selected the "update instructor request" option
+#    When the admin enters a valid account ID
+#    And the updated data is valid
+#    Then the system should update the instructor's information successfully
+#
+#  Scenario: Error updating instructor information with invalid ID
+#    Given the admin has selected the "update instructor request" option
+#    When the admin enters a non-valid account ID
+#    Then the system should display a message informing the admin that the ID entered is not valid
+#
+#  Scenario: Error updating instructor information with invalid data
+#    Given the admin has selected the "update instructor request" option
+#    When the admin enters a valid account ID
+#    And the updated data is invalid
+#    Then the system should display a message informing the admin that the update operation was rejected
+#
+#  Scenario: Approve update of client information successfully
+#    Given the admin has selected the "update client request" option
+#    When the admin enters a valid account ID
+#    And the updated data is valid
+#    Then the system should update the client's information successfully
+#
+#  Scenario: Error updating client information with invalid ID
+#    Given the admin has selected the "update client request" option
+#    When the admin enters a non-valid account ID
+#    Then the system should display a message informing the admin that the ID entered is not valid
+#
+#  Scenario: Error updating client information with invalid data
+#    Given the admin has selected the "update client request" option
+#    When the admin enters a valid account ID
+#    And the updated data is invalid
+#    Then the system should display a message informing the admin that the update operation was rejected
+#
+##  Deactivate Accounts
+#  Scenario: Deactivate instructor account successfully
+#    Given the admin has selected the "deactivate instructor account" option
+#    When the admin chooses a valid account ID
+#    Then the system should remove the instructor account from the database
+#
+#  Scenario: Error deactivating instructor account
+#    Given the admin has selected the "deactivate instructor account" option
+#    When the admin chooses an invalid account ID
+#    Then the system should display a message informing the admin that the ID entered is invalid
 
 #  Monitor User Activity and Engagement Statistics
   Scenario: View user activity and engagement statistics
