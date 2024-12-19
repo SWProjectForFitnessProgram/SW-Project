@@ -11,6 +11,7 @@ import org.example.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,8 @@ public class programManagementStepTest {
     private String title;
     private Program programToUpdate;
     private boolean InstructorLoggedIn;
-
+    @MockitoBean
+    private ArrayList<Program> programList;
     @Autowired
     private ProgramService programService;
     Main app;
