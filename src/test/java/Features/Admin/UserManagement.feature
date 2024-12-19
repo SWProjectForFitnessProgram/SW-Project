@@ -2,6 +2,27 @@ Feature: User Management
   As an Admin, I want to manage instructor and client accounts, approve new accounts, update information, deactivate accounts when necessary, and monitor user activity and engagement statistics.
 
 #  Approve New Accounts
+  Scenario: View pending instructor accounts
+    Given I am logged in as an admin
+    And there are pending instructor accounts:
+      | Email             | Password      |
+      | instructor1@test.com | Instructor One |
+      | instructor2@test.com | Instructor Two |
+    When I navigate to the "Approve Instructors" page
+    Then I should see a list of pending instructor accounts:
+      | Email             | Password      |
+      | instructor1@test.com | Instructor One |
+      | instructor2@test.com | Instructor Two |
+
+  Scenario: No pending instructor accounts
+    Given I am logged in as an admin
+    And there are no pending instructor accounts
+    When I navigate to the "Approve Instructors" page
+    Then I should see a message "No pending instructor accounts"
+
+
+
+
   Scenario: Approve adding instructor successfully
     Given the admin has selected the "new instructor request" option
     When the admin chooses an account to approve
