@@ -7,30 +7,54 @@ Feature: Program Management
       |Duration|30 days                        |
       |Difficulty level|Beginners              |
       |Goals           |Weight Loss, Full Body |
-      |Content         |Video tutorials: [https://youtu.be/f3zOrYCwquE , https://youtu.be/LqW9gdpctKE?list=PLN99XDk2SYr4Vux2b7g04_yKXxpYq6JXp]; Images: [https://plus.unsplash.com/premium_photo-1670505062582-fdaa83c23c9e?q=80&w=1771&auto=format&fit=crop, https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1770&auto=format&fit=crop]; Documentation: [https://www.researchgate.net/publication/342916972_Importance_of_health_and_fitness_in_life]|
+      |Content         |https://youtu.be/f3zOrYCwquE |
       |Price|29.99 $                                |
+
     Then the program is created with the specified details "Get Fit & Moving Challenge"
 
-  Scenario: Update a fitness program
-    Given a fitness program with the title "Get Fit & Moving Challenge" exists
-    When the instructor updates the program with the following details
-      | Program title              | Duration | Difficulty level | Goals                  | Content                                                                                                                                                                                                                                                                                                     | Price |
-      | Get Fit & Moving Challenge | 30 days  | Beginners        | Weight Loss, Full Body | Video tutorials: [https://youtu.be/f3zOrYCwquE, https://youtu.be/LqW9gdpctKE?list=PLN99XDk2SYr4Vux2b7g04_yKXxpYq6JXp]; Images: [https://plus.unsplash.com/premium_photo-1670505062582-fdaa83c23c9e?q=80&w=1771&auto=format&fit=crop, https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1770&auto=format&fit=crop]; Documentation: [https://www.researchgate.net/publication/342916972_Importance_of_health_and_fitness_in_life] | 19.99 $ |
+  Scenario: Update a fitness program Successfully
+    Given the instructor is logged in
+    When a fitness program with the title "Get Fit & Moving Challenge" exists
+    And the instructor updates the program with the following details
+      |Program title|Get Fit & Moving Challenge|
+      |Duration|3 months                        |
+      |Difficulty level|Beginners              |
+      |Goals           |Weight Loss, Full Body |
+      |Content         |https://youtu.be/f3zOrYCwquE |
+      |Price|29.99 $                                |
     Then the program is updated successfully with the new details
 
-#  Scenario: Update a non-existing fitness program
-#    Given a fitness program with the title "Get Fit in 30 Days" does not exist
-#    When the instructor updates the program with the following details
-#      | Program title              | Duration | Difficulty level | Goals                  | Content                                                                                                                                                                                                                                                                                                     | Price |
-#      | Get Fit & Moving Challenge | 30 days  | Beginners        | Weight Loss, Full Body | Video tutorials: [https://youtu.be/f3zOrYCwquE, https://youtu.be/LqW9gdpctKE?list=PLN99XDk2SYr4Vux2b7g04_yKXxpYq6JXp]; Images: [https://plus.unsplash.com/premium_photo-1670505062582-fdaa83c23c9e?q=80&w=1771&auto=format&fit=crop, https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1770&auto=format&fit=crop]; Documentation: [https://www.researchgate.net/publication/342916972_Importance_of_health_and_fitness_in_life] | 19.99 $ |
-#    Then the system displays an error message indicating that the program does not exist
-#
+
+  Scenario: Update a non-existing fitness program
+    Given the instructor is logged in
+    When a fitness program with the title "Get Fit" doesn't exist
+    And the instructor updates the program with the following details
+      |Program title|Get Fit & Moving Challenge|
+      |Duration|3 months                        |
+      |Difficulty level|Beginners              |
+      |Goals           |Weight Loss, Full Body |
+      |Content         |https://youtu.be/f3zOrYCwquE |
+      |Price|29.99 $                                 |
+    Then the system displays an error message indicating that the program does not exist
+
+  Scenario Outline: Delete a fitness program (Success and Failure)
+    Given the instructor is logged in
+    When the instructor attempts to delete the program with title "<program_title>"
+    Then the program deletion result is:
+      | Status       | Message                                    |
+      | <expected_status> | <expected_message>                         |
+
+    Examples:
+      | program_title             | expected_status | expected_message                                     |
+      | Get Fit & Moving Challenge | Success           | Program deleted successfully                        |
+      | Non-Existing Program      | Failure           | Program with title "<program_title>" not found. |
+
 #  Scenario: Delete a fitness program
 #    Given a fitness program with the title "Get Fit & Moving Challenge" exists
 #    When the instructor chooses to delete the program
 #    Then the program is deleted successfully
 #
 #  Scenario: Delete a non-existing fitness program
-#    Given a fitness program with the title "Get Fit in 30 Days" does not exist
+#    Given a fitness program with the title "Get Fit & Moving Challenge" doesn't exist
 #    When the instructor chooses to delete the program
 #    Then the system displays an error message indicating that the program does not exist
