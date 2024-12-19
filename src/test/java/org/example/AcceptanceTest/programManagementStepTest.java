@@ -8,38 +8,45 @@ import io.cucumber.java.en.When;
 import org.example.Main;
 import org.example.Program;
 import org.example.ProgramService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest
+@ContextConfiguration(classes = { Program.class,ProgramService.class})
 public class programManagementStepTest {
-    private List<Program> programList;
+//    private List<Program> programList;
     private Map<String, String> programDetails;
     private String title;
     private Program programToUpdate;
     private boolean InstructorLoggedIn;
 
+    @Autowired
     private ProgramService programService;
     Main app;
-    @Before
-    public void setup() {
-        // Initialize the ProgramService and the program list
-        programService = new ProgramService();
-        programList = new ArrayList<>();
-
-        // Add mock data to the programService and programList
-        List<Program> testPrograms = new ArrayList<>();
-        testPrograms.add(new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $"));
-        testPrograms.forEach(program -> {
-            programService.addProgram(program);
-            programList.add(program);
-        });
-
-        System.out.println("Mock data added to ProgramService and programList.");
-    }
+//    @Before
+//    public void setup() {
+//        // Initialize the ProgramService and the program list
+//        programService = new ProgramService();
+//        programList = new ArrayList<>();
+//
+//        // Add mock data to the programService and programList
+//        List<Program> testPrograms = new ArrayList<>();
+//        testPrograms.add(new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $"));
+//        testPrograms.forEach(program -> {
+//            programService.addProgram(program);
+//            programList.add(program);
+//        });
+//
+//        System.out.println("Mock data added to ProgramService and programList.");
+//    }
 
     public programManagementStepTest() {
         app = new Main();
@@ -186,23 +193,4 @@ public class programManagementStepTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
-
-//
-//    @Given("a fitness program with the title {string} does not exist")
-//    public void aFitnessProgramWithTheTitleDoesNotExist(String arg0) {
-//    }
-//
-//    @Then("the system displays an error message indicating that the program does not exist")
-//    public void theSystemDisplaysAnErrorMessageIndicatingThatTheProgramDoesNotExist() {
-//    }
-//
-//    @When("the instructor chooses to delete the program")
-//    public void theInstructorChoosesToDeleteTheProgram() {
-//    }
-//
-//    @Then("the program is deleted successfully")
-//    public void theProgramIsDeletedSuccessfully() {
-//    }
-//
-//
 }

@@ -4,116 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="Progress Tracking feature">
+    <list default="true" id="7478c150-b874-4fd2-8ad7-e0802975f0b1" name="Changes" comment="done first feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JUnit3 Test Class" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="master" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,
-    &quot;accountId&quot;: &quot;2a83b47a-856f-4135-9531-97786f7f19af&quot;
-  }
-}</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2pwPd1L2y4Fc0WmV7zBXGrHcrBD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Cucumber Java.Feature: add (1).executor": "Run",
-    "Cucumber Java.Feature: add.executor": "Run",
-    "JUnit.Test.executor": "Run",
-    "JUnit.acceptanceTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
     "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/Fitness/src/test/java/Features/Admin/add.feature",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/ASUS/IdeaProjects/Fitness/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="junit.framework.TestCase" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ASUS\IdeaProjects\Fitness\src\test\java" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="org.example" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.Test">
-    <configuration name="Feature: add (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Admin/add.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="Fitness" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: add" />
+      <option name="SUGGESTED_NAME" value="Feature: ProgramManagment" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -121,237 +39,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Feature: add" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="C:\Users\ASUS\IdeaProjects\Fitness\src\test\java\Features\Admin\add.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="Fitness" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Feature: add" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Fitness" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.AcceptanceTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="org.example.AcceptanceTest.Test" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="acceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Fitness" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.AcceptanceTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="org.example.AcceptanceTest.acceptanceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="fitness (1)" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="fitness (1)" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.acceptanceTest" />
-        <item itemvalue="JUnit.Test" />
+        <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="89b20c28-bd54-41cc-9b56-48eceaeb6f18" name="Changes" comment="" />
-      <created>1733674248160</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1733674248160</updated>
-      <workItem from="1733674249232" duration="2706000" />
-      <workItem from="1733678938093" duration="9524000" />
-      <workItem from="1733738176992" duration="1330000" />
-    </task>
-    <task id="LOCAL-00001" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733674415180</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1733674415180</updated>
-    </task>
-    <task id="LOCAL-00002" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733674851426</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1733674851426</updated>
-    </task>
-    <task id="LOCAL-00003" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733675136769</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1733675136769</updated>
-    </task>
-    <task id="LOCAL-00004" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733680922759</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1733680922759</updated>
-    </task>
-    <task id="LOCAL-00005" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733680926499</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1733680926499</updated>
-    </task>
-    <task id="LOCAL-00006" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733681048227</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1733681048227</updated>
-    </task>
-    <task id="LOCAL-00007" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733696245519</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1733696245519</updated>
-    </task>
-    <task id="LOCAL-00008" summary="initial files">
-      <option name="closed" value="true" />
-      <created>1733740165528</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1733740165528</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Account Management feature">
-      <option name="closed" value="true" />
-      <created>1733754948059</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1733754948059</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Account Management feature">
-      <option name="closed" value="true" />
-      <created>1733755166642</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1733755166642</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Feedback And Reviews feature">
-      <option name="closed" value="true" />
-      <created>1734364759331</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1734364759331</updated>
-    </task>
-    <task id="LOCAL-00012" summary=" Program Exploration and enrollement feature">
-      <option name="closed" value="true" />
-      <created>1734365211661</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1734365211661</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Progress Tracking feature">
-      <option name="closed" value="true" />
-      <created>1734365374075</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1734365374075</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="GitHub.CommitStatus" />
-      </list>
-    </option>
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial files" />
-    <MESSAGE value="Account Management feature" />
-    <MESSAGE value="Feedback And Reviews feature" />
-    <MESSAGE value=" Program Exploration and enrollement feature" />
-    <MESSAGE value="Progress Tracking feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="done first feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="done first feature" />
   </component>
 </project>
