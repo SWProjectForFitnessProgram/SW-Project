@@ -8,7 +8,7 @@ Feature: User Management
       | Email             | Password      |
       | instructor1@test.com | InstructorOne |
       | instructor2@test.com | InstructorTwo |
-    When I clicked on "Approve Instructors" page
+    When I click on "Approve Instructors" page
     Then I should see a list of pending instructor accounts:
       | Email             | Password      |
       | instructor1@test.com | InstructorOne |
@@ -17,7 +17,7 @@ Feature: User Management
   Scenario: No pending instructor accounts
     Given I am logged in as an admin
     And there are no pending instructor accounts
-    When I navigate to the "Approve Instructors" page
+    When I click on "Approve Instructors" page
     Then I should see a message "No pending instructor accounts"
 
 
