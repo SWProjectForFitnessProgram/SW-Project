@@ -16,17 +16,17 @@ public class Instructor {
 
 //    @jakarta.persistence.Id
 
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(nullable = false, unique = true)
+    //    @Column(nullable = false, unique = true)
     String email;
 
 
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
     String password;
 
-//    @Enumerated(EnumType.STRING)
+    //    @Enumerated(EnumType.STRING)
     private InstructorStatus status;
 
     public Instructor(String email, String password) {
@@ -48,4 +48,3 @@ public class Instructor {
 
     // Getters and Setters
 }
-

@@ -5,61 +5,48 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.AdminService;
 import org.example.Main;
 import org.example.Program;
 import org.example.ProgramService;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.bean.override.mockito.MockitoBean;
-//import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.*;
-//import static org.assertj.core.api.Assertions.assertThat;
-@RunWith(MockitoJUnitRunner.class) // For JUnit 4
-//@SpringJUnitConfig
-//@SpringBootTest
-//@ContextConfiguration(classes = { Program.class,ProgramService.class})
+
+
 public class programManagementStepTest {
-//    private List<Program> programList;
+    private List<Program> programList;
     private Map<String, String> programDetails;
     private String title;
     private Program programToUpdate;
     private boolean InstructorLoggedIn;
 
-    private ArrayList<Program> programList;
-//    @Autowired
+
     private ProgramService programService;
     Main app;
-//    @Before
-//    public void setup() {
-//        // Initialize the ProgramService and the program list
-//        programService = new ProgramService();
-//        programList = new ArrayList<>();
-//
-//        // Add mock data to the programService and programList
-//        List<Program> testPrograms = new ArrayList<>();
-//        testPrograms.add(new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $"));
-//        testPrograms.forEach(program -> {
-//            programService.addProgram(program);
-//            programList.add(program);
-//        });
-//
-//        System.out.println("Mock data added to ProgramService and programList.");
-//    }
+    @Before
+    public void setup() {
+        // Initialize the ProgramService and the program list
+        programService = new ProgramService();
+        programList = new ArrayList<>();
+
+        // Add mock data to the programService and programList
+        List<Program> testPrograms = new ArrayList<>();
+        testPrograms.add(new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $"));
+        testPrograms.forEach(program -> {
+            programService.addProgram(program);
+            programList.add(program);
+        });
+
+        System.out.println("Mock data added to ProgramService and programList.");
+    }
 
     public programManagementStepTest() {
         app = new Main();
-        this.programService = Mockito.mock(ProgramService.class);
-        programList = new ArrayList<Program>();
+
     }
 
     @Given("the instructor is logged in")
