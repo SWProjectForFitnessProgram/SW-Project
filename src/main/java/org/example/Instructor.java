@@ -13,6 +13,10 @@ import java.util.List;
 
 //@Entity
 public class Instructor {
+    String name;
+    boolean LoggedIn;
+    Program program;
+    int Age;
 
 //    @jakarta.persistence.Id
 
@@ -28,13 +32,30 @@ public class Instructor {
 
     //    @Enumerated(EnumType.STRING)
     private InstructorStatus status;
+    public Instructor(String name, String mail,int Age) {
 
+        this.name = name;
+        this.email = mail;
+        this.Age = Age;
+        program = new Program();
+
+
+    }
     public Instructor(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
+
+    public void setLoggedIn(boolean b) {
+        LoggedIn = true;
+
+    }
+
+
+
     public Instructor() {
+
 
     }
 
@@ -44,6 +65,26 @@ public class Instructor {
 
     public Long getId() {
         return id;
+    }
+    public void setProgram(Program program) {
+        this.program = program;
+    }
+    public String getProgramTitle()
+    {
+        return program.getTitle();
+    }
+
+    public void sendMessageToClient(Client client, String message) {
+        client.setMessage(message);
+    }
+
+    public void postForumMessage(Program program, String title, String content) {
+        program.addForumMessage(title,content);
+    }
+
+    public void provideFeedbackToClient(Client client,String feedback)
+    {
+        client.receiveFeedback(feedback);
     }
 
     // Getters and Setters

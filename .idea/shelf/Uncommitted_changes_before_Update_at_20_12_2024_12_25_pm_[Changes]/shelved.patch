@@ -1,0 +1,782 @@
+Index: src/main/java/org/example/Instructor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\nimport org.springframework.stereotype.Service;\r\nimport java.util.List;\r\n\r\nimport org.springframework.*;\r\n@Entity\r\npublic class Instructor {\r\n\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private Long id;\r\n\r\n    @Column(nullable = false, unique = true)\r\n    private String email;\r\n\r\n    @Column(nullable = false)\r\n    private String name;\r\n\r\n    @Enumerated(EnumType.STRING)\r\n    private InstructorStatus status;\r\n\r\n    // Getters and Setters\r\n}\r\npublic enum InstructorStatus {\r\n    PENDING,\r\n    APPROVED,\r\n    REJECTED\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Instructor.java b/src/main/java/org/example/Instructor.java
+--- a/src/main/java/org/example/Instructor.java	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/main/java/org/example/Instructor.java	(date 1734688414349)
+@@ -1,29 +1,29 @@
+-package org.example;
+-import org.springframework.stereotype.Service;
+-import java.util.List;
+-
+-import org.springframework.*;
+-@Entity
+-public class Instructor {
+-
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+-    private Long id;
+-
+-    @Column(nullable = false, unique = true)
+-    private String email;
+-
+-    @Column(nullable = false)
+-    private String name;
+-
+-    @Enumerated(EnumType.STRING)
+-    private InstructorStatus status;
+-
+-    // Getters and Setters
+-}
+-public enum InstructorStatus {
+-    PENDING,
+-    APPROVED,
+-    REJECTED
+-}
+-
++//package org.example;
++//import org.springframework.stereotype.Service;
++//import java.util.List;
++//
++//import org.springframework.*;
++//@Entity
++//public class Instructor {
++//
++//    @Id
++//    @GeneratedValue(strategy = GenerationType.IDENTITY)
++//    private Long id;
++//
++//    @Column(nullable = false, unique = true)
++//    private String email;
++//
++//    @Column(nullable = false)
++//    private String name;
++//
++//    @Enumerated(EnumType.STRING)
++//    private InstructorStatus status;
++//
++//    // Getters and Setters
++//}
++//public enum InstructorStatus {
++//    PENDING,
++//    APPROVED,
++//    REJECTED
++//}
++//
+Index: src/test/java/Features/Instructor/ProgramManagment.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Feature: Program Management\r\n\r\n  Scenario: Create a fitness program\r\n    Given the instructor is logged in\r\n    When the following details are provided\r\n      |Program title|Get Fit & Moving Challenge|\r\n      |Duration|30 days                        |\r\n      |Difficulty level|Beginners              |\r\n      |Goals           |Weight Loss, Full Body |\r\n      |Content         |https://youtu.be/f3zOrYCwquE |\r\n      |Price|29.99 $                                |\r\n      |Schedual time|[5-7]pm                        |\r\n\r\n    Then the program is created with the specified details \"Get Fit & Moving Challenge\"\r\n\r\n  Scenario: Update a fitness program Successfully\r\n    Given the instructor is logged in\r\n    When a fitness program with the title \"Get Fit & Moving Challenge\" exists\r\n    And the instructor updates the program with the following details\r\n      |Program title|Get Fit & Moving Challenge|\r\n      |Duration|3 months                        |\r\n      |Difficulty level|Beginners              |\r\n      |Goals           |Weight Loss, Full Body |\r\n      |Content         |https://youtu.be/f3zOrYCwquE |\r\n      |Price|29.99 $                                |\r\n      |Schedual time|[5-7]pm                        |\r\n    Then the program is updated successfully with the new details\r\n\r\n\r\n  Scenario: Update a non-existing fitness program\r\n    Given the instructor is logged in\r\n    When a fitness program with the title \"Get Fit\" doesn't exist\r\n    And the instructor updates the program with the following details\r\n      |Program title|Get Fit & Moving Challenge|\r\n      |Duration|3 months                        |\r\n      |Difficulty level|Beginners              |\r\n      |Goals           |Weight Loss, Full Body |\r\n      |Content         |https://youtu.be/f3zOrYCwquE |\r\n      |Price|29.99 $                                 |\r\n      |Schedual time|[5-7]pm                        |\r\n    Then the system displays an error message indicating that the program does not exist\r\n\r\n  Scenario Outline: Delete a fitness program (Success and Failure)\r\n    Given the instructor is logged in\r\n    When the instructor attempts to delete the program with title \"<program_title>\"\r\n    Then the program deletion result is:\r\n      | Status       | Message                                    |\r\n      | <expected_status> | <expected_message>                         |\r\n\r\n    Examples:\r\n      | program_title             | expected_status | expected_message                                     |\r\n      | Get Fit & Moving Challenge | Success           | Program deleted successfully                        |\r\n      | Non-Existing Program      | Failure           | Program with title \"<program_title>\" not found. |\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/Features/Instructor/ProgramManagment.feature b/src/test/java/Features/Instructor/ProgramManagment.feature
+--- a/src/test/java/Features/Instructor/ProgramManagment.feature	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/test/java/Features/Instructor/ProgramManagment.feature	(date 1734644725368)
+@@ -9,7 +9,7 @@
+       |Goals           |Weight Loss, Full Body |
+       |Content         |https://youtu.be/f3zOrYCwquE |
+       |Price|29.99 $                                |
+-      |Schedual time|[5-7]pm                        |
++    #  |Schedual time|[5-7]pm                        |
+ 
+     Then the program is created with the specified details "Get Fit & Moving Challenge"
+ 
+@@ -23,7 +23,7 @@
+       |Goals           |Weight Loss, Full Body |
+       |Content         |https://youtu.be/f3zOrYCwquE |
+       |Price|29.99 $                                |
+-      |Schedual time|[5-7]pm                        |
++      #|Schedual time|[5-7]pm                        |
+     Then the program is updated successfully with the new details
+ 
+ 
+@@ -37,7 +37,7 @@
+       |Goals           |Weight Loss, Full Body |
+       |Content         |https://youtu.be/f3zOrYCwquE |
+       |Price|29.99 $                                 |
+-      |Schedual time|[5-7]pm                        |
++     # |Schedual time|[5-7]pm                        |
+     Then the system displays an error message indicating that the program does not exist
+ 
+   Scenario Outline: Delete a fitness program (Success and Failure)
+Index: src/test/java/Features/Instructor/clientInteraction.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/Features/Instructor/clientInteraction.feature b/src/test/java/Features/Instructor/clientInteraction.feature
+--- a/src/test/java/Features/Instructor/clientInteraction.feature	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/test/java/Features/Instructor/clientInteraction.feature	(date 1734687412591)
+@@ -1,0 +1,18 @@
++Feature: client Interaction
++  Scenario: Sending a Personalized Message
++    Given an instructor is logged in
++    And the instructor has an active program with enrolled clients
++    When the instructor selects a client and sends a personalized message
++    Then the client should receive the personalized message
++
++  Scenario: Posting a Forum Message
++    Given an instructor is logged in
++    And the instructor has an active program with a discussion forum
++    When the instructor posts a message to the forum
++    Then all enrolled clients should see the message on the forum
++
++  Scenario: Providing Feedback to a Client
++    Given an instructor is logged in
++    And the instructor has access to a client's progress report
++    When the instructor provides feedback to the client
++    Then the client should receive the feedback
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>org.example</groupId>\r\n    <artifactId>Fitness</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n\r\n    <properties>\r\n        <maven.compiler.source>17</maven.compiler.source>\r\n        <maven.compiler.target>17</maven.compiler.target>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>io.cucumber</groupId>\r\n            <artifactId>cucumber-java</artifactId>\r\n            <version>7.20.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.cucumber</groupId>\r\n            <artifactId>cucumber-picocontainer</artifactId>\r\n            <version>7.20.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.cucumber</groupId>\r\n            <artifactId>cucumber-core</artifactId>\r\n            <version>7.20.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.cucumber</groupId>\r\n            <artifactId>cucumber-junit</artifactId>\r\n            <version>7.20.1</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>junit</groupId>\r\n            <artifactId>junit</artifactId>\r\n            <version>4.13.1</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.mockito</groupId>\r\n            <artifactId>mockito-core</artifactId>\r\n            <version>5.14.2</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.springframework</groupId>\r\n            <artifactId>spring-context</artifactId>\r\n            <version>6.2.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.cucumber</groupId>\r\n            <artifactId>cucumber-spring</artifactId>\r\n            <version>7.20.1</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-test</artifactId>\r\n            <version>3.4.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n\r\n    </dependencies>\r\n\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/pom.xml	(date 1734686822171)
+@@ -49,23 +49,23 @@
+             <version>5.14.2</version>
+             <scope>test</scope>
+         </dependency>
+-        <dependency>
+-            <groupId>org.springframework</groupId>
+-            <artifactId>spring-context</artifactId>
+-            <version>6.2.1</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>io.cucumber</groupId>
+-            <artifactId>cucumber-spring</artifactId>
+-            <version>7.20.1</version>
+-            <scope>test</scope>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-test</artifactId>
+-            <version>3.4.0</version>
+-            <scope>test</scope>
+-        </dependency>
++<!--        <dependency>-->
++<!--            <groupId>org.springframework</groupId>-->
++<!--            <artifactId>spring-context</artifactId>-->
++<!--            <version>6.2.1</version>-->
++<!--        </dependency>-->
++<!--        <dependency>-->
++<!--            <groupId>io.cucumber</groupId>-->
++<!--            <artifactId>cucumber-spring</artifactId>-->
++<!--            <version>7.20.1</version>-->
++<!--            <scope>test</scope>-->
++<!--        </dependency>-->
++<!--        <dependency>-->
++<!--            <groupId>org.springframework.boot</groupId>-->
++<!--            <artifactId>spring-boot-starter-test</artifactId>-->
++<!--            <version>3.4.0</version>-->
++<!--            <scope>test</scope>-->
++<!--        </dependency>-->
+ 
+     </dependencies>
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7478c150-b874-4fd2-8ad7-e0802975f0b1\" name=\"Changes\" comment=\"done first feature\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Feature: ProgramManagment\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: ProgramManagment\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Cucumber Java.Feature: ProgramManagment\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"done first feature\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"done first feature\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/.idea/workspace.xml	(date 1734690295269)
+@@ -4,10 +4,16 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7478c150-b874-4fd2-8ad7-e0802975f0b1" name="Changes" comment="done first feature">
++    <list default="true" id="7478c150-b874-4fd2-8ad7-e0802975f0b1" name="Changes" comment="more depend.">
++      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/acceptanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/acceptanceTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -15,19 +21,49 @@
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectColorInfo"><![CDATA[{
++  "associatedIndex": 1
++}]]></component>
++  <component name="ProjectId" id="2qTPOwZWuR9Hp4pWEU4Y4gRUuTp" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+   </component>
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++    <option name="sortKey" value="BY_TIME_DESCENDING" />
++  </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
+     "git-widget-placeholder": "main",
+-    "node.js.selected.package.tslint": "(autodetect)"
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
++    "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="Cucumber Java.Feature: clientInteraction">
+     <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+       <option name="CUCUMBER_CORE_VERSION" value="5" />
+       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
+       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+       <module name="Fitness" />
+       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+@@ -43,17 +79,79 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="Feature: Progress Tracking" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Client/Progress Tracking.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
++      <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: Progress Tracking" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
++      <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: clientInteraction" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
++        <item itemvalue="Cucumber Java.Feature: Progress Tracking" />
+         <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
+       </list>
+     </recent_temporary>
+   </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
++    <task id="LOCAL-00001" summary="more depend.">
++      <option name="closed" value="true" />
++      <created>1734643592323</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1734643592323</updated>
++    </task>
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="7478c150-b874-4fd2-8ad7-e0802975f0b1" name="Changes" comment="more depend." />
++      <created>1734683563759</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1734683563759</updated>
++      <workItem from="1734683565002" duration="4937000" />
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="done first feature" />
+-    <option name="LAST_COMMIT_MESSAGE" value="done first feature" />
++    <MESSAGE value="more depend." />
++    <option name="LAST_COMMIT_MESSAGE" value="more depend." />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/test/java/org/example/AcceptanceTest/acceptanceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.junit.Cucumber;\r\nimport io.cucumber.junit.CucumberOptions;\r\nimport org.junit.runner.RunWith;\r\n\r\n@RunWith(Cucumber.class)\r\n@CucumberOptions(\r\n        features = \"src/test/java/Features\",\r\n        plugin = {\"html:pages/cucumber.html\"},\r\n//    monochrome = true,\r\n    snippets = CucumberOptions.SnippetType.CAMELCASE,\r\n    glue = {\"org.example.AcceptanceTest\"}\r\n)\r\n\r\n\r\npublic class acceptanceTest {\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/acceptanceTest.java b/src/test/java/org/example/AcceptanceTest/acceptanceTest.java
+--- a/src/test/java/org/example/AcceptanceTest/acceptanceTest.java	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/test/java/org/example/AcceptanceTest/acceptanceTest.java	(date 1734685238411)
+@@ -2,10 +2,13 @@
+ 
+ import io.cucumber.junit.Cucumber;
+ import io.cucumber.junit.CucumberOptions;
++//import io.cucumber.spring.SpringFactory;
+ import org.junit.runner.RunWith;
+ 
+ @RunWith(Cucumber.class)
+ @CucumberOptions(
++        objectFactory = io.cucumber.picocontainer.PicoFactory.class,
++//        objectFactory= SpringFactory.class ,
+         features = "src/test/java/Features",
+         plugin = {"html:pages/cucumber.html"},
+ //    monochrome = true,
+Index: src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java b/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java
+new file mode 100644
+--- /dev/null	(date 1734688414339)
++++ b/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java	(date 1734688414339)
+@@ -0,0 +1,61 @@
++package org.example.AcceptanceTest;
++
++import io.cucumber.java.en.Given;
++import io.cucumber.java.en.Then;
++import io.cucumber.java.en.When;
++
++public class clientInteractionStepTest {
++    @Given("an instructor is logged in")
++    public void an_instructor_is_logged_in() {
++        // Write code here that turns the phrase above into concrete actions
++        System.out.println("Instructor is logged in");
++
++    }
++    @Given("the instructor has an active program with enrolled clients")
++    public void the_instructor_has_an_active_program_with_enrolled_clients() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @When("the instructor selects a client and sends a personalized message")
++    public void the_instructor_selects_a_client_and_sends_a_personalized_message() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @Then("the client should receive the personalized message")
++    public void the_client_should_receive_the_personalized_message() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @Given("the instructor has an active program with a discussion forum")
++    public void the_instructor_has_an_active_program_with_a_discussion_forum() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @When("the instructor posts a message to the forum")
++    public void the_instructor_posts_a_message_to_the_forum() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @Then("all enrolled clients should see the message on the forum")
++    public void all_enrolled_clients_should_see_the_message_on_the_forum() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++
++    @Given("the instructor has access to a client's progress report")
++    public void the_instructor_has_access_to_a_client_s_progress_report() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @When("the instructor provides feedback to the client")
++    public void the_instructor_provides_feedback_to_the_client() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++    @Then("the client should receive the feedback")
++    public void the_client_should_receive_the_feedback() {
++        // Write code here that turns the phrase above into concrete actions
++        throw new io.cucumber.java.PendingException();
++    }
++
++}
+Index: src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.datatable.DataTable;\r\nimport io.cucumber.java.en.And;\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.Then;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.Admin;\r\nimport org.example.Instructor;\r\nimport org.example.Main;\r\nimport org.junit.Assert;\r\nimport org.junit.Test;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Map;\r\nimport org.mockito.Mockito;\r\n\r\ninterface AdminService {\r\n    List<Instructor> getPendingInstructors();\r\n}\r\n\r\npublic class AdminUserManagementTest {\r\n    private AdminService adminService;\r\n    private List<Instructor> pendingInstructors;\r\n    private String message;\r\n    private Admin admin ;\r\n    private Main app;\r\n\r\n\r\n\r\n    public AdminUserManagementTest(){\r\n        app = new Main();\r\n        admin = new Admin();\r\n        this.adminService = Mockito.mock(AdminService.class);\r\n\r\n    }\r\n\r\n\r\n\r\n//------------------------------------------------------------------------------------\r\n    @Given(\"I am logged in as an admin\")\r\n    public void iAmLoggedInAsAnAdmin() {\r\n        Assert.assertTrue(admin.loggedIn);\r\n    }\r\n\r\n    @Given(\"there are pending instructor accounts:\")\r\n    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {\r\n        pendingInstructors = new ArrayList<>();\r\n        for (Map<String, String> row : instructorsTable) {\r\n            pendingInstructors.add(new Instructor(row.get(\"Email\"), row.get(\"Password\")));\r\n        }\r\n//Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.\r\n        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);\r\n//        This line tells Mockito: \"Whenever the getPendingInstructors() method is called on the\r\n//         mocked adminService object, return the list of pendingInstructors that we have prepared.\"\r\n    }\r\n\r\n\r\n    @Given(\"there are no pending instructor accounts\")\r\n    public void noPendingInstructorAccounts() {\r\n        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());\r\n    }\r\n\r\n    @When(\"I clicked on {string} page\")\r\n    public void iClickedOnPage(String arg0) {\r\n        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();\r\n        if (fetchedInstructors.isEmpty()) {\r\n            message = \"No pending instructor accounts\";\r\n        } else {\r\n            pendingInstructors = fetchedInstructors;\r\n        }\r\n\r\n    }\r\n    @Then(\"I should see a list of pending instructor accounts:\")\r\n    public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {\r\n        Assert.assertNotNull(pendingInstructors);\r\n        Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java b/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java
+--- a/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java	(date 1734683664909)
+@@ -1,82 +1,82 @@
+-package org.example.AcceptanceTest;
+-
+-import io.cucumber.datatable.DataTable;
+-import io.cucumber.java.en.And;
+-import io.cucumber.java.en.Given;
+-import io.cucumber.java.en.Then;
+-import io.cucumber.java.en.When;
+-import org.example.Admin;
+-import org.example.Instructor;
+-import org.example.Main;
+-import org.junit.Assert;
+-import org.junit.Test;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Map;
+-import org.mockito.Mockito;
+-
+-interface AdminService {
+-    List<Instructor> getPendingInstructors();
+-}
+-
+-public class AdminUserManagementTest {
+-    private AdminService adminService;
+-    private List<Instructor> pendingInstructors;
+-    private String message;
+-    private Admin admin ;
+-    private Main app;
+-
+-
+-
+-    public AdminUserManagementTest(){
+-        app = new Main();
+-        admin = new Admin();
+-        this.adminService = Mockito.mock(AdminService.class);
+-
+-    }
+-
+-
+-
+-//------------------------------------------------------------------------------------
+-    @Given("I am logged in as an admin")
+-    public void iAmLoggedInAsAnAdmin() {
+-        Assert.assertTrue(admin.loggedIn);
+-    }
+-
+-    @Given("there are pending instructor accounts:")
+-    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
+-        pendingInstructors = new ArrayList<>();
+-        for (Map<String, String> row : instructorsTable) {
+-            pendingInstructors.add(new Instructor(row.get("Email"), row.get("Password")));
+-        }
+-//Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.
+-        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);
+-//        This line tells Mockito: "Whenever the getPendingInstructors() method is called on the
+-//         mocked adminService object, return the list of pendingInstructors that we have prepared."
+-    }
+-
+-
+-    @Given("there are no pending instructor accounts")
+-    public void noPendingInstructorAccounts() {
+-        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());
+-    }
+-
+-    @When("I clicked on {string} page")
+-    public void iClickedOnPage(String arg0) {
+-        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();
+-        if (fetchedInstructors.isEmpty()) {
+-            message = "No pending instructor accounts";
+-        } else {
+-            pendingInstructors = fetchedInstructors;
+-        }
+-
+-    }
+-    @Then("I should see a list of pending instructor accounts:")
+-    public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {
+-        Assert.assertNotNull(pendingInstructors);
+-        Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());
+-    }
+-
+-
+-}
++//package org.example.AcceptanceTest;
++//
++//import io.cucumber.datatable.DataTable;
++//import io.cucumber.java.en.And;
++//import io.cucumber.java.en.Given;
++//import io.cucumber.java.en.Then;
++//import io.cucumber.java.en.When;
++//import org.example.Admin;
++//import org.example.Instructor;
++//import org.example.Main;
++//import org.junit.Assert;
++//import org.junit.Test;
++//
++//import java.util.ArrayList;
++//import java.util.List;
++//import java.util.Map;
++//import org.mockito.Mockito;
++//
++//interface AdminService {
++//    List<Instructor> getPendingInstructors();
++//}
++//
++//public class AdminUserManagementTest {
++//    private AdminService adminService;
++//    private List<Instructor> pendingInstructors;
++//    private String message;
++//    private Admin admin ;
++//    private Main app;
++//
++//
++//
++//    public AdminUserManagementTest(){
++//        app = new Main();
++//        admin = new Admin();
++//        this.adminService = Mockito.mock(AdminService.class);
++//
++//    }
++//
++//
++//
++////------------------------------------------------------------------------------------
++//    @Given("I am logged in as an admin")
++//    public void iAmLoggedInAsAnAdmin() {
++//        Assert.assertTrue(admin.loggedIn);
++//    }
++//
++//    @Given("there are pending instructor accounts:")
++//    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
++//        pendingInstructors = new ArrayList<>();
++//        for (Map<String, String> row : instructorsTable) {
++//            pendingInstructors.add(new Instructor(row.get("Email"), row.get("Password")));
++//        }
++////Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.
++//        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);
++////        This line tells Mockito: "Whenever the getPendingInstructors() method is called on the
++////         mocked adminService object, return the list of pendingInstructors that we have prepared."
++//    }
++//
++//
++//    @Given("there are no pending instructor accounts")
++//    public void noPendingInstructorAccounts() {
++//        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());
++//    }
++//
++//    @When("I clicked on {string} page")
++//    public void iClickedOnPage(String arg0) {
++//        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();
++//        if (fetchedInstructors.isEmpty()) {
++//            message = "No pending instructor accounts";
++//        } else {
++//            pendingInstructors = fetchedInstructors;
++//        }
++//
++//    }
++//    @Then("I should see a list of pending instructor accounts:")
++//    public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {
++//        Assert.assertNotNull(pendingInstructors);
++//        Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());
++//    }
++//
++//
++//}
+Index: src/main/java/org/example/Admin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class Admin {\r\n    public boolean newInstructorReq=false;\r\n    public boolean newClientReq=false;\r\n    public boolean deactivate=false;\r\n    public boolean monitorUserActivity=false;\r\n    public boolean loggedIn=false;\r\n\r\n    public ArrayList<Instructor> InstructorPinddingAcconnts;\r\n    public boolean ApproveInstructorButton=false;\r\n\r\n\r\n    List<Instructor> getPendingInstructors(){\r\n        for(Instructor i:InstructorPinddingAcconnts){\r\n            System.out.println(i.email +\" , \" +i.password);\r\n        }\r\n     return null;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Admin.java b/src/main/java/org/example/Admin.java
+--- a/src/main/java/org/example/Admin.java	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/main/java/org/example/Admin.java	(date 1734644846572)
+@@ -1,23 +1,23 @@
+-package org.example;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public class Admin {
+-    public boolean newInstructorReq=false;
+-    public boolean newClientReq=false;
+-    public boolean deactivate=false;
+-    public boolean monitorUserActivity=false;
+-    public boolean loggedIn=false;
+-
+-    public ArrayList<Instructor> InstructorPinddingAcconnts;
+-    public boolean ApproveInstructorButton=false;
+-
+-
+-    List<Instructor> getPendingInstructors(){
+-        for(Instructor i:InstructorPinddingAcconnts){
+-            System.out.println(i.email +" , " +i.password);
+-        }
+-     return null;
+-    }
+-}
++//package org.example;
++//
++//import java.util.ArrayList;
++//import java.util.List;
++//
++//public class Admin {
++//    public boolean newInstructorReq=false;
++//    public boolean newClientReq=false;
++//    public boolean deactivate=false;
++//    public boolean monitorUserActivity=false;
++//    public boolean loggedIn=false;
++//
++//    public ArrayList<Instructor> InstructorPinddingAcconnts;
++//    public boolean ApproveInstructorButton=false;
++//
++//
++//    List<Instructor> getPendingInstructors(){
++//        for(Instructor i:InstructorPinddingAcconnts){
++//            System.out.println(i.email +" , " +i.password);
++//        }
++//     return null;
++//    }
++//}
+Index: src/test/java/org/example/AcceptanceTest/programManagementStepTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.datatable.DataTable;\r\nimport io.cucumber.java.Before;\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.Then;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.Main;\r\nimport org.example.Program;\r\nimport org.example.ProgramService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.boot.test.context.SpringBootTest;\r\nimport org.springframework.test.context.ContextConfiguration;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\nimport static org.junit.Assert.*;\r\nimport static org.assertj.core.api.Assertions.assertThat;\r\n\r\n@SpringBootTest\r\n@ContextConfiguration(classes = { Program.class,ProgramService.class})\r\npublic class programManagementStepTest {\r\n//    private List<Program> programList;\r\n    private Map<String, String> programDetails;\r\n    private String title;\r\n    private Program programToUpdate;\r\n    private boolean InstructorLoggedIn;\r\n\r\n    @Autowired\r\n    private ProgramService programService;\r\n    Main app;\r\n//    @Before\r\n//    public void setup() {\r\n//        // Initialize the ProgramService and the program list\r\n//        programService = new ProgramService();\r\n//        programList = new ArrayList<>();\r\n//\r\n//        // Add mock data to the programService and programList\r\n//        List<Program> testPrograms = new ArrayList<>();\r\n//        testPrograms.add(new Program(\"Get Fit & Moving Challenge\", \"30 days\", \"Beginners\", \"Weight Loss, Full Body\", \"https://youtu.be/f3zOrYCwquE\", \"29.99 $\"));\r\n//        testPrograms.forEach(program -> {\r\n//            programService.addProgram(program);\r\n//            programList.add(program);\r\n//        });\r\n//\r\n//        System.out.println(\"Mock data added to ProgramService and programList.\");\r\n//    }\r\n\r\n    public programManagementStepTest() {\r\n        app = new Main();\r\n\r\n    }\r\n\r\n    @Given(\"the instructor is logged in\")\r\n    public void theInstructorIsLoggedIn() {\r\n        InstructorLoggedIn = true;\r\n        System.out.println(\"the first Scenario\\n\");\r\n    }\r\n\r\n    @When(\"the following details are provided\")\r\n    public void theFollowingDetailsAreProvided(io.cucumber.datatable.DataTable dataTable) {\r\n        programDetails = dataTable.asMap(String.class, String.class);\r\n//        title = programDetails.get(\"Program title\");\r\n//        System.out.println(title);\r\n        if (InstructorLoggedIn) {\r\n            Program program = new Program(\r\n                    programDetails.get(\"Program title\"),\r\n                    programDetails.get(\"Duration\"),\r\n                    programDetails.get(\"Difficulty level\"),\r\n                    programDetails.get(\"Goals\"),\r\n                    programDetails.get(\"Content\"),\r\n                    programDetails.get(\"Price\")\r\n            );\r\n            programList.add(program); // Add the created program to the list\r\n        } else {\r\n            System.out.println(\"Instructor is not logged in\");\r\n        }\r\n//        programService.displayAllPrograms();\r\n    }\r\n\r\n    @Then(\"the program is created with the specified details {string}\")\r\n    public void theProgramIsCreatedWithTheSpecifiedDetails(String programTitle) {\r\n        Program program = null;\r\n        for (Program p : programList) {\r\n            if (p.getTitle() != null && p.getTitle().equals(programTitle)) {\r\n                program = p;\r\n                break;\r\n            }\r\n        }\r\n        assertNotNull(\"The program with title ' \" + programTitle + \" ' wasn't found!\", program);\r\n    }\r\n\r\n    @When(\"a fitness program with the title {string} exists\")\r\n    public void aFitnessProgramWithTheTitleExists(String programTitle) {\r\n        System.out.println(\"the 2nd Scenario\\n\");\r\n\r\n        // Find the program in the list based on the title passed from Gherkin scenario\r\n        programToUpdate = programList.stream()\r\n                .filter(p -> p.getTitle().equals(programTitle))  // Match the title\r\n                .findFirst()   // Get the first program that matches\r\n                .orElse(null); // If no match, programToUpdate will be null\r\n\r\n        // Assert that the program is found\r\n        assertNotNull(\"Program to update was not found in programList!\", programToUpdate);\r\n        if (programToUpdate != null) {\r\n            title = programToUpdate.getTitle();  // Store the title of the program\r\n        }\r\n//        programService.displayAllPrograms();\r\n//        boolean exists = programService.searchIfExists(programList, programTitle);\r\n////        System.out.println(programToUpdate);\r\n//       // assertNotNull(\"Program to update was not found!\", exists ? programToUpdate : null);\r\n//        if (exists) {\r\n//            programToUpdate = programList.stream()\r\n//                    .filter(p -> p.getTitle().equals(programTitle))\r\n//                    .findFirst()\r\n//                    .orElse(null);\r\n//            assertNotNull(\"Program to update was not found in programList!\", programToUpdate);\r\n//            title = programToUpdate.getTitle();\r\n//        } else {\r\n//            title = null;\r\n//        }\r\n    }\r\n\r\n    @When(\"the instructor updates the program with the following details\")\r\n    public void theInstructorUpdatesTheProgramWithTheFollowingDetails(io.cucumber.datatable.DataTable dataTable) {\r\n        if (programToUpdate != null) {\r\n            programDetails = dataTable.asMap(String.class, String.class);\r\n            // Update the program details\r\n            programToUpdate.setDuration(programDetails.get(\"Duration\"));\r\n            programToUpdate.setDifficultyLevel(programDetails.get(\"Difficulty level\"));\r\n            programToUpdate.setGoals(programDetails.get(\"Goals\"));\r\n            programToUpdate.setContent(programDetails.get(\"Content\"));\r\n            programToUpdate.setPrice(programDetails.get(\"Price\"));\r\n        }\r\n        programService.displayAllPrograms();\r\n    }\r\n\r\n    @Then(\"the program is updated successfully with the new details\")\r\n    public void theProgramIsUpdatedSuccessfullyWithTheNewDetails() {\r\n        assertNotNull(\"Updated program should have Duration\", programToUpdate.getDuration());\r\n        assertNotNull(\"Updated program should have Difficulty Level\", programToUpdate.getDifficultyLevel());\r\n        assertNotNull(\"Updated program should have Goals\", programToUpdate.getGoals());\r\n        assertNotNull(\"Updated program should have Content\", programToUpdate.getContent());\r\n        assertNotNull(\"Updated program should have Price\", programToUpdate.getPrice());\r\n    }\r\n\r\n    @When(\"a fitness program with the title {string} doesn't exist\")\r\n    public void aFitnessProgramWithTheTitleDoesnTExist(String programTitle) {\r\n        System.out.println(\"the 3rd Scenario\\n\");\r\n        title = programTitle;\r\n        // Check that the program does not exist\r\n        boolean exists = programService.searchIfExists(programList, programTitle);\r\n        assertNull(\"Program should not exist!\", exists ? programToUpdate : null);\r\n    }\r\n\r\n    @Then(\"the system displays an error message indicating that the program does not exist\")\r\n    public void theSystemDisplaysAnErrorMessageIndicatingThatTheProgramDoesNotExist() {\r\n        assertNull(\"Program should not exist!\", programToUpdate);\r\n        System.out.println(\"The Program Title: '\" + title + \"'  Doesn't Exist :)\");\r\n    }\r\n\r\n    @When(\"the instructor attempts to delete the program with title {string}\")\r\n    public void theInstructorAttemptsToDeleteTheProgramWithTitle(String programTitle) {\r\n        programService.deleteProgram(programTitle);\r\n\r\n    }\r\n\r\n    @Then(\"the program deletion result is:\")\r\n    public void theProgramDeletionResultIs(DataTable dataTable) {\r\n        // Get expected status and message from DataTable\r\n        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);\r\n        String expectedStatus = rows.get(0).get(\"Status\");\r\n        String expectedMessage = rows.get(0).get(\"Message\");\r\n\r\n        // Get actual status and message from programService (assuming methods exist)\r\n        String actualStatus = programService.getDeletionStatus();\r\n        String actualMessage = programService.getDeletionMessage();\r\n\r\n        // Assert expected and actual results\r\n        if (expectedStatus.equals(\"Success\")) {\r\n            // Check if program is actually deleted (optional)\r\n            Program deletedProgram = programList.stream()\r\n                    .filter(p -> p.getTitle().equals(title))\r\n                    .findFirst()\r\n                    .orElse(null);\r\n            assertNull(\"Program should be deleted successfully!\", deletedProgram);\r\n        } else {\r\n            // Program deletion failed, check for expected message\r\n        }\r\n        assertEquals(expectedStatus, actualStatus);\r\n        assertEquals(expectedMessage, actualMessage);\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java b/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java
+--- a/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java	(revision 6e35d34bf175f194ffc5ce5bd18a5828795cbc6a)
++++ b/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java	(date 1734686135063)
+@@ -5,48 +5,47 @@
+ import io.cucumber.java.en.Given;
+ import io.cucumber.java.en.Then;
+ import io.cucumber.java.en.When;
++import io.cucumber.junit.Cucumber;
++import io.cucumber.junit.CucumberOptions;
++import io.cucumber.picocontainer.PicoFactory;
+ import org.example.Main;
+ import org.example.Program;
+ import org.example.ProgramService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.boot.test.context.SpringBootTest;
+-import org.springframework.test.context.ContextConfiguration;
++import org.junit.runner.RunWith;
++import org.mockito.InjectMocks;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+ 
+ import static org.junit.Assert.*;
+-import static org.assertj.core.api.Assertions.assertThat;
+-
+-@SpringBootTest
+-@ContextConfiguration(classes = { Program.class,ProgramService.class})
++@CucumberOptions(objectFactory = io.cucumber.picocontainer.PicoFactory.class)
++@RunWith(Cucumber.class)
+ public class programManagementStepTest {
+-//    private List<Program> programList;
++    private List<Program> programList;
+     private Map<String, String> programDetails;
+     private String title;
+     private Program programToUpdate;
+     private boolean InstructorLoggedIn;
+ 
+-    @Autowired
+     private ProgramService programService;
+     Main app;
+-//    @Before
+-//    public void setup() {
+-//        // Initialize the ProgramService and the program list
+-//        programService = new ProgramService();
+-//        programList = new ArrayList<>();
+-//
+-//        // Add mock data to the programService and programList
+-//        List<Program> testPrograms = new ArrayList<>();
+-//        testPrograms.add(new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $"));
+-//        testPrograms.forEach(program -> {
+-//            programService.addProgram(program);
+-//            programList.add(program);
+-//        });
+-//
+-//        System.out.println("Mock data added to ProgramService and programList.");
+-//    }
++    @Before
++    public void setup() {
++        // Initialize the ProgramService and the program list
++        programService = new ProgramService();
++        programList = new ArrayList<>();
++
++        // Add mock data to the programService and programList
++        List<Program> testPrograms = new ArrayList<>();
++        testPrograms.add(new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $"));
++        testPrograms.forEach(program -> {
++            programService.addProgram(program);
++            programList.add(program);
++        });
++
++        System.out.println("Mock data added to ProgramService and programList.");
++    }
+ 
+     public programManagementStepTest() {
+         app = new Main();
+@@ -193,4 +192,23 @@
+         assertEquals(expectedMessage, actualMessage);
+     }
+ 
++
++//
++//    @Given("a fitness program with the title {string} does not exist")
++//    public void aFitnessProgramWithTheTitleDoesNotExist(String arg0) {
++//    }
++//
++//    @Then("the system displays an error message indicating that the program does not exist")
++//    public void theSystemDisplaysAnErrorMessageIndicatingThatTheProgramDoesNotExist() {
++//    }
++//
++//    @When("the instructor chooses to delete the program")
++//    public void theInstructorChoosesToDeleteTheProgram() {
++//    }
++//
++//    @Then("the program is deleted successfully")
++//    public void theProgramIsDeletedSuccessfully() {
++//    }
++//
++//
+ }
+\ No newline at end of file

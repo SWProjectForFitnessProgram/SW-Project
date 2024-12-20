@@ -5,10 +5,7 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.Client;
-import org.example.Instruct;
-import org.example.Program;
-import org.example.ProgramService;
+import org.example.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +16,14 @@ import static org.mockito.Mockito.verify;
 public class clientInteractionStepTest {
     Program program;
     Client client;
-    Instruct instructor;
+    Instructor instructor;
     String message;
 
     @Before
     public void setup() {
         program = new Program("Fitness Program", "30 days", "Beginner", "Weight Loss", "Workout Plan", "19.99 $");
-        client = new Client("Alice", "alice@example.com");
-        instructor = new Instruct("John Doe", "johndoe@example.com");
+        client = new Client("Alice", "alice@example.com",25);
+        instructor = new Instructor("John Doe", "johndoe@example.com",30);
         program.enrollClient(client);
         instructor.setProgram(program);
 
@@ -36,7 +33,7 @@ public class clientInteractionStepTest {
         // Write code here that turns the phrase above into concrete actions
 //        instructorLoggedIn = true;
 //        System.out.println("Instructor is logged in");
-        instructor = new Instruct("John Doe", "johndoe@example.com");
+        instructor = new Instructor("John Doe", "johndoe@example.com",30);
         instructor.setLoggedIn(true);
 
     }
@@ -44,7 +41,7 @@ public class clientInteractionStepTest {
     public void the_instructor_has_an_active_program_with_enrolled_clients() {
         // Write code here that turns the phrase above into concrete actions
         program = new Program("Fitness Program", "30 days", "Beginner", "Weight Loss", "Workout Plan", "19.99 $");
-        client = new Client("Alice", "alice@example.com");
+        client = new Client("Alice", "alice@example.com",25);
         System.out.println(client.getName());
         program.enrollClient(client);
         System.out.println(instructor.getProgramTitle());

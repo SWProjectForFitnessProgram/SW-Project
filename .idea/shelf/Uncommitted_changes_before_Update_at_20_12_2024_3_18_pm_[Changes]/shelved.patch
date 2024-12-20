@@ -1,0 +1,541 @@
+Index: src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.Then;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.Admin;\r\nimport org.example.AdminService;\r\nimport org.example.Instructor;\r\nimport org.example.Main;\r\nimport org.junit.Assert;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\n//import org.junit.jupiter.api.Assertions;\r\nimport org.junit.runner.RunWith;\r\nimport org.mockito.Mock;\r\nimport org.mockito.Mockito;\r\nimport org.mockito.junit.MockitoJUnitRunner;\r\n//import org.springframework.beans.factory.annotation.Autowired;\r\n//import org.springframework.boot.test.context.SpringBootTest;\r\n//import org.springframework.test.context.bean.override.mockito.MockitoBean;\r\n//import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;\r\n//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;\r\n\r\n//@RunWith(MockitoJUnitRunner.class) // For JUnit 4\r\n\r\n//@SpringBootTest\r\n//@SpringJUnitConfig\r\nclass AdminUserManagementTest {\r\n\r\n\r\n    private List<Instructor> pendingInstructors;\r\n    private String message;\r\n    private Admin admin ;\r\n    private Main app;\r\n\r\n    @Mock\r\n    private AdminService adminService;\r\n\r\n    public AdminUserManagementTest(){\r\n        app = new Main();\r\n        admin = new Admin();\r\n        this.adminService = Mockito.mock(AdminService.class);\r\n\r\n    }\r\n\r\n\r\n\r\n//------------------------------------------------------------------------------------\r\n    //1\r\n    @Given(\"I am logged in as an admin\")\r\n    public void iAmLoggedInAsAnAdmin() {\r\n        Assert.assertTrue(admin.isLoggedIn());\r\n    }\r\n//1\r\n    @Given(\"there are pending instructor accounts:\")\r\n    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {\r\n        pendingInstructors = new ArrayList<>();\r\n        for (Map<String, String> row : instructorsTable) {\r\n            pendingInstructors.add(new Instructor(row.get(\"email\"), row.get(\"password\")));\r\n        }\r\n//Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.\r\n        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);\r\n//        This line tells Mockito: \"Whenever the getPendingInstructors() method is called on the\r\n//         mocked adminService object, return the list of pendingInstructors that we have prepared.\"\r\n    }\r\n\r\n//2\r\n    @Given(\"there are no pending instructor accounts\")\r\n    public void noPendingInstructorAccounts() {\r\n        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());\r\n    }\r\n\r\n    @When(\"I click on {string} page\")\r\n    public void iClickedOnPage(String arg0) {\r\n        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();\r\n        if (fetchedInstructors.isEmpty()) {\r\n            message = \"No pending instructor accounts\";\r\n        } else {\r\n            pendingInstructors = fetchedInstructors;\r\n        }\r\n\r\n    }\r\n    @Then(\"I should see a list of pending instructor accounts:\")\r\n    public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {\r\n        Assert.assertNotNull(pendingInstructors);\r\n        Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());\r\n    }\r\n\r\n\r\n    @Then(\"I should see a message {string}\")\r\n    public void iShouldSeeAMessage(String expectedMessage) {\r\n        // Replace this with the actual logic to retrieve the displayed message\r\n        // This might involve interacting with the UI (e.g., getting text from a web element)\r\n        String actualMessage = admin.getDisplayedMessage();\r\n\r\n        Assert.assertEquals(expectedMessage, actualMessage);\r\n    }\r\n//    //3\r\n//    @Given(\"the admin has selected the {string} option\")\r\n//    public void theAdminHasSelectedTheOption(String arg0) {\r\n//        Assert.assertTrue(admin.monitorUserActivity);\r\n//    }\r\n//\r\n//    @When(\"the admin views the instructor engagement report\")\r\n//    public void theAdminViewsTheInstructorEngagementReport() {\r\n//        Mockito.when(adminService.getUserActivityReport()).thenReturn(createSampleUserActivityReport());\r\n//\r\n//    }\r\n//\r\n//    @Then(\"the system should display statistics including:\")\r\n//    public void theSystemShouldDisplayStatisticsIncluding() {\r\n//    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java b/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java
+--- a/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java	
++++ b/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java	
+@@ -1,116 +1,82 @@
+-package org.example.AcceptanceTest;
+-
+-import io.cucumber.java.en.Given;
+-import io.cucumber.java.en.Then;
+-import io.cucumber.java.en.When;
+-import org.example.Admin;
+-import org.example.AdminService;
+-import org.example.Instructor;
+-import org.example.Main;
+-import org.junit.Assert;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Map;
+-
+-//import org.junit.jupiter.api.Assertions;
+-import org.junit.runner.RunWith;
+-import org.mockito.Mock;
+-import org.mockito.Mockito;
+-import org.mockito.junit.MockitoJUnitRunner;
+-//import org.springframework.beans.factory.annotation.Autowired;
+-//import org.springframework.boot.test.context.SpringBootTest;
+-//import org.springframework.test.context.bean.override.mockito.MockitoBean;
+-//import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+-
+-//@RunWith(MockitoJUnitRunner.class) // For JUnit 4
+-
+-//@SpringBootTest
+-//@SpringJUnitConfig
+-class AdminUserManagementTest {
+-
+-
+-    private List<Instructor> pendingInstructors;
+-    private String message;
+-    private Admin admin ;
+-    private Main app;
+-
+-    @Mock
+-    private AdminService adminService;
+-
+-    public AdminUserManagementTest(){
+-        app = new Main();
+-        admin = new Admin();
+-        this.adminService = Mockito.mock(AdminService.class);
+-
+-    }
+-
+-
+-
+-//------------------------------------------------------------------------------------
+-    //1
+-    @Given("I am logged in as an admin")
+-    public void iAmLoggedInAsAnAdmin() {
+-        Assert.assertTrue(admin.isLoggedIn());
+-    }
+-//1
+-    @Given("there are pending instructor accounts:")
+-    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
+-        pendingInstructors = new ArrayList<>();
+-        for (Map<String, String> row : instructorsTable) {
+-            pendingInstructors.add(new Instructor(row.get("email"), row.get("password")));
+-        }
+-//Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.
+-        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);
+-//        This line tells Mockito: "Whenever the getPendingInstructors() method is called on the
+-//         mocked adminService object, return the list of pendingInstructors that we have prepared."
+-    }
+-
+-//2
+-    @Given("there are no pending instructor accounts")
+-    public void noPendingInstructorAccounts() {
+-        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());
+-    }
+-
+-    @When("I click on {string} page")
+-    public void iClickedOnPage(String arg0) {
+-        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();
+-        if (fetchedInstructors.isEmpty()) {
+-            message = "No pending instructor accounts";
+-        } else {
+-            pendingInstructors = fetchedInstructors;
+-        }
+-
+-    }
+-    @Then("I should see a list of pending instructor accounts:")
+-    public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {
+-        Assert.assertNotNull(pendingInstructors);
+-        Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());
+-    }
+-
+-
+-    @Then("I should see a message {string}")
+-    public void iShouldSeeAMessage(String expectedMessage) {
+-        // Replace this with the actual logic to retrieve the displayed message
+-        // This might involve interacting with the UI (e.g., getting text from a web element)
+-        String actualMessage = admin.getDisplayedMessage();
+-
+-        Assert.assertEquals(expectedMessage, actualMessage);
+-    }
+-//    //3
+-//    @Given("the admin has selected the {string} option")
+-//    public void theAdminHasSelectedTheOption(String arg0) {
+-//        Assert.assertTrue(admin.monitorUserActivity);
++//package org.example.AcceptanceTest;
++//
++//import io.cucumber.datatable.DataTable;
++//import io.cucumber.java.en.And;
++//import io.cucumber.java.en.Given;
++//import io.cucumber.java.en.Then;
++//import io.cucumber.java.en.When;
++//import org.example.Admin;
++//import org.example.Instructor;
++//import org.example.Main;
++//import org.junit.Assert;
++//import org.junit.Test;
++//
++//import java.util.ArrayList;
++//import java.util.List;
++//import java.util.Map;
++//import org.mockito.Mockito;
++//
++//interface AdminService {
++//    List<Instructor> getPendingInstructors();
++//}
++//
++//public class AdminUserManagementTest {
++//    private AdminService adminService;
++//    private List<Instructor> pendingInstructors;
++//    private String message;
++//    private Admin admin ;
++//    private Main app;
++//
++//
++//
++//    public AdminUserManagementTest(){
++//        app = new Main();
++//        admin = new Admin();
++//        this.adminService = Mockito.mock(AdminService.class);
++//
++//    }
++//
++//
++//
++////------------------------------------------------------------------------------------
++//    @Given("I am logged in as an admin")
++//    public void iAmLoggedInAsAnAdmin() {
++//        Assert.assertTrue(admin.loggedIn);
++//    }
++//
++//    @Given("there are pending instructor accounts:")
++//    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
++//        pendingInstructors = new ArrayList<>();
++//        for (Map<String, String> row : instructorsTable) {
++//            pendingInstructors.add(new Instructor(row.get("Email"), row.get("Password")));
++//        }
++////Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.
++//        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);
++////        This line tells Mockito: "Whenever the getPendingInstructors() method is called on the
++////         mocked adminService object, return the list of pendingInstructors that we have prepared."
+ //    }
+ //
+-//    @When("the admin views the instructor engagement report")
+-//    public void theAdminViewsTheInstructorEngagementReport() {
+-//        Mockito.when(adminService.getUserActivityReport()).thenReturn(createSampleUserActivityReport());
+ //
++//    @Given("there are no pending instructor accounts")
++//    public void noPendingInstructorAccounts() {
++//        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());
+ //    }
+ //
+-//    @Then("the system should display statistics including:")
+-//    public void theSystemShouldDisplayStatisticsIncluding() {
++//    @When("I clicked on {string} page")
++//    public void iClickedOnPage(String arg0) {
++//        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();
++//        if (fetchedInstructors.isEmpty()) {
++//            message = "No pending instructor accounts";
++//        } else {
++//            pendingInstructors = fetchedInstructors;
++//        }
++//
+ //    }
+-}
++//    @Then("I should see a list of pending instructor accounts:")
++//    public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {
++//        Assert.assertNotNull(pendingInstructors);
++//        Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());
++//    }
++//
++//
++//}
+Index: src/main/java/org/example/AdminService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport java.util.List;\r\n\r\npublic interface AdminService {\r\n    List<Instructor> getPendingInstructors();\r\n\r\n    Object getUserActivityReport();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/AdminService.java b/src/main/java/org/example/AdminService.java
+--- a/src/main/java/org/example/AdminService.java	
++++ b/src/main/java/org/example/AdminService.java	
+@@ -1,9 +1,9 @@
+-package org.example;
+-
+-import java.util.List;
+-
+-public interface AdminService {
+-    List<Instructor> getPendingInstructors();
+-
+-    Object getUserActivityReport();
+-}
++//package org.example;
++//
++//import java.util.List;
++//
++//public interface AdminService {
++//    List<Instructor> getPendingInstructors();
++//
++//    Object getUserActivityReport();
++//}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"add depend. + finish a feature\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pages/cucumber.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pages/cucumber.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Admin.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Admin.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Instructor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Instructor.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/example/MyApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/example/MyApplication.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/TalaAlhendi/SW-Project.git\",\r\n    \"accountId\": \"83da6505-7ab8-4b97-b7f8-45c77f0031ba\"\r\n  },\r\n  \"recentNewPullRequestHead\": {\r\n    \"server\": {\r\n      \"useHttp\": false,\r\n      \"host\": \"github.com\",\r\n      \"port\": null,\r\n      \"suffix\": null\r\n    },\r\n    \"owner\": \"TalaAlhendi\",\r\n    \"repository\": \"SW-Project\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2qSJUgKlFXO8XHQzPIM5jPamcbX\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;JUnit.acceptanceTest.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"acceptanceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Fitness\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AcceptanceTest.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.AcceptanceTest.acceptanceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.acceptanceTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734620442002</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734620442002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Admin test and production code\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734644545713</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734644545713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"edit on programManagementStepTest\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734646611195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734646611195</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"edit on programManagementStepTest\" />\r\n      <created>1734650063351</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1734650063351</updated>\r\n      <workItem from=\"1734650065119\" duration=\"2540000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"add depend. + finish a feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734688544556</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734688544556</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Admin testcode\" />\r\n    <MESSAGE value=\"Admin test and production code\" />\r\n    <MESSAGE value=\"edit on programManagementStepTest\" />\r\n    <MESSAGE value=\"add depend. + finish a feature\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add depend. + finish a feature\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,15 +4,21 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="add depend. + finish a feature">
++    <list default="true" id="7478c150-b874-4fd2-8ad7-e0802975f0b1" name="Changes" comment="done first feature">
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instruct.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/acceptanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/acceptanceTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MyApplication.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -26,136 +32,77 @@
+       </list>
+     </option>
+   </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="ProjectErrors" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/TalaAlhendi/SW-Project.git",
+-    "accountId": "83da6505-7ab8-4b97-b7f8-45c77f0031ba"
+-  },
+-  "recentNewPullRequestHead": {
+-    "server": {
+-      "useHttp": false,
+-      "host": "github.com",
+-      "port": null,
+-      "suffix": null
+-    },
+-    "owner": "TalaAlhendi",
+-    "repository": "SW-Project"
+-  }
+-}]]></component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 5
+-}</component>
+-  <component name="ProjectId" id="2qSJUgKlFXO8XHQzPIM5jPamcbX" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
+   </component>
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+-    &quot;JUnit.acceptanceTest.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+   }
+ }</component>
+-  <component name="RunManager">
+-    <configuration name="acceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RecentsManager">
++    <key name="CreateClassDialog.RecentsKey">
++      <recent name="org.example.AcceptanceTest" />
++    </key>
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="org.example" />
++      <recent name="org" />
++    </key>
++  </component>
++  <component name="RunManager" selected="Cucumber Java.Feature: clientInteraction">
++    <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+       <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: ProgramManagment" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="org.example.AcceptanceTest.*" />
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="org.example.AcceptanceTest" />
+-      <option name="MAIN_CLASS_NAME" value="org.example.AcceptanceTest.acceptanceTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
++      <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: clientInteraction" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="JUnit.acceptanceTest" />
++        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
++        <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
+       </list>
+     </recent_temporary>
+   </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+-      </set>
+-    </attachedChunks>
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+-    <task id="LOCAL-00001" summary="Admin testcode">
+-      <option name="closed" value="true" />
+-      <created>1734620442002</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1734620442002</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="Admin test and production code">
+-      <option name="closed" value="true" />
+-      <created>1734644545713</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1734644545713</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="edit on programManagementStepTest">
+-      <option name="closed" value="true" />
+-      <created>1734646611195</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1734646611195</updated>
+-    </task>
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="edit on programManagementStepTest" />
+-      <created>1734650063351</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1734650063351</updated>
+-      <workItem from="1734650065119" duration="2540000" />
+-    </task>
+-    <task id="LOCAL-00004" summary="add depend. + finish a feature">
+-      <option name="closed" value="true" />
+-      <created>1734688544556</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1734688544556</updated>
+-    </task>
+-    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="Admin testcode" />
+-    <MESSAGE value="Admin test and production code" />
+-    <MESSAGE value="edit on programManagementStepTest" />
+-    <MESSAGE value="add depend. + finish a feature" />
+-    <option name="LAST_COMMIT_MESSAGE" value="add depend. + finish a feature" />
++    <MESSAGE value="done first feature" />
++    <option name="LAST_COMMIT_MESSAGE" value="done first feature" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/org/example/Admin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\n//import org.springframework.stereotype.Service;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n//@Service\r\npublic class Admin implements AdminService {\r\n    public boolean newInstructorReq=false;\r\n    public boolean newClientReq=false;\r\n    public boolean deactivate=false;\r\n    public boolean monitorUserActivity=false;\r\n    private boolean loggedIn=true;\r\n\r\n\r\n    private Map<String, String> metrics = new HashMap<>();\r\n\r\n\r\n\r\n\r\n\r\n\r\n    public void addMetric(String name, String description) {\r\n        metrics.put(name, description);\r\n    }\r\n\r\n    public String getMetricDescription(String name) {\r\n        return metrics.get(name);\r\n    }\r\n\r\n    public boolean isLoggedIn(){\r\n        return loggedIn;\r\n    }\r\n\r\n    public ArrayList<Instructor> InstructorPinddingAcconnts;\r\n    public boolean ApproveInstructorButton=false;\r\n\r\n    @Override\r\n    public List<Instructor> getPendingInstructors(){\r\n        for(Instructor i:InstructorPinddingAcconnts){\r\n            System.out.println(i.email +\" , \" +i.password);\r\n        }\r\n     return null;\r\n    }\r\n\r\n    @Override\r\n    public Object getUserActivityReport() {\r\n        return null;\r\n    }\r\n\r\n    public String getDisplayedMessage() {\r\n        return \"No pending instructor accounts\";\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Admin.java b/src/main/java/org/example/Admin.java
+--- a/src/main/java/org/example/Admin.java	
++++ b/src/main/java/org/example/Admin.java	
+@@ -1,56 +1,23 @@
+-package org.example;
+-
+-//import org.springframework.stereotype.Service;
+-
+-import java.util.ArrayList;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Map;
+-//@Service
+-public class Admin implements AdminService {
+-    public boolean newInstructorReq=false;
+-    public boolean newClientReq=false;
+-    public boolean deactivate=false;
+-    public boolean monitorUserActivity=false;
+-    private boolean loggedIn=true;
+-
+-
+-    private Map<String, String> metrics = new HashMap<>();
+-
+-
+-
+-
+-
+-
+-    public void addMetric(String name, String description) {
+-        metrics.put(name, description);
+-    }
+-
+-    public String getMetricDescription(String name) {
+-        return metrics.get(name);
+-    }
+-
+-    public boolean isLoggedIn(){
+-        return loggedIn;
+-    }
+-
+-    public ArrayList<Instructor> InstructorPinddingAcconnts;
+-    public boolean ApproveInstructorButton=false;
+-
+-    @Override
+-    public List<Instructor> getPendingInstructors(){
+-        for(Instructor i:InstructorPinddingAcconnts){
+-            System.out.println(i.email +" , " +i.password);
+-        }
+-     return null;
+-    }
+-
+-    @Override
+-    public Object getUserActivityReport() {
+-        return null;
+-    }
+-
+-    public String getDisplayedMessage() {
+-        return "No pending instructor accounts";
+-    }
+-}
++//package org.example;
++//
++//import java.util.ArrayList;
++//import java.util.List;
++//
++//public class Admin {
++//    public boolean newInstructorReq=false;
++//    public boolean newClientReq=false;
++//    public boolean deactivate=false;
++//    public boolean monitorUserActivity=false;
++//    public boolean loggedIn=false;
++//
++//    public ArrayList<Instructor> InstructorPinddingAcconnts;
++//    public boolean ApproveInstructorButton=false;
++//
++//
++//    List<Instructor> getPendingInstructors(){
++//        for(Instructor i:InstructorPinddingAcconnts){
++//            System.out.println(i.email +" , " +i.password);
++//        }
++//     return null;
++//    }
++//}
