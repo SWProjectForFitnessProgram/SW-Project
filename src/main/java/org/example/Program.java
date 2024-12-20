@@ -14,6 +14,7 @@ public class Program {
     String price;
     Date startDate;
     Date endDate;
+
     public Program()
     {
         //new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $")

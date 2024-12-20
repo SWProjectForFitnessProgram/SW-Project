@@ -16,4 +16,22 @@ public interface AdminService {
     List<Map<String, String>> generateRevenueReport(String lastQuarter);
 
     List<Map<String, String>> getProgramStatuses();
+
+    void addArticle(Article article);
+
+    void approveArticle(Article article);
+
+    void rejectRecipe(Recipe recipe);
+
+    void addComplaint(Complaint complaint);
+
+    void addTip(HealthTip tip);
+
+    void approveTip(HealthTip tip);
+
+    void resolveComplaint(Complaint complaint);
+
+    void addRecipe(Recipe recipe);
+
+    void rejectArticle(Article article);
 }

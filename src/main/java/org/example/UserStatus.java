@@ -1,7 +1,8 @@
 package org.example;
 
 public enum UserStatus {
-    PENDING,
-    APPROVED,
-    REJECTED
+    Pending,
+    Approved,
+    Rejected,
+    Resolved
 }

@@ -12,14 +12,17 @@ public class Admin implements AdminService {
     public boolean deactivate=false;
     public boolean monitorUserActivity=false;
     private boolean loggedIn=true;
-//    private Map<String, String> metrics = new HashMap<>();
+    public boolean ApproveInstructorButton=false;
     private ArrayList<Instructor> InstructorPinddingAcconnts;
     private ArrayList<Client> ClientPinddingAcconnts;
     private ArrayList<Instructor> Instructors;
     private ArrayList<Client> Clients;
     private ArrayList<Program> Programs;
+    private List<Article> articles = new ArrayList<>();
+    private List<HealthTip> tips = new ArrayList<>();
+    private List<Recipe> recipes = new ArrayList<>();
+    private List<Complaint> complaints = new ArrayList<>();
 
-    public boolean ApproveInstructorButton=false;
 
 
     public boolean isLoggedIn(){
@@ -55,30 +58,30 @@ public class Admin implements AdminService {
 
         return programEnrollmentStatistics; // Return the statistics
     }
-//    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
-//            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
-//
-//            List<Map<String, String>> table = new ArrayList<>();
-//            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
-//                Map<String, String> row = new HashMap<>();
-//                row.put("Program Name", entry.getKey().getTitle());
-//                row.put("Enrollment Count", entry.getValue().toString());
-//                table.add(row);
-//            }
-//
-//            return table;
-//    }
-
     public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
-        return List.of(
-                Map.of("Program Name", "Program A", "Enrollment Count", "200"),
-                Map.of("Program Name", "Program B", "Enrollment Count", "180"),
-                Map.of("Program Name", "Program C", "Enrollment Count", "150"),
-                Map.of("Program Name", "Program D", "Enrollment Count", "120"),
-                Map.of("Program Name", "Program E", "Enrollment Count", "100")
-        );
+            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
 
+            List<Map<String, String>> table = new ArrayList<>();
+            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
+                Map<String, String> row = new HashMap<>();
+                row.put("Program Name", entry.getKey().getTitle());
+                row.put("Enrollment Count", entry.getValue().toString());
+                table.add(row);
+            }
+
+            return table;
     }
+
+//    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
+//        return List.of(
+//                Map.of("Program Name", "Program A", "Enrollment Count", "200"),
+//                Map.of("Program Name", "Program B", "Enrollment Count", "180"),
+//                Map.of("Program Name", "Program C", "Enrollment Count", "150"),
+//                Map.of("Program Name", "Program D", "Enrollment Count", "120"),
+//                Map.of("Program Name", "Program E", "Enrollment Count", "100")
+//        );
+//
+//    }
 
     @Override
     public List<Map<String, String>> generateRevenueReport(String timePeriod) {
@@ -118,15 +121,46 @@ public class Admin implements AdminService {
 
         return programStatuses;
     }
+
     public String getDisplayedMessage() {
         return "No pending instructor accounts";
     }
 
 
-        public static LocalDate convertDateToLocalDate(Date date) {
-            return date.toInstant()                        // Convert Date to Instant
-                    .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime
-                    .toLocalDate();                   // Convert ZonedDateTime to LocalDate
-        }
+    public static LocalDate convertDateToLocalDate(Date date) {
+        return date.toInstant()                        // Convert Date to Instant
+                .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime
+                .toLocalDate();                   // Convert ZonedDateTime to LocalDate
+    }
+
+    @Override
+    public void addArticle(Article article) {
+        articles.add(article);
+    }
+    public void addTip(HealthTip tip) {
+        tips.add(tip);
+    }
+    public void addRecipe(Recipe recipe) {
+        recipes.add(recipe);
+    }
+    public void addComplaint(Complaint complaint) {
+        complaints.add(complaint);
+    }
+    public void approveArticle(Article article) {
+        article.setStatus(UserStatus.valueOf("Approved"));
+    }
+    public void rejectArticle(Article article) {
+        article.setStatus(UserStatus.valueOf("Rejected"));
+    }
+    public void approveTip(HealthTip tip) {
+        tip.setStatus("Approved");
+    }
+    public void rejectRecipe(Recipe recipe) {
+        recipe.setStatus("Rejected");
+    }
+    public void resolveComplaint(Complaint complaint) {
+        complaint.setStatus("Resolved");
+    }
+
 
 }
