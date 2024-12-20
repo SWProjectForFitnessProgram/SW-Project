@@ -1,4 +1,4 @@
-#Feature: Notifications and Updates - Program Schedule Changes and Announcements
+Feature: Notifications and Updates - Program Schedule Changes and Announcements
 #
 #  Background: Setup Instructor and Clients
 #    Given the instructor is logged in
