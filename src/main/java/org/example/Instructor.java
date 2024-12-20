@@ -1,37 +1,41 @@
 package org.example;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-
-
-import org.springframework.data.annotation.Id;
-import org.springframework.stereotype.Service;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.EnumType;
+//import jakarta.persistence.Enumerated;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+//import jakarta.persistence.Column;
+//
+//
+////import org.springframework.data.annotation.Id;
+//import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Instructor {
 
-    @jakarta.persistence.Id
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @jakarta.persistence.Id
+
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+//    @Column(nullable = false, unique = true)
     String email;
 
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String password;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private InstructorStatus status;
 
     public Instructor(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Instructor() {
+
     }
 
     public void setId(Long id) {

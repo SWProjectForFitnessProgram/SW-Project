@@ -12,22 +12,22 @@ import org.example.ProgramService;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.bean.override.mockito.MockitoBean;
+//import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.*;
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(MockitoJUnitRunner.class) // For JUnit 4
-@SpringJUnitConfig
-@SpringBootTest
-@ContextConfiguration(classes = { Program.class,ProgramService.class})
+//@SpringJUnitConfig
+//@SpringBootTest
+//@ContextConfiguration(classes = { Program.class,ProgramService.class})
 public class programManagementStepTest {
 //    private List<Program> programList;
     private Map<String, String> programDetails;
@@ -36,7 +36,7 @@ public class programManagementStepTest {
     private boolean InstructorLoggedIn;
 
     private ArrayList<Program> programList;
-    @Autowired
+//    @Autowired
     private ProgramService programService;
     Main app;
 //    @Before
