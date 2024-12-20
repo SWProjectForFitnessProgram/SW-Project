@@ -79,13 +79,11 @@ public class Instructor {
     }
 
     public void postForumMessage(Program program, String title, String content) {
-        program.addForumMessage(title,content);
+        program.addForumMessage(title, content);
     }
 
-    public void provideFeedbackToClient(Client client,String feedback)
-    {
+    public void provideFeedbackToClient(Client client, String feedback) {
         client.receiveFeedback(feedback);
     }
 
-    // Getters and Setters
 }
