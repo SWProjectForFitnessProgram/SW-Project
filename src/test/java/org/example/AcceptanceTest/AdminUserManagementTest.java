@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.jupiter.api.Assertions;
+//import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 //import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 //import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(MockitoJUnitRunner.class) // For JUnit 4
+//@RunWith(MockitoJUnitRunner.class) // For JUnit 4
 
 //@SpringBootTest
 //@SpringJUnitConfig
@@ -35,7 +36,7 @@ class AdminUserManagementTest {
     private Admin admin ;
     private Main app;
 
-//    @MockitoBean
+    @Mock
     private AdminService adminService;
 
     public AdminUserManagementTest(){
@@ -95,7 +96,7 @@ class AdminUserManagementTest {
         // This might involve interacting with the UI (e.g., getting text from a web element)
         String actualMessage = admin.getDisplayedMessage();
 
-        Assertions.assertEquals(expectedMessage, actualMessage);
+        Assert.assertEquals(expectedMessage, actualMessage);
     }
 //    //3
 //    @Given("the admin has selected the {string} option")

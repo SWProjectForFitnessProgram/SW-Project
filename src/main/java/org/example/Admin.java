@@ -1,12 +1,12 @@
 package org.example;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@Service
+//@Service
 public class Admin implements AdminService {
     public boolean newInstructorReq=false;
     public boolean newClientReq=false;
