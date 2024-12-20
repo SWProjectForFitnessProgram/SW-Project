@@ -1,8 +1,11 @@
 package org.example.AcceptanceTest;
 
+import io.cucumber.java.be.I;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.Client;
+import org.example.Instructor;
 import org.example.ProgressManager;
 import org.junit.Assert;
 import io.cucumber.datatable.DataTable;
@@ -11,18 +14,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-
-
 public class ProgressTracking {
     private ProgressManager progressManager = new ProgressManager();  // تعريف كائن من ProgressManager
     private Map<String, String> progressData;
     private List<Map<String, String>> progressHistory;
     private Map<String, List<String>> achievements = new HashMap<>();
-
-
-
-
+//    private Instructor instructor;
+//    private Client client;
+//    private String feedback;
+//
+//    public ProgressTracking()
+//    {
+//        instructor = new Instructor("Test Instructor in the client progress tracking","test@gmail.com",30);
+//    }
 
     @Given("I am logged in and on the {string} page")
     public void iAmLoggedInAndOnThePage(String page) {

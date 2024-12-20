@@ -13,6 +13,6 @@ Feature: client Interaction
 
   Scenario: Providing Feedback to a Client
     Given an instructor is logged in
-    And the instructor has access to a client's progress report
+    And the instructor has access to a client's progress report for "Alice"
     When the instructor provides feedback to the client
     Then the client should receive the feedback

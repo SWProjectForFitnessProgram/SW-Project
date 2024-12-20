@@ -2,6 +2,7 @@ package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,6 +13,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
@@ -22,6 +24,8 @@ public class clientInteractionStepTest {
     Instructor instructor;
     String message;
     String feedback;
+    private ProgressManager progressManager = new ProgressManager();
+    private Map<String,String> progressData;
 
     @Before
     public void setup() {
@@ -45,6 +49,7 @@ public class clientInteractionStepTest {
 //        instructorLoggedIn = true;
 //        System.out.println("Instructor is logged in");
         instructor = new Instructor("John Doe", "johndoe@example.com",30);
+//        if(!instructor.isLoggedIn)
         instructor.setLoggedIn(true);
 
     }
@@ -93,19 +98,28 @@ public class clientInteractionStepTest {
         // Write code here that turns the phrase above into concrete actions
         assertTrue(client.hasReceivedMessage(message));
 //        verify(program).addForumMessage("Weekly Motivation", "Stay consistent, and you will see results!");
-
-
     }
 
-    @Given("the instructor has access to a client's progress report")
-    public void the_instructor_has_access_to_a_client_s_progress_report() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @And("the instructor has access to a client's progress report for {string}")
+    public void theInstructorHasAccessToAClientSProgressReportFor(String clientName) {
+//        client = instructor.getClientByName(clientName);
+//        if (client == null) {
+//            throw new IllegalArgumentException("Client " + clientName + " not found.");
+//        }
+//
+//        if (!instructor.isClientInProgram(client)) { // Crucial check!
+//            throw new IllegalArgumentException("Client " + clientName + " is not enrolled in the instructor's program.");
+//        }
+        progressData = progressManager.getProgressData();
+        if (progressData == null) {
+            throw new IllegalArgumentException("Progress data not found for client: " + clientName);
+        }
+
     }
     @When("the instructor provides feedback to the client")
     public void the_instructor_provides_feedback_to_the_client() {
         // Write code here that turns the phrase above into concrete actions
-        String feedback = "Great progress this week! Try increasing your cardio sessions to 20 minutes.";
+        feedback = "Great progress this week! Try increasing your cardio sessions to 20 minutes.";
         instructor.provideFeedbackToClient(client, feedback);
     }
     @Then("the client should receive the feedback")
@@ -114,5 +128,6 @@ public class clientInteractionStepTest {
         assertTrue(client.hasReceivedFeedback(feedback));
 
     }
+
 
 }
