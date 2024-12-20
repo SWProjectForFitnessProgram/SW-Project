@@ -8,7 +8,7 @@ Instructors should be able to monitor client progress and send motivational remi
   Scenario: Instructor views a client's completion rate
     Given "Alice" has completed 7 out of 10 workouts in "Fitness Program"
     When the instructor views "Alice"'s progress report
-    Then the instructor should see "Alice"'s completion rate as 70%
+    Then the instructor should see "Alice"'s completion rate as 70.0%
 
   Scenario: Instructor views a client's attendance
     Given "Bob" has attended 8 out of 12 sessions of "Fitness Program"

@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
+    private Program program;
+    private int workoutsCompleted;
+    private int totalWorkouts;
+    private int sessionsAttended;
+    private int totalSessions;
+    private String receivedMessage;
     private Long id;
     //    @Column(nullable = false, unique = true)
     String email;
@@ -33,6 +39,11 @@ public class Client {
 
 
     }
+    public Client(String name, Program program) {
+        clientName = name;
+        this.program = program;
+    }
+    public int getWorkoutsCompleted() { return workoutsCompleted; }
 
     public void setId(Long id) {
         this.id = id;
@@ -80,17 +91,26 @@ public class Client {
     }
 
     public void setWorkoutsCompleted(int doneWorkouts, int allWorkouts) {
+        this.workoutsCompleted = doneWorkouts;
+        this.totalWorkouts = allWorkouts;
     }
 
-    public void setSessionsAttended(int attended, int total) {
+    public int getSessionsAttended() { return sessionsAttended; }
+    public void setSessionsAttended(int sessionsAttended, int totalSessions) {
+        this.sessionsAttended = sessionsAttended;
+        this.totalSessions = totalSessions;
     }
-
     public double getCompletionRate() {
+        if (totalWorkouts == 0) return 0;
+        return (double) workoutsCompleted / totalWorkouts * 100;
     }
-
     public double getAttendanceRate() {
+        if (totalSessions == 0) {
+            return 0; // Avoid division by zero
+        }
+        return (double) sessionsAttended / totalSessions * 100;
     }
 
-    public String getReceivedMessage() {
-    }
+    public String getReceivedMessage() { return receivedMessage; }
+    public void setReceivedMessage(String message) { this.receivedMessage = message; }
 }

@@ -1,11 +1,15 @@
 package org.example.AcceptanceTest;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Client;
 import org.example.Instructor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -16,10 +20,55 @@ public class progressTrackingStepsCode {
     private Map<String, Client> clients;
     private String displayedMessage; // For messages displayed to the instructor
     private String receivedMessage; // For messages received by clients
-    @Given("the instructor is logged in")
-    public void theInstructorIsLoggedIn() {
-        instructor = new Instructor("Test Instructor", "test@email.com", 30); // Example instructor
+
+    @Before
+    public void setUp()
+    {
+        instructor = new Instructor("Test Instructor", "test@email.com", 30);
         assertNotNull(instructor); // Check if instructor is created
+        clients = new HashMap<>();
+
+        // Create client data as a List of HashMaps
+
+        List<Map<String, String>> clientDataList = new ArrayList<>();
+
+        Map<String, String> aliceData = new HashMap<>();
+        aliceData.put("Name", "Alice");
+        aliceData.put("Workouts Completed", "7");
+        aliceData.put("Total Workouts", "10");
+        aliceData.put("Sessions Attended", "0");
+        aliceData.put("Total Sessions", "0");
+        clientDataList.add(aliceData);
+
+        Map<String, String> bobData = new HashMap<>();
+        bobData.put("Name", "Bob");
+        bobData.put("Workouts Completed", "0");
+        bobData.put("Total Workouts", "0");
+        bobData.put("Sessions Attended", "8");
+        bobData.put("Total Sessions", "12");
+        clientDataList.add(bobData);
+
+        Map<String, String> charlieData = new HashMap<>();
+        charlieData.put("Name", "Charlie");
+        charlieData.put("Workouts Completed", "3");
+        charlieData.put("Total Workouts", "10");
+        charlieData.put("Sessions Attended", "0");
+        charlieData.put("Total Sessions", "0");
+        clientDataList.add(charlieData);
+
+        // Populate the clients map
+        for (Map<String, String> clientData : clientDataList) {
+            String clientName = clientData.get("Name");
+            int workoutsCompleted = Integer.parseInt(clientData.get("Workouts Completed"));
+            int totalWorkouts = Integer.parseInt(clientData.get("Total Workouts"));
+            int sessionsAttended = Integer.parseInt(clientData.get("Sessions Attended"));
+            int totalSessions = Integer.parseInt(clientData.get("Total Sessions"));
+
+            Client client = new Client(clientName, "Fitness Program");
+            client.setWorkoutsCompleted(workoutsCompleted, totalWorkouts);
+            client.setSessionsAttended(sessionsAttended,totalSessions);
+            clients.put(clientName, client);
+        }
     }
     @Given("{string} has completed {int} out of {int} workouts in {string}")
     public void hasCompletedOutOfWorkoutsIn(String clientName, int doneWorkouts, int allWorkouts, String programName) {
@@ -39,10 +88,13 @@ public class progressTrackingStepsCode {
         }
     }
 
-    @Then("the instructor should see {string}'s completion rate as {int}%")
-    public void theInstructorShouldSeeSCompletionRateAs(String clientName, int expectedRate) {
+    @Then("the instructor should see {string}'s completion rate as {double}%")
+    public void theInstructorShouldSeeSCompletionRateAs(String clientName, double expectedRate) {
         Client client = clients.get(clientName);
         double actualRate = client.getCompletionRate();
+        System.out.println("The Expected Rate in Completion rate for " + clientName + " is " + expectedRate + "%");
+        System.out.println("The Actual Rate in Completion rate for " + clientName + " is " + actualRate + "%");
+
         assertEquals(expectedRate, actualRate, 0.01); // Delta for double comparison
     }
 
@@ -57,6 +109,8 @@ public class progressTrackingStepsCode {
     public void theInstructorShouldSeeSAttendanceAs(String clientName, double expectedAttendance) {
         Client client = clients.get(clientName);
         double actualAttendance = client.getAttendanceRate();
+        System.out.println("The Expected Rate in Attendance rate for " + clientName + " is " + expectedAttendance +"%");
+        System.out.println("The Actual Rate in Attendance rate for " + clientName + " is " + actualAttendance+"%");
         assertEquals(expectedAttendance, actualAttendance, 0.01);
     }
 
@@ -65,7 +119,7 @@ public class progressTrackingStepsCode {
         Client client = clients.get(clientName);
         if (client != null) {
             String messag = "Keep pushing, Charlie! You've got this!"; // Hardcoded for this scenario
-            client.receiveMessage(messag);
+            client.setReceivedMessage(messag);
             receivedMessage = messag;
         }
     }
@@ -74,6 +128,8 @@ public class progressTrackingStepsCode {
     public void shouldReceiveTheMessage(String clientName, String expectedMessage) {
         Client client = clients.get(clientName);
         assertEquals(expectedMessage, client.getReceivedMessage());
+        System.out.println(client.getReceivedMessage());
+
     }
 
 }
