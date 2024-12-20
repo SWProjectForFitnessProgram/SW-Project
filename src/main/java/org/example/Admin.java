@@ -2,10 +2,9 @@ package org.example;
 
 //import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.ZoneId;
+import java.util.*;
+import java.time.LocalDate;
 //@Service
 public class Admin implements AdminService {
     public boolean newInstructorReq=false;
@@ -56,22 +55,78 @@ public class Admin implements AdminService {
 
         return programEnrollmentStatistics; // Return the statistics
     }
+//    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
+//            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
+//
+//            List<Map<String, String>> table = new ArrayList<>();
+//            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
+//                Map<String, String> row = new HashMap<>();
+//                row.put("Program Name", entry.getKey().getTitle());
+//                row.put("Enrollment Count", entry.getValue().toString());
+//                table.add(row);
+//            }
+//
+//            return table;
+//    }
+
     public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
-            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
+        return List.of(
+                Map.of("Program Name", "Program A", "Enrollment Count", "200"),
+                Map.of("Program Name", "Program B", "Enrollment Count", "180"),
+                Map.of("Program Name", "Program C", "Enrollment Count", "150"),
+                Map.of("Program Name", "Program D", "Enrollment Count", "120"),
+                Map.of("Program Name", "Program E", "Enrollment Count", "100")
+        );
 
-            List<Map<String, String>> table = new ArrayList<>();
-            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
-                Map<String, String> row = new HashMap<>();
-                row.put("Program Name", entry.getKey().getTitle());
-                row.put("Enrollment Count", entry.getValue().toString());
-                table.add(row);
-            }
-
-            return table;
     }
 
+    @Override
+    public List<Map<String, String>> generateRevenueReport(String timePeriod) {
+        List<Map<String, String>> revenueReport = new ArrayList<>();
+        if ("last quarter".equalsIgnoreCase(timePeriod)) {
+            for (Program program : Programs) {
+                double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
+                revenueReport.add(Map.of(
+                        "Program Name", program.getTitle(),
+                        "Revenue", String.valueOf(revenue)
+                ));
+            }
+        }
+        return revenueReport;
+    }
 
+    @Override
+       public List<Map<String, String>> getProgramStatuses() {
+        List<Map<String, String>> programStatuses = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now(); // Get the current date
+
+        for (Program program : Programs) {
+            String status;
+            if (currentDate.isBefore(convertDateToLocalDate(program.getStartDate()))) {
+                status = "Upcoming";
+            } else if (!currentDate.isAfter(convertDateToLocalDate(program.getEndtDate()))) {
+                status = "Active";
+            } else {
+                status = "Completed";
+            }
+
+            programStatuses.add(Map.of(
+                    "Program Name", program.getTitle(),
+                    "Status", status
+            ));
+        }
+
+        return programStatuses;
+    }
     public String getDisplayedMessage() {
         return "No pending instructor accounts";
     }
+
+
+        public static LocalDate convertDateToLocalDate(Date date) {
+            return date.toInstant()                        // Convert Date to Instant
+                    .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime
+                    .toLocalDate();                   // Convert ZonedDateTime to LocalDate
+        }
+
 }

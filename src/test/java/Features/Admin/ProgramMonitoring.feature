@@ -28,9 +28,9 @@ Feature: Program Monitoring
     Given the admin is logged in
     When the admin views program statuses
     Then the system displays a list of active and completed programs
-      | Status   | Program Name |
-      | Active   | Program A    |
-      | Active   | Program B    |
-      | Completed| Program C    |
-      | Completed| Program D    |
-      | Completed| Program E    |
+      | Program Name | Status |
+      | Program A    | Active |
+      | Program B    | Active |
+      | Program C    | Completed |
+      | Program D    | Completed |
+      | Program E    | Completed |
