@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="editing the whole project">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="Admin production code #2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/UserManagement.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/UserManagement.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/ProgramMonitoring.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/ProgramMonitoring.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +71,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Cucumber Java.Feature: clientInteraction.executor": "Run",
     "JUnit.acceptanceTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -195,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734704132936</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Admin production code #2">
+      <option name="closed" value="true" />
+      <created>1734717246337</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734717246338</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +246,7 @@
     <MESSAGE value="add depend. + finish a feature" />
     <MESSAGE value="Admin testcode" />
     <MESSAGE value="editing the whole project" />
-    <option name="LAST_COMMIT_MESSAGE" value="editing the whole project" />
+    <MESSAGE value="Admin production code #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin production code #2" />
   </component>
 </project>
