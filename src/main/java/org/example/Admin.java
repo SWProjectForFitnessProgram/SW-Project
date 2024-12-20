@@ -13,36 +13,25 @@ public class Admin implements AdminService {
     public boolean deactivate=false;
     public boolean monitorUserActivity=false;
     private boolean loggedIn=true;
+//    private Map<String, String> metrics = new HashMap<>();
+    private ArrayList<Instructor> InstructorPinddingAcconnts;
+    private ArrayList<Client> ClientPinddingAcconnts;
+    private ArrayList<Instructor> Instructors;
+    private ArrayList<Client> Clients;
 
 
-    private Map<String, String> metrics = new HashMap<>();
+    public boolean ApproveInstructorButton=false;
 
-
-
-
-
-
-    public void addMetric(String name, String description) {
-        metrics.put(name, description);
-    }
-
-    public String getMetricDescription(String name) {
-        return metrics.get(name);
-    }
 
     public boolean isLoggedIn(){
         return loggedIn;
     }
-
-    public ArrayList<Instructor> InstructorPinddingAcconnts;
-    public boolean ApproveInstructorButton=false;
-
     @Override
     public List<Instructor> getPendingInstructors(){
         for(Instructor i:InstructorPinddingAcconnts){
             System.out.println(i.email +" , " +i.password);
         }
-     return null;
+     return InstructorPinddingAcconnts;
     }
 
     @Override
@@ -53,6 +42,22 @@ public class Admin implements AdminService {
     @Override
     public Object getUserActivityReport() {
         return null;
+    }
+
+    @Override
+    public Map<Program, Integer> getProgramEnrollmentStatistics() {
+        // Map to hold program and enrollment count
+        Map<Program, Integer> programEnrollmentStatistics = new HashMap<>();
+
+        // Iterate through all clients
+        for (Client c : Clients) {
+            Program p = c.getProgram(); // Get the program of the client
+
+            // Increment the enrollment count for the program
+            programEnrollmentStatistics.put(p, programEnrollmentStatistics.getOrDefault(p, 0) + 1);
+        }
+
+        return programEnrollmentStatistics; // Return the statistics
     }
 
     public String getDisplayedMessage() {
