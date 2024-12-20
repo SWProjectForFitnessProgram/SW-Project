@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="editing the whole project">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" afterDir="false" />
-    </list>
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="third feature done with 3 scenarios" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -229,7 +225,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734704132936</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="third feature done with 3 scenarios">
+      <option name="closed" value="true" />
+      <created>1734728415662</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734728415662</updated>
+    </task>
+    <task id="LOCAL-00008" summary="third feature done with 3 scenarios">
+      <option name="closed" value="true" />
+      <created>1734728797228</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734728797228</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +285,7 @@
     <MESSAGE value="add depend. + finish a feature" />
     <MESSAGE value="Admin testcode" />
     <MESSAGE value="editing the whole project" />
-    <option name="LAST_COMMIT_MESSAGE" value="editing the whole project" />
+    <MESSAGE value="third feature done with 3 scenarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="third feature done with 3 scenarios" />
   </component>
 </project>
