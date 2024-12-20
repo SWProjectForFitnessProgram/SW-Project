@@ -8,5 +8,9 @@ public interface AdminService {
     List<Instructor> getPendingInstructors();
     List<Client> getPendingClient();
     Object getUserActivityReport();
-    Map<Program, Integer> getProgramEnrollmentStatistics();
+    Map<Program, Double> getProgramEnrollmentStatistics();
+
+    List<Map<String, String>> getProgramEnrollmentStatisticsAsTable();
+
+
 }

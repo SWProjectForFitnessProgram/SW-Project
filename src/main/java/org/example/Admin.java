@@ -18,7 +18,7 @@ public class Admin implements AdminService {
     private ArrayList<Client> ClientPinddingAcconnts;
     private ArrayList<Instructor> Instructors;
     private ArrayList<Client> Clients;
-
+    private ArrayList<Program> Programs;
 
     public boolean ApproveInstructorButton=false;
 
@@ -45,20 +45,31 @@ public class Admin implements AdminService {
     }
 
     @Override
-    public Map<Program, Integer> getProgramEnrollmentStatistics() {
+    public Map<Program, Double> getProgramEnrollmentStatistics() {
         // Map to hold program and enrollment count
-        Map<Program, Integer> programEnrollmentStatistics = new HashMap<>();
+        Map<Program, Double> programEnrollmentStatistics = new HashMap<>();
 
         // Iterate through all clients
-        for (Client c : Clients) {
-            Program p = c.getProgram(); // Get the program of the client
-
-            // Increment the enrollment count for the program
-            programEnrollmentStatistics.put(p, programEnrollmentStatistics.getOrDefault(p, 0) + 1);
+        for (Program p : Programs) {
+            programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());
         }
 
         return programEnrollmentStatistics; // Return the statistics
     }
+    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
+            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
+
+            List<Map<String, String>> table = new ArrayList<>();
+            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
+                Map<String, String> row = new HashMap<>();
+                row.put("Program Name", entry.getKey().getTitle());
+                row.put("Enrollment Count", entry.getValue().toString());
+                table.add(row);
+            }
+
+            return table;
+    }
+
 
     public String getDisplayedMessage() {
         return "No pending instructor accounts";
