@@ -89,6 +89,8 @@ public class Program {
     {
 
     }
-
+    public List<Client> getClientsEnrolled() {
+        return clientsEnrolled;
+    }
 
 }

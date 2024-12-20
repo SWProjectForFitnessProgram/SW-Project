@@ -1,6 +1,6 @@
 package org.example;
 
-public enum InstructorStatus {
+public enum UserStatus {
     PENDING,
     APPROVED,
     REJECTED

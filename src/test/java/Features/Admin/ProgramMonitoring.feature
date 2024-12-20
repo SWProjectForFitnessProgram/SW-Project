@@ -1,23 +1,36 @@
 Feature: Program Monitoring
 
-  Scenario: View most popular programs
-    Given the admin has selected the "program monitoring" option
-    When the admin views most popular programs
-    Then the system should display a list of programs ordered by enrollment
+  As an admin,
+  I want to monitor program statistics,
+  So that I can track performance and generate insights.
 
-  Scenario: View program reports
-    Given the admin has selected the "program monitoring" option
-    When the admin views program reports
-    Then the system should display the following reports:
-      | Report Name | Description |
-      | Revenue | Total revenue generated from program sales |
-      | Attendance | Average attendance per program |
-      | Client Progress | Percentage of clients completing programs |
+  Scenario: View statistics on the most popular programs by enrollment
+    Given the admin is logged in
+    When the admin requests statistics on program enrollments
+    Then the system displays the top 5 programs by enrollment
+      | Program Name | Enrollment Count |
+      | Program A    | 200              |
+      | Program B    | 180              |
+      | Program C    | 150              |
+      | Program D    | 120              |
+      | Program E    | 100              |
 
-  Scenario: View active and completed programs
-    Given the admin has selected the "program monitoring" option
-    When the admin views active and completed programs
-    Then the system should display the following programs:
-      | Program Status | Program List |
-      | Active | [List of active program names] |
-      | Completed | [List of completed program names] |
+  Scenario: Generate a revenue report
+    Given the admin is logged in
+    When the admin generates a revenue report for the last quarter
+    Then the system generates and displays the revenue report
+      | Program Name | Revenue Generated ($) |
+      | Program A    | 5000                  |
+      | Program B    | 7500                  |
+      | Program C    | 6200                  |
+
+  Scenario: Track active and completed programs
+    Given the admin is logged in
+    When the admin views program statuses
+    Then the system displays a list of active and completed programs
+      | Status   | Program Name |
+      | Active   | Program A    |
+      | Active   | Program B    |
+      | Completed| Program C    |
+      | Completed| Program D    |
+      | Completed| Program E    |

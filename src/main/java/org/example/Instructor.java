@@ -31,7 +31,7 @@ public class Instructor {
     String password;
 
     //    @Enumerated(EnumType.STRING)
-    private InstructorStatus status;
+    private UserStatus status;
     public Instructor(String name, String mail,int Age) {
 
         this.name = name;

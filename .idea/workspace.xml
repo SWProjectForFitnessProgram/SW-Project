@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="done first scenario in 2nd feature">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="editing the whole project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/UserManagement.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/UserManagement.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -69,7 +77,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#27 on Admin",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,7 +86,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Cucumber Java.Feature: clientInteraction">
+  <component name="RunManager" selected="JUnit.acceptanceTest">
     <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" />
@@ -115,8 +123,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
         <item itemvalue="JUnit.acceptanceTest" />
+        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +169,7 @@
       <option name="presentableId" value="Default" />
       <updated>1734650063351</updated>
       <workItem from="1734650065119" duration="3975000" />
-      <workItem from="1734702334331" duration="7655000" />
+      <workItem from="1734702334331" duration="2151000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -187,23 +195,7 @@
       <option name="project" value="LOCAL" />
       <updated>1734704132936</updated>
     </task>
-    <task id="LOCAL-00007" summary="done first scenario in 2nd feature">
-      <option name="closed" value="true" />
-      <created>1734705381555</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1734705381555</updated>
-    </task>
-    <task id="LOCAL-00008" summary="done first scenario in 2nd feature">
-      <option name="closed" value="true" />
-      <created>1734705559723</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1734705559723</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +239,6 @@
     <MESSAGE value="add depend. + finish a feature" />
     <MESSAGE value="Admin testcode" />
     <MESSAGE value="editing the whole project" />
-    <MESSAGE value="done first scenario in 2nd feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="done first scenario in 2nd feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="editing the whole project" />
   </component>
 </project>

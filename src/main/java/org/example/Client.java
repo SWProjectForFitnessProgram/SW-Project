@@ -14,13 +14,13 @@ public class Client {
     String clientName;
     //    @Column(nullable = false)
     String password;
-//    String meesage;
+    //    String meesage;
     int Age;
     private List<String> messages = new ArrayList<>();
     private List<String> feedbacks = new ArrayList<>();
 
     //    @Enumerated(EnumType.STRING)
-    private InstructorStatus status;
+    private UserStatus status;
 //    private String feedback;
 
     public Client(String email, String password) {
@@ -80,4 +80,5 @@ public class Client {
     public boolean hasReceivedFeedback(String feedback) {
         return feedbacks.contains(feedback);
     }
+
 }
