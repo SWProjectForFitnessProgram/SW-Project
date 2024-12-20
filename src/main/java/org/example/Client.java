@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-
     private Long id;
-
     //    @Column(nullable = false, unique = true)
     String email;
     String clientName;
@@ -81,4 +79,18 @@ public class Client {
         return feedbacks.contains(feedback);
     }
 
+    public void setWorkoutsCompleted(int doneWorkouts, int allWorkouts) {
+    }
+
+    public void setSessionsAttended(int attended, int total) {
+    }
+
+    public double getCompletionRate() {
+    }
+
+    public double getAttendanceRate() {
+    }
+
+    public String getReceivedMessage() {
+    }
 }

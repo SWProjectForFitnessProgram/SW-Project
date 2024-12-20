@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="2nd feature is done">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/notifiAndUpdatesStepsCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" afterDir="false" />
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="third feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/notificationsAndUpdates.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/notificationsAndUpdates.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734719455257</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="third feature">
+      <option name="closed" value="true" />
+      <created>1734722878722</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734722878722</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +269,7 @@
     <MESSAGE value="editing the whole project" />
     <MESSAGE value="done first scenario in 2nd feature" />
     <MESSAGE value="2nd feature is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="2nd feature is done" />
+    <MESSAGE value="third feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="third feature" />
   </component>
 </project>

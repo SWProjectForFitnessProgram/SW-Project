@@ -1,0 +1,228 @@
+Index: src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.java.Before;\r\nimport io.cucumber.java.BeforeAll;\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.Then;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.*;\r\nimport org.mockito.Mock;\r\n\r\nimport org.mockito.MockitoAnnotations;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nimport static org.junit.Assert.assertTrue;\r\n\r\npublic class clientInteractionStepTest {\r\n\r\n    Program program;\r\n    Client client;\r\n    Instructor instructor;\r\n    String message;\r\n    String feedback;\r\n\r\n    @Before\r\n    public void setup() {\r\n//        program = Mockito.mock(Program.class); // Mock the Program object\r\n//        client = new Client(\"Alice\", \"alice@example.com\",25);\r\n//        instructor = new Instructor(\"John Doe\", \"johndoe@example.com\",30);\r\n//        program.enrollClient(client);\r\n//        instructor.setProgram(program);\r\n//        MockitoAnnotations.openMocks(this);\r\n        program = new Program(\"Fitness Program\", \"30 days\", \"Beginner\", \"Weight Loss\", \"Workout Plan\", \"19.99 $\");\r\n        client = new Client(\"Alice\", \"alice@example.com\",25);\r\n        instructor = new Instructor(\"John Doe\", \"johndoe@example.com\",30);\r\n        program.enrollClient(client);\r\n        instructor.setProgram(program);\r\n        MockitoAnnotations.openMocks(this);\r\n\r\n    }\r\n    @Given(\"an instructor is logged in\")\r\n    public void an_instructor_is_logged_in() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        instructorLoggedIn = true;\r\n//        System.out.println(\"Instructor is logged in\");\r\n        instructor = new Instructor(\"John Doe\", \"johndoe@example.com\",30);\r\n        instructor.setLoggedIn(true);\r\n\r\n    }\r\n    @Given(\"the instructor has an active program with enrolled clients\")\r\n    public void the_instructor_has_an_active_program_with_enrolled_clients() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        program = new Program(\"Fitness Program\", \"30 days\", \"Beginner\", \"Weight Loss\", \"Workout Plan\", \"19.99 $\");\r\n        client = new Client(\"Alice\", \"alice@example.com\",25);\r\n        System.out.println(client.getName());\r\n        program.enrollClient(client);\r\n        System.out.println(instructor.getProgramTitle());\r\n        instructor.setProgram(program);\r\n    }\r\n    @When(\"the instructor selects a client and sends a personalized message\")\r\n    public void the_instructor_selects_a_client_and_sends_a_personalized_message() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n         message = \"Hi \" + client.getName() + \", keep up the good work!\";\r\n        instructor.sendMessageToClient(client, message);\r\n        System.out.println(\"Instructor sent a personalized message: \" + message);    }\r\n    @Then(\"the client should receive the personalized message\")\r\n    public void the_client_should_receive_the_personalized_message() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        assertTrue(client.hasReceivedMessage(message));\r\n    }\r\n\r\n    @Given(\"the instructor has an active program with a discussion forum\")\r\n    public void the_instructor_has_an_active_program_with_a_discussion_forum() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        program = new Program(\"Fitness Program\", \"30 days\", \"Beginner\", \"Weight Loss\", \"Workout Plan\", \"19.99 $\");\r\n        client = new Client(\"Alice\", \"alice@example.com\",25);\r\n        System.out.println(client.getName());\r\n        program.enrollClient(client);\r\n        System.out.println(instructor.getProgramTitle());\r\n        instructor.setProgram(program);\r\n    }\r\n    @When(\"the instructor posts a message to the forum\")\r\n    public void the_instructor_posts_a_message_to_the_forum() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        String title = \"Weekly Motivation\";\r\n        message = \"Stay consistent, and you will see results!\";\r\n        client.receiveMessage(message);\r\n        instructor.postForumMessage(program, title, message);\r\n    }\r\n    @Then(\"all enrolled clients should see the message on the forum\")\r\n    public void all_enrolled_clients_should_see_the_message_on_the_forum() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        assertTrue(client.hasReceivedMessage(message));\r\n//        verify(program).addForumMessage(\"Weekly Motivation\", \"Stay consistent, and you will see results!\");\r\n\r\n\r\n    }\r\n\r\n    @Given(\"the instructor has access to a client's progress report\")\r\n    public void the_instructor_has_access_to_a_client_s_progress_report() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @When(\"the instructor provides feedback to the client\")\r\n    public void the_instructor_provides_feedback_to_the_client() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        String feedback = \"Great progress this week! Try increasing your cardio sessions to 20 minutes.\";\r\n        instructor.provideFeedbackToClient(client, feedback);\r\n    }\r\n    @Then(\"the client should receive the feedback\")\r\n    public void the_client_should_receive_the_feedback() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        assertTrue(client.hasReceivedFeedback(feedback));\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java b/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java
+--- a/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java	(revision 8f884ce6e22e23d1fac0d5c074bef47576d9428d)
++++ b/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java	(date 1734717296270)
+@@ -2,6 +2,7 @@
+ 
+ import io.cucumber.java.Before;
+ import io.cucumber.java.BeforeAll;
++import io.cucumber.java.en.And;
+ import io.cucumber.java.en.Given;
+ import io.cucumber.java.en.Then;
+ import io.cucumber.java.en.When;
+@@ -12,6 +13,7 @@
+ 
+ import java.util.ArrayList;
+ import java.util.List;
++import java.util.Map;
+ 
+ import static org.junit.Assert.assertTrue;
+ 
+@@ -22,6 +24,8 @@
+     Instructor instructor;
+     String message;
+     String feedback;
++    private ProgressManager progressManager = new ProgressManager();
++    private Map<String,String> progressData;
+ 
+     @Before
+     public void setup() {
+@@ -45,6 +49,7 @@
+ //        instructorLoggedIn = true;
+ //        System.out.println("Instructor is logged in");
+         instructor = new Instructor("John Doe", "johndoe@example.com",30);
++//        if(!instructor.isLoggedIn)
+         instructor.setLoggedIn(true);
+ 
+     }
+@@ -93,14 +98,23 @@
+         // Write code here that turns the phrase above into concrete actions
+         assertTrue(client.hasReceivedMessage(message));
+ //        verify(program).addForumMessage("Weekly Motivation", "Stay consistent, and you will see results!");
+-
++    }
+ 
+-    }
++    @And("the instructor has access to a client's progress report for {string}")
++    public void theInstructorHasAccessToAClientSProgressReportFor(String clientName) {
++//        client = instructor.getClientByName(clientName);
++//        if (client == null) {
++//            throw new IllegalArgumentException("Client " + clientName + " not found.");
++//        }
++//
++//        if (!instructor.isClientInProgram(client)) { // Crucial check!
++//            throw new IllegalArgumentException("Client " + clientName + " is not enrolled in the instructor's program.");
++//        }
++        progressData = progressManager.getProgressData();
++        if (progressData == null) {
++            throw new IllegalArgumentException("Progress data not found for client: " + clientName);
++        }
+ 
+-    @Given("the instructor has access to a client's progress report")
+-    public void the_instructor_has_access_to_a_client_s_progress_report() {
+-        // Write code here that turns the phrase above into concrete actions
+-        throw new io.cucumber.java.PendingException();
+     }
+     @When("the instructor provides feedback to the client")
+     public void the_instructor_provides_feedback_to_the_client() {
+@@ -115,4 +129,5 @@
+ 
+     }
+ 
++
+ }
+Index: src/test/java/Features/Instructor/clientInteraction.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Feature: client Interaction\r\n  Scenario: Sending a Personalized Message\r\n    Given an instructor is logged in\r\n    And the instructor has an active program with enrolled clients\r\n    When the instructor selects a client and sends a personalized message\r\n    Then the client should receive the personalized message\r\n\r\n  Scenario: Posting a Forum Message\r\n    Given an instructor is logged in\r\n    And the instructor has an active program with a discussion forum\r\n    When the instructor posts a message to the forum\r\n    Then all enrolled clients should see the message on the forum\r\n\r\n  Scenario: Providing Feedback to a Client\r\n    Given an instructor is logged in\r\n    And the instructor has access to a client's progress report\r\n    When the instructor provides feedback to the client\r\n    Then the client should receive the feedback
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/Features/Instructor/clientInteraction.feature b/src/test/java/Features/Instructor/clientInteraction.feature
+--- a/src/test/java/Features/Instructor/clientInteraction.feature	(revision 8f884ce6e22e23d1fac0d5c074bef47576d9428d)
++++ b/src/test/java/Features/Instructor/clientInteraction.feature	(date 1734716344933)
+@@ -13,6 +13,6 @@
+ 
+   Scenario: Providing Feedback to a Client
+     Given an instructor is logged in
+-    And the instructor has access to a client's progress report
++    And the instructor has access to a client's progress report for "Alice"
+     When the instructor provides feedback to the client
+     Then the client should receive the feedback
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"done first scenario in 2nd feature\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Client.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Client.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Instructor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Instructor.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Program.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Program.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;\r\n  },\r\n  &quot;recentNewPullRequestHead&quot;: {\r\n    &quot;server&quot;: {\r\n      &quot;useHttp&quot;: false,\r\n      &quot;host&quot;: &quot;github.com&quot;,\r\n      &quot;port&quot;: null,\r\n      &quot;suffix&quot;: null\r\n    },\r\n    &quot;owner&quot;: &quot;TalaAlhendi&quot;,\r\n    &quot;repository&quot;: &quot;SW-Project&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2qSJUgKlFXO8XHQzPIM5jPamcbX\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"JUnit.acceptanceTest.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Cucumber Java.Feature: clientInteraction\">\r\n    <configuration name=\"Feature: clientInteraction\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature\" />\r\n      <option name=\"GLUE\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: clientInteraction\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"acceptanceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Fitness\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AcceptanceTest.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.AcceptanceTest.acceptanceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Cucumber Java.Feature: clientInteraction\" />\r\n        <item itemvalue=\"JUnit.acceptanceTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734620442002</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734620442002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Admin test and production code\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734644545713</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734644545713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"edit on programManagementStepTest\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734646611195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734646611195</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"edit on programManagementStepTest\" />\r\n      <created>1734650063351</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1734650063351</updated>\r\n      <workItem from=\"1734650065119\" duration=\"3975000\" />\r\n      <workItem from=\"1734702334331\" duration=\"7655000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"add depend. + finish a feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734688544556</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734688544556</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734689341616</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734689341616</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"editing the whole project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734704132936</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734704132936</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"done first scenario in 2nd feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734705381555</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734705381555</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"done first scenario in 2nd feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734705559723</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734705559723</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"OPEN_GENERIC_TABS\">\r\n      <map>\r\n        <entry key=\"e5912781-b57d-45f2-90dc-6c3f69a07d00\" value=\"TOOL_WINDOW\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"HIGHLIGHTERS\">\r\n                <map>\r\n                  <entry key=\"MERGE_COMMITS\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"e5912781-b57d-45f2-90dc-6c3f69a07d00\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Admin test and production code\" />\r\n    <MESSAGE value=\"edit on programManagementStepTest\" />\r\n    <MESSAGE value=\"add depend. + finish a feature\" />\r\n    <MESSAGE value=\"Admin testcode\" />\r\n    <MESSAGE value=\"editing the whole project\" />\r\n    <MESSAGE value=\"done first scenario in 2nd feature\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"done first scenario in 2nd feature\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8f884ce6e22e23d1fac0d5c074bef47576d9428d)
++++ b/.idea/workspace.xml	(date 1734717390492)
+@@ -4,12 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="done first scenario in 2nd feature">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
++    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="done 2nd scenario in 2nd feature">
+       <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgressTracking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgressTracking.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -65,9 +62,11 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "JUnit.acceptanceTest.executor": "Run",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "WebServerToolWindowFactoryState": "false",
+     "git-widget-placeholder": "main",
+     "kotlin-language-version-configured": "true",
+@@ -161,7 +160,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1734650063351</updated>
+       <workItem from="1734650065119" duration="3975000" />
+-      <workItem from="1734702334331" duration="7655000" />
++      <workItem from="1734702334331" duration="9589000" />
+     </task>
+     <task id="LOCAL-00004" summary="add depend. + finish a feature">
+       <option name="closed" value="true" />
+@@ -203,7 +202,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1734705559723</updated>
+     </task>
+-    <option name="localTasksCounter" value="9" />
++    <task id="LOCAL-00009" summary="done 2nd scenario in 2nd feature">
++      <option name="closed" value="true" />
++      <created>1734711584262</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1734711584262</updated>
++    </task>
++    <task id="LOCAL-00010" summary="done 2nd scenario in 2nd feature">
++      <option name="closed" value="true" />
++      <created>1734711598629</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1734711598629</updated>
++    </task>
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -248,6 +263,7 @@
+     <MESSAGE value="Admin testcode" />
+     <MESSAGE value="editing the whole project" />
+     <MESSAGE value="done first scenario in 2nd feature" />
+-    <option name="LAST_COMMIT_MESSAGE" value="done first scenario in 2nd feature" />
++    <MESSAGE value="done 2nd scenario in 2nd feature" />
++    <option name="LAST_COMMIT_MESSAGE" value="done 2nd scenario in 2nd feature" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/test/java/org/example/AcceptanceTest/ProgressTracking.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.Then;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.ProgressManager;\r\nimport org.junit.Assert;\r\nimport io.cucumber.datatable.DataTable;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\n\r\n\r\n\r\npublic class ProgressTracking {\r\n    private ProgressManager progressManager = new ProgressManager();  // تعريف كائن من ProgressManager\r\n    private Map<String, String> progressData;\r\n    private List<Map<String, String>> progressHistory;\r\n    private Map<String, List<String>> achievements = new HashMap<>();\r\n\r\n\r\n\r\n\r\n\r\n    @Given(\"I am logged in and on the {string} page\")\r\n    public void iAmLoggedInAndOnThePage(String page) {\r\n        System.out.println(\"Logged in and navigated to: \" + page);\r\n    }\r\n\r\n    @When(\"I input my personal fitness data \\\\(weight, BMI, attendance)\")\r\n    public void iInputMyPersonalFitnessDataWeightBMIAttendance() {\r\n\r\n        progressManager.inputProgressData(\"70kg\", \"24.5\", \"80%\");\r\n\r\n\r\n        progressData = progressManager.getProgressData();\r\n        System.out.println(\"Fitness data input: \" + progressData);\r\n    }\r\n\r\n\r\n    @Then(\"I should see my current fitness milestones updated \\\\(weight, BMI, attendance records)\")\r\n    public void iShouldSeeMyCurrentFitnessMilestonesUpdatedWeightBMIAttendanceRecords() {\r\n        Assert.assertEquals(\"Weight mismatch\", \"70kg\", progressData.get(\"Weight\"));\r\n        Assert.assertEquals(\"BMI mismatch\", \"24.5\", progressData.get(\"BMI\"));\r\n        Assert.assertEquals(\"Attendance mismatch\", \"80%\", progressData.get(\"Attendance\"));\r\n        System.out.println(\"Current fitness milestones: \" + progressData);\r\n    }\r\n\r\n    @Given(\"I have completed a fitness program\")\r\n    public void iHaveCompletedAFitnessProgram() {\r\n        progressManager.completeProgram(\"Completed 8-week program\", \"Fitness Achiever Badge\");\r\n        progressManager.completeProgram(\"BMI improvement\", \"Health Champion Badge\");\r\n\r\n\r\n        achievements = progressManager.getAchievements();\r\n        System.out.println(\"Achievements: \" + achievements);\r\n    }\r\n\r\n\r\n    @When(\"I view my progress\")\r\n    public void iViewMyProgress() {\r\n\r\n        System.out.println(\"Viewing progress...\");\r\n    }\r\n\r\n    @Then(\"I should see any achievements or badges earned for completing the program\")\r\n    public void iShouldSeeAnyAchievementsOrBadgesEarnedForCompletingTheProgram(DataTable dataTable) {\r\n        for (Map<String, String> row : dataTable.asMaps(String.class, String.class)) {\r\n            String achievement = row.get(\"Achievement\");\r\n            String expectedBadge = row.get(\"Badge\");\r\n\r\n            Assert.assertTrue(\"Achievement not found: \" + achievement, achievements.containsKey(achievement));\r\n\r\n            List<String> actualBadges = achievements.get(achievement);\r\n            Assert.assertTrue(\"Badge mismatch for achievement: \" + achievement, actualBadges.contains(expectedBadge));\r\n\r\n            System.out.println(achievement + \": \" + actualBadges);\r\n        }\r\n    }\r\n\r\n\r\n    @Given(\"I have entered my fitness milestones \\\\(weight, BMI, attendance) at different times\")\r\n    public void iHaveEnteredMyFitnessMilestonesWeightBMIAttendanceAtDifferentTimes() {\r\n        progressManager.recordProgressHistory(\"2024-10-01\", \"70kg\", \"24.5\", \"80%\");\r\n        progressManager.recordProgressHistory(\"2024-11-01\", \"68kg\", \"23.9\", \"85%\");\r\n\r\n        System.out.println(\"Fitness milestones entered at different times: \" + progressManager.getProgressHistory());\r\n    }\r\n\r\n\r\n    @When(\"I check my progress history\")\r\n    public void iCheckMyProgressHistory() {\r\n        System.out.println(\"Checking progress history...\");\r\n    }\r\n\r\n    @Then(\"I should see a record of my previous fitness milestones, with clear indications of improvement or decline over time\")\r\n    public void iShouldSeeARecordOfMyPreviousFitnessMilestonesWithClearIndicationsOfImprovementOrDeclineOverTime(DataTable dataTable) {\r\n        List<Map<String, String>> actualHistory = progressManager.getProgressHistory();\r\n\r\n        for (Map<String, String> expectedRecord : dataTable.asMaps(String.class, String.class)) {\r\n            String date = expectedRecord.get(\"Date\");\r\n            String expectedWeight = expectedRecord.get(\"Weight\");\r\n            String expectedBMI = expectedRecord.get(\"BMI\");\r\n            String expectedAttendance = expectedRecord.get(\"Attendance\");\r\n\r\n            Map<String, String> actualRecord = actualHistory.stream()\r\n                    .filter(record -> record.get(\"Date\").equals(date))\r\n                    .findFirst()\r\n                    .orElseThrow(() -> new AssertionError(\"No record found for date: \" + date));\r\n\r\n            Assert.assertEquals(\"Weight mismatch for date \" + date, expectedWeight, actualRecord.get(\"Weight\"));\r\n            Assert.assertEquals(\"BMI mismatch for date \" + date, expectedBMI, actualRecord.get(\"BMI\"));\r\n            Assert.assertEquals(\"Attendance mismatch for date \" + date, expectedAttendance, actualRecord.get(\"Attendance\"));\r\n\r\n            System.out.println(\"Progress history for \" + date + \": \" + actualRecord);\r\n        }\r\n    }\r\n\r\n\r\n\r\n    @Given(\"I have completed multiple programs and entered various fitness milestones\")\r\n    public void iHaveCompletedMultipleProgramsAndEnteredVariousFitnessMilestones() {\r\n        achievements = Map.of(\r\n                \"Completed 8-week program\", List.of(\"Fitness Achiever Badge\"),\r\n                \"BMI improvement\", List.of(\"Health Champion Badge\")\r\n        );\r\n        System.out.println(\"Fitness program completed.\");\r\n    }\r\n\r\n    @When(\"I check my overall progress summary\")\r\n    public void iCheckMyOverallProgressSummary() {\r\n\r\n        System.out.println(\"Checking overall progress summary...\");\r\n    }\r\n\r\n    @Then(\"I should see an overview of my fitness journey, including the total number of completed programs, achievements earned, and the change in my fitness milestones\")\r\n    public void iShouldSeeAnOverviewOfMyFitnessJourneyIncludingTheTotalNumberOfCompletedProgramsAchievementsEarnedAndTheChangeInMyFitnessMilestones(DataTable dataTable) {\r\n\r\n        Map<String, String> summary = progressManager.generateSummary(3, 5, \"3kg\", \"0.6\");\r\n\r\n\r\n        for (Map<String, String> row : dataTable.asMaps(String.class, String.class)) {\r\n            String metric = row.get(\"Metric\");\r\n            String expectedValue = row.get(\"Value\");\r\n\r\n            String actualValue = summary.get(metric);\r\n            Assert.assertEquals(\"Mismatch for metric: \" + metric, expectedValue, actualValue);\r\n            System.out.println(metric + \": \" + actualValue);\r\n        }\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/ProgressTracking.java b/src/test/java/org/example/AcceptanceTest/ProgressTracking.java
+--- a/src/test/java/org/example/AcceptanceTest/ProgressTracking.java	(revision 8f884ce6e22e23d1fac0d5c074bef47576d9428d)
++++ b/src/test/java/org/example/AcceptanceTest/ProgressTracking.java	(date 1734716847165)
+@@ -1,8 +1,11 @@
+ package org.example.AcceptanceTest;
+ 
++import io.cucumber.java.be.I;
+ import io.cucumber.java.en.Given;
+ import io.cucumber.java.en.Then;
+ import io.cucumber.java.en.When;
++import org.example.Client;
++import org.example.Instructor;
+ import org.example.ProgressManager;
+ import org.junit.Assert;
+ import io.cucumber.datatable.DataTable;
+@@ -11,18 +14,19 @@
+ import java.util.List;
+ import java.util.Map;
+ 
+-
+-
+-
+ public class ProgressTracking {
+     private ProgressManager progressManager = new ProgressManager();  // تعريف كائن من ProgressManager
+     private Map<String, String> progressData;
+     private List<Map<String, String>> progressHistory;
+     private Map<String, List<String>> achievements = new HashMap<>();
+-
+-
+-
+-
++//    private Instructor instructor;
++//    private Client client;
++//    private String feedback;
++//
++//    public ProgressTracking()
++//    {
++//        instructor = new Instructor("Test Instructor in the client progress tracking","test@gmail.com",30);
++//    }
+ 
+     @Given("I am logged in and on the {string} page")
+     public void iAmLoggedInAndOnThePage(String page) {
