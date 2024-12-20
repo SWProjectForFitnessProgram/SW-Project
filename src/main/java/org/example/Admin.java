@@ -46,6 +46,11 @@ public class Admin implements AdminService {
     }
 
     @Override
+    public List<Client> getPendingClient() {
+        return List.of();
+    }
+
+    @Override
     public Object getUserActivityReport() {
         return null;
     }

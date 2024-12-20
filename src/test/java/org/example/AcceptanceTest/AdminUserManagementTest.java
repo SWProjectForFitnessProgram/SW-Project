@@ -28,7 +28,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 //@SpringBootTest
 //@SpringJUnitConfig
-class AdminUserManagementTest {
+public class AdminUserManagementTest {
 
 
     private List<Instructor> pendingInstructors;
@@ -97,6 +97,18 @@ class AdminUserManagementTest {
         String actualMessage = admin.getDisplayedMessage();
 
         Assert.assertEquals(expectedMessage, actualMessage);
+    }
+
+    @When("the admin chooses {string}")
+    public void theAdminChooses(String arg0) {
+        if(arg0.equals("Approve Clients")){
+
+        }
+    }
+
+    @Then("a queue of client accounts that signed up and need approval should be displayed")
+    public void aQueueOfClientAccountsThatSignedUpAndNeedApprovalShouldBeDisplayed() {
+
     }
 //    //3
 //    @Given("the admin has selected the {string} option")

@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="add depend. + finish a feature">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="Admin testcode">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/AdminUserManagementTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MyApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +133,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734650063351</updated>
-      <workItem from="1734650065119" duration="2540000" />
+      <workItem from="1734650065119" duration="3975000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -145,17 +143,25 @@
       <option name="project" value="LOCAL" />
       <updated>1734688544556</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Admin testcode">
+      <option name="closed" value="true" />
+      <created>1734689341616</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734689341616</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Admin testcode" />
     <MESSAGE value="Admin test and production code" />
     <MESSAGE value="edit on programManagementStepTest" />
     <MESSAGE value="add depend. + finish a feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="add depend. + finish a feature" />
+    <MESSAGE value="Admin testcode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin testcode" />
   </component>
 </project>
