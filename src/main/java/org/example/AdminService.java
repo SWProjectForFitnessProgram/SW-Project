@@ -13,4 +13,7 @@ public interface AdminService {
     List<Map<String, String>> getProgramEnrollmentStatisticsAsTable();
 
 
+    List<Map<String, String>> generateRevenueReport(String lastQuarter);
+
+    List<Map<String, String>> getProgramStatuses();
 }

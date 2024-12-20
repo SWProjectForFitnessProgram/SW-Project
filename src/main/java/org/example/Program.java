@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Program {
@@ -11,6 +12,8 @@ public class Program {
     String goals;
     String content;
     String price;
+    Date startDate;
+    Date endDate;
     public Program()
     {
         //new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $")
@@ -91,6 +94,18 @@ public class Program {
     }
     public List<Client> getClientsEnrolled() {
         return clientsEnrolled;
+    }
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    public Date getStartDate() {
+        return startDate;
+    }
+    public void setEndtDate(Date endtDate) {
+        this.endDate = startDate;
+    }
+    public Date getEndtDate() {
+        return endDate;
     }
 
 }
