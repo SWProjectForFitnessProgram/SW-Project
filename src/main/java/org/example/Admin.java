@@ -1,14 +1,34 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
-public class Admin {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+@Service
+public class Admin implements AdminService {
     public boolean newInstructorReq=false;
     public boolean newClientReq=false;
     public boolean deactivate=false;
     public boolean monitorUserActivity=false;
     private boolean loggedIn=true;
+
+
+    private Map<String, String> metrics = new HashMap<>();
+
+
+
+
+
+
+    public void addMetric(String name, String description) {
+        metrics.put(name, description);
+    }
+
+    public String getMetricDescription(String name) {
+        return metrics.get(name);
+    }
 
     public boolean isLoggedIn(){
         return loggedIn;
@@ -17,12 +37,17 @@ public class Admin {
     public ArrayList<Instructor> InstructorPinddingAcconnts;
     public boolean ApproveInstructorButton=false;
 
-
-    List<Instructor> getPendingInstructors(){
+    @Override
+    public List<Instructor> getPendingInstructors(){
         for(Instructor i:InstructorPinddingAcconnts){
             System.out.println(i.email +" , " +i.password);
         }
      return null;
+    }
+
+    @Override
+    public Object getUserActivityReport() {
+        return null;
     }
 
     public String getDisplayedMessage() {

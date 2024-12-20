@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface AdminService {
     List<Instructor> getPendingInstructors();
+
+    Object getUserActivityReport();
 }
