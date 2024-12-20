@@ -1,7 +1,7 @@
 Feature: client Interaction
   Scenario: Sending a Personalized Message
     Given an instructor is logged in
-    And the instructor has an active program with enrolled clients
+    And the instructor has an active program "Fitness Program" with enrolled clients
     When the instructor selects a client and sends a personalized message
     Then the client should receive the personalized message
 

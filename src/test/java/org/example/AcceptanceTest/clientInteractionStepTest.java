@@ -1,18 +1,14 @@
 package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
-import org.mockito.Mock;
 
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
@@ -53,10 +49,11 @@ public class clientInteractionStepTest {
         instructor.setLoggedIn(true);
 
     }
-    @Given("the instructor has an active program with enrolled clients")
-    public void the_instructor_has_an_active_program_with_enrolled_clients() {
-        // Write code here that turns the phrase above into concrete actions
-        program = new Program("Fitness Program", "30 days", "Beginner", "Weight Loss", "Workout Plan", "19.99 $");
+
+
+    @And("the instructor has an active program {string} with enrolled clients")
+    public void theInstructorHasAnActiveProgramWithEnrolledClients(String programName) {        // Write code here that turns the phrase above into concrete actions
+        program = new Program(programName, "30 days", "Beginner", "Weight Loss", "Workout Plan", "19.99 $");
         client = new Client("Alice", "alice@example.com",25);
         System.out.println(client.getName());
         program.enrollClient(client);
@@ -128,6 +125,7 @@ public class clientInteractionStepTest {
         assertTrue(client.hasReceivedFeedback(feedback));
 
     }
+
 
 
 }
