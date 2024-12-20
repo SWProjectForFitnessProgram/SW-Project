@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="third feature done with 3 scenarios" />
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="Admin production code #2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/ProgramMonitoring.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/ProgramMonitoring.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,11 +71,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Cucumber Java.Feature: clientInteraction.executor": "Run",
     "JUnit.acceptanceTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#27 on Admin",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -76,26 +85,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Cucumber Java.Feature: progressTracking">
-    <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
-      <option name="GLUE" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="Fitness" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: ProgramManagment" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.acceptanceTest">
     <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" />
@@ -104,25 +94,6 @@
       <module name="Fitness" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
       <option name="SUGGESTED_NAME" value="Feature: clientInteraction" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Feature: progressTracking" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature" />
-      <option name="GLUE" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="Fitness" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: progressTracking" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -151,10 +122,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: progressTracking" />
-        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
-        <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
         <item itemvalue="JUnit.acceptanceTest" />
+        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
       </list>
     </recent_temporary>
   </component>
@@ -225,23 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734704132936</updated>
     </task>
-    <task id="LOCAL-00007" summary="third feature done with 3 scenarios">
+    <task id="LOCAL-00007" summary="Admin production code #2">
       <option name="closed" value="true" />
-      <created>1734728415662</created>
+      <created>1734717246337</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1734728415662</updated>
+      <updated>1734717246338</updated>
     </task>
-    <task id="LOCAL-00008" summary="third feature done with 3 scenarios">
-      <option name="closed" value="true" />
-      <created>1734728797228</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1734728797228</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +246,7 @@
     <MESSAGE value="add depend. + finish a feature" />
     <MESSAGE value="Admin testcode" />
     <MESSAGE value="editing the whole project" />
-    <MESSAGE value="third feature done with 3 scenarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="third feature done with 3 scenarios" />
+    <MESSAGE value="Admin production code #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin production code #2" />
   </component>
 </project>
