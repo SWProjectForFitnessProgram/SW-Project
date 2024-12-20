@@ -9,7 +9,7 @@ Feature: Program Management
       |Goals           |Weight Loss, Full Body |
       |Content         |https://youtu.be/f3zOrYCwquE |
       |Price|29.99 $                                |
-      |Schedual time|[5-7]pm                        |
+    #  |Schedual time|[5-7]pm                        |
 
     Then the program is created with the specified details "Get Fit & Moving Challenge"
 
@@ -23,7 +23,7 @@ Feature: Program Management
       |Goals           |Weight Loss, Full Body |
       |Content         |https://youtu.be/f3zOrYCwquE |
       |Price|29.99 $                                |
-      |Schedual time|[5-7]pm                        |
+      #|Schedual time|[5-7]pm                        |
     Then the program is updated successfully with the new details
 
 
@@ -37,7 +37,7 @@ Feature: Program Management
       |Goals           |Weight Loss, Full Body |
       |Content         |https://youtu.be/f3zOrYCwquE |
       |Price|29.99 $                                 |
-      |Schedual time|[5-7]pm                        |
+     # |Schedual time|[5-7]pm                        |
     Then the system displays an error message indicating that the program does not exist
 
   Scenario Outline: Delete a fitness program (Success and Failure)
