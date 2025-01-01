@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 //        plugin = {"html:pages/cucumber.html"},
 //    monochrome = true,
     snippets = CucumberOptions.SnippetType.CAMELCASE,
-    glue = {"org.example.AcceptanceTest"}
+    glue = {"org.example.AcceptanceTest "}
 )
 
 
