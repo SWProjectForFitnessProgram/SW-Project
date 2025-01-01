@@ -1,12 +1,14 @@
 package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
 
+import org.junit.BeforeClass;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Map;
@@ -15,16 +17,16 @@ import static org.junit.Assert.assertTrue;
 
 public class clientInteractionStepTest {
 
-    Program program;
-    Client client;
-    Instructor instructor;
+    static Program program;
+    static Client client;
+    static Instructor instructor;
     String message;
     String feedback;
     private ProgressManager progressManager = new ProgressManager();
     private Map<String,String> progressData;
 
     @Before
-    public void setup() {
+    public void setupBefore() {
 //        program = Mockito.mock(Program.class); // Mock the Program object
 //        client = new Client("Alice", "alice@example.com",25);
 //        instructor = new Instructor("John Doe", "johndoe@example.com",30);
@@ -55,9 +57,9 @@ public class clientInteractionStepTest {
     public void theInstructorHasAnActiveProgramWithEnrolledClients(String programName) {        // Write code here that turns the phrase above into concrete actions
         program = new Program(programName, "30 days", "Beginner", "Weight Loss", "Workout Plan", "19.99 $");
         client = new Client("Alice", "alice@example.com",25);
-        System.out.println(client.getName());
+//        System.out.println(client.getName());
         program.enrollClient(client);
-        System.out.println(instructor.getProgramTitle());
+//        System.out.println(instructor.getProgramTitle());
         instructor.setProgram(program);
     }
     @When("the instructor selects a client and sends a personalized message")

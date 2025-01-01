@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Program {
-    List<Client> clientsEnrolled;
+    List<Client> clientsEnrolled = new ArrayList<>();
     String programTitle;
     String duration;
     String difficultyLevel;
@@ -24,6 +24,7 @@ public class Program {
         goals = "Weight Loss, Full Body";
         content = "https://youtu.be/f3zOrYCwquE";
         price = "29.99 $";
+//        clientsEnrolled = new ArrayList<>();
     }
     public Program(String programTitle, String duration, String difficultyLevel, String goals, String content, String price) {
         this.programTitle = programTitle;
@@ -32,7 +33,6 @@ public class Program {
         this.goals = goals;
         this.content = content;
         this.price = price;
-        clientsEnrolled = new ArrayList<>();
     }
 
     public String getTitle() {
