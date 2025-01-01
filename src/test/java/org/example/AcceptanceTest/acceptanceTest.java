@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         objectFactory = io.cucumber.picocontainer.PicoFactory.class,
 //        objectFactory= SpringFactory.class ,
         features = "src/test/java/Features",
-        plugin = {"html:pages/cucumber.html"},
+//        plugin = {"html:pages/cucumber.html"},
 //    monochrome = true,
     snippets = CucumberOptions.SnippetType.CAMELCASE,
     glue = {"org.example.AcceptanceTest"}
