@@ -1,12 +1,19 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 public interface AdminService {
+    //1
     List<Instructor> getPendingInstructors();
-    List<Client> getPendingClient();
+    List<Client> getPendingClients();
+    void approveInstructor(Long id);
+    void approveClient(Long id);
+
+
+
     Object getUserActivityReport();
     Map<Program, Double> getProgramEnrollmentStatistics();
 
@@ -34,4 +41,6 @@ public interface AdminService {
     void addRecipe(Recipe recipe);
 
     void rejectArticle(Article article);
+
+    Collection<Instructor> getInstructorRepository();
 }

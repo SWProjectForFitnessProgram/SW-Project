@@ -27,7 +27,11 @@ public class ContentManagementTest {
     private HealthTip tip;
     private Recipe recipe;
     private Complaint complaint;
-//    @Mock
+    private InstructorRepository instructorRepository;
+    private ClientRepository clientRepository;
+
+
+    //    @Mock
     private AdminService contentService;
 
     @BeforeClass
@@ -41,13 +45,14 @@ public class ContentManagementTest {
 //    contentService = Mockito.mock(AdminService.class);
 //    MockitoAnnotations.initMocks(this);
 //
-    admin = new Admin();
-    app = new Main();
+        admin = new Admin(instructorRepository, clientRepository);
+
+        app = new Main();
     article = new Article("jahdfk",UserStatus.Approved);
     tip = new HealthTip("jahfdkj", Pending);
     recipe = new Recipe("jahksfd", Pending);
     complaint = new Complaint("jaskjdf", Pending);
-    contentService = new Admin();
+    contentService = admin;
     }
 
 

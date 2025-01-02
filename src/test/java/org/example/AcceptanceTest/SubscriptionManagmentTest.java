@@ -16,8 +16,7 @@ public class SubscriptionManagmentTest {
 
     @BeforeClass
     public void setup() {
-//
-//        contentService = new Admin();
+
     }
 
 
@@ -25,7 +24,6 @@ public class SubscriptionManagmentTest {
     @Given("the client {string} is registered")
     public void theClientIsRegistered(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
     @When("I assign the {string} subscription plan to Alice")
     public void iAssignTheSubscriptionPlanToAlice(String planName) {
@@ -39,51 +37,44 @@ public class SubscriptionManagmentTest {
     @Then("Alice's subscription plan should be {string}")
     public void aliceSSubscriptionPlanShouldBe(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
 
 
     @Given("the instructor {string} is registered")
     public void theInstructorIsRegistered(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
     @When("I assign the {string} subscription plan to Bob")
     public void iAssignTheSubscriptionPlanToBob(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
     @Then("Bob's subscription plan should be {string}")
     public void bobSSubscriptionPlanShouldBe(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
 
     @Given("the client {string} has a {string} subscription")
     public void theClientHasASubscription(String string, String string2) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
     @When("I change Charlie's subscription to {string}")
     public void iChangeCharlieSSubscriptionTo(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
     @Then("Charlie's subscription plan should be {string}")
     public void charlieSSubscriptionPlanShouldBe(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
     @When("I view the available subscription plans")
     public void iViewTheAvailableSubscriptionPlans() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("I should see {string} and {string} plans listed")
     public void iShouldSeeAndPlansListed(String string, String string2) {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
 
 

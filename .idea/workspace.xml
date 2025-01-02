@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="edit the first feature with schedule details and test everything is passed">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="admin 3rd feature (production code done)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SubscriptionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/SubscriptionManagmentTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/SubscriptionManagement.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/SubscriptionManagement.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,49 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.acceptanceTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Cucumber Java.Feature: clientInteraction.executor": "Run",
+    "JUnit.acceptanceTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "#31 on Admin",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.example.AcceptanceTest" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.example" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Cucumber Java.Feature: ProgramManagment">
-    <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
-      <option name="GLUE" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="Fitness" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: ProgramManagment" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}]]></component>
+  <component name="RunManager" selected="JUnit.acceptanceTest">
     <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" />
@@ -125,30 +105,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: progressTracking" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature" />
-      <option name="GLUE" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="Fitness" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: progressTracking" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="acceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Fitness" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.AcceptanceTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -161,10 +122,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
-        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
-        <item itemvalue="Cucumber Java.Feature: progressTracking" />
         <item itemvalue="JUnit.acceptanceTest" />
+        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
       </list>
     </recent_temporary>
   </component>
@@ -210,11 +169,6 @@
       <updated>1734650063351</updated>
       <workItem from="1734650065119" duration="3975000" />
       <workItem from="1734702334331" duration="2151000" />
-      <workItem from="1735122564956" duration="4556000" />
-      <workItem from="1735286230374" duration="665000" />
-      <workItem from="1735670733331" duration="1228000" />
-      <workItem from="1735764950408" duration="2918000" />
-      <workItem from="1735806297981" duration="11171000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -240,63 +194,31 @@
       <option name="project" value="LOCAL" />
       <updated>1734704132936</updated>
     </task>
-    <task id="LOCAL-00007" summary="third feature done with 3 scenarios">
+    <task id="LOCAL-00007" summary="Admin production code #2">
       <option name="closed" value="true" />
-      <created>1734728415662</created>
+      <created>1734717246337</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1734728415662</updated>
+      <updated>1734717246338</updated>
     </task>
-    <task id="LOCAL-00008" summary="third feature done with 3 scenarios">
+    <task id="LOCAL-00008" summary="Admin complete feature #2">
       <option name="closed" value="true" />
-      <created>1734728797228</created>
+      <created>1734723340961</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1734728797228</updated>
+      <updated>1734723340961</updated>
     </task>
-    <task id="LOCAL-00009" summary="fix the errors">
+    <task id="LOCAL-00009" summary="admin 3rd feature (production code done)">
       <option name="closed" value="true" />
-      <created>1735767546184</created>
+      <created>1734728881715</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1735767546184</updated>
+      <updated>1734728881715</updated>
     </task>
-    <task id="LOCAL-00010" summary="fix the errors">
-      <option name="closed" value="true" />
-      <created>1735767594499</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1735767594499</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fix the errors">
-      <option name="closed" value="true" />
-      <created>1735767636307</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1735767636307</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fix the errors">
-      <option name="closed" value="true" />
-      <created>1735767692723</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1735767692723</updated>
-    </task>
-    <task id="LOCAL-00013" summary="edit the first feature with schedule details and test everything is passed">
-      <option name="closed" value="true" />
-      <created>1735821910847</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1735821910847</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,24 +262,14 @@
     <MESSAGE value="add depend. + finish a feature" />
     <MESSAGE value="Admin testcode" />
     <MESSAGE value="editing the whole project" />
-    <MESSAGE value="third feature done with 3 scenarios" />
-    <MESSAGE value="fix the errors" />
-    <MESSAGE value="edit the first feature with schedule details and test everything is passed" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit the first feature with schedule details and test everything is passed" />
+    <MESSAGE value="Admin production code #2" />
+    <MESSAGE value="Admin complete feature #2" />
+    <MESSAGE value="edit cucumber.html" />
+    <MESSAGE value="admin 3rd feature (production code done)" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin 3rd feature (production code done)" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java</url>
-          <line>162</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

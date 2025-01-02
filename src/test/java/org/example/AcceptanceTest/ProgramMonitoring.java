@@ -3,10 +3,7 @@ package org.example.AcceptanceTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.Admin;
-import org.example.AdminService;
-import org.example.Instructor;
-import org.example.Main;
+import org.example.*;
 import org.junit.Assert;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -20,12 +17,18 @@ import static org.junit.Assert.assertEquals;
 public class ProgramMonitoring {
     private Admin admin ;
     private final Main app;
+    private InstructorRepository instructorRepository;
+    private ClientRepository clientRepository;
+
+
     @Mock
     private AdminService monitoringService;
 
     private List<Map<String, String>> actualData;
     public ProgramMonitoring() {
-        admin = new Admin();
+        instructorRepository = new InstructorRepository();
+        clientRepository = new ClientRepository();
+        admin = new Admin(instructorRepository, clientRepository);
         app = new Main();
         this.monitoringService = Mockito.mock(AdminService.class);
         actualData=new ArrayList<>();
