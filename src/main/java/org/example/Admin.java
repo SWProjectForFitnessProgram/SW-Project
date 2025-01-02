@@ -7,12 +7,16 @@ import java.util.*;
 import java.time.LocalDate;
 //@Service
 public class Admin implements AdminService {
+
     public boolean newInstructorReq=false;
     public boolean newClientReq=false;
     public boolean deactivate=false;
     public boolean monitorUserActivity=false;
     private boolean loggedIn=true;
     public boolean ApproveInstructorButton=false;
+
+    private final InstructorRepository instructorRepository;
+    private final ClientRepository clientRepository;
     private ArrayList<Instructor> InstructorPinddingAcconnts;
     private ArrayList<Client> ClientPinddingAcconnts;
     private ArrayList<Instructor> Instructors;
@@ -24,22 +28,56 @@ public class Admin implements AdminService {
     private List<Complaint> complaints = new ArrayList<>();
 
 
+    //you need to edit the default constructor
+    public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {
+        this.instructorRepository = instructorRepository;
+        this.clientRepository = clientRepository;
+    }
+
+    public void approveAdminLogin(){
+        loggedIn=true;
+    }
 
     public boolean isLoggedIn(){
         return loggedIn;
     }
+    //1
     @Override
-    public List<Instructor> getPendingInstructors(){
-        for(Instructor i:InstructorPinddingAcconnts){
-            System.out.println(i.email +" , " +i.password);
+    public List<Instructor> getPendingInstructors() {
+        return instructorRepository.findPendingInstructors();
+    }
+    //1
+    @Override
+    public List<Client> getPendingClients() {
+        return clientRepository.findPendingClients();
+    }
+    //1
+    @Override
+    public void approveInstructor(Long id) {
+        Instructor instructor = instructorRepository.findById(id);
+        if (instructor != null) {
+            instructor.approve();
+            System.out.println("Instructor approved successfully.");
+        } else {
+            System.out.println("Instructor not found.");
         }
-     return InstructorPinddingAcconnts;
     }
-
+    //1
+    public void approveClient(Long id) {
+        Client client = clientRepository.findById(id);
+        if (client != null) {
+            client.approve();
+            System.out.println("Client approved successfully.");
+        } else {
+            System.out.println("Client not found.");
+        }
+    }
+//1
     @Override
-    public List<Client> getPendingClient() {
-        return List.of();
+    public Collection<Instructor> getInstructorRepository() {
+        return instructorRepository.getAllInstructors();
     }
+//----------------------
 
     @Override
     public Object getUserActivityReport() {
@@ -161,6 +199,5 @@ public class Admin implements AdminService {
     public void resolveComplaint(Complaint complaint) {
         complaint.setStatus("Resolved");
     }
-
 
 }
