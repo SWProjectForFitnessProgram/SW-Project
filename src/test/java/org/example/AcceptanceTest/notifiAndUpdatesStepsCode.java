@@ -88,6 +88,11 @@ public class notifiAndUpdatesStepsCode {
         assertTrue(clients.containsKey(secondClient));
         assertTrue(clients.containsKey(thirdClient));
 
+
+
+
+
+
     }
 
     @When("the instructor changes the {string} schedule from {string} to {string}")
