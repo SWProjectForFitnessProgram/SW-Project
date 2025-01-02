@@ -1,6 +1,7 @@
 package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,6 +22,7 @@ public class AdminUserManagementTest {
 
 
     private static List<Instructor> pendingInstructors;
+    private static List<Client> pendingClients;
     private String message;
     private static Admin admin;
     private static Main app;
@@ -33,6 +35,7 @@ public class AdminUserManagementTest {
         admin = new Admin(instructorRepository, clientRepository);
         app = new Main();
         pendingInstructors = new ArrayList<>();
+        pendingClients = new ArrayList<>();
     }
 
     //------------------------------------------------------------------------------------
@@ -48,79 +51,150 @@ public class AdminUserManagementTest {
     public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
         for (Map<String, String> row : instructorsTable) {
             Instructor instructor = new Instructor(row.get("email"), row.get("password") , Pending);
-            admin.getInstructorRepository().add(instructor); //add to the repository
+            admin.getInstructors().add(instructor); //add to the repository
             pendingInstructors.add(instructor);
         }
 //        pendingInstructors = admin.getPendingInstructors();
         Assert.assertFalse("There should be pending instructors", pendingInstructors.isEmpty());
     }
-
-    //1
-    @Given("there are no pending instructor accounts")
-    public void noPendingInstructorAccounts() {
-        assertTrue("There is pending Instructor accounts",admin.getPendingInstructors().isEmpty());
-    }
-
+    //1//3
     @When("I click on {string} page")
     public void iClickedOnPage(String arg0) {
-        List<Instructor> fetchedInstructors = admin.getPendingInstructors();
-        if (fetchedInstructors.isEmpty()) {
-            message = "No pending instructor accounts";
-        } else {
-            pendingInstructors = fetchedInstructors;
+        if (arg0.equals("Approve Client")) {
+            List<Client> fetchedClients = admin.getPendingClients();
+            if (fetchedClients.isEmpty()) {
+                message = "No pending client accounts";
+            } else {
+                pendingClients = fetchedClients;
+            }
+
         }
-
+        else if (arg0.equals("Approve Instructor")) {
+            List<Instructor> fetchedInstructors = admin.getPendingInstructors();
+            if (fetchedInstructors.isEmpty()) {
+                message = "No pending instructor accounts";
+            } else {
+                pendingInstructors = fetchedInstructors;
+            }
+        }
     }
-
+//1
     @Then("I should see a list of pending instructor accounts:")
     public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {
         Assert.assertNotNull(pendingInstructors);
         Assert.assertEquals(expectedInstructorsTable.size(), pendingInstructors.size());
     }
 
+    //2
+    @Given("there are no pending instructor accounts")
+    public void noPendingInstructorAccounts() {
+        assertTrue("There is pending Instructor accounts",admin.getPendingInstructors().isEmpty());
+    }
 
+//2
     @Then("I should see a message {string}")
     public void iShouldSeeAMessage(String expectedMessage) {
-
-        String actualMessage = admin.getDisplayedMessage();
-
+        String actualMessage=null;
+        if(expectedMessage.equals("No pending client accounts")) {
+            if (admin.getPendingClients().isEmpty()) {
+                actualMessage = "No pending client accounts";
+            }
+        }
+        else if(expectedMessage.equals("No pending instructor accounts")) {
+            if (admin.getPendingInstructors().isEmpty()) {
+                actualMessage = "No pending instructor accounts";
+            }
+        }
         Assert.assertEquals(expectedMessage, actualMessage);
     }
 
-    @When("the admin chooses {string}")
-    public void theAdminChooses(String arg0) {
-//        if (arg0.equals("Approve Clients")) {
-//
-//        }
+
+    //3
+    @And("there are pending Client accounts:")
+    public void thereArePendingClientAccounts(List<Map<String, String>> clientsTable) {
+        for (Map<String, String> row : clientsTable) {
+            Client client = new Client(row.get("email"), row.get("password") , Pending);
+            admin.getClients().add(client); //add to the repository
+            pendingClients.add(client);
+        }
+//        pendingInstructors = admin.getPendingInstructors();
+        Assert.assertFalse("There should be pending instructors", pendingClients.isEmpty());
     }
-
-    @Then("a queue of client accounts that signed up and need approval should be displayed")
-    public void aQueueOfClientAccountsThatSignedUpAndNeedApprovalShouldBeDisplayed() {
-
-    }
-
-    @Given("the admin has selected the {string} option")
-    public void theAdminHasSelectedTheOption(String arg0) {
-
-    }
-
-    @When("the admin views activity reports")
-    public void theAdminViewsActivityReports() {
+    //3
+    @Then("I should see a list of pending Client accounts:")
+    public void iShouldSeeAListOfPendingClientAccounts(List<Map<String, String>> expectedClientsTable) {
+        Assert.assertNotNull(pendingClients);
+        Assert.assertEquals(expectedClientsTable.size(), pendingClients.size());
 
     }
-
-    @Then("the system should display statistics including:")
-    public void theSystemShouldDisplayStatisticsIncluding() {
-
+    //4
+    @And("there are no pending client accounts")
+    public void thereAreNoPendingClientAccounts() {
+        Assert.assertTrue("There is pending Client accounts",admin.getPendingClients().isEmpty());
     }
 
-    @When("the admin views the instructor engagement report")
-    public void theAdminViewsTheInstructorEngagementReport() {
+    @And("the following instructor exists:")
+    public void theFollowingInstructorExists(List<Map<String, String>> instructorsTable) {
+        for (Map<String, String> row : instructorsTable) {
+            Instructor instructor = new Instructor(row.get("Email"), row.get("Password"), row.get("Name"));
+            admin.getInstructors().add(instructor);
 
+        }
     }
 
-    @When("the admin views the client engagement report")
-    public void theAdminViewsTheClientEngagementReport() {
+    @When("I update the instructor account with:")
+    public void iUpdateTheInstructorAccountWith(List<Map<String, String>> updatedInstructorsTable) {
+        for (Map<String, String> row : updatedInstructorsTable) {
+            assertTrue("there is no such account", admin.getInstructorRepository().updateInstructor(row.get("Email"), row.get("Password"), row.get("Name")));
+        }
     }
+
+
+    @Then("the instructor account should be updated with:")
+    public void theInstructorAccountShouldBeUpdatedWith(List<Map<String, String>> expectedInstructorsTable) {
+        for (Map<String, String> row : expectedInstructorsTable) {
+            Instructor updatedInstructor = admin.getInstructorRepository().findInstructorByEmail(row.get("Email"));
+            Assert.assertNotNull("Instructor not found", updatedInstructor);
+            Assert.assertEquals("Incorrect password", row.get("Password"), updatedInstructor.getPassword());
+            Assert.assertEquals("Incorrect name", row.get("Name"), updatedInstructor.getName());
+        }
+    }
+
+
+    @Given("the following client exists:")
+    public void theFollowingClientExists(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> clientDetails = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> row : clientDetails) {
+            String email = row.get("Email");
+            String password = row.get("Password");
+            String name = row.get("Name");
+            Client client = new Client(email, password, name);
+            admin.getClientsRepository().addClient(client);
+        }
+    }
+    @When("I update the client account with:")
+    public void iUpdateTheClientAccountWith(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> clientDetails = dataTable.asMaps(String.class, String.class);
+        for(Map<String,String> row : clientDetails) {
+            String email = row.get("Email");
+            String newPassword = row.get("Password");
+            String newName = row.get("Name");
+            assertTrue(admin.getClientsRepository().updateClient(email, newPassword, newName));
+
+        }
+    }
+    @Then("the client account should be updated with:")
+    public void theClientAccountShouldBeUpdatedWith(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String,String>> clientDetails = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> row : clientDetails) {
+            String email = row.get("Email");
+            String password = row.get("Password");
+            String name = row.get("Name");
+            admin.getClientsRepository().findClientByEmail(email);
+
+        }
+    }
+
+
 }
 

@@ -32,7 +32,16 @@ public class Client {
         this.email = email;
         this.password = password;
     }
-
+    public Client(String email, String password,String clientName) {
+        this.clientName = clientName;
+        this.email = email;
+        this.password = password;
+    }
+    public Client(String email, String password,UserStatus status) {
+        this.email = email;
+        this.password = password;
+        this.status = status;
+    }
     public Client(String name,String email,int Age) {
         this.clientName = name;
         this.email = email;
@@ -121,5 +130,17 @@ public class Client {
 
     public void approve() {
         this.approved = true;
+    }
+
+    public Object getEmail() {
+        return email;
+    }
+
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    public void setName(String newName) {
+        this.clientName = newName;
     }
 }

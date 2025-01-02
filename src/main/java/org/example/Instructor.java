@@ -17,7 +17,6 @@ public class Instructor {
     boolean LoggedIn;
     Program program;
     int Age;
-//    boolean approved;
     private Long id;
     String email;
     String password;
@@ -30,15 +29,21 @@ public class Instructor {
         this.email = mail;
         this.Age = Age;
         program = new Program();
-//        approved = false;
+        this.status = UserStatus.Pending;
+    }
+    public Instructor(String mail, String password,String Name)  {
 
-
+        this.name = name;
+        this.password = password;
+        this.email = mail;
+//        program = new Program();
+        this.status = UserStatus.Pending;
     }
 
     public Instructor(String email, String password,UserStatus status) {
         this.email = email;
         this.password = password;
-//        approved = false;
+        this.status =status;
     }
 
 
@@ -46,8 +51,6 @@ public class Instructor {
         LoggedIn = true;
 
     }
-
-
 
     public Instructor() {
         this.email = "";
@@ -90,4 +93,23 @@ public class Instructor {
         client.receiveFeedback(feedback);
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

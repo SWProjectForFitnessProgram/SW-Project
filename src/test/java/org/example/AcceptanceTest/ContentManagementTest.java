@@ -20,39 +20,27 @@ import static org.junit.Assert.assertEquals;
 public class ContentManagementTest {
 
 
-    private Admin admin ;
-    private Main app;
+    private static Admin admin ;
+    private static Main app;
     private List<Map<String, String>> actualData;
-    private Article article;
-    private HealthTip tip;
-    private Recipe recipe;
-    private Complaint complaint;
-    private InstructorRepository instructorRepository;
-    private ClientRepository clientRepository;
+    private static Article article;
+    private static HealthTip tip;
+    private static Recipe recipe;
+    private static Complaint complaint;
+    private static InstructorRepository instructorRepository;
+    private static ClientRepository clientRepository;
 
+    private static AdminService contentService;
 
-    //    @Mock
-    private AdminService contentService;
-
-    @BeforeClass
-    public void setup() {
-//    admin = Mockito.mock(Admin.class);
-//    app = Mockito.mock(Main.class);
-//    article = Mockito.mock(Article.class);
-//    tip = Mockito.mock(HealthTip.class);
-//    recipe = Mockito.mock(Recipe.class);
-//    complaint = Mockito.mock(Complaint.class);
-//    contentService = Mockito.mock(AdminService.class);
-//    MockitoAnnotations.initMocks(this);
-//
+    @Before
+    public static void setup() {
         admin = new Admin(instructorRepository, clientRepository);
-
         app = new Main();
-    article = new Article("jahdfk",UserStatus.Approved);
-    tip = new HealthTip("jahfdkj", Pending);
-    recipe = new Recipe("jahksfd", Pending);
-    complaint = new Complaint("jaskjdf", Pending);
-    contentService = admin;
+        article = new Article("jahdfk",UserStatus.Approved);
+        tip = new HealthTip("jahfdkj", Pending);
+        recipe = new Recipe("jahksfd", Pending);
+        complaint = new Complaint("jaskjdf", Pending);
+        contentService = admin;
     }
 
 
