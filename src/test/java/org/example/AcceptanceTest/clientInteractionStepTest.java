@@ -74,7 +74,7 @@ public class clientInteractionStepTest {
 //        System.out.println(client.getName());
         program.enrollClient(client);
 //        System.out.println(instructor.getProgramTitle());
-        instructor.addnewProgram(program);
+        instructor.setProgram(program);
         client.enrollProgram(program);
     }
     @When("the instructor selects a client {string} and sends a personalized message {string}")
@@ -116,7 +116,7 @@ public void theInstructorHasAnActiveProgramWithADiscussionForum(String programNa
 //        System.out.println(client.getName());
         program.enrollClient(client);
 //        System.out.println(instructor.getProgramTitle());
-        instructor.addnewProgram(program);
+        instructor.setProgram(program);
         client.enrollProgram(program);
     }
     @When("the instructor posts a message to the forum")
