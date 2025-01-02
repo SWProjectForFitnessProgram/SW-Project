@@ -10,8 +10,9 @@ public class Program {
     String duration;
     String difficultyLevel;
     String goals;
-    String content;
     String price;
+    private Content content;
+    private Schedule schedule;
     Date startDate;
     Date endDate;
 
@@ -22,23 +23,43 @@ public class Program {
         duration = "30 days";
         difficultyLevel = "Beginners";
         goals = "Weight Loss, Full Body";
-        content = "https://youtu.be/f3zOrYCwquE";
+        content.setVideoTutorial("https://youtu.be/f3zOrYCwquE");
+        content.setDocumentation("https://www.everydayhealth.com/fitness/guide/");
+        content.setImages("https://unsplash.com/s/photos/gym");
+        schedule.setDays(new String[] {"Sunday","Tuesday","Thursday"});
+        schedule.setTime("5:00 Pm - 7:00 Pm");
+        schedule.setScheduleType("Online");
         price = "29.99 $";
+       clientsEnrolled = new ArrayList<>();
     }
-    public Program(String programTitle, String duration, String difficultyLevel, String goals, String content, String price) {
-        this.programTitle = programTitle;
+    //'Program(String, String, String, String, Resources, Schedule, String)'
+    public Program(String title, String duration, String difficultyLevel, String goals,
+                   Content resources, Schedule schedule, String price)
+    {
+        this.programTitle = title;
         this.duration = duration;
         this.difficultyLevel  = difficultyLevel;
         this.goals = goals;
-        this.content = content;
+        this.content = resources;
+        this.schedule = schedule;
         this.price = price;
         clientsEnrolled = new ArrayList<>();
     }
-
+    public void setSchedule(Schedule schedule)
+    {
+        this.schedule = schedule;
+    }
+    public Schedule getSchedule()
+    {
+        return schedule;
+    }
     public String getTitle() {
         return programTitle;
     }
-
+    public void setProgramTitle(String programTitle)
+    {
+        this.programTitle = programTitle;
+    }
     public void setDuration(String duration) {
         this.duration = duration;
     }
@@ -53,7 +74,7 @@ public class Program {
 
     }
 
-    public void setContent(String content) {
+    public void setContent(Content content) {
         this.content = content;
     }
 
@@ -73,7 +94,7 @@ public class Program {
         return goals;
     }
 
-    public String getContent() {
+    public Content getContent() {
         return content;
     }
 
