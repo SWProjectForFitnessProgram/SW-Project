@@ -1,14 +1,12 @@
 package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Client;
 import org.example.Instructor;
-import org.junit.BeforeClass;
 
 import java.util.*;
 
@@ -91,10 +89,8 @@ public class notifiAndUpdatesStepsCode {
     }
 
     @When("the instructor changes the {string} schedule from {string} to {string}")
-    public void theInstructorChangesTheScheduleFromTo(String arg0, String arg1, String arg2) {
-        //tala alhendi
-        //ghayda ;lasjf;oi;ej
-        System.out.println("hi");
+    public void theInstructorChangesTheScheduleFromTo(String programName, String oldSchedule, String newSchedule) {
+
     }
 
     @Then("{string} should receive a notification: {string}")
