@@ -9,13 +9,14 @@ package org.example;
 //
 ////import org.springframework.data.annotation.Id;
 //import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.List;
 
 //@Entity
 public class Instructor {
     String name;
     boolean LoggedIn;
-    Program program;
+    private List<Program> programs;
     int Age;
     private Long id;
     String email;
@@ -28,7 +29,7 @@ public class Instructor {
         this.name = name;
         this.email = mail;
         this.Age = Age;
-        program = new Program();
+        programs = new java.util.ArrayList<>();
         this.status = UserStatus.Pending;
     }
     public Instructor(String mail, String password,String Name)  {
@@ -36,7 +37,7 @@ public class Instructor {
         this.name = name;
         this.password = password;
         this.email = mail;
-//        program = new Program();
+        programs = new ArrayList<>();
         this.status = UserStatus.Pending;
     }
 
@@ -44,6 +45,7 @@ public class Instructor {
         this.email = email;
         this.password = password;
         this.status =status;
+        programs = new ArrayList<>();
     }
 
 
@@ -73,13 +75,13 @@ public class Instructor {
     public Long getId() {
         return id;
     }
-    public void setProgram(Program program) {
-        this.program = program;
+    public void setProgram(ArrayList<Program> programs) {
+        this.programs = programs;
     }
-    public String getProgramTitle()
-    {
-        return program.getTitle();
-    }
+//    public String getProgramTitle()
+//    {
+//        return program.getTitle();
+//    }
 
     public void sendMessageToClient(Client client, String message) {
         client.setMessage(message);
