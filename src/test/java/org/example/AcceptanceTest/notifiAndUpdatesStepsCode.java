@@ -92,6 +92,9 @@ public class notifiAndUpdatesStepsCode {
 
     @When("the instructor changes the {string} schedule from {string} to {string}")
     public void theInstructorChangesTheScheduleFromTo(String arg0, String arg1, String arg2) {
+        //tala alhendi
+        //ghayda ;lasjf;oi;ej
+        System.out.println("hi");
     }
 
     @Then("{string} should receive a notification: {string}")
