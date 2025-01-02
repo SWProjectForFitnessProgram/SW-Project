@@ -123,4 +123,11 @@ public class Instructor {
         client.receiveFeedback(feedback);
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPassword(String newPassword) {
+        this.password=newPassword;
+    }
 }
