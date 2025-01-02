@@ -13,6 +13,12 @@ public interface AdminService {
     void approveClient(Long id);
 
 
+    InstructorRepository getInstructorRepository();
+
+    Collection<Client> getClients();
+
+    ClientRepository getClientsRepository();
+
 
     Object getUserActivityReport();
     Map<Program, Double> getProgramEnrollmentStatistics();
@@ -42,5 +48,5 @@ public interface AdminService {
 
     void rejectArticle(Article article);
 
-    Collection<Instructor> getInstructorRepository();
+    Collection<Instructor> getInstructors();
 }

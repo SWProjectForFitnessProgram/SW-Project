@@ -74,9 +74,21 @@ public class Admin implements AdminService {
     }
 //1
     @Override
-    public Collection<Instructor> getInstructorRepository() {
+    public Collection<Instructor> getInstructors() {
         return instructorRepository.getAllInstructors();
     }
+    @Override
+    public InstructorRepository getInstructorRepository() {
+        return instructorRepository;
+    }
+    @Override
+    public Collection<Client> getClients() {
+        return clientRepository.getAllClients();    }
+    @Override
+    public ClientRepository getClientsRepository() {
+        return clientRepository;
+    }
+
 //----------------------
 
     @Override
@@ -110,16 +122,6 @@ public class Admin implements AdminService {
             return table;
     }
 
-//    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
-//        return List.of(
-//                Map.of("Program Name", "Program A", "Enrollment Count", "200"),
-//                Map.of("Program Name", "Program B", "Enrollment Count", "180"),
-//                Map.of("Program Name", "Program C", "Enrollment Count", "150"),
-//                Map.of("Program Name", "Program D", "Enrollment Count", "120"),
-//                Map.of("Program Name", "Program E", "Enrollment Count", "100")
-//        );
-//
-//    }
 
     @Override
     public List<Map<String, String>> generateRevenueReport(String timePeriod) {
