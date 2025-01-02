@@ -2,6 +2,7 @@ package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
 import org.example.*;
+import org.junit.BeforeClass;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import io.cucumber.java.en.Given;
@@ -29,7 +30,7 @@ public class ContentManagementTest {
 //    @Mock
     private AdminService contentService;
 
-    @Before
+    @BeforeClass
     public void setup() {
 //    admin = Mockito.mock(Admin.class);
 //    app = Mockito.mock(Main.class);

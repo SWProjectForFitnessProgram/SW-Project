@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
+import org.junit.BeforeClass;
 
 import static org.example.UserStatus.Pending;
 
@@ -13,7 +14,7 @@ public class SubscriptionManagmentTest {
     private User.SubscriptionPlan subscriptionPlan;
     private SubscriptionService subscriptionService = new SubscriptionService();
 
-    @Before
+    @BeforeClass
     public void setup() {
 //
 //        contentService = new Admin();

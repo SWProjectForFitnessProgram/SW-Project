@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Client;
 import org.example.Instructor;
+import org.junit.BeforeClass;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class progressTrackingStepsCode {
     private String displayedMessage; // For messages displayed to the instructor
     private String receivedMessage; // For messages received by clients
 
-    @Before
+    @BeforeClass
     public void setUp()
     {
         instructor = new Instructor("Test Instructor", "test@email.com", 30);

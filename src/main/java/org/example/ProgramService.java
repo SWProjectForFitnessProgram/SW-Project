@@ -11,6 +11,7 @@ public class ProgramService {
         programList = new ArrayList<>();
     }
     public void addProgram(Program program) {
+
         programList.add(program);
     }
 
@@ -23,18 +24,24 @@ public class ProgramService {
         return null;
     }
 
-    public Boolean updateProgram(String title, Program updatedProgram) {
-        Program existingProgram = getProgramByTitle(title);
+    public void updateProgram( Program programToUpdate) {
+        Program existingProgram = getProgramByTitle(programToUpdate.getTitle());
         if (existingProgram != null) {
-            existingProgram.setDuration(updatedProgram.getDuration());
-            existingProgram.setDifficultyLevel(updatedProgram.getDifficultyLevel());
-            existingProgram.setGoals(updatedProgram.getGoals());
-            existingProgram.setContent(updatedProgram.getContent());
-            existingProgram.setPrice(updatedProgram.getPrice());
-            return true;
+            // Update the details of the existing program with the new programToUpdate values
+            existingProgram.setDuration(programToUpdate.getDuration());
+            existingProgram.setDifficultyLevel(programToUpdate.getDifficultyLevel());
+            existingProgram.setGoals(programToUpdate.getGoals());
+            existingProgram.setContent(programToUpdate.getContent());
+            existingProgram.setSchedule(programToUpdate.getSchedule());
+            existingProgram.setPrice(programToUpdate.getPrice());
+
+            // You can add other fields to update as needed
+            System.out.println("Program updated successfully: " + existingProgram.getTitle());
+        } else {
+            System.out.println("Program with title '" + programToUpdate.getTitle() + "' not found.");
         }
-        return false;
     }
+    // Method to add a new program
     // Delete a program
     public void deleteProgram(String title) {
         Program programToDelete = getProgramByTitle(title);
@@ -92,5 +99,15 @@ public class ProgramService {
 
     public String getDeletionMessage() {
         return deletionMessage;
+    }
+
+    public Program findProgramByTitle(String programTitle) {
+        for (Program program : programList) {
+            if (program.getTitle().equalsIgnoreCase(programTitle)) {
+                return program;
+            }
+        }
+        // If no program found with the given title, return null
+        return null;
     }
 }
