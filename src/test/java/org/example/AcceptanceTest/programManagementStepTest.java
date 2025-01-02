@@ -2,11 +2,12 @@ package org.example.AcceptanceTest;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
-import org.junit.BeforeClass;
+
 
 
 import java.util.ArrayList;
@@ -52,10 +53,16 @@ public class programManagementStepTest {
             programList.add(mockProgram);
             programService.addProgram(mockProgram);
             isSetUpDone = true;
+            Client client;
+            client = new Client("Alice", "alice@example.com", 25);
+            Instructor instructor = new Instructor("John Doe", "johndoe@example.com", 30);
+            mockProgram.enrollClient(client);
+            instructor.setProgram(mockProgram);
+            client.enrollProgram(mockProgram);
             System.out.println("Set Up is completed for the mock data");
         }
+}
 
-    }
 
     public programManagementStepTest() {
         app = new Main();
