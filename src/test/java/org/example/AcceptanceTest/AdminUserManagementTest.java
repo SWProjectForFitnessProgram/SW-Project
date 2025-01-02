@@ -26,7 +26,7 @@ public class AdminUserManagementTest {
     private static Main app;
 
 
-    @BeforeClass
+    @Before
     public static void setup() {
         InstructorRepository instructorRepository = new InstructorRepository();
         ClientRepository clientRepository = new ClientRepository();
