@@ -9,13 +9,14 @@ package org.example;
 //
 ////import org.springframework.data.annotation.Id;
 //import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.List;
 
 //@Entity
 public class Instructor {
     String name;
     boolean LoggedIn;
-    Program program;
+    private List<Program> programs;
     int Age;
 //    boolean approved;
     private Long id;
@@ -29,7 +30,7 @@ public class Instructor {
         this.name = name;
         this.email = mail;
         this.Age = Age;
-        program = new Program();
+        programs = new ArrayList<>();
 //        approved = false;
 
 
@@ -38,6 +39,7 @@ public class Instructor {
     public Instructor(String email, String password,UserStatus status) {
         this.email = email;
         this.password = password;
+        programs = new ArrayList<>();
 //        approved = false;
     }
 
@@ -52,6 +54,7 @@ public class Instructor {
     public Instructor() {
         this.email = "";
         this.password = "";
+        programs = new ArrayList<>();
 //        approved = false;
     }
     public boolean isApproved() {
