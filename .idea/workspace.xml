@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="fix the errors">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Content.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Schedule.java" afterDir="false" />
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="edit the first feature with schedule details and test everything is passed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ContentManagementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ContentManagementTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/SubscriptionManagmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/SubscriptionManagmentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/clientInteractionStepTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/programManagementStepTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/progressTrackingStepsCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +214,7 @@
       <workItem from="1735286230374" duration="665000" />
       <workItem from="1735670733331" duration="1228000" />
       <workItem from="1735764950408" duration="2918000" />
-      <workItem from="1735806297981" duration="10326000" />
+      <workItem from="1735806297981" duration="11171000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -298,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735767692723</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="edit the first feature with schedule details and test everything is passed">
+      <option name="closed" value="true" />
+      <created>1735821910847</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735821910847</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +342,8 @@
     <MESSAGE value="editing the whole project" />
     <MESSAGE value="third feature done with 3 scenarios" />
     <MESSAGE value="fix the errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the errors" />
+    <MESSAGE value="edit the first feature with schedule details and test everything is passed" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit the first feature with schedule details and test everything is passed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
