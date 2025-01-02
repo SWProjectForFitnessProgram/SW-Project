@@ -20,6 +20,7 @@ public class Client {
     String password;
     //    String meesage;
     int Age;
+    boolean approved =false ;
     private List<String> messages = new ArrayList<>();
     private List<String> feedbacks = new ArrayList<>();
 
@@ -113,4 +114,12 @@ public class Client {
 
     public String getReceivedMessage() { return receivedMessage; }
     public void setReceivedMessage(String message) { this.receivedMessage = message; }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void approve() {
+        this.approved = true;
+    }
 }

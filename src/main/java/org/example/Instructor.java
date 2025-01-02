@@ -17,33 +17,28 @@ public class Instructor {
     boolean LoggedIn;
     Program program;
     int Age;
-
-//    @jakarta.persistence.Id
-
-    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    boolean approved;
     private Long id;
-
-    //    @Column(nullable = false, unique = true)
     String email;
-
-
-    //    @Column(nullable = false)
     String password;
 
-    //    @Enumerated(EnumType.STRING)
     private UserStatus status;
-    public Instructor(String name, String mail,int Age) {
+
+    public Instructor(String name, String mail,int Age)  {
 
         this.name = name;
         this.email = mail;
         this.Age = Age;
         program = new Program();
+//        approved = false;
 
 
     }
-    public Instructor(String email, String password) {
+
+    public Instructor(String email, String password,UserStatus status) {
         this.email = email;
         this.password = password;
+//        approved = false;
     }
 
 
@@ -55,10 +50,19 @@ public class Instructor {
 
 
     public Instructor() {
-
-
+        this.email = "";
+        this.password = "";
+//        approved = false;
     }
-
+    public boolean isApproved() {
+       if(status == UserStatus.Approved) {
+           return true;
+       }
+       else return false;
+    }
+    public void approve() {
+        this.status = UserStatus.Approved;
+    }
     public void setId(Long id) {
         this.id = id;
     }

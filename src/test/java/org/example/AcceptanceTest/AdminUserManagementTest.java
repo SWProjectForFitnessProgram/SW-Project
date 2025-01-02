@@ -1,81 +1,69 @@
 package org.example.AcceptanceTest;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.Admin;
-import org.example.AdminService;
-import org.example.Instructor;
-import org.example.Main;
+import org.example.*;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.bean.override.mockito.MockitoBean;
-//import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-//@RunWith(MockitoJUnitRunner.class) // For JUnit 4
 
-//@SpringBootTest
-//@SpringJUnitConfig
+import static org.example.UserStatus.Pending;
+import static org.junit.Assert.assertTrue;
+
 public class AdminUserManagementTest {
 
 
-    private List<Instructor> pendingInstructors;
+    private static List<Instructor> pendingInstructors;
     private String message;
-    private Admin admin ;
-    private Main app;
+    private static Admin admin;
+    private static Main app;
 
-    @Mock
-    private AdminService adminService;
 
-    public AdminUserManagementTest(){
+    @BeforeClass
+    public static void setup() {
+        InstructorRepository instructorRepository = new InstructorRepository();
+        ClientRepository clientRepository = new ClientRepository();
+        admin = new Admin(instructorRepository, clientRepository);
         app = new Main();
-        admin = new Admin();
-        this.adminService = Mockito.mock(AdminService.class);
-
+        pendingInstructors = new ArrayList<>();
     }
 
-
-
-//------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------
     //1
     @Given("I am logged in as an admin")
     public void iAmLoggedInAsAnAdmin() {
-        Assert.assertTrue(admin.isLoggedIn());
-    }
-//1
-    @Given("there are pending instructor accounts:")
-    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
-        pendingInstructors = new ArrayList<>();
-        for (Map<String, String> row : instructorsTable) {
-            pendingInstructors.add(new Instructor(row.get("email"), row.get("password")));
-        }
-//Mockito.when(...) tells Mockito that we are defining the behavior for this specific method call.
-        Mockito.when(adminService.getPendingInstructors()).thenReturn(pendingInstructors);
-//        This line tells Mockito: "Whenever the getPendingInstructors() method is called on the
-//         mocked adminService object, return the list of pendingInstructors that we have prepared."
+        admin.approveAdminLogin();
+        assertTrue(admin.isLoggedIn());
     }
 
-//2
+    //1
+    @Given("there are pending instructor accounts:")
+    public void pendingInstructorAccounts(List<Map<String, String>> instructorsTable) {
+        for (Map<String, String> row : instructorsTable) {
+            Instructor instructor = new Instructor(row.get("email"), row.get("password") , Pending);
+            admin.getInstructorRepository().add(instructor); //add to the repository
+            pendingInstructors.add(instructor);
+        }
+//        pendingInstructors = admin.getPendingInstructors();
+        Assert.assertFalse("There should be pending instructors", pendingInstructors.isEmpty());
+    }
+
+    //1
     @Given("there are no pending instructor accounts")
     public void noPendingInstructorAccounts() {
-        Mockito.when(adminService.getPendingInstructors()).thenReturn(new ArrayList<>());
+        assertTrue("There is pending Instructor accounts",admin.getPendingInstructors().isEmpty());
     }
 
     @When("I click on {string} page")
     public void iClickedOnPage(String arg0) {
-        List<Instructor> fetchedInstructors = adminService.getPendingInstructors();
+        List<Instructor> fetchedInstructors = admin.getPendingInstructors();
         if (fetchedInstructors.isEmpty()) {
             message = "No pending instructor accounts";
         } else {
@@ -83,6 +71,7 @@ public class AdminUserManagementTest {
         }
 
     }
+
     @Then("I should see a list of pending instructor accounts:")
     public void iShouldSeeAListOfPendingInstructorAccounts(List<Map<String, String>> expectedInstructorsTable) {
         Assert.assertNotNull(pendingInstructors);
@@ -92,8 +81,7 @@ public class AdminUserManagementTest {
 
     @Then("I should see a message {string}")
     public void iShouldSeeAMessage(String expectedMessage) {
-        // Replace this with the actual logic to retrieve the displayed message
-        // This might involve interacting with the UI (e.g., getting text from a web element)
+
         String actualMessage = admin.getDisplayedMessage();
 
         Assert.assertEquals(expectedMessage, actualMessage);
@@ -101,28 +89,38 @@ public class AdminUserManagementTest {
 
     @When("the admin chooses {string}")
     public void theAdminChooses(String arg0) {
-        if(arg0.equals("Approve Clients")){
-
-        }
+//        if (arg0.equals("Approve Clients")) {
+//
+//        }
     }
 
     @Then("a queue of client accounts that signed up and need approval should be displayed")
     public void aQueueOfClientAccountsThatSignedUpAndNeedApprovalShouldBeDisplayed() {
 
     }
-//    //3
-//    @Given("the admin has selected the {string} option")
-//    public void theAdminHasSelectedTheOption(String arg0) {
-//        Assert.assertTrue(admin.monitorUserActivity);
-//    }
-//
-//    @When("the admin views the instructor engagement report")
-//    public void theAdminViewsTheInstructorEngagementReport() {
-//        Mockito.when(adminService.getUserActivityReport()).thenReturn(createSampleUserActivityReport());
-//
-//    }
-//
-//    @Then("the system should display statistics including:")
-//    public void theSystemShouldDisplayStatisticsIncluding() {
-//    }
+
+    @Given("the admin has selected the {string} option")
+    public void theAdminHasSelectedTheOption(String arg0) {
+
+    }
+
+    @When("the admin views activity reports")
+    public void theAdminViewsActivityReports() {
+
+    }
+
+    @Then("the system should display statistics including:")
+    public void theSystemShouldDisplayStatisticsIncluding() {
+
+    }
+
+    @When("the admin views the instructor engagement report")
+    public void theAdminViewsTheInstructorEngagementReport() {
+
+    }
+
+    @When("the admin views the client engagement report")
+    public void theAdminViewsTheClientEngagementReport() {
+    }
 }
+
