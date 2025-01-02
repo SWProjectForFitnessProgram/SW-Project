@@ -1,167 +1,128 @@
 package org.example.AcceptanceTest;
 
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.*;
+import org.example.Client;
+import org.example.Instructor;
+import org.junit.BeforeClass;
 
+import java.util.*;
 
-import java.util.Map;
-
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class clientInteractionStepTest {
+public class notifiAndUpdatesStepsCode {
+    private Instructor instructor;
+    private Map<String, Client> clients;
+    private Map<String, String> notifications;
+    private Set<String> eligibleClients;
 
-    private static Program program;
-    private static Client client;
-    static Instructor instructor;
-    String message;
-    String feedback;
-    private final ProgressManager progressManager = new ProgressManager();
-
-//    @Before
-//    public static void setupBefore() {
-//        // Add mock data to the programService and programList
-//        // Create Contents first
-//        Content mockContent = new Content("https://youtu.be/f3zOrYCwquE","https://unsplash.com/s/photos/gym","https://www.everydayhealth.com/fitness/guide/");
-//        Schedule mockSchedule = new Schedule(new String[]{"Sunday","Tuesday","Thursday"},"5:00 Pm - 7:00 Pm","Online");
-//
-//        Program mockProgram = new Program(
-//                "Get Fit & Moving Challenge",
-//                "30 days",
-//                "Beginners",
-//                "Weight Loss, Full Body",
-//                mockContent,
-//                mockSchedule,
-//                "29.99 $"
-//        );
-//        client = new Client("Alice", "alice@example.com",25);
-//        instructor = new Instructor("John Doe", "johndoe@example.com",30);
-//        mockProgram.enrollClient(client);
-//        instructor.setProgram(mockProgram);
-//        client.enrollProgram(mockProgram);
-//
-//    }
-//    @Given("an instructor is logged in")
-//    public void an_instructor_is_logged_in() {
-//        // Write code here that turns the phrase above into concrete actions
-////        instructorLoggedIn = true;
-////        System.out.println("Instructor is logged in");
-//        instructor = new Instructor("John Doe", "johndoe@example.com",30);
-////        if(!instructor.isLoggedIn)
-//        instructor.setLoggedIn(true);
-//
-//    }
-
-
-    @And("the instructor has an active program {string} with enrolled clients")
-    public void theInstructorHasAnActiveProgramWithEnrolledClients(String programName) {        // Write code here that turns the phrase above into concrete actions
-        Content mockContent = new Content("https://youtu.be/f3zOrYCwquE","https://unsplash.com/s/photos/gym","https://www.everydayhealth.com/fitness/guide/");
-        Schedule mockSchedule = new Schedule(new String[]{"Monday","Wednesday"},"12:00 Pm - 2:00 Pm","in person");
-
-        program = new Program(
-                programName,
-                "60 days",
-                "Beginners",
-                "Weight Loss, Full Body",
-                mockContent,
-                mockSchedule,
-                "39.99 $"
-        );
-        client = new Client("tala", "tala@example.com",20);
-        instructor = new Instructor("John Doe", "johndoe@example.com",30);
-
-//        System.out.println(client.getName());
-        program.enrollClient(client);
-//        System.out.println(instructor.getProgramTitle());
-        instructor.addnewProgram(program);
-        client.enrollProgram(program);
-    }
-    @When("the instructor selects a client {string} and sends a personalized message {string}")
-    public void theInstructorSelectsAAndSendsA(String specifiedClientName, String specifiedMessage) {
-        // Write code here that turns the phrase above into concrete actions
-        Client specifiedClient = program.getClientsEnrolled().stream()
-                .filter(client -> client.getName().equals(specifiedClientName))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Client not found: " + specifiedClientName));
-
-        message = "Hi " + specifiedClientName + ", " + specifiedMessage;
-        instructor.sendMessageToClient(specifiedClient, message);
-        System.out.println("Instructor sent a personalized message: " + message);
-    }
-    @Then("the client should receive the personalized message")
-    public void the_client_should_receive_the_personalized_message() {
-        // Write code here that turns the phrase above into concrete actions
-        assertTrue(client.hasReceivedMessage(message));
-    }
-//////////////////////////
-@And("the instructor has an active program {string} with a discussion forum")
-public void theInstructorHasAnActiveProgramWithADiscussionForum(String programName)
+    @Before
+    public void setUp()
     {
-        Content mockContent = new Content("https://youtu.be/f3zOrYCwquE","https://unsplash.com/s/photos/gym","https://www.everydayhealth.com/fitness/guide/");
-        Schedule mockSchedule = new Schedule(new String[]{"Monday","Wednesday"},"12:00 Pm - 2:00 Pm","in person");
+        if(instructor == null)
+        {
+            instructor = new Instructor("Haya", "Haya@email.com", 27);
+            assertNotNull(instructor); // Check if instructor is created
+            clients = new HashMap<>();
+            notifications = new HashMap<>();
+            eligibleClients = new HashSet<>();
 
-        program = new Program(
-                programName,
-                "60 days",
-                "Beginners",
-                "Weight Loss, Full Body",
-                mockContent,
-                mockSchedule,
-                "39.99 $"
-        );
-        client = new Client("tala", "tala@example.com",20);
-        instructor = new Instructor("John Doe", "johndoe@example.com",30);
+            clients.put("Alice", new Client("Alice", "Fitness Program"));
+            clients.put("Bob", new Client("Bob", "Fitness Program"));
+            clients.put("Charlie", new Client("Charlie", "Fitness Program"));
 
-//        System.out.println(client.getName());
-        program.enrollClient(client);
-//        System.out.println(instructor.getProgramTitle());
-        instructor.addnewProgram(program);
-        client.enrollProgram(program);
-    }
-    @When("the instructor posts a message to the forum")
-    public void the_instructor_posts_a_message_to_the_forum() {
-        // Write code here that turns the phrase above into concrete actions
-        String title = "Weekly Motivation";
-        message = "Stay consistent, and you will see results!";
-        client.receiveMessage(message);
-        instructor.postForumMessage(program, title, message);
-    }
-    @Then("all enrolled clients should see the message on the forum")
-    public void all_enrolled_clients_should_see_the_message_on_the_forum() {
-        // Write code here that turns the phrase above into concrete actions
-        assertTrue(client.hasReceivedMessage(message));
-//        verify(program).addForumMessage("Weekly Motivation", "Stay consistent, and you will see results!");
-    }
 
-    @And("the instructor has access to a client's progress report for {string}")
-    public void theInstructorHasAccessToAClientSProgressReportFor(String clientName) {
-//        client = instructor.getClientByName(clientName);
-//        if (client == null) {
-//            throw new IllegalArgumentException("Client " + clientName + " not found.");
-//        }
+            // Create client data as a List of HashMaps
+
+//        List<Map<String, String>> clientDataList = new ArrayList<>();
+
+//        Map<String, String> aliceData = new HashMap<>();
+//        aliceData.put("Name", "Alice");
+//        aliceData.put("Workouts Completed", "7");
+//        aliceData.put("Total Workouts", "10");
+//        aliceData.put("Sessions Attended", "0");
+//        aliceData.put("Total Sessions", "0");
+//        clientDataList.add(aliceData);
 //
-//        if (!instructor.isClientInProgram(client)) { // Crucial check!
-//            throw new IllegalArgumentException("Client " + clientName + " is not enrolled in the instructor's program.");
-//        }
-        Map<String, String> progressData = progressManager.getProgressData();
-        if (progressData == null) {
-            throw new IllegalArgumentException("Progress data not found for client: " + clientName);
+//        Map<String, String> bobData = new HashMap<>();
+//        bobData.put("Name", "Bob");
+//        bobData.put("Workouts Completed", "0");
+//        bobData.put("Total Workouts", "0");
+//        bobData.put("Sessions Attended", "8");
+//        bobData.put("Total Sessions", "12");
+//        clientDataList.add(bobData);
+//
+//        Map<String, String> charlieData = new HashMap<>();
+//        charlieData.put("Name", "Charlie");
+//        charlieData.put("Workouts Completed", "3");
+//        charlieData.put("Total Workouts", "10");
+//        charlieData.put("Sessions Attended", "0");
+//        charlieData.put("Total Sessions", "0");
+//        clientDataList.add(charlieData);
+//
+//        // Populate the clients map
+//        for (Map<String, String> clientData : clientDataList) {
+//            String clientName = clientData.get("Name");
+//            int workoutsCompleted = Integer.parseInt(clientData.get("Workouts Completed"));
+//            int totalWorkouts = Integer.parseInt(clientData.get("Total Workouts"));
+//            int sessionsAttended = Integer.parseInt(clientData.get("Sessions Attended"));
+//            int totalSessions = Integer.parseInt(clientData.get("Total Sessions"));
+//
+//            Client client = new Client(clientName, "Fitness Program");
+//            client.setWorkoutsCompleted(workoutsCompleted, totalWorkouts);
+//            client.setSessionsAttended(sessionsAttended, totalSessions);
+//            clients.put(clientName, client);
         }
 
     }
-    @When("the instructor provides feedback to the client")
-    public void the_instructor_provides_feedback_to_the_client() {
-        // Write code here that turns the phrase above into concrete actions
-        feedback = "Great progress this week! Try increasing your cardio sessions to 20 minutes.";
-        instructor.provideFeedbackToClient(client, feedback);
-    }
-    @Then("the client should receive the feedback")
-    public void the_client_should_receive_the_feedback() {
-        // Write code here that turns the phrase above into concrete actions
-        assertTrue(client.hasReceivedFeedback(feedback));
+
+    @And("the instructor has an active program {string} with enrolled clients {string}, {string}, and {string}")
+    public void theInstructorHasAnActiveProgramWithEnrolledClientsAnd(String programName, String firstClient, String secondClient, String thirdClient) {
+        instructor.addProgram(programName, Arrays.asList(firstClient, secondClient, thirdClient));
+        assertTrue(clients.containsKey(firstClient));
+        assertTrue(clients.containsKey(secondClient));
+        assertTrue(clients.containsKey(thirdClient));
 
     }
 
+    @When("the instructor changes the {string} schedule from {string} to {string}")
+    public void theInstructorChangesTheScheduleFromTo(String arg0, String arg1, String arg2) {
+    }
 
+    @Then("{string} should receive a notification: {string}")
+    public void shouldReceiveANotification(String arg0, String arg1) {
+    }
+
+    @When("the instructor cancels the {string} session on {string}")
+    public void theInstructorCancelsTheSessionOn(String arg0, String arg1) {
+    }
+
+    @When("the instructor announces a new program {string} starting on {string}")
+    public void theInstructorAnnouncesANewProgramStartingOn(String arg0, String arg1) {
+    }
+
+    @When("the instructor announces a special offer: {string}")
+    public void theInstructorAnnouncesASpecialOffer(String arg0) {
+    }
+
+    @Given("the instructor has a list of clients who are eligible for the offer")
+    public void theInstructorHasAListOfClientsWhoAreEligibleForTheOffer() {
+    }
+
+    @And("the clients {string} and {string} are in the list")
+    public void theClientsAndAreInTheList(String arg0, String arg1) {
+    }
+
+    @When("the instructor announces a special offer: {string} to the eligible clients")
+    public void theInstructorAnnouncesASpecialOfferToTheEligibleClients(String arg0) {
+    }
+
+    @And("{string} should not receive a notification")
+    public void shouldNotReceiveANotification(String arg0) {
+    }
 }
