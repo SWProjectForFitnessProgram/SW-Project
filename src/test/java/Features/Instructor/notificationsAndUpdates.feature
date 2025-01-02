@@ -1,37 +1,28 @@
-Feature: Notifications and Updates
+Feature: Instructor Schedule Management and Notifications
 
-  Background: Setup Instructor and Clients
-    Given the instructor is logged in
-    And the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
+  Scenario: Instructor changes the schedule for a program
+    Given the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
+    And the program "Fitness Program" has the following schedule:
+      | days                       | time    | scheduleType |
+      | Monday, Wednesday, Friday   | 10:00 AM| In-person    |
+    When the instructor changes the "Fitness Program" schedule from "Monday, Wednesday, Friday at 10:00 AM" to "Tuesday, Thursday at 8:00 AM"
+    Then "Alice" should receive a notification: "The schedule for Fitness Program has been changed to Tuesday, Thursday at 8:00 AM."
+    And "Bob" should receive a notification: "The schedule for Fitness Program has been changed to Tuesday, Thursday at 8:00 AM."
+    And "Charlie" should receive a notification: "The schedule for Fitness Program has been changed to Tuesday, Thursday at 8:00 AM."
 
-  Scenario: Notify clients about a program schedule change
-    When the instructor changes the "Fitness Program" schedule from "Mondays and Wednesdays at 7 PM" to "Tuesdays and Thursdays at 6 PM"
-    Then "Alice" should receive a notification: "The schedule for Fitness Program has been changed to Tuesdays and Thursdays at 6 PM."
-    And "Bob" should receive a notification: "The schedule for Fitness Program has been changed to Tuesdays and Thursdays at 6 PM."
-    And "Charlie" should receive a notification: "The schedule for Fitness Program has been changed to Tuesdays and Thursdays at 6 PM."
+  Scenario: Instructor cancels a session
+    Given the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
+    And the program "Fitness Program" has the following schedule:
+      | days                       | time    | scheduleType |
+      | Monday, Wednesday, Friday   | 10:00 AM| In-person    |
+    When the instructor cancels the "Fitness Program" session on "Monday, 10:00 AM"
+    Then "Alice" should receive a notification: "The Fitness Program session on Monday, 10:00 AM has been cancelled."
+    And "Bob" should receive a notification: "The Fitness Program session on Monday, 10:00 AM has been cancelled."
+    And "Charlie" should receive a notification: "The Fitness Program session on Monday, 10:00 AM has been cancelled."
 
-  Scenario: Notify clients about a cancelled session
-    When the instructor cancels the "Fitness Program" session on "October 26, 2024"
-    Then "Alice" should receive a notification: "The Fitness Program session on October 26, 2024 has been cancelled."
-    And "Bob" should receive a notification: "The Fitness Program session on October 26, 2024 has been cancelled."
-    And "Charlie" should receive a notification: "The Fitness Program session on October 26, 2024 has been cancelled."
-
-  Scenario: Announce a new program
-    When the instructor announces a new program "Advanced Yoga Flow" starting on "November 15, 2024"
-    Then "Alice" should receive a notification: "A new program, Advanced Yoga Flow, is starting on November 15, 2024. Check it out!"
-    And "Bob" should receive a notification: "A new program, Advanced Yoga Flow, is starting on November 15, 2024. Check it out!"
-    And "Charlie" should receive a notification: "A new program, Advanced Yoga Flow, is starting on November 15, 2024. Check it out!"
-
-  Scenario: Announce a special offer
-    When the instructor announces a special offer: "20% off all personal training sessions for the month of December"
-    Then "Alice" should receive a notification: "Special Offer: 20% off all personal training sessions for the month of December!"
-    And "Bob" should receive a notification: "Special Offer: 20% off all personal training sessions for the month of December!"
-    And "Charlie" should receive a notification: "Special Offer: 20% off all personal training sessions for the month of December!"
-
-  Scenario: Announce a special offer to only specific clients
-    Given the instructor has a list of clients who are eligible for the offer
-    And the clients "Alice" and "Bob" are in the list
-    When the instructor announces a special offer: "20% off all personal training sessions for the month of December" to the eligible clients
-    Then "Alice" should receive a notification: "Special Offer: 20% off all personal training sessions for the month of December!"
-    And "Bob" should receive a notification: "Special Offer: 20% off all personal training sessions for the month of December!"
-    And "Charlie" should not receive a notification
+  Scenario: Instructor announces a new program
+    Given the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
+    When the instructor announces a new program "Advanced Fitness Program" starting on "January 15th"
+    Then "Alice" should receive a notification: "A new program, Advanced Fitness Program, is starting on January 15th. Check it out!"
+    And "Bob" should receive a notification: "A new program, Advanced Fitness Program, is starting on January 15th. Check it out!"
+    And "Charlie" should receive a notification: "A new program, Advanced Fitness Program, is starting on January 15th. Check it out!"
