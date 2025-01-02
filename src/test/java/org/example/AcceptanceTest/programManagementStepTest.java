@@ -57,7 +57,7 @@ public class programManagementStepTest {
             client = new Client("Alice", "alice@example.com", 25);
             Instructor instructor = new Instructor("John Doe", "johndoe@example.com", 30);
             mockProgram.enrollClient(client);
-            instructor.setProgram(mockProgram);
+            instructor.addnewProgram(mockProgram);
             client.enrollProgram(mockProgram);
             System.out.println("Set Up is completed for the mock data");
         }
