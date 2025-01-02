@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-    private Program program;
+    private List<Program> enrolledPrograms ;
     private int workoutsCompleted;
     private int totalWorkouts;
     private int sessionsAttended;
@@ -31,18 +31,37 @@ public class Client {
     public Client(String email, String password) {
         this.email = email;
         this.password = password;
+        enrolledPrograms = new ArrayList<>();
     }
 
     public Client(String name,String email,int Age) {
         this.clientName = name;
         this.email = email;
         this.Age = Age;
-
+        enrolledPrograms = new ArrayList<>();
 
     }
-    public Client(String name, Program program) {
+    public Client(String name) {
         clientName = name;
-        this.program = program;
+        enrolledPrograms = new ArrayList<>();
+    }
+    public void enrollProgram(Program program)
+    {
+        if (!enrolledPrograms.contains(program)) {
+            enrolledPrograms.add(program);
+            System.out.println( clientName + " enrolled in program: " + program.getTitle());
+        } else {
+            System.out.println( clientName + " is already enrolled in program: " + program.getTitle());
+        }
+    }
+    public List<Program> getEnrolledPrograms() {
+        return enrolledPrograms;
+    }
+    public void displayEnrolledPrograms() {
+        System.out.println( clientName + "'s Enrolled Programs:");
+        for (Program program : enrolledPrograms) {
+            System.out.println("- " + program.getTitle());
+        }
     }
     public int getWorkoutsCompleted() { return workoutsCompleted; }
 

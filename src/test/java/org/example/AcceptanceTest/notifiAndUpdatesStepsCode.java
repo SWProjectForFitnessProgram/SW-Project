@@ -1,6 +1,7 @@
 package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,9 +20,13 @@ import static org.junit.Assert.assertNotNull;
 public class notifiAndUpdatesStepsCode {
     private Instructor instructor;
     private Map<String, Client> clients;
-    @BeforeClass
+    private static boolean isSetUpDone = false; // flag;
+
+    @Before
     public void setUp()
     {
+        if(!isSetUpDone)
+        {
         instructor = new Instructor("Test Instructor", "test@email.com", 30);
         assertNotNull(instructor); // Check if instructor is created
         clients = new HashMap<>();
@@ -64,8 +69,11 @@ public class notifiAndUpdatesStepsCode {
 
             Client client = new Client(clientName, "Fitness Program");
             client.setWorkoutsCompleted(workoutsCompleted, totalWorkouts);
-            client.setSessionsAttended(sessionsAttended,totalSessions);
+            client.setSessionsAttended(sessionsAttended, totalSessions);
             clients.put(clientName, client);
+            isSetUpDone = true;
+        }
+
         }
     }
     @And("the instructor has an active program {string} with enrolled clients {string}, {string}, and {string}")

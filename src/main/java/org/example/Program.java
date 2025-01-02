@@ -1,5 +1,7 @@
 package org.example;
 
+import io.cucumber.java.sl.In;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,7 @@ public class Program {
     private Schedule schedule;
     Date startDate;
     Date endDate;
+    private Instructor instructor;
 
     public Program()
     {
@@ -23,24 +26,19 @@ public class Program {
         duration = "30 days";
         difficultyLevel = "Beginners";
         goals = "Weight Loss, Full Body";
-        content.setVideoTutorial("https://youtu.be/f3zOrYCwquE");
-        content.setDocumentation("https://www.everydayhealth.com/fitness/guide/");
-        content.setImages("https://unsplash.com/s/photos/gym");
-        schedule.setDays(new String[] {"Sunday","Tuesday","Thursday"});
-        schedule.setTime("5:00 Pm - 7:00 Pm");
-        schedule.setScheduleType("Online");
+        content = new Content("https://youtu.be/f3zOrYCwquE","https://unsplash.com/s/photos/gym","https://www.everydayhealth.com/fitness/guide/");
+        schedule = new Schedule(new String[] {"Sunday","Tuesday","Thursday"},"5:00 Pm - 7:00 Pm","Online");
         price = "29.99 $";
-       clientsEnrolled = new ArrayList<>();
+        clientsEnrolled = new ArrayList<>();
     }
-    //'Program(String, String, String, String, Resources, Schedule, String)'
     public Program(String title, String duration, String difficultyLevel, String goals,
-                   Content resources, Schedule schedule, String price)
+                   Content content, Schedule schedule, String price)
     {
         this.programTitle = title;
         this.duration = duration;
         this.difficultyLevel  = difficultyLevel;
         this.goals = goals;
-        this.content = resources;
+        this.content = content;
         this.schedule = schedule;
         this.price = price;
         clientsEnrolled = new ArrayList<>();
@@ -102,9 +100,16 @@ public class Program {
         return price;
     }
 
+
     public void enrollClient(Client client) {
-        clientsEnrolled.add(client);
-        System.out.println(client.getName());
+//        clientsEnrolled.add(client);
+//        System.out.println(client.getName());
+        if (!clientsEnrolled.contains(client)) {
+            clientsEnrolled.add(client);
+            System.out.println(client.getName() + " has been enrolled in the program.");
+        } else {
+            System.out.println(client.getName() + " is already enrolled in the program.");
+        }
     }
 
     public void addForumMessage(String title, String content) {
@@ -112,7 +117,10 @@ public class Program {
     }
     public void displayAllEnrolledClients()
     {
-
+        System.out.println("Enrolled Clients:");
+        for (Client client : clientsEnrolled) {
+            System.out.println(client.getName());
+        }
     }
     public List<Client> getClientsEnrolled() {
         return clientsEnrolled;
@@ -128,6 +136,14 @@ public class Program {
     }
     public Date getEndtDate() {
         return endDate;
+    }
+    public void setInstructor(Instructor instructor)
+    {
+        this.instructor = instructor;
+    }
+    public Instructor getResposibleInstructor()
+    {
+        return instructor;
     }
 
 }
