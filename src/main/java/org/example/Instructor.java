@@ -18,7 +18,6 @@ public class Instructor {
     boolean LoggedIn;
     private List<Program> programs;
     int Age;
-//    boolean approved;
     private Long id;
     String email;
     String password;
@@ -30,18 +29,26 @@ public class Instructor {
         this.name = name;
         this.email = mail;
         this.Age = Age;
+        programs = new java.util.ArrayList<>();
+        this.status = UserStatus.Pending;
+    }
+    public Instructor(String mail, String password,String Name)  {
+
+        this.name = name;
+        this.password = password;
+        this.email = mail;
         programs = new ArrayList<>();
-//        approved = false;
-
-
+        this.status = UserStatus.Pending;
     }
 
     public Instructor(String email, String password,UserStatus status) {
         this.email = email;
         this.password = password;
+        this.status =status;
         programs = new ArrayList<>();
-//        approved = false;
     }
+
+
     public void setLoggedIn(boolean b) {
         LoggedIn = true;
 
@@ -50,49 +57,8 @@ public class Instructor {
     public Instructor() {
         this.email = "";
         this.password = "";
-        programs = new ArrayList<>();
 //        approved = false;
     }
-    // Getter for programs list
-    public List<Program> getPrograms() {
-        return programs;
-    }
-
-    // Setter for programs list
-    public void setPrograms(List<Program> programs) {
-        this.programs = programs;
-    }
-
-    // Method to add a program to the instructor's list
-    public void addnewProgram(Program program) {
-        if (!programs.contains(program)) {
-            programs.add(program);
-        }
-    }
-    public void addProgram(String programName, List<String> clientNames)
-    {
-        for (Program existingProgram : programs) {
-            if (existingProgram.getTitle().equals(programName))
-                {
-                    // Add new clients to the existing program
-                    for (String clientName : clientNames) {
-                        existingProgram.enrollClient(new Client(clientName, programName));
-                    }
-                    System.out.println("Clients added to existing program: " + programName);
-                    return;  // Exit once the program is found and clients are added
-                }
-            }
-    }
-
-    public void setName(String instructorName)
-    {
-        this.name = instructorName;
-    }
-    public String getName()
-    {
-        return name;
-    }
-
     public boolean isApproved() {
        if(status == UserStatus.Approved) {
            return true;
@@ -109,7 +75,13 @@ public class Instructor {
     public Long getId() {
         return id;
     }
-
+    public void setProgram(ArrayList<Program> programs) {
+        this.programs = programs;
+    }
+//    public String getProgramTitle()
+//    {
+//        return program.getTitle();
+//    }
 
     public void sendMessageToClient(Client client, String message) {
         client.setMessage(message);
@@ -123,4 +95,23 @@ public class Instructor {
         client.receiveFeedback(feedback);
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

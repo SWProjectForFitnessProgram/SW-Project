@@ -26,18 +26,18 @@ public class notifiAndUpdatesStepsCode {
     {
         if(instructor == null)
         {
-        instructor = new Instructor("Haya", "Haya@email.com", 27);
-        assertNotNull(instructor); // Check if instructor is created
-        clients = new HashMap<>();
-        notifications = new HashMap<>();
-        eligibleClients = new HashSet<>();
+            instructor = new Instructor("Haya", "Haya@email.com", 27);
+            assertNotNull(instructor); // Check if instructor is created
+            clients = new HashMap<>();
+            notifications = new HashMap<>();
+            eligibleClients = new HashSet<>();
 
-        clients.put("Alice", new Client("Alice", "Fitness Program"));
-        clients.put("Bob", new Client("Bob", "Fitness Program"));
-        clients.put("Charlie", new Client("Charlie", "Fitness Program"));
+            clients.put("Alice", new Client("Alice", "Fitness Program"));
+            clients.put("Bob", new Client("Bob", "Fitness Program"));
+            clients.put("Charlie", new Client("Charlie", "Fitness Program"));
 
 
-        // Create client data as a List of HashMaps
+            // Create client data as a List of HashMaps
 
 //        List<Map<String, String>> clientDataList = new ArrayList<>();
 
@@ -79,7 +79,7 @@ public class notifiAndUpdatesStepsCode {
 //            clients.put(clientName, client);
         }
 
-        }
+    }
 
     @And("the instructor has an active program {string} with enrolled clients {string}, {string}, and {string}")
     public void theInstructorHasAnActiveProgramWithEnrolledClientsAnd(String programName, String firstClient, String secondClient, String thirdClient) {
@@ -87,6 +87,11 @@ public class notifiAndUpdatesStepsCode {
         assertTrue(clients.containsKey(firstClient));
         assertTrue(clients.containsKey(secondClient));
         assertTrue(clients.containsKey(thirdClient));
+
+
+
+
+
 
     }
 
