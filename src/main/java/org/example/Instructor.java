@@ -114,4 +114,25 @@ public class Instructor {
     public String getName() {
         return name;
     }
+    // Method to add a program to the instructor's list
+    public void addnewProgram(Program program) {
+        if (!programs.contains(program)) {
+            programs.add(program);
+        }
+    }
+    public void addProgram(String programName, List<String> clientNames)
+    {
+        for (Program existingProgram : programs) {
+            if (existingProgram.getTitle().equals(programName))
+            {
+                // Add new clients to the existing program
+                for (String clientName : clientNames) {
+                    existingProgram.enrollClient(new Client(clientName, programName));
+                }
+                System.out.println("Clients added to existing program: " + programName);
+                return;  // Exit once the program is found and clients are added
+            }
+        }
+    }
+
 }
