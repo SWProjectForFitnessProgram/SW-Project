@@ -14,7 +14,7 @@ public class SubscriptionManagmentTest {
     private User.SubscriptionPlan subscriptionPlan;
     private SubscriptionService subscriptionService = new SubscriptionService();
 
-    @BeforeClass
+    @Before
     public void setup() {
 
     }
