@@ -1,8 +1,8 @@
 package org.example.AcceptanceTest;
 
 import io.cucumber.datatable.DataTable;
+
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,13 +26,14 @@ public class programManagementStepTest {
     private Program programToUpdate;
     private boolean InstructorLoggedIn;
 
-    Main app;
+//    Main app;
     @Before
     public static void setup()
     {
         // Initialize the ProgramService and the program list ""once"" before all tests in this class
         if(!isSetUpDone)
         {
+            isSetUpDone = true;
             programService = new ProgramService();
             programList = new ArrayList<>();
 
@@ -52,7 +53,6 @@ public class programManagementStepTest {
             );
             programList.add(mockProgram);
             programService.addProgram(mockProgram);
-            isSetUpDone = true;
             Client client;
             client = new Client("Alice", "alice@example.com", 25);
             Instructor instructor = new Instructor("John Doe", "johndoe@example.com", 30);
@@ -65,7 +65,7 @@ public class programManagementStepTest {
 
 
     public programManagementStepTest() {
-        app = new Main();
+//        app = new Main();
 
     }
 
@@ -78,8 +78,6 @@ public class programManagementStepTest {
     @When("the following details are provided")
     public void theFollowingDetailsAreProvided(io.cucumber.datatable.DataTable dataTable) {
         programDetails = dataTable.asMap(String.class, String.class);
-//        title = programDetails.get("Program title");
-//        System.out.println(title);
         if (InstructorLoggedIn) {
             Content content = new Content(
                     programDetails.get("Images"),
@@ -111,7 +109,7 @@ public class programManagementStepTest {
         } else {
             System.out.println("Instructor is not logged in");
         }
-//        programService.displayAllPrograms();
+        programService.displayAllPrograms();
     }
 
     @Then("the program is created with the specified details {string}")
@@ -201,7 +199,7 @@ public class programManagementStepTest {
         String expectedStatus = rows.get(0).get("Status");
         String expectedMessage = rows.get(0).get("Message");
 
-        // Get actual status and message from programService (assuming methods exist)
+        // Get actual status and message from programService
         String actualStatus = programService.getDeletionStatus();
         String actualMessage = programService.getDeletionMessage();
 
@@ -214,7 +212,7 @@ public class programManagementStepTest {
                     .orElse(null);
             assertNull("Program should be deleted successfully!", deletedProgram);
         } else {
-            // Program deletion failed, check for expected message
+            System.out.println("The Deletion is Failed !");
         }
         assertEquals(expectedStatus, actualStatus);
         assertEquals(expectedMessage, actualMessage);
