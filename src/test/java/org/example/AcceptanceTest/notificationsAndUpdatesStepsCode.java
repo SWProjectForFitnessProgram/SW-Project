@@ -84,6 +84,7 @@ public class notificationsAndUpdatesStepsCode {
 //               assertTrue(client.hasRecievedNotification());
 
         }
+        //فشمش
     }
     @When("the instructor creates a new program with the following details:")
     public void the_instructor_creates_a_new_program_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
@@ -94,7 +95,7 @@ public class notificationsAndUpdatesStepsCode {
         // Double, Byte, Short, Long, BigInteger or BigDecimal.
         //
         // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+//        throw new io.cucumber.java.PendingException();
     }
     @When("the program includes schedules with the following details:")
     public void the_program_includes_schedules_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
@@ -105,20 +106,21 @@ public class notificationsAndUpdatesStepsCode {
         // Double, Byte, Short, Long, BigInteger or BigDecimal.
         //
         // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+//        throw new io.cucumber.java.PendingException();
     }
     @Then("notifications about the new program should be sent to all registered clients")
     public void notifications_about_the_new_program_should_be_sent_to_all_registered_clients() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+//        throw new io.cucumber.java.PendingException();
     }
     @When("the instructor creates a special offer {string} for an existing program {string}")
-    public void theInstructorCreatesASpecialOfferForAnExistingProgram(String arg0, String arg1) {
+    public void theInstructorCreatesASpecialOfferForAnExistingProgram(String arg0, String arg1){
+
     }
     @Then("notifications about the special offer should be sent to all registered clients")
     public void notifications_about_the_special_offer_should_be_sent_to_all_registered_clients() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+//        throw new io.cucumber.java.PendingException();
     }
 
 

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
+    private boolean recievedNotification = false; //flag
+    private String notification;
+    private SubscriptionPlan subscriptionPlan;
+
     private List<Program> enrolledPrograms ;
     private int workoutsCompleted;
     private int totalWorkouts;
@@ -13,7 +17,6 @@ public class Client {
     private int totalSessions;
     private String receivedMessage;
     private Long id;
-    private SubscriptionPlan subscriptionPlan;
     //    @Column(nullable = false, unique = true)
     String email;
     String clientName;
@@ -162,9 +165,17 @@ public class Client {
         this.password = newPassword;
     }
 
-
     public void setName(String newName) {
         this.clientName = newName;
+    }
+    public boolean hasRecievedNotification()
+    {
+        return recievedNotification;
+    }
+    public void setNotification(String notification)
+    {
+        this.notification = notification;
+        recievedNotification = true;
     }
     public boolean isActive() {
         if(status==UserStatus.Approved){
@@ -185,5 +196,4 @@ public class Client {
     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
     }
-
 }

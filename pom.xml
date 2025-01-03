@@ -16,7 +16,54 @@
         <sonar.organization>swprojectforfitnessprogram</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
+<plugin>
 
+<groupId>org.jacoco</groupId>
+<artifactId>jacoco-maven-plugin</artifactId>
+
+53
+
+54
+
+55
+
+56
+
+57
+
+58
+
+59
+
+60
+
+<executions>
+<!-- Prepares the property pointing to the JaCoCo runtime agent
+which is passed as VM argument when Maven the Surefire plugin is executed. -->
+<execution>
+
+<goals>
+<goal>prepare-agent</goal>
+</goals>
+</execution>
+<!-- Ensures that the code coverage report is created after
+all tests have been run. -->
+
+<execution>
+
+<id>generate-report</id>
+<phase>verify</phase>
+<goals>
+
+<goal>report</goal>
+</goals>
+
+xexecution>
+</executions>
+</plugin>
+
+
+         
     <dependencies>
         <dependency>
             <groupId>io.cucumber</groupId>

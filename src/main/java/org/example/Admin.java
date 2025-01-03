@@ -11,6 +11,7 @@ import java.time.LocalDate;
 public class Admin implements AdminService {
     private final int password = 123456;
     private final String email = "g.safw2018@gmail.com";
+
     private final String name = "Ghayda";
     public boolean deactivate=false;
     private boolean loggedIn=true;
