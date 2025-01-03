@@ -8,78 +8,49 @@ import org.example.*;
 import org.junit.BeforeClass;
 
 import static org.example.UserStatus.Pending;
+import static org.junit.Assert.assertEquals;
 
 public class SubscriptionManagmentTest {
-    private User user;
-    private User.SubscriptionPlan subscriptionPlan;
-    private SubscriptionService subscriptionService = new SubscriptionService();
+    private SubscriptionService subscriptionService;
+    private Client client;
+    private Instructor instructor;
 
     @Before
     public void setup() {
-
+        subscriptionService = new SubscriptionService();
     }
 
 
-
-    @Given("the client {string} is registered")
-    public void theClientIsRegistered(String string) {
-        // Write code here that turns the phrase above into concrete actions
+    @Given("the client {string} is registered with email {string} and password {string}")
+    public void theClientIsRegisteredWithEmailAndPassword(String name, String email, String password) {
+        client = new Client(name, email, password);
     }
-    @When("I assign the {string} subscription plan to Alice")
-    public void iAssignTheSubscriptionPlanToAlice(String planName) {
-        if (planName.equals("Basic")) {
-            subscriptionPlan = User.SubscriptionPlan.BASIC;
-        } else if (planName.equals("Premium")) {
-            subscriptionPlan = User.SubscriptionPlan.PREMIUM;
+
+    @When("I assign the {string} subscription plan to {string}")
+    public void iAssignTheSubscriptionPlanTo(String subscriptionPlan, String personName) {
+        SubscriptionPlan plan = SubscriptionPlan.valueOf(subscriptionPlan.toUpperCase());
+        if(client != null && client.getName().equals(personName)) {
+            subscriptionService.assignSubscription(client, plan);
         }
-        user.setSubscription(subscriptionPlan);
-    }
-    @Then("Alice's subscription plan should be {string}")
-    public void aliceSSubscriptionPlanShouldBe(String string) {
-        // Write code here that turns the phrase above into concrete actions
+        else if (instructor != null && instructor.getName().equals(personName)) {
+            subscriptionService.assignSubscription(instructor, plan);
+        }
     }
 
 
-    @Given("the instructor {string} is registered")
-    public void theInstructorIsRegistered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-    @When("I assign the {string} subscription plan to Bob")
-    public void iAssignTheSubscriptionPlanToBob(String string) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-    @Then("Bob's subscription plan should be {string}")
-    public void bobSSubscriptionPlanShouldBe(String string) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-
-    @Given("the client {string} has a {string} subscription")
-    public void theClientHasASubscription(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-    @When("I change Charlie's subscription to {string}")
-    public void iChangeCharlieSSubscriptionTo(String string) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-    @Then("Charlie's subscription plan should be {string}")
-    public void charlieSSubscriptionPlanShouldBe(String string) {
-        // Write code here that turns the phrase above into concrete actions
+    @Then("{string} subscription plan should be {string}")
+    public void subscriptionPlanShouldBe(String personName, String expectedPlan) {
+        SubscriptionPlan expected = SubscriptionPlan.valueOf(expectedPlan.toUpperCase());
+        if (client != null && client.getName().equals(personName)) {
+            assertEquals(expected, client.getSubscriptionPlan());
+        } else if (instructor != null && instructor.getName().equals(personName)) {
+            assertEquals(expected, instructor.getSubscriptionPlan());
+        }
 
     }
 
-    @When("I view the available subscription plans")
-    public void iViewTheAvailableSubscriptionPlans() {
-        // Write code here that turns the phrase above into concrete actions
 
+    @Given("the instructor {string} is registered with email {string} and password {string}")
+    public void theInstructorIsRegisteredWithEmailAndPassword(String instructorName, String arg1, String arg2) {
     }
-    @Then("I should see {string} and {string} plans listed")
-    public void iShouldSeeAndPlansListed(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-
-
-
-
-
-
 }

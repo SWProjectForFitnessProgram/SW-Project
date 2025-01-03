@@ -30,10 +30,13 @@ public class ContentManagementTest {
     private static InstructorRepository instructorRepository;
     private static ClientRepository clientRepository;
 
+
+    //    @Mock
     private static AdminService contentService;
 
     @Before
     public static void setup() {
+
         admin = new Admin(instructorRepository, clientRepository);
         app = new Main();
         article = new Article("jahdfk",UserStatus.Approved);
