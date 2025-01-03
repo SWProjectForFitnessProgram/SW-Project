@@ -26,7 +26,6 @@ public class programManagementStepTest {
     private Program programToUpdate;
     private boolean InstructorLoggedIn;
 
-//    Main app;
     @Before
     public static void setup()
     {
@@ -65,7 +64,6 @@ public class programManagementStepTest {
 
 
     public programManagementStepTest() {
-//        app = new Main();
 
     }
 
