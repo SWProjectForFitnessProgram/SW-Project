@@ -8,27 +8,47 @@ import java.time.LocalDate;
 //@Service
 public class Admin implements AdminService {
 
-    public boolean newInstructorReq=false;
-    public boolean newClientReq=false;
-    public boolean deactivate=false;
-    public boolean monitorUserActivity=false;
-    private boolean loggedIn=true;
-    public boolean ApproveInstructorButton=false;
+//    public boolean newInstructorReq=false;
+//    public boolean newClientReq=false;
 
+//    public boolean monitorUserActivity=false;
+    public boolean deactivate=false;
+    private boolean loggedIn=true;
+    private String selectedOption;
     private final InstructorRepository instructorRepository;
     private final ClientRepository clientRepository;
-    private ArrayList<Instructor> InstructorPinddingAcconnts;
-    private ArrayList<Client> ClientPinddingAcconnts;
-    private ArrayList<Instructor> Instructors;
-    private ArrayList<Client> Clients;
-    private ArrayList<Program> Programs;
     private List<Article> articles = new ArrayList<>();
     private List<HealthTip> tips = new ArrayList<>();
     private List<Recipe> recipes = new ArrayList<>();
     private List<Complaint> complaints = new ArrayList<>();
+    private ArrayList<Program> Programs;
 
+//    public boolean ApproveInstructorButton=false;
 
-    //you need to edit the default constructor
+//    private ArrayList<Instructor> InstructorPinddingAcconnts;
+//    private ArrayList<Client> ClientPinddingAcconnts;
+//    private ArrayList<Instructor> Instructors;
+//    private ArrayList<Client> Clients;
+
+//    private static Admin instance;
+//
+//
+//
+//    // Allow replacing the instance for testing
+//    public static void setInstance(Admin adminMock) {
+//        instance = adminMock;
+//    }
+//    //Ghayda need to edit the default constructor
+//    public Admin getInstance(InstructorRepository instructorRepository, ClientRepository clientRepository){ //singleton class
+//        if(instance == null){
+//            instance = new Admin(instructorRepository,clientRepository);
+//            return instance;
+//        }
+//        else {
+//            System.out.println("Instance already created!");
+//            return null;
+//        }
+//    }
     public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {
         this.instructorRepository = instructorRepository;
         this.clientRepository = clientRepository;
@@ -202,4 +222,135 @@ public class Admin implements AdminService {
         complaint.setStatus("Resolved");
     }
 
+    public void setSelectedOption(String selectedOption) {
+        this.selectedOption = selectedOption;
+    }
+    public String getSelectedOption() {
+        return selectedOption;
+    }
+
+    public void generateUserActivityReport() {
+        System.out.println("+------------------------+------------------------------------+");
+        System.out.println("| Metric                 | Description                        |");
+        System.out.println("+------------------------+------------------------------------+");
+        List<Map<String, String>> statistics = new ArrayList<>();
+
+        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+        Integer totalInactiveUsers =0;
+        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+
+        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+
+        for(Instructor instructor : instructorList){
+            if(!instructor.isApproved()){
+                totalInactiveUsers++;
+            }
+        }
+        for(Client client : clientList){
+            if(!client.isActive()){
+                totalInactiveUsers++;
+            }
+        }
+        statistics.add(Map.of(
+                "Metric", "Total Active Users",
+                "Description", totalActiveUsers.toString()
+        ));
+        statistics.add(Map.of(
+                "Metric", "Total Inactive Users",
+                "Description", totalInactiveUsers.toString()
+        ));
+        statistics.add(Map.of(
+                "Metric", "User Engagement Rate",
+                "Description", "50%"
+        ));
+
+       // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+
+        System.out.println("+------------------------+------------------------------------+");
+    }
+//    public void generateInstructorActivityReport() {
+//        System.out.println("+------------------------+------------------------------------+");
+//        System.out.println("| Metric                 | Description                        |");
+//        System.out.println("+------------------------+------------------------------------+");
+//        List<Map<String, String>> statistics = new ArrayList<>();
+//
+//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+//        Integer totalInactiveUsers =0;
+//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+//
+//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+//
+//        for(Instructor instructor : instructorList){
+//            if(!instructor.isApproved()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        for(Client client : clientList){
+//            if(!client.isActive()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        statistics.add(Map.of(
+//                "Metric", "Total Active Users",
+//                "Description", totalActiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "Total Inactive Users",
+//                "Description", totalInactiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "User Engagement Rate",
+//                "Description", "50%"
+//        ));
+//
+//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+//
+//
+//        // Print table footer
+//        System.out.println("+------------------------+------------------------------------+");
+//    }
+//
+//    public void generateClientActivityReport() {
+//        System.out.println("+------------------------+------------------------------------+");
+//        System.out.println("| Metric                 | Description                        |");
+//        System.out.println("+------------------------+------------------------------------+");
+//        List<Map<String, String>> statistics = new ArrayList<>();
+//
+//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+//        Integer totalInactiveUsers =0;
+//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+//
+//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+//
+//        for(Instructor instructor : instructorList){
+//            if(!instructor.isApproved()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        for(Client client : clientList){
+//            if(!client.isActive()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        statistics.add(Map.of(
+//                "Metric", "Total Active Users",
+//                "Description", totalActiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "Total Inactive Users",
+//                "Description", totalInactiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "User Engagement Rate",
+//                "Description", "50%"
+//        ));
+//
+//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+//
+//
+//        // Print table footer
+//        System.out.println("+------------------------+------------------------------------+");
+//    }
+
 }
+

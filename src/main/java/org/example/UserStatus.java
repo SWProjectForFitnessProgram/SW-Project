@@ -7,3 +7,4 @@ public enum UserStatus {
     Resolved,
     Deactivated
 }
+
