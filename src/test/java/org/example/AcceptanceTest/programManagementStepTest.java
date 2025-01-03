@@ -2,7 +2,7 @@ package org.example.AcceptanceTest;
 
 import io.cucumber.datatable.DataTable;
 
-import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,8 +26,8 @@ public class programManagementStepTest {
     private Program programToUpdate;
     private boolean InstructorLoggedIn;
 
-    Main app;
-    @BeforeAll
+//    Main app;
+    @Before
     public static void setup()
     {
         // Initialize the ProgramService and the program list ""once"" before all tests in this class
@@ -65,7 +65,7 @@ public class programManagementStepTest {
 
 
     public programManagementStepTest() {
-        app = new Main();
+//        app = new Main();
 
     }
 
@@ -199,7 +199,7 @@ public class programManagementStepTest {
         String expectedStatus = rows.get(0).get("Status");
         String expectedMessage = rows.get(0).get("Message");
 
-        // Get actual status and message from programService (assuming methods exist)
+        // Get actual status and message from programService
         String actualStatus = programService.getDeletionStatus();
         String actualMessage = programService.getDeletionMessage();
 
@@ -212,7 +212,7 @@ public class programManagementStepTest {
                     .orElse(null);
             assertNull("Program should be deleted successfully!", deletedProgram);
         } else {
-            // Program deletion failed, check for expected message
+            System.out.println("The Deletion is Failed !");
         }
         assertEquals(expectedStatus, actualStatus);
         assertEquals(expectedMessage, actualMessage);
