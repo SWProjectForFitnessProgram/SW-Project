@@ -1,28 +1,27 @@
-Feature: Instructor Schedule Management and Notifications
+Feature: Notifications and Updates
+  As an instructor,
+  I want to notify clients about schedule changes and new programs or special offers,
+  So that they are informed and engaged with my fitness services.
 
-  Scenario: Instructor changes the schedule for a program
-    Given the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
-    And the program "Fitness Program" has the following schedule:
-      | days                       | time    | scheduleType |
-      | Monday, Wednesday, Friday   | 10:00 AM| In-person    |
-    When the instructor changes the "Fitness Program" schedule from "Monday, Wednesday, Friday at 10:00 AM" to "Tuesday, Thursday at 8:00 AM"
-    Then "Alice" should receive a notification: "The schedule for Fitness Program has been changed to Tuesday, Thursday at 8:00 AM."
-    And "Bob" should receive a notification: "The schedule for Fitness Program has been changed to Tuesday, Thursday at 8:00 AM."
-    And "Charlie" should receive a notification: "The schedule for Fitness Program has been changed to Tuesday, Thursday at 8:00 AM."
+  Background:
+    Given the instructor is logged in
 
-  Scenario: Instructor cancels a session
-    Given the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
-    And the program "Fitness Program" has the following schedule:
-      | days                       | time    | scheduleType |
-      | Monday, Wednesday, Friday   | 10:00 AM| In-person    |
-    When the instructor cancels the "Fitness Program" session on "Monday, 10:00 AM"
-    Then "Alice" should receive a notification: "The Fitness Program session on Monday, 10:00 AM has been cancelled."
-    And "Bob" should receive a notification: "The Fitness Program session on Monday, 10:00 AM has been cancelled."
-    And "Charlie" should receive a notification: "The Fitness Program session on Monday, 10:00 AM has been cancelled."
+  Scenario: Notify clients about changes to program schedules
+    Given the instructor has an existing program "Fitness Program" schedule
+    When the instructor updates the program schedule with the following details:
+      | Days             | Time       | Schedule Type |
+      | Tuesday, Thursday | 11:00 AM  | Online         |
+    Then notifications about the updated schedule should be sent to all enrolled clients
 
-  Scenario: Instructor announces a new program
-    Given the instructor has an active program "Fitness Program" with enrolled clients "Alice", "Bob", and "Charlie"
-    When the instructor announces a new program "Advanced Fitness Program" starting on "January 15th"
-    Then "Alice" should receive a notification: "A new program, Advanced Fitness Program, is starting on January 15th. Check it out!"
-    And "Bob" should receive a notification: "A new program, Advanced Fitness Program, is starting on January 15th. Check it out!"
-    And "Charlie" should receive a notification: "A new program, Advanced Fitness Program, is starting on January 15th. Check it out!"
+  Scenario: Announce a new fitness program
+    When the instructor creates a new program with the following details:
+      | Program Title | Duration | Difficulty Level | Goals          | Price |
+      | Bootcamp 2025 | 6 Weeks  | Intermediate     | Weight Loss    | Free  |
+    And the program includes schedules with the following details:
+      | Days             | Time       | Schedule Type |
+      | Monday, Wednesday | 10:00 AM  | In Person      |
+    Then notifications about the new program should be sent to all registered clients
+
+  Scenario: Announce a special offer
+    When the instructor creates a special offer "Discount 50%" for an existing program "Fitness Program"
+    Then notifications about the special offer should be sent to all registered clients
