@@ -235,7 +235,7 @@ public class Admin implements AdminService {
         ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
 
         ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
-
+        Double percentage = 0.0;
         for(Instructor instructor : instructorList){
             if(!instructor.isApproved()){
                 totalInactiveUsers++;
@@ -245,7 +245,12 @@ public class Admin implements AdminService {
             if(!client.isActive()){
                 totalInactiveUsers++;
             }
+            else{
+                percentage += Double.parseDouble(String.valueOf((client.getWorkoutsCompleted()+client.getSessionsAttended())/(client.getTotalSessions()+client.getTotalWorkouts())));
+            }
+
         }
+        percentage = percentage/clientList.size();
         statistics.add(Map.of(
                 "Metric", "Total Active Users",
                 "Description", totalActiveUsers.toString()
@@ -254,9 +259,10 @@ public class Admin implements AdminService {
                 "Metric", "Total Inactive Users",
                 "Description", totalInactiveUsers.toString()
         ));
+
         statistics.add(Map.of(
                 "Metric", "User Engagement Rate",
-                "Description", "50%"
+                "Description", percentage.toString() + "%"
         ));
 
        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
