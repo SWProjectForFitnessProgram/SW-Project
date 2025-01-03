@@ -42,6 +42,12 @@ public class Instructor {
         programs = new ArrayList<>();
 //        approved = false;
     }
+    public Instructor(String email, String password,String name) {
+        this.email = email;
+        this.password = password;
+        programs = new ArrayList<>();
+       this.name = name;
+    }
     public void setLoggedIn(boolean b) {
         LoggedIn = true;
 
@@ -129,5 +135,9 @@ public class Instructor {
 
     public void setPassword(String newPassword) {
         this.password=newPassword;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

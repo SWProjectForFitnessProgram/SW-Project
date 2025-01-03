@@ -4,5 +4,6 @@ public enum UserStatus {
     Pending,
     Approved,
     Rejected,
-    Resolved
+    Resolved,
+    Deactivated
 }
