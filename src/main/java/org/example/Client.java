@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-    private boolean recievedNotification = false; //flag
-    private String notification;
     private List<Program> enrolledPrograms ;
     private int workoutsCompleted;
     private int totalWorkouts;
@@ -15,6 +13,7 @@ public class Client {
     private int totalSessions;
     private String receivedMessage;
     private Long id;
+    private SubscriptionPlan subscriptionPlan;
     //    @Column(nullable = false, unique = true)
     String email;
     String clientName;
@@ -161,13 +160,31 @@ public class Client {
         this.password = newPassword;
     }
 
+
     public void setName(String newName) {
         this.clientName = newName;
     }
-
-    public void setNotification(String notification)
-    {
-        this.notification = notification;
-        recievedNotification = true;
+    public boolean isActive() {
+        if(status==UserStatus.Approved){
+            return true;
+        }
+        else return false;
     }
+
+
+
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+    public UserStatus getStatus() {
+        return status;
+    }
+    public SubscriptionPlan getSubscriptionPlan() {
+        return subscriptionPlan;
+    }
+    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
+        this.subscriptionPlan = subscriptionPlan;
+    }
+
 }
