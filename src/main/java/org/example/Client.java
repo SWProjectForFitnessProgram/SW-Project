@@ -77,6 +77,9 @@ public class Client {
         }
     }
     public int getWorkoutsCompleted() { return workoutsCompleted; }
+    public int getTotalWorkouts() { return totalWorkouts; }
+    public int getTotalSessions() { return totalSessions; }
+    public int getSessionsAttended() { return sessionsAttended; }
 
     public void setId(Long id) {
         this.id = id;
@@ -128,7 +131,6 @@ public class Client {
         this.totalWorkouts = allWorkouts;
     }
 
-    public int getSessionsAttended() { return sessionsAttended; }
     public void setSessionsAttended(int sessionsAttended, int totalSessions) {
         this.sessionsAttended = sessionsAttended;
         this.totalSessions = totalSessions;
@@ -181,9 +183,6 @@ public class Client {
         }
         else return false;
     }
-
-
-
 
     public void setStatus(UserStatus status) {
         this.status = status;
