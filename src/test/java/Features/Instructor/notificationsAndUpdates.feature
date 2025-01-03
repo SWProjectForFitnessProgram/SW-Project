@@ -15,17 +15,13 @@ Feature: Notifications and Updates
 
   Scenario: Announce a new fitness program
     When the instructor creates a new program with the following details:
-      | Program Title    |  Bootcamp 2025 |
-      | Duration         |  6 Weeks       |
-      | Difficulty Level | Intermediate   |
-      | Goals            | Weight Loss    |
-      | Price            | 20 $           |
-
+      | Program Title | Duration | Difficulty Level | Goals          | Price |
+      | Bootcamp 2025 | 6 Weeks  | Intermediate     | Weight Loss    | Free  |
     And the program includes schedules with the following details:
       | Days             | Time       | Schedule Type |
       | Monday, Wednesday | 10:00 AM  | In Person      |
     Then notifications about the new program should be sent to all registered clients
 
   Scenario: Announce a special offer
-    When the instructor creates a special offer Discount 0.5 for an existing program "Bootcamp 2025"
+    When the instructor creates a special offer "Discount 50%" for an existing program "Fitness Program"
     Then notifications about the special offer should be sent to all registered clients
