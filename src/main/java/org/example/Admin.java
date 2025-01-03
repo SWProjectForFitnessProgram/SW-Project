@@ -2,33 +2,48 @@ package org.example;
 
 //import org.springframework.stereotype.Service;
 
+import io.cucumber.core.backend.Pending;
+
 import java.time.ZoneId;
 import java.util.*;
 import java.time.LocalDate;
 //@Service
 public class Admin implements AdminService {
-
-    public boolean newInstructorReq=false;
-    public boolean newClientReq=false;
+    private final int password = 123456;
+    private final String email = "g.safw2018@gmail.com";
+    private final String name = "Ghayda";
     public boolean deactivate=false;
-    public boolean monitorUserActivity=false;
     private boolean loggedIn=true;
-    public boolean ApproveInstructorButton=false;
-
+    private String selectedOption;
     private final InstructorRepository instructorRepository;
     private final ClientRepository clientRepository;
-    private ArrayList<Instructor> InstructorPinddingAcconnts;
-    private ArrayList<Client> ClientPinddingAcconnts;
-    private ArrayList<Instructor> Instructors;
-    private ArrayList<Client> Clients;
-    private ArrayList<Program> Programs;
     private List<Article> articles = new ArrayList<>();
     private List<HealthTip> tips = new ArrayList<>();
     private List<Recipe> recipes = new ArrayList<>();
     private List<Complaint> complaints = new ArrayList<>();
+    private ArrayList<Program> Programs;
 
 
-    //you need to edit the default constructor
+//    private static Admin instance;
+//
+//
+//
+//    // Allow replacing the instance for testing
+//    public static void setInstance(Admin adminMock) {
+//        instance = adminMock;
+//    }
+//    //Ghayda need to edit the default constructor
+//    public Admin getInstance(InstructorRepository instructorRepository, ClientRepository clientRepository){ //singleton class
+//        if(instance == null){
+//            instance = new Admin(instructorRepository,clientRepository);
+//            return instance;
+//        }
+//        else {
+//            System.out.println("Instance already created!");
+//            return null;
+//        }
+//    }
+
     public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {
         this.instructorRepository = instructorRepository;
         this.clientRepository = clientRepository;
@@ -202,4 +217,173 @@ public class Admin implements AdminService {
         complaint.setStatus("Resolved");
     }
 
+    public void setSelectedOption(String selectedOption) {
+        this.selectedOption = selectedOption;
+    }
+    public String getSelectedOption() {
+        return selectedOption;
+    }
+
+    public void generateUserActivityReport() {
+        System.out.println("+------------------------+------------------------------------+");
+        System.out.println("| Metric                 | Description                        |");
+        System.out.println("+------------------------+------------------------------------+");
+        List<Map<String, String>> statistics = new ArrayList<>();
+
+        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+        Integer totalInactiveUsers =0;
+        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+
+        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+
+        for(Instructor instructor : instructorList){
+            if(!instructor.isApproved()){
+                totalInactiveUsers++;
+            }
+        }
+        for(Client client : clientList){
+            if(!client.isActive()){
+                totalInactiveUsers++;
+            }
+        }
+        statistics.add(Map.of(
+                "Metric", "Total Active Users",
+                "Description", totalActiveUsers.toString()
+        ));
+        statistics.add(Map.of(
+                "Metric", "Total Inactive Users",
+                "Description", totalInactiveUsers.toString()
+        ));
+        statistics.add(Map.of(
+                "Metric", "User Engagement Rate",
+                "Description", "50%"
+        ));
+
+       // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+
+        System.out.println("+------------------------+------------------------------------+");
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getPassword() {
+        return password;
+    }
+
+    public boolean isSignedIn(String email){
+        if(instructorRepository.findInstructorByEmail(email)==null){
+            if(clientRepository.findClientByEmail(email)==null){
+                return false;
+            }
+            else return true;
+        }
+        return true;
+    }
+    public boolean signUpInstructor(String name, String email, String password) {
+        if (!this.isSignedIn(email)) {
+            Instructor instructor = new Instructor(name, email, password);
+            instructor.setStatus(UserStatus.Pending);
+            instructorRepository.addInstructor(instructor);
+            return true;
+        }
+        else return false;
+    }
+    public boolean signUpClient(String name, String email, String password) {
+        if (!this.isSignedIn(email)) {
+            Client client = new Client(name, email, password);
+            client.setStatus(UserStatus.Pending);
+            clientRepository.addClient(client);
+            return true;
+        }
+        else return false;
+    }
+//    public void generateInstructorActivityReport() {
+//        System.out.println("+------------------------+------------------------------------+");
+//        System.out.println("| Metric                 | Description                        |");
+//        System.out.println("+------------------------+------------------------------------+");
+//        List<Map<String, String>> statistics = new ArrayList<>();
+//
+//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+//        Integer totalInactiveUsers =0;
+//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+//
+//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+//
+//        for(Instructor instructor : instructorList){
+//            if(!instructor.isApproved()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        for(Client client : clientList){
+//            if(!client.isActive()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        statistics.add(Map.of(
+//                "Metric", "Total Active Users",
+//                "Description", totalActiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "Total Inactive Users",
+//                "Description", totalInactiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "User Engagement Rate",
+//                "Description", "50%"
+//        ));
+//
+//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+//
+//
+//        // Print table footer
+//        System.out.println("+------------------------+------------------------------------+");
+//    }
+//
+//    public void generateClientActivityReport() {
+//        System.out.println("+------------------------+------------------------------------+");
+//        System.out.println("| Metric                 | Description                        |");
+//        System.out.println("+------------------------+------------------------------------+");
+//        List<Map<String, String>> statistics = new ArrayList<>();
+//
+//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+//        Integer totalInactiveUsers =0;
+//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+//
+//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+//
+//        for(Instructor instructor : instructorList){
+//            if(!instructor.isApproved()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        for(Client client : clientList){
+//            if(!client.isActive()){
+//                totalInactiveUsers++;
+//            }
+//        }
+//        statistics.add(Map.of(
+//                "Metric", "Total Active Users",
+//                "Description", totalActiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "Total Inactive Users",
+//                "Description", totalInactiveUsers.toString()
+//        ));
+//        statistics.add(Map.of(
+//                "Metric", "User Engagement Rate",
+//                "Description", "50%"
+//        ));
+//
+//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+//
+//
+//        // Print table footer
+//        System.out.println("+------------------------+------------------------------------+");
+//    }
+
 }
+

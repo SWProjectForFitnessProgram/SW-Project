@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-    private boolean recievedNotification = false; //flag
-    private String notification;
     private List<Program> enrolledPrograms ;
     private int workoutsCompleted;
     private int totalWorkouts;
@@ -163,15 +161,5 @@ public class Client {
 
     public void setName(String newName) {
         this.clientName = newName;
-    }
-
-    public boolean hasRecievedNotification()
-    {
-        return recievedNotification;
-    }
-    public void setNotification(String notification)
-    {
-        this.notification = notification;
-        recievedNotification = true;
     }
 }

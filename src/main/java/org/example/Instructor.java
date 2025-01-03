@@ -22,7 +22,7 @@ public class Instructor {
     private Long id;
     String email;
     String password;
-
+    private SubscriptionPlan subscriptionPlan;
     private UserStatus status;
 
     public Instructor(String name, String mail,int Age)  {
@@ -31,7 +31,7 @@ public class Instructor {
         this.email = mail;
         this.Age = Age;
         programs = new ArrayList<>();
-//        approved = false;
+
 
 
     }
@@ -39,8 +39,7 @@ public class Instructor {
     public Instructor(String email, String password,UserStatus status) {
         this.email = email;
         this.password = password;
-        programs = new ArrayList<>();
-//        approved = false;
+
     }
     public Instructor(String email, String password,String name) {
         this.email = email;
@@ -57,19 +56,18 @@ public class Instructor {
         this.email = "";
         this.password = "";
         programs = new ArrayList<>();
-//        approved = false;
+
     }
-    // Getter for programs list
+
     public List<Program> getPrograms() {
         return programs;
     }
 
-    // Setter for programs list
+
     public void setPrograms(List<Program> programs) {
         this.programs = programs;
     }
 
-    // Method to add a program to the instructor's list
     public void addnewProgram(Program program) {
         if (!programs.contains(program)) {
             programs.add(program);
@@ -99,6 +97,12 @@ public class Instructor {
         return name;
     }
 
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+    public UserStatus getStatus() {
+        return status;
+    }
     public boolean isApproved() {
         if(status == UserStatus.Approved) {
             return true;
@@ -139,5 +143,12 @@ public class Instructor {
 
     public String getPassword() {
         return password;
+    }
+    public SubscriptionPlan getSubscriptionPlan() {
+        return subscriptionPlan;
+    }
+
+    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
+        this.subscriptionPlan = subscriptionPlan;
     }
 }

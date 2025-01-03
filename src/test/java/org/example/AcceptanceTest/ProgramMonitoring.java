@@ -28,7 +28,7 @@ public class ProgramMonitoring {
     public ProgramMonitoring() {
         instructorRepository = new InstructorRepository();
         clientRepository = new ClientRepository();
-        admin = new Admin(instructorRepository, clientRepository);
+        admin = new  Admin(instructorRepository, clientRepository);
         app = new Main();
         this.monitoringService = Mockito.mock(AdminService.class);
         actualData=new ArrayList<>();
