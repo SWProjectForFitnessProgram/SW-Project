@@ -10,8 +10,8 @@ Feature: Subscription Management
 
   Scenario: Assign a Premium subscription to an instructor
     Given the instructor "Dina" is registered with email "Dina@gmail.com" and password "423536"
-    When I assign the "Premium" subscription plan to Bob
-    Then Bob's subscription plan should be "Premium"
+    When I assign the "Premium" subscription plan to "Dina"
+    Then "Dina's" subscription plan should be "Premium"
 
   Scenario: Change a client's subscription from Basic to Premium
     Given the client "Ali" has a "Basic" subscription And He registered with email "Ali@gmail.com" and password "423536"

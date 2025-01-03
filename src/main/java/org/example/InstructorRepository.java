@@ -11,7 +11,6 @@ public class InstructorRepository {
     public void addInstructor(Instructor instructor) {
         instructors.add(instructor);
     }
-
     public List<Instructor> findPendingInstructors() {
         return instructors.stream()
                 .filter(instructor -> !instructor.isApproved())

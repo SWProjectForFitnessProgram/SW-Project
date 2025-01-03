@@ -4,7 +4,16 @@ public class User {
     private String id;
     private String password;
     private boolean loggedIn = false;
+    private Role role;
     SubscriptionPlan subscription;
+    public User(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+    public User() {
+        this.id = "";
+        this.password = "";
+    }
     // Getters and setters
     public String getId() {
         return id;
