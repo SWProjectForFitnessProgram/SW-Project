@@ -13,24 +13,21 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class SigninAndSingupStepTest {
-    private static Main app;
-    private static Admin admin;
-    private static InstructorRepository instructorRepository;
-    private static ClientRepository clientRepository;
-    private static String signUpMessage;
-    private String emailMessage;
+    private Main app;
+
+    private Admin admin;
+    private InstructorRepository instructorRepository;
+    private ClientRepository clientRepository;
+    private String signUpMessage;
 
     @Before
     public void setup() {
-        signUpMessage = "";
+        System.out.println("Initializing setup...");
         instructorRepository = new InstructorRepository();
         clientRepository = new ClientRepository();
         admin = new Admin(instructorRepository, clientRepository);
-        app = new Main();
-//        admin.approveAdminLogin();
-//        assertTrue(admin.isLoggedIn());
+        System.out.println("Setup complete. Admin initialized: " + admin);
     }
-
 
     @Given("no account exists with email {string}")
     public void noAccountExistsWithEmail(String string) {

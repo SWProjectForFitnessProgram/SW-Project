@@ -171,6 +171,9 @@ public class Client {
         else return false;
     }
 
+
+
+
     public void setStatus(UserStatus status) {
         this.status = status;
     }
