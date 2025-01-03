@@ -164,10 +164,7 @@ public class Client {
     public void setName(String newName) {
         this.clientName = newName;
     }
-    public boolean hasRecievedNotification()
-    {
-        return recievedNotification;
-    }
+
     public void setNotification(String notification)
     {
         this.notification = notification;
