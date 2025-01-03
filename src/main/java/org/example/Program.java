@@ -19,6 +19,7 @@ public class Program {
     Date endDate;
     private Instructor instructor;
 
+
     public Program()
     {
         //new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $")
@@ -145,5 +146,41 @@ public class Program {
     {
         return instructor;
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Program Details:\n");
+        sb.append("Title: ").append(programTitle).append("\n");
+        sb.append("Duration: ").append(duration).append("\n");
+        sb.append("Difficulty Level: ").append(difficultyLevel).append("\n");
+        sb.append("Goals: ").append(goals).append("\n");
+        sb.append("Price: ").append(price).append("\n");
+
+        if (schedule != null) {
+            sb.append("Schedule: ").append(schedule.toString()).append("\n");
+        }
+
+        if (content != null) {
+            sb.append("Content:\n");
+            sb.append("  Video URL: ").append(content.getVideoTutorials()).append("\n");
+            sb.append("  Image URL: ").append(content.getImages()).append("\n");
+            sb.append("  Documentation URL: ").append(content.getDocumentation()).append("\n");
+        }
+
+        if (startDate != null) {
+            sb.append("Start Date: ").append(startDate).append("\n");
+        }
+
+        if (endDate != null) {
+            sb.append("End Date: ").append(endDate).append("\n");
+        }
+
+        if (instructor != null) {
+            sb.append("Instructor: ").append(instructor.getName()).append("\n");
+        }
+
+        return sb.toString();
+    }
+
 
 }
