@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 
+
 public class Main {
     private static User currentUser = new User();
     private static Profile currentProfile = new Profile();
