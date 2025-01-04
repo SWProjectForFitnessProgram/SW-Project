@@ -21,11 +21,7 @@ public class Main {
         System.out.printf("Hello and welcome!");
         Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+
         login(scanner);
 
 
@@ -62,7 +58,7 @@ public class Main {
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // تنظيف السطر بعد إدخال الرقم
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
