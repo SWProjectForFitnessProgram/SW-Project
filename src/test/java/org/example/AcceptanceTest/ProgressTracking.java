@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ProgressTracking {
-    private ProgressManager progressManager = new ProgressManager();  // تعريف كائن من ProgressManager
+    private ProgressManager progressManager = new ProgressManager();
     private Map<String, String> progressData;
     private List<Map<String, String>> progressHistory;
     private Map<String, List<String>> achievements = new HashMap<>();
