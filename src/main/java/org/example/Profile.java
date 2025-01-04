@@ -68,6 +68,7 @@ public class Profile {
     public String getDietaryPreferences() {
         return dietaryPreferences;
     }
+
     /**
      * Sets the user's dietary preferences.
      *

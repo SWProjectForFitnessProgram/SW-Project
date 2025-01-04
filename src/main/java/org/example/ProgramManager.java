@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  * Author: Taqwa Odeh
  */
 public class ProgramManager {
+
     /**
      * List of available fitness programs.
      */
