@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="sign in and sing out analysis" />
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="finish all instructor features">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,9 +19,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/Instructor" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -82,15 +82,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Admin&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -236,31 +233,47 @@
       <option name="project" value="LOCAL" />
       <updated>1735930375111</updated>
     </task>
-    <task id="LOCAL-00011" summary="workspace">
+    <task id="LOCAL-00011" summary="finish all instructor features">
       <option name="closed" value="true" />
-      <created>1735930831892</created>
+      <created>1735945335446</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1735930831892</updated>
+      <updated>1735945335446</updated>
     </task>
-    <task id="LOCAL-00012" summary="sign in and sing out analysis">
+    <task id="LOCAL-00012" summary="finish all instructor features">
       <option name="closed" value="true" />
-      <created>1735937620716</created>
+      <created>1735947362500</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1735937620716</updated>
+      <updated>1735947362500</updated>
     </task>
-    <task id="LOCAL-00013" summary="sign in and sing out analysis">
+    <task id="LOCAL-00013" summary="finish all instructor features">
       <option name="closed" value="true" />
-      <created>1735942363557</created>
+      <created>1735947485892</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1735942363557</updated>
+      <updated>1735947485892</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="finish all instructor features">
+      <option name="closed" value="true" />
+      <created>1735947861150</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1735947861150</updated>
+    </task>
+    <task id="LOCAL-00015" summary="finish all instructor features">
+      <option name="closed" value="true" />
+      <created>1735948361077</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1735948361077</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,9 +322,8 @@
     <MESSAGE value="edit cucumber.html" />
     <MESSAGE value="admin 3rd feature (production code done)" />
     <MESSAGE value="Main Edit" />
-    <MESSAGE value="workspace" />
-    <MESSAGE value="sign in and sing out analysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="sign in and sing out analysis" />
+    <MESSAGE value="finish all instructor features" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish all instructor features" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

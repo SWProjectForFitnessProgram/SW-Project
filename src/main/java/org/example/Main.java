@@ -15,12 +15,8 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.printf("Hello and welcome!");
         Scanner scanner = new Scanner(System.in);
-
-
         login(scanner);
-
-
-        menu(scanner);
+        ClientMenu(scanner);
 
     }
 
@@ -40,7 +36,7 @@ public class Main {
     }
 
 
-    private static void menu(Scanner scanner) {
+    private static void ClientMenu(Scanner scanner) {
         while (true) {
             System.out.println("\nMain Menu:");
             System.out.println("1. View Profile");
