@@ -101,8 +101,7 @@ public class Program {
 
 
     public void enrollClient(Client client) {
-//        clientsEnrolled.add(client);
-//        System.out.println(client.getName());
+
         if (!clientsEnrolled.contains(client)) {
             clientsEnrolled.add(client);
             System.out.println(client.getName() + " has been enrolled in the program.");
@@ -114,13 +113,7 @@ public class Program {
     public void addForumMessage(String title, String content) {
         System.out.println("Forum message added: " + title + ", " + content);
     }
-//    public void displayAllEnrolledClients()
-//    {
-//        System.out.println("Enrolled Clients:");
-//        for (Client client : clientsEnrolled) {
-//            System.out.println(client.getName());
-//        }
-//    }
+
     public List<Client> getClientsEnrolled() {
         return clientsEnrolled;
     }
