@@ -1,9 +1,4 @@
 package org.example;
-
-//import org.springframework.stereotype.Service;
-
-import io.cucumber.core.backend.Pending;
-
 import java.time.ZoneId;
 import java.util.*;
 import java.time.LocalDate;
@@ -25,25 +20,6 @@ public class Admin implements AdminService {
     private ArrayList<Program> Programs;
 
 
-//    private static Admin instance;
-//
-//
-//
-//    // Allow replacing the instance for testing
-//    public static void setInstance(Admin adminMock) {
-//        instance = adminMock;
-//    }
-//    //Ghayda need to edit the default constructor
-//    public Admin getInstance(InstructorRepository instructorRepository, ClientRepository clientRepository){ //singleton class
-//        if(instance == null){
-//            instance = new Admin(instructorRepository,clientRepository);
-//            return instance;
-//        }
-//        else {
-//            System.out.println("Instance already created!");
-//            return null;
-//        }
-//    }
 
     public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {
         this.instructorRepository = instructorRepository;
@@ -68,26 +44,26 @@ public class Admin implements AdminService {
         return clientRepository.findPendingClients();
     }
     //1
-    @Override
-    public void approveInstructor(Long id) {
-        Instructor instructor = instructorRepository.findById(id);
-        if (instructor != null) {
-            instructor.approve();
-            System.out.println("Instructor approved successfully.");
-        } else {
-            System.out.println("Instructor not found.");
-        }
-    }
+//    @Override
+//    public void approveInstructor(Long id) {
+//        Instructor instructor = instructorRepository.findById(id);
+//        if (instructor != null) {
+//            instructor.approve();
+//            System.out.println("Instructor approved successfully.");
+//        } else {
+//            System.out.println("Instructor not found.");
+//        }
+//    }
     //1
-    public void approveClient(Long id) {
-        Client client = clientRepository.findById(id);
-        if (client != null) {
-            client.approve();
-            System.out.println("Client approved successfully.");
-        } else {
-            System.out.println("Client not found.");
-        }
-    }
+//    public void approveClient(Long id) {
+//        Client client = clientRepository.findById(id);
+//        if (client != null) {
+//            client.approve();
+//            System.out.println("Client approved successfully.");
+//        } else {
+//            System.out.println("Client not found.");
+//        }
+//    }
 //1
     @Override
     public Collection<Instructor> getInstructors() {
@@ -107,26 +83,18 @@ public class Admin implements AdminService {
 
 //----------------------
 
-    @Override
-    public Object getUserActivityReport() {
-        return null;
-    }
+//    @Override
+//    public Object getUserActivityReport() {
+//        return null;
+//    }
 
-    @Override
-    public Map<Program, Double> getProgramEnrollmentStatistics() {
-        // Map to hold program and enrollment count
-        Map<Program, Double> programEnrollmentStatistics = new HashMap<>();
 
-        // Iterate through all clients
-        for (Program p : Programs) {
-            programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());
-        }
-
-        return programEnrollmentStatistics; // Return the statistics
-    }
     public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
-            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
-
+            Map<Program, Double> programEnrollmentStatistics = new HashMap<>();
+            for (Program p : Programs) {
+                programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());
+            }
+            Map<Program, Double> statistics = programEnrollmentStatistics;
             List<Map<String, String>> table = new ArrayList<>();
             for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
                 Map<String, String> row = new HashMap<>();
@@ -178,9 +146,9 @@ public class Admin implements AdminService {
         return programStatuses;
     }
 
-    public String getDisplayedMessage() {
-        return "No pending instructor accounts";
-    }
+//    public String getDisplayedMessage() {
+//        return "No pending instructor accounts";
+//    }
 
 
     public static LocalDate convertDateToLocalDate(Date date) {
@@ -308,89 +276,5 @@ public class Admin implements AdminService {
         }
         else return false;
     }
-//    public void generateInstructorActivityReport() {
-//        System.out.println("+------------------------+------------------------------------+");
-//        System.out.println("| Metric                 | Description                        |");
-//        System.out.println("+------------------------+------------------------------------+");
-//        List<Map<String, String>> statistics = new ArrayList<>();
-//
-//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
-//        Integer totalInactiveUsers =0;
-//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
-//
-//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
-//
-//        for(Instructor instructor : instructorList){
-//            if(!instructor.isApproved()){
-//                totalInactiveUsers++;
-//            }
-//        }
-//        for(Client client : clientList){
-//            if(!client.isActive()){
-//                totalInactiveUsers++;
-//            }
-//        }
-//        statistics.add(Map.of(
-//                "Metric", "Total Active Users",
-//                "Description", totalActiveUsers.toString()
-//        ));
-//        statistics.add(Map.of(
-//                "Metric", "Total Inactive Users",
-//                "Description", totalInactiveUsers.toString()
-//        ));
-//        statistics.add(Map.of(
-//                "Metric", "User Engagement Rate",
-//                "Description", "50%"
-//        ));
-//
-//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
-//
-//
-//        // Print table footer
-//        System.out.println("+------------------------+------------------------------------+");
-//    }
-//
-//    public void generateClientActivityReport() {
-//        System.out.println("+------------------------+------------------------------------+");
-//        System.out.println("| Metric                 | Description                        |");
-//        System.out.println("+------------------------+------------------------------------+");
-//        List<Map<String, String>> statistics = new ArrayList<>();
-//
-//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
-//        Integer totalInactiveUsers =0;
-//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
-//
-//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
-//
-//        for(Instructor instructor : instructorList){
-//            if(!instructor.isApproved()){
-//                totalInactiveUsers++;
-//            }
-//        }
-//        for(Client client : clientList){
-//            if(!client.isActive()){
-//                totalInactiveUsers++;
-//            }
-//        }
-//        statistics.add(Map.of(
-//                "Metric", "Total Active Users",
-//                "Description", totalActiveUsers.toString()
-//        ));
-//        statistics.add(Map.of(
-//                "Metric", "Total Inactive Users",
-//                "Description", totalInactiveUsers.toString()
-//        ));
-//        statistics.add(Map.of(
-//                "Metric", "User Engagement Rate",
-//                "Description", "50%"
-//        ));
-//
-//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
-//
-//
-//        // Print table footer
-//        System.out.println("+------------------------+------------------------------------+");
-//    }
-
 }
 

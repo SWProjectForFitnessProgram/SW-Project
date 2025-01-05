@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="decumentation">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="Main Edit">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FeedbackAndReviewsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FeedbackAndReviewsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgressManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgressManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgressTracking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgressTracking.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +85,6 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Cucumber Java.Feature: clientInteraction.executor": "Run",
-    "JUnit.ScheduleTest.executor": "Run",
     "JUnit.acceptanceTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -127,21 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ScheduleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Fitness" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.AcceptanceTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.AcceptanceTest" />
-      <option name="MAIN_CLASS_NAME" value="org.example.AcceptanceTest.ScheduleTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="acceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Fitness" />
       <extension name="coverage">
@@ -161,7 +151,6 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.acceptanceTest" />
-        <item itemvalue="JUnit.ScheduleTest" />
       </list>
     </recent_temporary>
   </component>
@@ -264,23 +253,7 @@
       <option name="project" value="LOCAL" />
       <updated>1735930375111</updated>
     </task>
-    <task id="LOCAL-00011" summary="decumentation">
-      <option name="closed" value="true" />
-      <created>1736005239152</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1736005239152</updated>
-    </task>
-    <task id="LOCAL-00012" summary="decumentation">
-      <option name="closed" value="true" />
-      <created>1736005469742</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1736005469742</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,8 +302,7 @@
     <MESSAGE value="edit cucumber.html" />
     <MESSAGE value="admin 3rd feature (production code done)" />
     <MESSAGE value="Main Edit" />
-    <MESSAGE value="decumentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="decumentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main Edit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -9,8 +9,8 @@ public interface AdminService {
     //1
     List<Instructor> getPendingInstructors();
     List<Client> getPendingClients();
-    void approveInstructor(Long id);
-    void approveClient(Long id);
+//    void approveInstructor(Long id);
+//    void approveClient(Long id);
 
 
     InstructorRepository getInstructorRepository();
@@ -20,8 +20,8 @@ public interface AdminService {
     ClientRepository getClientsRepository();
 
 
-    Object getUserActivityReport();
-    Map<Program, Double> getProgramEnrollmentStatistics();
+//    Object getUserActivityReport();
+//    Map<Program, Double> getProgramEnrollmentStatistics();
 
     List<Map<String, String>> getProgramEnrollmentStatisticsAsTable();
 

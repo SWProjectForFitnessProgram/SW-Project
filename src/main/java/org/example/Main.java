@@ -21,34 +21,27 @@ public class Main {
         System.out.printf("Hello and welcome!");
         Scanner scanner = new Scanner(System.in);
 
-        initializeProfile(scanner);
 
+        login(scanner);
 
 
         menu(scanner);
 
     }
 
+    public static void login(Scanner scanner) {
+        System.out.print("Enter your User ID: ");
+        String id = scanner.nextLine();
+        System.out.print("Enter your Password: ");
+        String password = scanner.nextLine();
 
-    private static void initializeProfile(Scanner scanner) {
-        System.out.println("Please set up your profile:");
 
-        System.out.print("Enter your name: ");
-        currentProfile.setName(scanner.nextLine());
-
-        System.out.print("Enter your age: ");
-        currentProfile.setAge(scanner.nextLine());
-
-        System.out.print("Enter your fitness goal: ");
-        currentProfile.setFitnessGoal(scanner.nextLine());
-
-        System.out.print("Enter your dietary preferences: ");
-        currentProfile.setDietaryPreferences(scanner.nextLine());
-
-        System.out.print("Enter your dietary restrictions: ");
-        currentProfile.setDietaryRestrictions(scanner.nextLine());
-
-        System.out.println("Profile setup complete!");
+        if (currentUser.login(id, password)) {
+            System.out.println("Login Successful!");
+        } else {
+            System.out.println("Invalid login credentials.");
+            return;
+        }
     }
 
 
