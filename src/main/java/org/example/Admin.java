@@ -4,10 +4,10 @@ import java.util.*;
 import java.time.LocalDate;
 //@Service
 public class Admin implements AdminService {
-    private final int password = 123456;
-    private final String email = "g.safw2018@gmail.com";
+    private static final int password = 123456;
+    private static final String email = "g.safw2018@gmail.com";
 
-    private final String name = "Ghayda";
+    private static final String name = "Ghayda";
     public boolean deactivate=false;
     private boolean loggedIn=true;
     private String selectedOption;
@@ -17,7 +17,7 @@ public class Admin implements AdminService {
     private List<HealthTip> tips = new ArrayList<>();
     private List<Recipe> recipes = new ArrayList<>();
     private List<Complaint> complaints = new ArrayList<>();
-    private ArrayList<Program> Programs;
+    private ArrayList<Program> Programs = new ArrayList<>();
 
 
 
@@ -43,28 +43,7 @@ public class Admin implements AdminService {
     public List<Client> getPendingClients() {
         return clientRepository.findPendingClients();
     }
-    //1
-//    @Override
-//    public void approveInstructor(Long id) {
-//        Instructor instructor = instructorRepository.findById(id);
-//        if (instructor != null) {
-//            instructor.approve();
-//            System.out.println("Instructor approved successfully.");
-//        } else {
-//            System.out.println("Instructor not found.");
-//        }
-//    }
-    //1
-//    public void approveClient(Long id) {
-//        Client client = clientRepository.findById(id);
-//        if (client != null) {
-//            client.approve();
-//            System.out.println("Client approved successfully.");
-//        } else {
-//            System.out.println("Client not found.");
-//        }
-//    }
-//1
+
     @Override
     public Collection<Instructor> getInstructors() {
         return instructorRepository.getAllInstructors();
@@ -81,31 +60,75 @@ public class Admin implements AdminService {
         return clientRepository;
     }
 
-//----------------------
-
-//    @Override
-//    public Object getUserActivityReport() {
-//        return null;
-//    }
-
-
-    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
-            Map<Program, Double> programEnrollmentStatistics = new HashMap<>();
-            for (Program p : Programs) {
-                programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());
-            }
-            Map<Program, Double> statistics = programEnrollmentStatistics;
-            List<Map<String, String>> table = new ArrayList<>();
-            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
-                Map<String, String> row = new HashMap<>();
-                row.put("Program Name", entry.getKey().getTitle());
-                row.put("Enrollment Count", entry.getValue().toString());
-                table.add(row);
-            }
-
-            return table;
+    public void addProgram(Program program) {
+        Programs.add(program);
     }
+    public List<Map<String, Integer>> getProgramEnrollmentStatisticsAsTable() {
+        List<Map<String,Integer>> Top5Programs = new ArrayList<>();
+        for(Program p : Programs){
+            Map<String, Integer> temp = new HashMap<>();
+            temp.put(p.getTitle(),p.getClientsEnrolled().size());
+            Top5Programs.add(temp);
+        }
+        Top5Programs.sort((map1, map2) -> {
 
+            Integer value1 = map1.values().iterator().next();
+            Integer value2 = map2.values().iterator().next();
+
+            return value2.compareTo(value1);
+        });
+
+        if (Top5Programs.size() > 5) {
+            Top5Programs = Top5Programs.subList(0, 5); // Keep only the top 5
+        }
+
+        System.out.println("Top 5 Programs:");
+        for (int i = 0; i < Math.min(5, Top5Programs.size()); i++) {
+            Map<String, Integer> program = Top5Programs.get(i);
+
+            String programName = program.keySet().iterator().next();
+            Integer revenue = program.values().iterator().next();
+
+            System.out.printf("%d. Program Name: %s - Enrollment: %d%n", (i + 1), programName, revenue);
+        }
+        return Top5Programs;
+    }
+    public List<Map<String, String>> getRevenueReport() {
+
+        List<Map<String, String>> revenueReport = new ArrayList<>();
+        for (Program program : Programs) {
+            double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
+            revenueReport.add(Map.of(
+                    "Program Name", program.getTitle(),
+                    "Revenue", String.valueOf(revenue)
+            ));
+        }
+        return revenueReport;
+    }
+    public List<Map<String, String>> getProgramStatusesAsTable() {
+        List<Map<String,String>> resutl = new ArrayList<>();
+        for(Program p : Programs){
+            if(p.getStartDate().after(new Date())){
+                resutl.add(Map.of(
+                        "Program Name", p.getTitle(),
+                        "Status", "Upcoming"
+                ));
+            }
+            else if(p.getEndtDate().after(new Date())){
+                resutl.add(Map.of(
+                        "Program Name", p.getTitle(),
+                        "Status", "Active"
+                ));
+            }
+            else if(p.getEndtDate().before(new Date())){
+                resutl.add(Map.of(
+                        "Program Name", p.getTitle(),
+                        "Status", "Completed"
+                ));
+            }
+        }
+        return resutl;
+    }
 
     @Override
     public List<Map<String, String>> generateRevenueReport(String timePeriod) {
@@ -145,10 +168,6 @@ public class Admin implements AdminService {
 
         return programStatuses;
     }
-
-//    public String getDisplayedMessage() {
-//        return "No pending instructor accounts";
-//    }
 
 
     public static LocalDate convertDateToLocalDate(Date date) {

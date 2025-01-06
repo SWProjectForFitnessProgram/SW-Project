@@ -27,8 +27,7 @@ public class ContentManagementTest {
     private static HealthTip tip;
     private static Recipe recipe;
     private static Complaint complaint;
-    private static InstructorRepository instructorRepository;
-    private static ClientRepository clientRepository;
+
 
 
     //    @Mock
@@ -36,7 +35,8 @@ public class ContentManagementTest {
 
     @Before
     public static void setup() {
-
+        InstructorRepository instructorRepository = new InstructorRepository();
+        ClientRepository clientRepository = new ClientRepository();
         admin = new Admin(instructorRepository, clientRepository);
         app = new Main();
         article = new Article("jahdfk",UserStatus.Approved);
@@ -46,15 +46,6 @@ public class ContentManagementTest {
         contentService = admin;
     }
 
-
-
-
-//    public ContentManagementTest() {
-//        admin = new Admin();
-//        app = new Main();
-//        this.contentService = new Admin();
-//        recipe = new Recipe("jhsakjf","Pending");
-//    }
 
 
     @Given("the wellness article {string} is pending approval")
@@ -128,10 +119,6 @@ public class ContentManagementTest {
         assertEquals(expectedStatus, recipe.getStatus());
 
     }
-
-
-
-
 
 
 

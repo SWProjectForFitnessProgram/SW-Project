@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="finish all instructor features">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="sign in and sing out analysis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/InstructorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/InstructorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SubscriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SubscriptionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Admin/ProgramMonitoring.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Admin/ProgramMonitoring.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ContentManagementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ContentManagementTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/ProgramMonitoring.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +26,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/Instructor" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -75,23 +85,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Cucumber Java.Feature: clientInteraction.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.acceptanceTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Cucumber Java.Feature: clientInteraction.executor": "Run",
+    "JUnit.acceptanceTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="JUnit.acceptanceTest">
     <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
@@ -233,47 +246,31 @@
       <option name="project" value="LOCAL" />
       <updated>1735930375111</updated>
     </task>
-    <task id="LOCAL-00011" summary="finish all instructor features">
+    <task id="LOCAL-00011" summary="workspace">
       <option name="closed" value="true" />
-      <created>1735945335446</created>
+      <created>1735930831892</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1735945335446</updated>
+      <updated>1735930831892</updated>
     </task>
-    <task id="LOCAL-00012" summary="finish all instructor features">
+    <task id="LOCAL-00012" summary="sign in and sing out analysis">
       <option name="closed" value="true" />
-      <created>1735947362500</created>
+      <created>1735937620716</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1735947362500</updated>
+      <updated>1735937620716</updated>
     </task>
-    <task id="LOCAL-00013" summary="finish all instructor features">
+    <task id="LOCAL-00013" summary="sign in and sing out analysis">
       <option name="closed" value="true" />
-      <created>1735947485892</created>
+      <created>1735942363557</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1735947485892</updated>
+      <updated>1735942363557</updated>
     </task>
-    <task id="LOCAL-00014" summary="finish all instructor features">
-      <option name="closed" value="true" />
-      <created>1735947861150</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1735947861150</updated>
-    </task>
-    <task id="LOCAL-00015" summary="finish all instructor features">
-      <option name="closed" value="true" />
-      <created>1735948361077</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1735948361077</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,11 +319,17 @@
     <MESSAGE value="edit cucumber.html" />
     <MESSAGE value="admin 3rd feature (production code done)" />
     <MESSAGE value="Main Edit" />
-    <MESSAGE value="finish all instructor features" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish all instructor features" />
+    <MESSAGE value="workspace" />
+    <MESSAGE value="sign in and sing out analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="sign in and sing out analysis" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Fitness$acceptanceTest.ic" NAME="acceptanceTest Coverage Results" MODIFIED="1736061155875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.example.AcceptanceTest.*</FILTER>
+    </SUITE>
   </component>
 </project>

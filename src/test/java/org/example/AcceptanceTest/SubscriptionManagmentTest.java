@@ -5,13 +5,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
-import org.junit.BeforeClass;
 
-import static org.example.UserStatus.Pending;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SubscriptionManagmentTest {
+
     private SubscriptionService subscriptionService;
     private Client client;
     private Instructor instructor;
@@ -53,7 +53,7 @@ public class SubscriptionManagmentTest {
     //2
     @Given("the instructor {string} is registered with email {string} and password {string}")
     public void theInstructorIsRegisteredWithEmailAndPassword(String instructorName, String email, String password) {
-    Instructor instructor = new Instructor( email, password,instructorName);
+     instructor = new Instructor( email, password,instructorName);
     }
     //3
     @Given("the client {string} has a {string} subscription And He registered with email {string} and password {string}")

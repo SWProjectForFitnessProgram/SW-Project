@@ -17,7 +17,6 @@ public class InstructorRepository {
                 .collect(Collectors.toList());
     }
 
-
     public Collection<Instructor> getAllInstructors() {
         return instructors;
     }
