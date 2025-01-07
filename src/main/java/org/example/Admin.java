@@ -141,7 +141,7 @@ public class Admin implements AdminService {
         }
         return revenueReport;
     }
-    public List<Map<String, String>> getprogramstatusesAsTable() {
+    public List<Map<String, String>> getProgramStatusesAsTable() {
         List<Map<String,String>> resutl = new ArrayList<>();
         for(Program p : programs){
             if(p.getStartDate().after(new Date())){
