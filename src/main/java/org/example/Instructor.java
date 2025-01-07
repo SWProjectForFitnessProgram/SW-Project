@@ -18,7 +18,6 @@ public class Instructor {
     boolean LoggedIn;
     private List<Program> programs;
     int Age;
-    //    boolean approved;
     private Long id;
     String email;
     String password;
@@ -47,10 +46,6 @@ public class Instructor {
         programs = new ArrayList<>();
        this.name = name;
     }
-    public void setLoggedIn(boolean b) {
-        LoggedIn = true;
-
-    }
 
     public Instructor() {
         this.email = "";
@@ -72,21 +67,23 @@ public class Instructor {
         if (!programs.contains(program)) {
             programs.add(program);
         }
+        else
+            System.err.println("The program ' " + program.getTitle() +" '"+"you want to add already exist :)");
     }
-    public void addProgram(String programName, List<String> clientNames)
-    {
-        for (Program existingProgram : programs) {
-            if (existingProgram.getTitle().equals(programName))
-            {
-                // Add new clients to the existing program
-                for (String clientName : clientNames) {
-                    existingProgram.enrollClient(new Client(clientName, programName));
-                }
-                System.out.println("Clients added to existing program: " + programName);
-                return;  // Exit once the program is found and clients are added
-            }
-        }
-    }
+//    public void addProgram(String programName, List<String> clientNames)
+//    {
+//        for (Program existingProgram : programs) {
+//            if (existingProgram.getTitle().equals(programName))
+//            {
+//                // Add new clients to the existing program
+//                for (String clientName : clientNames) {
+//                    existingProgram.enrollClient(new Client(clientName, programName));
+//                }
+//                System.out.println("Clients added to existing program: " + programName);
+//                return;  // Exit once the program is found and clients are added
+//            }
+//        }
+//    }
 
     public void setName(String instructorName)
     {
@@ -104,10 +101,7 @@ public class Instructor {
         return status;
     }
     public boolean isApproved() {
-        if(status == UserStatus.Approved) {
-            return true;
-        }
-        else return false;
+        return status == UserStatus.Approved;
     }
     public void approve() {
         this.status = UserStatus.Approved;
