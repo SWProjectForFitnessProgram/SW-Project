@@ -109,20 +109,10 @@ public class Client {
     {
         clientName = name;
     }
-
     public void setMessage(String message) {
         messages.add(message);
     }
 
-
-    public boolean hasReceivedfeedback(String feedback) {
-        if (feedbacks.contains(feedback))
-        {
-            return true;
-        }
-        else
-            return false;
-    }
     public void receiveMessage(String message) {
         messages.add(message);
     }
