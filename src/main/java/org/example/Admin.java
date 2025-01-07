@@ -9,6 +9,9 @@ import java.util.logging.Logger;
  */
 
 public class Admin implements AdminService {
+    private static final String programName = "Program Name";
+    private static final String status = "Status";
+
     private static final int PASSWORD = 123456;
     private static final String EMAIL = "g.safw2018@gmail.com";
     private static final String NAME = "Ghayda";
@@ -169,7 +172,7 @@ public class Admin implements AdminService {
         for (Program program : programs) {
             double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
             revenueReport.add(Map.of(
-                    "Program Name", program.getTitle(),
+                    programName, program.getTitle(),
                     "Revenue", String.valueOf(revenue)
             ));
         }
@@ -193,20 +196,20 @@ public class Admin implements AdminService {
         for(Program p : programs){
             if(p.getStartDate().after(new Date())){
                 resutl.add(Map.of(
-                        "Program Name", p.getTitle(),
-                        "Status", "Upcoming"
+                        programName, p.getTitle(),
+                        status, "Upcoming"
                 ));
             }
             else if(p.getEndtDate().after(new Date())){
                 resutl.add(Map.of(
-                        "Program Name", p.getTitle(),
-                        "Status", "Active"
+                        programName, p.getTitle(),
+                        status, "Active"
                 ));
             }
             else if(p.getEndtDate().before(new Date())){
                 resutl.add(Map.of(
-                        "Program Name", p.getTitle(),
-                        "Status", "Completed"
+                        programName, p.getTitle(),
+                        status, "Completed"
                 ));
             }
         }
