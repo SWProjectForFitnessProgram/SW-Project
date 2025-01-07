@@ -158,6 +158,7 @@ public class ProgramMonitoring {
     private static Date convertStringToDate(String dateString) {
         LocalDate myLocalDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
         Date myDate = Date.from(myLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
         return myDate;
     }
 

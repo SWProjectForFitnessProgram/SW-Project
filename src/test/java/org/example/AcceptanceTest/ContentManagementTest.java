@@ -53,6 +53,7 @@ public class ContentManagementTest {
 
         article = new Article(articleName, Pending);
         contentService.addArticle(article);
+
     }
     @When("I approve the article")
     public void iApproveTheArticle() {
