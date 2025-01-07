@@ -9,9 +9,9 @@ public class HealthTip {
         this.status =status;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 
     public String getStatus() {
         return String.valueOf(status);

@@ -26,19 +26,20 @@ public class User {
         this.password = password;
     }
 
-    public String getSubscriptionPlan() {
-        return subscription != null ? subscription.getPlanName() : "No subscription";
-    }
+//    public String getSubscriptionPlan() {
+//        return subscription != null ? subscription.getPlanName() : "No subscription";
+//    }
 
 
 
 
     public boolean login(String id, String password) {
+        boolean result = false;
         if ("validId".equals(id) && "validPassword".equals(password)) {
             loggedIn = true;
-            return true;
+            result= true;
         }
-        return false;
+        return result;
     }
 
     public boolean isLoggedIn() {
