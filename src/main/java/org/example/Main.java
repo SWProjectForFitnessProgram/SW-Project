@@ -1,8 +1,5 @@
 package org.example;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -56,7 +53,12 @@ public class Main {
                 "https://www.everydayhealth.com/fitness/guide/"
         );
 
-        Schedule mockSchedule = new Schedule(
+        Schedule mockSchedule1 = new Schedule(
+                new String[]{"Sunday", "Tuesday", "Thursday"},
+                "8:00 AM - 10:00 AM",
+                "Online"
+        );
+        Schedule mockSchedule2 = new Schedule(
                 new String[]{"Sunday", "Tuesday", "Thursday"},
                 "5:00 PM - 7:00 PM",
                 "Online"
@@ -68,7 +70,7 @@ public class Main {
                 "Beginners",
                 "Weight Loss, Full Body",
                 mockResources,
-                mockSchedule,
+                mockSchedule1,
                 "29.99 $"
         );
 
@@ -78,13 +80,16 @@ public class Main {
                 "Intermediate",
                 "Strength, Endurance",
                 mockResources,
-                mockSchedule,
+                mockSchedule2,
                 "39.99 $"
         );
 
         Client client1 = new Client("Alice", "alice@example.com", 25);
+        client1.setId(Long.parseLong("12215614"));
         Client client2 = new Client("Bob", "bob@example.com", 30);
+        client2.setId(Long.parseLong("12213611"));
         Client client3 = new Client("Charlie", "charlie@example.com", 35);
+        client3.setId(Long.parseLong("12112569"));
 
         Instructor instructor1 = new Instructor("John Doe", "johndoe@example.com", 30);
         Instructor instructor2 = new Instructor("Jane Smith", "janesmith@example.com", 28);
@@ -120,7 +125,10 @@ public class Main {
             System.out.println("2. Add new Program");
             System.out.println("3. Update A Program");
             System.out.println("4. Delete A Program");
-            System.out.println("5. Exit");
+            System.out.println("5. View Enrolled Clients");
+            System.out.println("6. Enroll a new Client");
+            System.out.println("7. delete a client");
+            System.out.println("8. Exit");
             System.out.print("Select an option: ");
             String choice = scanner.next();
             scanner.nextLine();
@@ -136,8 +144,18 @@ public class Main {
                     updateProgram();
                     break;
                 case "4":
+                    deleteProgram();
                     break;
                 case "5":
+                    viewClientsEnrolled();
+                    break;
+                case "6":
+                    enrollNewClient();
+                    break;
+                case "7":
+                    deleteClientByName();
+                    break;
+                case "8":
                     return;
                 default:
                     System.err.println("Invalid input!\nPlease try again.");
@@ -145,6 +163,139 @@ public class Main {
             }
 
         }
+    }
+
+    private static void deleteClientByName() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose a program to delete a client from:");
+        programService.displayAllProgramsNames();
+
+        System.out.println("Enter the program name (make sure to write it correctly):");
+        String programName = scanner.nextLine();
+
+        Program chosenProgram = programService.findProgramByTitle(programName);
+        if (chosenProgram != null) {
+
+            if (chosenProgram.getClientsEnrolled().isEmpty()) {
+                System.out.println("No clients are enrolled in this program.");
+                return;
+            }
+
+            System.out.println("List of enrolled clients:");
+            for (Client client : chosenProgram.getClientsEnrolled()) {
+                System.out.println("- " + client.getName() + " (ID: " + client.getId() + ")");
+            }
+
+            System.out.println("Enter the client's name to delete:");
+            String clientName = scanner.nextLine();
+
+            // Step 6: Search for the client by name and remove them.
+            boolean clientFound = false;
+            Iterator<Client> iterator = chosenProgram.getClientsEnrolled().iterator();
+            while (iterator.hasNext()) {
+                Client client = iterator.next();
+                if (client.getName().equalsIgnoreCase(clientName)) {
+                    iterator.remove();
+                    clientFound = true;
+                    System.out.println("Client " + clientName + " has been successfully removed.");
+                    break;
+                }
+            }
+
+            if (!clientFound) {
+                System.err.println("No client with the name " + clientName + " found in this program.");
+            }
+        } else {
+            System.err.println("There is no such program in your programs list.");
+        }
+    }
+
+
+    private static void enrollNewClient() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose a program to enroll a new client into:");
+        programService.displayAllProgramsNames();
+
+        System.out.println("Enter the program name: 'Make sure to write the name correctly'");
+        String programName = scanner.nextLine();
+
+        Program chosenProgram = programService.findProgramByTitle(programName);
+        if (chosenProgram != null) {
+
+            // Step 3: Gather client information.
+            System.out.print("Enter the Client's Name: ");
+            String clientName = scanner.nextLine();
+
+            System.out.print("Enter the Client's ID: ");
+            String clientId = scanner.nextLine();
+
+            System.out.print("Enter the Client's Email: ");
+            String clientEmail = scanner.nextLine();
+
+            System.out.print("Enter the Client's Age: ");
+            String clientAge = scanner.nextLine();
+
+            // Step 4: Create a new Client object and add to the program.
+            Client newClient = new Client(clientName,Long.parseLong(clientId),clientEmail,Integer.parseInt(clientAge));
+            chosenProgram.clientsEnrolled.add(newClient);
+            clients.add(newClient);
+            System.out.println("Client " + clientName + " has been successfully enrolled in the program: " + programName);
+        } else {
+                System.err.println("There is no such program in your programs list");
+            }
+
+    }
+
+    private static void viewClientsEnrolled() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose the program you want to view the enrolled clients for: ");
+        programService.displayAllProgramsNames();
+
+        System.out.println("Write the program name that you want to view the enrolled clients: 'Make sure to write the name correctly' ");
+        String programName = scanner.nextLine();
+
+        Program chosenProgram = programService.findProgramByTitle(programName);
+        if(chosenProgram != null)
+        {
+            List<Client> clientsEnrolledFotChosenProgram = chosenProgram.clientsEnrolled;
+            if (clientsEnrolledFotChosenProgram.isEmpty()) {
+                System.out.println("No clients enrolled.");
+            } else {
+                System.out.println("Enrolled Clients:");
+                for (Client client : clientsEnrolledFotChosenProgram) {
+                    System.out.println(client.getName());
+                }
+            }
+        }
+        else {
+            System.err.println("There is no such program in your programs list");
+        }
+    }
+
+    private static void deleteProgram() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose the program you want to delete to: ");
+        programService.displayAllProgramsNames();
+
+        System.out.println("Write the program name that you want Delete: 'Make sure to write the name correctly' ");
+        String programName = scanner.nextLine();
+
+        Program chosenProgram = programService.findProgramByTitle(programName);
+        if(chosenProgram != null)
+        {
+            programService.deleteProgram(chosenProgram.getTitle());
+            System.out.println("The Program has been deleted Successfully :)");
+        }
+        else
+        {
+            System.err.println("There is no such program in your programs list");
+        }
+
+
     }
 
     private static void updateProgram() {
@@ -193,7 +344,7 @@ public class Main {
                     break;
                 case "3":
                     System.out.println(chosenProgram.getContent());
-                    Content content = chosenProgram.getContent();
+                    Content content = new Content(chosenProgram.getContent());
 
                     System.out.print(content.getVideoTutorials() + "\nThe new video's tutorial URL: ");
                     content.setVideoTutorial(scanner.nextLine());
@@ -210,12 +361,58 @@ public class Main {
                     break;
                 case "4":
                     System.out.println(chosenProgram.getSchedule());
-                    Schedule schedule = chosenProgram.getSchedule();
+                    Schedule chosenProgramSchedule = new Schedule(chosenProgram.getSchedule());
 
-                    System.out.println(schedule.getDays() + "\nThe new Days: ");
+
+                    System.out.println(Arrays.toString(chosenProgramSchedule.getDays()) + "\nThe new Days: ");
+                    String input = scanner.nextLine();
+                    String[] days = input.split(",");
+                    /////To trim spaces :)
+                    for (int i = 0; i < days.length; i++) {
+                        days[i] = days[i].trim();
+                    }
+                    chosenProgramSchedule.setDays(days);
+
+                    System.out.println(chosenProgramSchedule.getTime());
+                    System.out.println("Select a new time slot:");
+                    System.out.println("1.  6:00 AM -  8:00 AM");
+                    System.out.println("2. 10:00 AM - 12:00 PM");
+                    System.out.println("3.  7:00 PM -  9:00 PM");
+                    System.out.println("4.  5:00 PM -  7:00 PM");
+                    input =  scanner.nextLine();
+                    String time ;
+                    switch (input)
+                    {
+                        case "1":
+                            chosenProgramSchedule.setTime("6:00 AM -  8:00 AM");
+                            break;
+                        case "2":
+                            chosenProgramSchedule.setTime("10:00 AM - 12:00 PM");
+                            break;
+                        case "3":
+                            chosenProgramSchedule.setTime("5:00 PM -  7:00 PM");
+                            break;
+                        case "4":
+                            chosenProgramSchedule.setTime("8:00 PM -  10:00 PM");
+                            break;
+                        default:
+                            break;
+                    }
+
+                    System.out.println(chosenProgramSchedule.getScheduleType() + "\nThe new Schedule Type (online or in-person): ");
+                    chosenProgramSchedule.setScheduleType(scanner.nextLine());
+
+                    chosenProgram.setSchedule(chosenProgramSchedule);
+
+                    System.out.println("The Schedule Have been updated Successfully :)");
 
                     break;
                 case "5":
+                    System.out.println(chosenProgram.getPrice() + "\nEnter The new program price");
+                    chosenProgram.setPrice(scanner.nextLine());
+
+                    System.out.println("The Program's Price Have been updated Successfully :)");
+
                     break;
                 case "6":
                     return;
@@ -223,6 +420,10 @@ public class Main {
                     System.err.println("Invalid input!\nPlease try again.");
             }
 
+        }
+        else
+        {
+            System.err.println("There is no such program in your programs list");
         }
 
     }

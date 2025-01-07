@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProgramService {
+    private List<Client> clients = new ArrayList<>();
     private String deletionStatus;
     private String deletionMessage;
     private final List<Program> programList;
@@ -55,20 +56,6 @@ public class ProgramService {
         deletionMessage = "Program with title \"<program_title>\" not found.";
         return ;
     }
-
-    // Get all programs
-    public List<Program> getAllPrograms() {
-        return programList;
-    }
-    // This method checks if a program with the specified title exists
-    public boolean searchIfExists(List<Program> programList, String programTitle) {
-        for (Program p : programList) {
-            if (p.getTitle().equals(programTitle)) {
-                return true; // Program exists
-            }
-        }
-        return false; // Program does not exist
-    }
     public void displayAllPrograms() {
         if (programList.isEmpty()) {
             System.out.println("No programs available.");
@@ -92,11 +79,12 @@ public class ProgramService {
     }
     public String programDetailsAsString(Program program) {
         return String.format(
-                "Title: %s, Duration: %s, Difficulty Level: %s, Goals: %s, Content: %s, Price: %s",
+                "Title: %s, Duration: %s, Difficulty Level: %s, Goals: %s, Schedule: %s, Content: %s, Price: %s",
                 program.getTitle(),
                 program.getDuration(),
                 program.getDifficultyLevel(),
                 program.getGoals(),
+                program.getSchedule(),
                 program.getContent(),
                 program.getPrice()
         );

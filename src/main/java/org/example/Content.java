@@ -12,6 +12,13 @@ public class Content {
         this.image = image;
 
     }
+
+    public Content(Content content) {
+        this.tutorial = content.getVideoTutorials();
+        this.documentation = content.getDocumentation();
+        this.image = content.getImages();
+    }
+
     // Getters and Setters
     public String getImages() {
         return image;

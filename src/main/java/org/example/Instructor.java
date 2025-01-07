@@ -68,7 +68,7 @@ public class Instructor {
             programs.add(program);
         }
         else
-            System.err.println("The program ' " + program.getTitle() +" '"+"you want to add already exist :)");
+            System.out.println("The program ' " + program.getTitle() +" '"+"you want to add already exist :)");
     }
 //    public void addProgram(String programName, List<String> clientNames)
 //    {
