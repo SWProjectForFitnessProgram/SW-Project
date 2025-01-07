@@ -59,6 +59,14 @@ public class programManagementStepTest {
             instructor.addnewProgram(mockProgram);
             client.enrollProgram(mockProgram);
             System.out.println("Set Up is completed for the mock data");
+
+            mockProgram.getSchedule().setScheduleType("Full");
+            mockProgram.getSchedule().setTime("2025-01-01");
+            mockProgram.getSchedule().setDays(new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"});
+            mockProgram.getSchedule().getTime();
+            mockProgram.getSchedule().getDays();
+            mockProgram.getSchedule().getScheduleType();
+
         }
 }
 
@@ -165,6 +173,9 @@ public class programManagementStepTest {
         assertEquals("The program title wasn't updated.", programDetails.get("Program title"), programToUpdate.getTitle());
         assertEquals("The schedule type wasn't updated.", programDetails.get("Schedule Type"), programToUpdate.getSchedule().getScheduleType());
         System.out.println("Program updated successfully: " + programToUpdate.getTitle());
+
+
+
 
 
     }

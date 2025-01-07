@@ -22,13 +22,14 @@ public class InstructorRepository {
     }
 
     public boolean updateInstructor(String email, String newPassword, String newName) {
+        boolean found = false;
         Instructor instructor = findInstructorByEmail(email);
         if (instructor != null) {
             instructor.setPassword(newPassword);
             instructor.setName(newName);
-            return true;
+            found= true;
         }
-        return false;
+        return found;
     }
     public Instructor findInstructorByEmail(String email) {
         for (Instructor instructor : instructors) {
@@ -39,11 +40,11 @@ public class InstructorRepository {
         return null;
     }
 
-
-    public Instructor findById(Long id) {
-        return instructors.stream()
-                .filter(instructor -> instructor.getId().equals(id))
-                .findFirst()
-                .orElse(null);
-    }
+//
+//    public Instructor findById(Long id) {
+//        return instructors.stream()
+//                .filter(instructor -> instructor.getId().equals(id))
+//                .findFirst()
+//                .orElse(null);
+//    }
 }
