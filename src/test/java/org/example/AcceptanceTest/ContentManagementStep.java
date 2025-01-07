@@ -2,22 +2,17 @@ package org.example.AcceptanceTest;
 
 import io.cucumber.java.Before;
 import org.example.*;
-import org.junit.BeforeClass;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.example.UserStatus.Pending;
 import static org.junit.Assert.assertEquals;
 
-public class ContentManagementTest {
+public class ContentManagementStep {
 
 
     private static Admin admin ;
