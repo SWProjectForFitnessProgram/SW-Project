@@ -58,6 +58,10 @@ public class clientInteractionStepTest {
     public void theInstructorHasAnActiveProgramWithEnrolledClients(String programName) {        // Write code here that turns the phrase above into concrete actions
         Content mockContent = new Content("https://youtu.be/f3zOrYCwquE","https://unsplash.com/s/photos/gym","https://www.everydayhealth.com/fitness/guide/");
         Schedule mockSchedule = new Schedule(new String[]{"Monday","Wednesday"},"12:00 Pm - 2:00 Pm","in person");
+        mockContent.setVideoTutorial("https://youtu.be/f3zOrYCwquE");
+        mockContent.setDocumentation("https://unsplash.com/s/photos/gym");
+        mockContent.setImages("https://www.everydayhealth.com/fitness/guide/");
+        Content content= new Content(mockContent);
 
         program = new Program(
                 programName,
