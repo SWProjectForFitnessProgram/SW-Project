@@ -13,6 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@Entity
+/**
+ * Represents an Instructor in the system.
+ * Instructors manage programs, communicate with clients, and provide feedback.
+ * They also hold details such as name, email, subscription plan, and user status.
+ *
+ * @author GAIDAA
+ */
 public class Instructor {
     String name;
     boolean LoggedIn;
@@ -24,7 +31,13 @@ public class Instructor {
     String password;
     private SubscriptionPlan subscriptionPlan;
     private UserStatus status;
-
+    /**
+     * Constructor to create an instructor with name, email, and age.
+     *
+     * @param name  the instructor's name
+     * @param mail  the instructor's email
+     * @param Age   the instructor's age
+     */
     public Instructor(String name, String mail,int Age)  {
 
         this.name = name;
@@ -35,12 +48,25 @@ public class Instructor {
 
 
     }
-
+    /**
+     * Constructor to create an instructor with email, password, and status.
+     *
+     * @param email   the instructor's email
+     * @param password the instructor's password
+     * @param status  the instructor's status
+     */
     public Instructor(String email, String password,UserStatus status) {
         this.email = email;
         this.password = password;
 
     }
+    /**
+     * Constructor to create an instructor with email, password, and name.
+     *
+     * @param email    the instructor's email
+     * @param password the instructor's password
+     * @param name     the instructor's name
+     */
     public Instructor(String email, String password,String name) {
         this.email = email;
         this.password = password;
@@ -58,21 +84,39 @@ public class Instructor {
         programs = new ArrayList<>();
 
     }
-
+    /**
+     * Gets the list of programs managed by the instructor.
+     *
+     * @return the list of programs
+     */
     public List<Program> getPrograms() {
         return programs;
     }
 
-
+    /**
+     * Sets the programs for the instructor.
+     *
+     * @param programs the list of programs
+     */
     public void setPrograms(List<Program> programs) {
         this.programs = programs;
     }
-
+    /**
+     * Adds a new program to the instructor's program list.
+     *
+     * @param program the program to add
+     */
     public void addnewProgram(Program program) {
         if (!programs.contains(program)) {
             programs.add(program);
         }
     }
+    /**
+     * Adds clients to an existing program or creates a new one.
+     *
+     * @param programName the name of the program
+     * @param clientNames the list of client names
+     */
     public void addProgram(String programName, List<String> clientNames)
     {
         for (Program existingProgram : programs) {
