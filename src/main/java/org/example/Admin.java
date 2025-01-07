@@ -355,7 +355,7 @@ public class Admin implements AdminService {
         Instructor instructor = instructorRepository.findInstructorByEmail(email);
         Client client = clientRepository.findClientByEmail(email);
         if (instructor == null && client == null && role!=Role.ADMIN) {
-            System.out.println("Invalid email or password.");
+            System.out.println("Invalid email or password.5454");
             return false;
         }
         switch (role){
@@ -366,36 +366,28 @@ public class Admin implements AdminService {
                     System.out.println("You have signed in successfully.");
                     return true;
                 }
-                else{
-                    System.out.println("Invalid email or password.");
-                    return false;
-                }
+
             case CLIENT:
+                assert client != null;
                 if(client.getPassword().equals(password)){
                     client.setLoggedIn(true);
-                    System.out.println("Client-You have signed in successfully.");
+                    System.out.println("You have signed in successfully.");
                     return true;
                 }
-                else{
-                    System.out.println("Client - Invalid email or password.");
-                    return false;
-                }
+
             case ADMIN:
                 if(password.equals("123456") ){
                     this.loggedIn=true;
-                    System.out.println("Admin - You have signed in successfully.");
+                    System.out.println("You have signed in successfully.");
                     return true;
                 }
                 else {
-                    System.out.println("Admin - Invalid email or password.");
+                    System.out.println("Invalid email or password.");
                     return false;
                 }
-            default:{
-                System.out.println("Invalid role.");
-                return false;
-            }
-        }
 
+        }
+        return false;
 
     }
 
