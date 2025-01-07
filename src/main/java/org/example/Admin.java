@@ -1,7 +1,15 @@
 package org.example;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.time.ZoneId;
 import java.util.*;
 import java.time.LocalDate;
+/**
+ * Represents the admin of the system, responsible for managing instructors, clients, articles,
+ * health tips, recipes, complaints, programs, and generating various reports. Implements the
+ * AdminService interface for defining core functionalities.
+ */
 //@Service
 public class Admin implements AdminService {
     private static final int password = 123456;
@@ -21,33 +29,68 @@ public class Admin implements AdminService {
 
 
 
+    /**
+     * Constructor for the Admin class.
+     *
+     * @param instructorRepository The repository instance for managing instructors.
+     * @param clientRepository The repository instance for managing clients.
+     */
     public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {
         this.instructorRepository = instructorRepository;
         this.clientRepository = clientRepository;
     }
 
+    /**
+     * Approves the admin login by setting the loggedIn status to true.
+     * This method enables the admin to perform actions restricted to logged-in users.
+     */
     public void approveAdminLogin(){
         loggedIn=true;
     }
 
+    /**
+     * Checks if the current admin is logged in.
+     *
+     * @return true if the admin is logged in, false otherwise.
+     */
     public boolean isLoggedIn(){
         return loggedIn;
     }
+    /**
+     * Retrieves a list of instructors who have not yet been approved.
+     *
+     * @return a list of {@code Instructor} objects that are pending approval.
+     */
     //1
     @Override
     public List<Instructor> getPendingInstructors() {
         return instructorRepository.findPendingInstructors();
     }
+    /**
+     * Retrieves a list of clients who are currently pending approval.
+     *
+     * @return a list of {@code Client} objects that have not yet been approved.
+     */
     //1
     @Override
     public List<Client> getPendingClients() {
         return clientRepository.findPendingClients();
     }
 
+    /**
+     * Retrieves a collection of all instructors available in the system.
+     *
+     * @return a {@code Collection} of {@code Instructor} objects representing all the instructors.
+     */
     @Override
     public Collection<Instructor> getInstructors() {
         return instructorRepository.getAllInstructors();
     }
+    /**
+     * Retrieves the {@code InstructorRepository} instance associated with the admin.
+     *
+     * @return the {@code InstructorRepository} that manages instructor-related data and operations.
+     */
     @Override
     public InstructorRepository getInstructorRepository() {
         return instructorRepository;
@@ -78,9 +121,9 @@ public class Admin implements AdminService {
             return value2.compareTo(value1);
         });
 
-        if (Top5Programs.size() > 5) {
-            Top5Programs = Top5Programs.subList(0, 5); // Keep only the top 5
-        }
+//        if (Top5Programs.size() > 5) {
+//            Top5Programs = Top5Programs.subList(0, 5); // Keep only the top 5
+//        }
 
         System.out.println("Top 5 Programs:");
         for (int i = 0; i < Math.min(5, Top5Programs.size()); i++) {
@@ -129,52 +172,52 @@ public class Admin implements AdminService {
         }
         return resutl;
     }
+//
+//    @Override
+//    public List<Map<String, String>> generateRevenueReport(String timePeriod) {
+//        List<Map<String, String>> revenueReport = new ArrayList<>();
+//        if ("last quarter".equalsIgnoreCase(timePeriod)) {
+//            for (Program program : Programs) {
+//                double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
+//                revenueReport.add(Map.of(
+//                        "Program Name", program.getTitle(),
+//                        "Revenue", String.valueOf(revenue)
+//                ));
+//            }
+//        }
+//        return revenueReport;
+//    }
+//
+//    @Override
+//       public List<Map<String, String>> getProgramStatuses() {
+//        List<Map<String, String>> programStatuses = new ArrayList<>();
+//        LocalDate currentDate = LocalDate.now(); // Get the current date
+//
+//        for (Program program : Programs) {
+//            String status;
+//            if (currentDate.isBefore(convertDateToLocalDate(program.getStartDate()))) {
+//                status = "Upcoming";
+//            } else if (!currentDate.isAfter(convertDateToLocalDate(program.getEndtDate()))) {
+//                status = "Active";
+//            } else {
+//                status = "Completed";
+//            }
+//
+//            programStatuses.add(Map.of(
+//                    "Program Name", program.getTitle(),
+//                    "Status", status
+//            ));
+//        }
+//
+//        return programStatuses;
+//    }
 
-    @Override
-    public List<Map<String, String>> generateRevenueReport(String timePeriod) {
-        List<Map<String, String>> revenueReport = new ArrayList<>();
-        if ("last quarter".equalsIgnoreCase(timePeriod)) {
-            for (Program program : Programs) {
-                double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
-                revenueReport.add(Map.of(
-                        "Program Name", program.getTitle(),
-                        "Revenue", String.valueOf(revenue)
-                ));
-            }
-        }
-        return revenueReport;
-    }
 
-    @Override
-       public List<Map<String, String>> getProgramStatuses() {
-        List<Map<String, String>> programStatuses = new ArrayList<>();
-        LocalDate currentDate = LocalDate.now(); // Get the current date
-
-        for (Program program : Programs) {
-            String status;
-            if (currentDate.isBefore(convertDateToLocalDate(program.getStartDate()))) {
-                status = "Upcoming";
-            } else if (!currentDate.isAfter(convertDateToLocalDate(program.getEndtDate()))) {
-                status = "Active";
-            } else {
-                status = "Completed";
-            }
-
-            programStatuses.add(Map.of(
-                    "Program Name", program.getTitle(),
-                    "Status", status
-            ));
-        }
-
-        return programStatuses;
-    }
-
-
-    public static LocalDate convertDateToLocalDate(Date date) {
-        return date.toInstant()                        // Convert Date to Instant
-                .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime
-                .toLocalDate();                   // Convert ZonedDateTime to LocalDate
-    }
+//    public static LocalDate convertDateToLocalDate(Date date) {
+//        return date.toInstant()                        // Convert Date to Instant
+//                .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime
+//                .toLocalDate();                   // Convert ZonedDateTime to LocalDate
+//    }
 
     @Override
     public void addArticle(Article article) {
@@ -253,7 +296,7 @@ public class Admin implements AdminService {
                 "Description", percentage.toString() + "%"
         ));
 
-       // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
 
         System.out.println("+------------------------+------------------------------------+");
     }
@@ -277,23 +320,131 @@ public class Admin implements AdminService {
         }
         return true;
     }
-    public boolean signUpInstructor(String name, String email, String password) {
-        if (!this.isSignedIn(email)) {
-            Instructor instructor = new Instructor(name, email, password);
-            instructor.setStatus(UserStatus.Pending);
-            instructorRepository.addInstructor(instructor);
-            return true;
+    public boolean signUp(Role role,String name, String email,Integer Age , String password){
+        boolean signUpResult;
+
+        if (!email.endsWith("@gmail.com") || Age < 18 || password.length() < 8) {
+            signUpResult = false;
+            System.out.println( "The operation is not allowed: Invalid email, age must be 18 or older or password must be at least 8 characters.");
+        } else {
+
+            if(isSignedIn(email)){
+                System.out.println("You are already signed in.");
+                return false;
+            }
+            if(role == Role.INSTRUCTOR) {
+                Instructor instructor = new Instructor(email, password, name, Age, UserStatus.Pending);
+                instructorRepository.addInstructor(instructor);
+            }
+            else if(role == Role.CLIENT) {
+                Client client = new Client(name, email, Age, password, UserStatus.Pending);
+                this.clientRepository.addClient(client);
+            }
+//            String subject = "Approval Notification";
+//            String messageContent = "Your account has been approved!";
+//            sendEmail(email, subject, messageContent);
+            System.out.println("The Admin will approve your account as soon as possible.");
+            signUpResult = true;
         }
-        else return false;
+
+        return signUpResult;
+
     }
-    public boolean signUpClient(String name, String email, String password) {
-        if (!this.isSignedIn(email)) {
-            Client client = new Client(name, email, password);
-            client.setStatus(UserStatus.Pending);
-            clientRepository.addClient(client);
-            return true;
+
+    public boolean signIn(Role role,String email, String password) {
+        Instructor instructor = instructorRepository.findInstructorByEmail(email);
+        Client client = clientRepository.findClientByEmail(email);
+        if (instructor == null && client == null && role!=Role.ADMIN) {
+            System.out.println("Invalid email or password.");
+            return false;
         }
-        else return false;
+        switch (role){
+            case INSTRUCTOR:
+                if(instructor.getPassword().equals(password)){
+                    instructor.setLoggedIn(true);
+                    System.out.println("You have signed in successfully.");
+                    return true;
+                }
+                else{
+                    System.out.println("Invalid email or password.");
+                    return false;
+                }
+            case CLIENT:
+                if(client.getPassword().equals(password)){
+                    client.setLoggedIn(true);
+                    System.out.println("Client-You have signed in successfully.");
+                    return true;
+                }
+                else{
+                    System.out.println("Client - Invalid email or password.");
+                    return false;
+                }
+            case ADMIN:
+                if(password.equals("123456") ){
+                    this.loggedIn=true;
+                    System.out.println("Admin - You have signed in successfully.");
+                    return true;
+                }
+                else {
+                    System.out.println("Admin - Invalid email or password.");
+                    return false;
+                }
+            default:{
+                System.out.println("Invalid role.");
+                return false;
+            }
+        }
+
+
     }
+
+
+
+
+
+    /**
+     * Sends an email to the specified recipient with a given subject and message content.
+     *
+     * @param recipientEmail the email address of the recipient
+     * @param subject the subject of the email
+     * @param messageContent the content of the email message
+     */
+    public static void sendEmail(String recipientEmail, String subject, String messageContent) {
+
+        String senderEmail = "g.safw2018@gmail.com";
+        String senderPassword = "Gh1a2s3S45";
+
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your SMTP host
+        properties.put("mail.smtp.port", "587");
+
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(senderEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
+            message.setSubject(subject);
+            message.setText(messageContent);
+
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            System.err.println("Error while sending email: " + e.getMessage());
+        }
+
+    }
+
 }
 

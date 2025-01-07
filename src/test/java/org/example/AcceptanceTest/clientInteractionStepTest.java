@@ -76,6 +76,7 @@ public class clientInteractionStepTest {
 //        System.out.println(instructor.getProgramTitle());
         instructor.addnewProgram(program);
         client.enrollProgram(program);
+//        client.enrollProgram(program);
     }
     @When("the instructor selects a client {string} and sends a personalized message {string}")
     public void theInstructorSelectsAAndSendsA(String specifiedClientName, String specifiedMessage) {

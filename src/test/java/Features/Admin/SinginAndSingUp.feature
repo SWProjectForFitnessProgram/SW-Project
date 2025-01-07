@@ -1,50 +1,54 @@
-Feature: Sign Up and Sign In
-  As a user (instructor, client, or admin),
-  I want to sign up for an account and sign in after approval
-  So that I can access the system based on my role.
+Feature: User Sign-Up and Sign-In Process
+#1
+  Scenario: Sign up for instructor successfully
+    Given  "instructor" provides the following details:
+      | Name       | John Doe       |
+      | Email      | ibiahygh.g@gmail.com |
+      | Age        | 30            |
+      | Password   | password123   |
+    When the "instructor" attempts to sign up
+    Then Sign up operation should succeed
+    And the "instructor" should see "The Admin will approve your account as soon as possible."
+    And the "instructor" should receive an email notification upon approval
+#2
+  Scenario: Sign up for client successfully
+    Given  "client" provides the following details:
+      | Name       | Jane Smith    |
+      | Email      | talaalhendiuni4@gmail.com |
+      | Age        | 25            |
+      | Password   | clientpass123 |
+    When the "client" attempts to sign up
+    Then Sign up operation should succeed
+    And the "client" should see "The Admin will approve your account as soon as possible."
+    And the "client" should receive an email notification upon approval
+#3
+  Scenario: Sign up unsuccessfully
+    Given "instructor" provides the following details:
+      | Name       | Invalid User  |
+      | Email      | invalid.email |
+      | Age        | 17            |
+      | Password   | short         |
+    When the "instructor" attempts to sign up
+    Then the operation should fail
+    And the user should see "The operation is not allowed: Invalid email, age must be 18 or older or password must be at least 8 characters."
 
-  # Sign Up Scenarios
-  Scenario: Successful instructor sign up
-    Given no account exists with email "instructor1@test.com"
-    When the instructor signs up with:
-      | Email             | Password      | Name       |
-      | instructor1@test.com | InstructorOne | John Doe   |
-    Then the account should be created as pending approval with:
-      | Email             | Password      | Name       | Status  |
-      | instructor1@test.com | InstructorOne | John Doe   | Pending |
-    And the system should display the message "Your account is pending admin approval."
+  Scenario: Sign in successfully
+    Given the following accounts exist:
+      | Role       | Email             | Password      |
+      | Instructor | john.doe@gmail.com | password123   |
+      | Client     | jane.smith@gmail.com | clientpass123 |
+      | Admin      | g.safw2018@gmail.com  | 123456  |
+    When the user attempts to sign in
+    Then Sign in operation should succeed
+    And the user should see "Sign in successful."
 
-  Scenario: Admin approves an instructor account
-    Given a pending instructor account exists with email "instructor1@test.com"
-    When the admin approves the account for email "instructor1@test.com"
-    Then the account status should be updated to "Approved"
-    And the instructor should receive an email saying "Your account has been approved."
 
-  Scenario: Instructor sign up with an existing email
-    Given an account exists with email "instructor1@test.com"
-    When the instructor signs up with:
-      | Email             | Password      | Name       |
-      | instructor1@test.com | InstructorOne | John Doe   |
-    Then the system should display an error message "Email already exists."
-
-  # Sign In Scenarios
-  Scenario: Successful sign in as an instructor
-    Given an approved instructor account exists with email "instructor1@test.com" and password "InstructorOne"
-    When the instructor signs in with:
-      | Email             | Password      |
-      | instructor1@test.com | InstructorOne |
-    Then the instructor should be signed in successfully.
-
-  Scenario: Failed sign in with incorrect credentials
-    Given an approved client account exists with email "client1@test.com" and password "ClientOne"
-    When the client signs in with:
-      | Email             | Password      |
-      | client1@test.com     | WrongPassword |
-    Then the system should display an error message "Invalid credentials."
-
-  Scenario: Admin sign in
-    Given an admin account exists with email "admin@test.com" and password "AdminPass"
-    When the admin signs in with:
-      | Email             | Password  |
-      | admin@test.com       | AdminPass |
-    Then the admin should be signed in successfully.
+  Scenario: Sign in with unfounded account
+    Given the following accounts exist:
+      | Role       | Email             | Password      |
+      | Instructor | john@gmail.com | password123   |
+      | Client     | janeith@gmail.com | clientpass123 |
+      | Admin      | admin@gmail.com  | adminpass123  |
+    When the user attempts to sign in
+    Then Sign in operation should fail
+    And the user should see "Account not found."

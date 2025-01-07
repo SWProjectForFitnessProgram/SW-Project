@@ -14,7 +14,7 @@ public class User {
         this.id = "";
         this.password = "";
     }
-    // Getters and setters
+//     Getters and setters
     public String getId() {
         return id;
     }

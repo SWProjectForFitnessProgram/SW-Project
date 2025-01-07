@@ -25,9 +25,9 @@ public interface AdminService {
 //    List<Map<String, Double>> getProgramEnrollmentStatisticsAsTable();
 
 
-    List<Map<String, String>> generateRevenueReport(String lastQuarter);
-
-    List<Map<String, String>> getProgramStatuses();
+//    List<Map<String, String>> generateRevenueReport(String lastQuarter);
+//
+//    List<Map<String, String>> getProgramStatuses();
 
     void addArticle(Article article);
 

@@ -17,14 +17,12 @@ public class Client {
     private int totalSessions;
     private String receivedMessage;
     private Long id;
-    //    @Column(nullable = false, unique = true)
     String email;
     String clientName;
-    //    @Column(nullable = false)
     String password;
-    //    String meesage;
     int Age;
     boolean approved =false ;
+    boolean LoggedIn;
     private List<String> messages = new ArrayList<>();
     private List<String> feedbacks = new ArrayList<>();
 
@@ -47,7 +45,7 @@ public class Client {
         this.password = password;
         this.status = status;
     }
-    public Client(String name,String email,int Age) {
+    public Client(String name,String email,int Age ) {
         this.clientName = name;
         this.email = email;
         this.Age = Age;
@@ -59,6 +57,15 @@ public class Client {
         this.Age = Age;
         this.id = id;
         enrolledPrograms = new ArrayList<>();
+
+    }
+    public Client(String name,String email,int Age ,String password,UserStatus status ) {
+        this.clientName = name;
+        this.email = email;
+        this.Age = Age;
+        enrolledPrograms = new ArrayList<>();
+        this.password = password;
+        this.status = status;
 
     }
     public Client(String name) {
@@ -170,6 +177,9 @@ public class Client {
     public void setPassword(String newPassword) {
         this.password = newPassword;
     }
+    public String getPassword() {
+        return password;
+    }
 
     public void setName(String newName) {
         this.clientName = newName;
@@ -201,5 +211,9 @@ public class Client {
     }
     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
+    }
+
+    public void setLoggedIn(boolean b) {
+        LoggedIn = true;
     }
 }
