@@ -174,7 +174,7 @@ public class Program {
 
         if (!clientsEnrolled.contains(client)) {
             clientsEnrolled.add(client);
-            System.out.println(client.getName() + " has been enrolled in the program.");
+//            System.out.println(client.getName() + " has been enrolled in the program.");
         } else {
             System.out.println(client.getName() + " is already enrolled in the program.");
         }

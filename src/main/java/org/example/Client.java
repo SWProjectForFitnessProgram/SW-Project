@@ -62,7 +62,7 @@ public class Client {
     {
         if (!enrolledPrograms.contains(program)) {
             enrolledPrograms.add(program);
-            System.out.println( clientName + " enrolled in program: " + program.getTitle());
+//            System.out.println( clientName + " enrolled in program: " + program.getTitle());
         } else {
             System.out.println( clientName + " is already enrolled in program: " + program.getTitle());
         }

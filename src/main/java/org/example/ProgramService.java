@@ -79,8 +79,18 @@ public class ProgramService {
             }
         }
     }
-
-    private String programDetailsAsString(Program program) {
+    public void displayAllProgramsNames()
+    {
+        if (programList.isEmpty()) {
+            System.out.println("No programs available.");
+        } else {
+            System.out.println("Available Programs:");
+            for (Program program : programList) {
+                System.out.println("- " + program.getTitle());
+            }
+        }
+    }
+    public String programDetailsAsString(Program program) {
         return String.format(
                 "Title: %s, Duration: %s, Difficulty Level: %s, Goals: %s, Content: %s, Price: %s",
                 program.getTitle(),

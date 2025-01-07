@@ -1,23 +1,330 @@
 package org.example;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 
 public class Main {
+    private static List<Client> clients = new ArrayList<>();
+    private static List<Program> programs = new ArrayList<>();
+    private static List<Instructor> instructors = new ArrayList<>();
+    private static ProgramService programService = new ProgramService();
     private static User currentUser = new User();
     private static Profile currentProfile = new Profile();
     private static ProgramManager programManager = new ProgramManager();
     private static FeedbackAndReviewsManager feedbackManager = new FeedbackAndReviewsManager();
     private static ProgressManager progressManager = new ProgressManager();
 
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-        Scanner scanner = new Scanner(System.in);
-        login(scanner);
-        ClientMenu(scanner);
 
+    public static void main(String[] args) {
+        initializeMockData();
+        Scanner scanner = new Scanner(System.in);
+       while(true)
+       {
+           String mainChoice;
+           System.out.println("==== Fitness Management System ====");
+           System.out.println("1. Admin");
+           System.out.println("2. Instructor");
+           System.out.println("3. Client");
+           System.out.println("4. Exit");
+           System.out.print("Select an option : ");
+           mainChoice = scanner.next();
+           switch (mainChoice) {
+               case "1" :
+                   adminMenu(scanner);
+                   break;
+               case "2" :
+                   instructorMenu(scanner);
+                   break;
+               case "3" :
+                   clientMenu(scanner);
+                   break;
+               case "4" :
+                   System.out.println("Thank you for using our Fitness program :)");
+                   return;
+               default :
+                   System.err.println("Invalid input!\nPlease try again.");
+           }
+
+       }
+    }
+    private static void initializeMockData() {
+        Content mockResources = new Content(
+                "https://youtu.be/f3zOrYCwquE",
+                "https://unsplash.com/s/photos/gym",
+                "https://www.everydayhealth.com/fitness/guide/"
+        );
+
+        Schedule mockSchedule = new Schedule(
+                new String[]{"Sunday", "Tuesday", "Thursday"},
+                "5:00 PM - 7:00 PM",
+                "Online"
+        );
+
+        Program mockProgram1 = new Program(
+                "Get Fit & Moving Challenge",
+                "30 days",
+                "Beginners",
+                "Weight Loss, Full Body",
+                mockResources,
+                mockSchedule,
+                "29.99 $"
+        );
+
+        Program mockProgram2 = new Program(
+                "Strength & Endurance Training",
+                "6 weeks",
+                "Intermediate",
+                "Strength, Endurance",
+                mockResources,
+                mockSchedule,
+                "39.99 $"
+        );
+
+        Client client1 = new Client("Alice", "alice@example.com", 25);
+        Client client2 = new Client("Bob", "bob@example.com", 30);
+        Client client3 = new Client("Charlie", "charlie@example.com", 35);
+
+        Instructor instructor1 = new Instructor("John Doe", "johndoe@example.com", 30);
+        Instructor instructor2 = new Instructor("Jane Smith", "janesmith@example.com", 28);
+
+        mockProgram1.enrollClient(client1);
+        mockProgram1.enrollClient(client2);
+        mockProgram2.enrollClient(client3);
+
+        instructor1.addnewProgram(mockProgram1);
+        instructor2.addnewProgram(mockProgram2);
+
+        client1.enrollProgram(mockProgram1);
+        client2.enrollProgram(mockProgram1);
+        client3.enrollProgram(mockProgram2);
+
+        programService.addProgram(mockProgram1);
+        programService.addProgram(mockProgram2);
+
+        programs.add(mockProgram1);
+        programs.add(mockProgram2);
+        clients.add(client1);
+        clients.add(client2);
+        clients.add(client3);
+        instructors.add(instructor1);
+        instructors.add(instructor2);
+    }
+
+    private static void instructorMenu(Scanner scanner) {
+        while (true)
+        {
+            System.out.println("\n\t\"Instructor Menu\"");
+            System.out.println("1. View Your Programs");
+            System.out.println("2. Add new Program");
+            System.out.println("3. Update A Program");
+            System.out.println("4. Delete A Program");
+            System.out.println("5. Exit");
+            System.out.print("Select an option: ");
+            String choice = scanner.next();
+            scanner.nextLine();
+            switch (choice)
+            {
+                case "1":
+                    viewAllPrograms();
+                    break;
+                case "2":
+                    addNewProgram();
+                    break;
+                case "3":
+                    updateProgram();
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    return;
+                default:
+                    System.err.println("Invalid input!\nPlease try again.");
+
+            }
+
+        }
+    }
+
+    private static void updateProgram() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose the program you want to make changes to: ");
+        programService.displayAllProgramsNames();
+
+        System.out.println("Write the program name that you want to make edits to: 'Make sure to write the name correctly' ");
+        String programName = scanner.nextLine();
+
+        Program chosenProgram = programService.findProgramByTitle(programName);
+        if(chosenProgram != null)
+        {
+            System.out.println(programService.programDetailsAsString(chosenProgram));
+            System.out.println("Please choose what do you want to edit : ");
+            System.out.println("1. Edit Program Name");
+            System.out.println("2. Edit Program Description");
+            System.out.println("3. Edit Program Content");
+            System.out.println("4. Edit Program Schedule");
+            System.out.println("5. Edit Program Cost");
+            System.out.println("6. Cancel");
+            System.out.print("Select an option: ");
+
+            String choice = scanner.nextLine();
+            switch (choice)
+            {
+                case "1":
+                    System.out.print(chosenProgram.getTitle() + "\nThe new Title is ");
+                    programName = scanner.nextLine();
+                    chosenProgram.setProgramTitle(programName);
+                    System.out.println("The Program Name Updated Successfully :)");
+                    break;
+                case "2":
+                    System.out.print(chosenProgram.getDuration() + "\nThe new Duration: ");
+                    chosenProgram.setDuration(scanner.nextLine());
+
+                    System.out.print(chosenProgram.getDifficultyLevel() + "\nThe new Difficulty Level: ");
+                    chosenProgram.setDifficultyLevel(scanner.nextLine());
+
+                    System.out.print(chosenProgram.getGoals() + "\nThe new Goal: ");
+                    chosenProgram.setGoals(scanner.nextLine());
+
+                    System.out.println("The Program's Description Updated Successfully :)");
+
+                    break;
+                case "3":
+                    System.out.println(chosenProgram.getContent());
+                    Content content = chosenProgram.getContent();
+
+                    System.out.print(content.getVideoTutorials() + "\nThe new video's tutorial URL: ");
+                    content.setVideoTutorial(scanner.nextLine());
+
+                    System.out.print(content.getImages() + "\nThe new Image's URL: ");
+                    content.setImages(scanner.nextLine());
+
+                    System.out.print(content.getDocumentation() + "\nThe new Documentation's URL: ");
+                    content.setDocumentation(scanner.nextLine());
+
+                    chosenProgram.setContent(content);
+
+                    System.out.println("The Program's Content Updated Successfully :)");
+                    break;
+                case "4":
+                    System.out.println(chosenProgram.getSchedule());
+                    Schedule schedule = chosenProgram.getSchedule();
+
+                    System.out.println(schedule.getDays() + "\nThe new Days: ");
+
+                    break;
+                case "5":
+                    break;
+                case "6":
+                    return;
+                default:
+                    System.err.println("Invalid input!\nPlease try again.");
+            }
+
+        }
+
+    }
+
+    private static void addNewProgram() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nLet's Enter Our New Program Details :)");
+
+        System.out.print("Enter the Program Title :\t");
+        String programName = scanner.nextLine();
+
+        System.out.print("\nEnter The Duration (e.g. 5 weeks) :\t");
+        String duration = scanner.nextLine();
+
+        System.out.print("\nEnter The Target Audience (e.g. Beginners):\t");
+        String difficultyLevel = scanner.nextLine();
+
+        System.out.print("\nEnter The Program Type (e.g. Weight Loss):\t");
+        String goal = scanner.nextLine();
+
+        System.out.print("\nEnter The Suitable Price for it (e.g. 30.33 $):\t");
+        String price = scanner.nextLine();
+
+
+        System.out.print("\nEnter The Training Days: (e.g. Tuesday, monday )\t");
+        String input = scanner.nextLine();
+        String[] days = input.split(",");
+        /////To trim spaces :)
+        for (int i = 0; i < days.length; i++) {
+            days[i] = days[i].trim();
+        }
+
+        System.out.println("\nSelect a time slot:");
+        System.out.println("1.  6:00 AM -  8:00 AM");
+        System.out.println("2. 10:00 AM - 12:00 PM");
+        System.out.println("3.  7:00 PM -  9:00 PM");
+        System.out.println("4.  5:00 PM -  7:00 PM");
+        input =  scanner.nextLine();
+        String time = new String();
+        switch (input)
+        {
+            case "1":
+                time = "6:00 AM -  8:00 AM";
+                break;
+            case "2":
+                time = "10:00 AM - 12:00 PM";
+                break;
+            case "3":
+                time = "5:00 PM -  7:00 PM";
+                break;
+            case "4":
+                time = "8:00 PM -  10:00 PM";
+                break;
+            default:
+                break;
+
+        }
+        System.out.println("\nEnter if you want it Online or In-person :\t");
+        String scheduleType = scanner.nextLine();
+
+        Schedule schedule = new Schedule(days,time,scheduleType);
+
+        System.out.println("\nPress 1 if you want to add the Content URLs\nPress 2 or any button to keep the default\n");
+        String choice = scanner.nextLine();
+        String url1,url2,url3;
+        Content content;
+        if(choice.equals("1"))
+        {
+            System.out.print("\nEnter The Video's URL on Youtube:\t");
+            url1 = scanner.nextLine();
+
+            System.out.print("\nEnter The Document's URL:\t");
+            url2 = scanner.nextLine();
+
+            System.out.print("\nEnter The Image's URL:\t");
+            url3 = scanner.nextLine();
+
+            content = new Content(url1,url2,url3);
+        }
+        else
+        {
+            content = new Content("https://youtu.be/f3zOrYCwquE", "https://unsplash.com/s/photos/gym", "https://www.everydayhealth.com/fitness/guide/");
+        }
+        Program newProgram = new Program(programName,duration,difficultyLevel,goal,content,schedule,price);
+        programService.addProgram(newProgram);
+        programs.add(newProgram);
+        System.out.println("\nNew program added successfully!");
+    }
+
+    private static void viewAllPrograms() {
+        programService.displayAllProgramsNames();
+        System.out.println("\nPress 1 if you want to display all programs details \nPress any other button to return to the Instructor menu");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.next();
+        scanner.nextLine();
+        if (choice.equals("1"))
+        {
+            programService.displayAllPrograms();
+        }
+    }
+
+    private static void adminMenu(Scanner scanner) {
     }
 
     public static void login(Scanner scanner) {
@@ -36,9 +343,9 @@ public class Main {
     }
 
 
-    private static void ClientMenu(Scanner scanner) {
+    private static void clientMenu(Scanner scanner) {
         while (true) {
-            System.out.println("\nMain Menu:");
+            System.out.println("\nClient Menu:");
             System.out.println("1. View Profile");
             System.out.println("2. Customize Profile");
             System.out.println("3. View Program Details");
