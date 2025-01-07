@@ -91,16 +91,14 @@ public class SigninAndSingupStepTest {
     }
     @Given("the following accounts exist:")
     public void theFollowingAccountsExist(io.cucumber.datatable.DataTable dataTable) {
-
         List<Map<String, String>> dataAsMaps = dataTable.asMaps(String.class, String.class);
+        accounts = new ArrayList<>();
         for (Map<String, String> row : dataAsMaps) {
             String role = row.get("Role");
-            Role userRole = Role.valueOf(role.toUpperCase());
             String email = row.get("Email");
             String password = row.get("Password");
             accounts.add(role + "," + email + "," + password);
             System.out.println(role + "," + email + "," + password);
-
         }
     }
     @When("the user attempts to sign in")
@@ -115,9 +113,18 @@ public class SigninAndSingupStepTest {
             email= account.split(",")[1].trim();
             password = account.split(",")[2].trim();
             String role = account.split(",")[0].trim();
-            Role userRole = Role.valueOf(role.toUpperCase());
-            signInResult = admin.signIn(userRole, email, password);
 
+            Role userRole ;
+            try {
+                userRole = Role.valueOf(role.toUpperCase());
+                signInResult = admin.signIn(userRole, email, password);
+            }
+            catch(IllegalArgumentException e){
+                message = "Invalid role.";
+                System.out.println(message);
+                signInResult = false;
+
+            }
         }
 
     }

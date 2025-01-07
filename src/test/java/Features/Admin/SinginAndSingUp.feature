@@ -49,6 +49,7 @@ Feature: User Sign-Up and Sign-In Process
       | Instructor | john@gmail.com | password123   |
       | Client     | janeith@gmail.com | clientpass123 |
       | Admin      | admin@gmail.com  | adminpass123  |
+
     When the user attempts to sign in
     Then Sign in operation should fail
     And the user should see "Account not found."
