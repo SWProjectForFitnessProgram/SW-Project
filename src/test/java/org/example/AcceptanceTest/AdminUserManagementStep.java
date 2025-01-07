@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.Map;
 import static org.example.UserStatus.*;
 import static org.junit.Assert.assertTrue;
 
-public class AdminUserManagementTest {
+public class AdminUserManagementStep {
 
 
     private static List<Instructor> pendingInstructors;
