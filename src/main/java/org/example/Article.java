@@ -10,9 +10,9 @@ public class Article {
             this.status = status;
         }
 
-        public String getName() {
-            return name;
-        }
+//        public String getName() {
+//            return name;
+//        }
 
         public UserStatus getStatus() {
             return status;

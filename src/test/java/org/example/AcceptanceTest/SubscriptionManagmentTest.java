@@ -67,8 +67,10 @@ public class SubscriptionManagmentTest {
         SubscriptionPlan plan = SubscriptionPlan.valueOf(newPlan.toUpperCase());
         if (client != null && client.getName().equals(name)) {
             subscriptionService.changeSubscription(client, plan);
+            subscriptionService.assignSubscription(new Client(name), plan);
         } else if (instructor != null && instructor.getName().equals(name)) {
             subscriptionService.changeSubscription(instructor, plan);
+            subscriptionService.assignSubscription(new Instructor(instructor.getEmail(), instructor.getPassword(), instructor.getName()), plan);
         }
     }//3
     @Then("{string}'s subscription plan should be {string}")
