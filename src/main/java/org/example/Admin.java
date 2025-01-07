@@ -360,6 +360,7 @@ public class Admin implements AdminService {
         }
         switch (role){
             case INSTRUCTOR:
+                assert instructor != null;
                 if(instructor.getPassword().equals(password)){
                     instructor.setLoggedIn(true);
                     System.out.println("You have signed in successfully.");
@@ -402,49 +403,49 @@ public class Admin implements AdminService {
 
 
 
-    /**
-     * Sends an email to the specified recipient with a given subject and message content.
-     *
-     * @param recipientEmail the email address of the recipient
-     * @param subject the subject of the email
-     * @param messageContent the content of the email message
-     */
-    public static void sendEmail(String recipientEmail, String subject, String messageContent) {
-
-        String senderEmail = "g.safw2018@gmail.com";
-        String senderPassword = "Gh1a2s3S45";
-
-
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your SMTP host
-        properties.put("mail.smtp.port", "587");
-
-
-        Session session = Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(senderEmail, senderPassword);
-            }
-        });
-
-        try {
-
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(senderEmail));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
-            message.setSubject(subject);
-            message.setText(messageContent);
-
-            Transport.send(message);
-            System.out.println("Email sent successfully!");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-            System.err.println("Error while sending email: " + e.getMessage());
-        }
-
-    }
+//    /**
+//     * Sends an email to the specified recipient with a given subject and message content.
+//     *
+//     * @param recipientEmail the email address of the recipient
+//     * @param subject the subject of the email
+//     * @param messageContent the content of the email message
+//     */
+//    public static void sendEmail(String recipientEmail, String subject, String messageContent) {
+//
+//        String senderEmail = "g.safw2018@gmail.com";
+//        String senderPassword = "Gh1a2s3S45";
+//
+//
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your SMTP host
+//        properties.put("mail.smtp.port", "587");
+//
+//
+//        Session session = Session.getInstance(properties, new Authenticator() {
+//            @Override
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(senderEmail, senderPassword);
+//            }
+//        });
+//
+//        try {
+//
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(senderEmail));
+//            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
+//            message.setSubject(subject);
+//            message.setText(messageContent);
+//
+//            Transport.send(message);
+//            System.out.println("Email sent successfully!");
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//            System.err.println("Error while sending email: " + e.getMessage());
+//        }
+//
+//    }
 
 }
 
