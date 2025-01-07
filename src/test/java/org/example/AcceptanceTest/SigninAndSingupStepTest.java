@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert.*;
+import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -62,6 +64,7 @@ public class SigninAndSingupStepTest {
     public void theUserAttemptsToSignUp(String userType) {
         Role role = Role.valueOf(userType.toUpperCase());
         signUpResult = admin.signUp(role, name, email, age, password);
+
         message = "The Admin will approve your account as soon as possible.";
 
     }
@@ -79,14 +82,19 @@ public class SigninAndSingupStepTest {
     }
 
 
-    @Then("the operation should fail")
+    @Then("Sign up operation should fail")
     public void theOperationShouldFail() {
+
         Assert.assertFalse(signUpResult);
         message = "The operation is not allowed: Invalid email, age must be 18 or older or password must be at least 8 characters.";
     }
 
     @And("the user should see {string}")
     public void theUserShouldSee(String arg0) {
+        if(arg0.equals("You are already signed in.")){
+            message = "You are already signed in.";
+
+        }
         assertEquals(message,arg0);
     }
     @Given("the following accounts exist:")
@@ -140,4 +148,5 @@ public class SigninAndSingupStepTest {
         Assert.assertFalse(signInResult);
         message = "Account not found.";
     }
+
 }

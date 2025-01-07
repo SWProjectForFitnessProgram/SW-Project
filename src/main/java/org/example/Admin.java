@@ -312,13 +312,14 @@ public class Admin implements AdminService {
     }
 
     public boolean isSignedIn(String email){
+        boolean isLoggedIn = false;
         if(instructorRepository.findInstructorByEmail(email)==null){
             if(clientRepository.findClientByEmail(email)==null){
-                return false;
+                isLoggedIn= false;
             }
-            else return true;
+            else isLoggedIn= true;
         }
-        return true;
+        return isLoggedIn;
     }
     public boolean signUp(Role role,String name, String email,Integer Age , String password){
         boolean signUpResult;

@@ -6,10 +6,7 @@ public class User {
     private boolean loggedIn = false;
     private Role role;
     SubscriptionPlan subscription;
-    public User(String id, String password) {
-        this.id = id;
-        this.password = password;
-    }
+
     public User() {
         this.id = "";
         this.password = "";
@@ -23,9 +20,7 @@ public class User {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
-    }
+
 
     public void setPassword(String password) {
         this.password = password;
@@ -35,9 +30,7 @@ public class User {
         return subscription != null ? subscription.getPlanName() : "No subscription";
     }
 
-    public void setSubscription(SubscriptionPlan subscription) {
-        this.subscription = subscription;
-    }
+
 
 
     public boolean login(String id, String password) {
@@ -52,19 +45,6 @@ public class User {
         return loggedIn;
     }
 
-    public enum SubscriptionPlan {
-        BASIC("Basic"),
-        PREMIUM("Premium");
 
-        private final String planName;
-
-        SubscriptionPlan(String planName) {
-            this.planName = planName;
-        }
-
-        public String getPlanName() {
-            return planName;
-        }
-    }
 }
 
