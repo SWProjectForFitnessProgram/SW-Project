@@ -1,22 +1,18 @@
 package org.example;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.time.ZoneId;
+
 import java.util.*;
-import java.time.LocalDate;
 /**
  * Represents the admin of the system, responsible for managing instructors, clients, articles,
  * health tips, recipes, complaints, programs, and generating various reports. Implements the
  * AdminService interface for defining core functionalities.
  */
-//@Service
-public class Admin implements AdminService {
-    private static final int password = 123456;
-    private static final String email = "g.safw2018@gmail.com";
 
-    private static final String name = "Ghayda";
-    public boolean deactivate=false;
+public class Admin implements AdminService {
+    private static final int PASSWORD = 123456;
+    private static final String EMAIL = "g.safw2018@gmail.com";
+
+    private static final String NAME = "Ghayda";
+    private final boolean deactivate=false;
     private boolean loggedIn=true;
     private String selectedOption;
     private final InstructorRepository instructorRepository;
@@ -25,7 +21,7 @@ public class Admin implements AdminService {
     private List<HealthTip> tips = new ArrayList<>();
     private List<Recipe> recipes = new ArrayList<>();
     private List<Complaint> complaints = new ArrayList<>();
-    private ArrayList<Program> Programs = new ArrayList<>();
+    private ArrayList<Program> programs = new ArrayList<>();
 
 
 
@@ -104,16 +100,16 @@ public class Admin implements AdminService {
     }
 
     public void addProgram(Program program) {
-        Programs.add(program);
+        programs.add(program);
     }
     public List<Map<String, Integer>> getProgramEnrollmentStatisticsAsTable() {
-        List<Map<String,Integer>> Top5Programs = new ArrayList<>();
-        for(Program p : Programs){
+        List<Map<String,Integer>> top5programs = new ArrayList<>();
+        for(Program p : programs){
             Map<String, Integer> temp = new HashMap<>();
             temp.put(p.getTitle(),p.getClientsEnrolled().size());
-            Top5Programs.add(temp);
+            top5programs.add(temp);
         }
-        Top5Programs.sort((map1, map2) -> {
+        top5programs.sort((map1, map2) -> {
 
             Integer value1 = map1.values().iterator().next();
             Integer value2 = map2.values().iterator().next();
@@ -121,51 +117,48 @@ public class Admin implements AdminService {
             return value2.compareTo(value1);
         });
 
-//        if (Top5Programs.size() > 5) {
-//            Top5Programs = Top5Programs.subList(0, 5); // Keep only the top 5
-//        }
 
-        System.out.println("Top 5 Programs:");
-        for (int i = 0; i < Math.min(5, Top5Programs.size()); i++) {
-            Map<String, Integer> program = Top5Programs.get(i);
+        System.out.println("Top 5 programs:");
+        for (int i = 0; i < Math.min(5, top5programs.size()); i++) {
+            Map<String, Integer> program = top5programs.get(i);
 
-            String programName = program.keySet().iterator().next();
+            String programNAME = program.keySet().iterator().next();
             Integer revenue = program.values().iterator().next();
 
-            System.out.printf("%d. Program Name: %s - Enrollment: %d%n", (i + 1), programName, revenue);
+            System.out.printf("%d. Program NAME: %s - Enrollment: %d%n", (i + 1), programNAME, revenue);
         }
-        return Top5Programs;
+        return top5programs;
     }
     public List<Map<String, String>> getRevenueReport() {
 
         List<Map<String, String>> revenueReport = new ArrayList<>();
-        for (Program program : Programs) {
+        for (Program program : programs) {
             double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
             revenueReport.add(Map.of(
-                    "Program Name", program.getTitle(),
+                    "Program NAME", program.getTitle(),
                     "Revenue", String.valueOf(revenue)
             ));
         }
         return revenueReport;
     }
-    public List<Map<String, String>> getProgramStatusesAsTable() {
+    public List<Map<String, String>> getprogramstatusesAsTable() {
         List<Map<String,String>> resutl = new ArrayList<>();
-        for(Program p : Programs){
+        for(Program p : programs){
             if(p.getStartDate().after(new Date())){
                 resutl.add(Map.of(
-                        "Program Name", p.getTitle(),
+                        "Program NAME", p.getTitle(),
                         "Status", "Upcoming"
                 ));
             }
             else if(p.getEndtDate().after(new Date())){
                 resutl.add(Map.of(
-                        "Program Name", p.getTitle(),
+                        "Program NAME", p.getTitle(),
                         "Status", "Active"
                 ));
             }
             else if(p.getEndtDate().before(new Date())){
                 resutl.add(Map.of(
-                        "Program Name", p.getTitle(),
+                        "Program NAME", p.getTitle(),
                         "Status", "Completed"
                 ));
             }
@@ -177,10 +170,10 @@ public class Admin implements AdminService {
 //    public List<Map<String, String>> generateRevenueReport(String timePeriod) {
 //        List<Map<String, String>> revenueReport = new ArrayList<>();
 //        if ("last quarter".equalsIgnoreCase(timePeriod)) {
-//            for (Program program : Programs) {
+//            for (Program program : programs) {
 //                double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
 //                revenueReport.add(Map.of(
-//                        "Program Name", program.getTitle(),
+//                        "Program NAME", program.getTitle(),
 //                        "Revenue", String.valueOf(revenue)
 //                ));
 //            }
@@ -189,11 +182,11 @@ public class Admin implements AdminService {
 //    }
 //
 //    @Override
-//       public List<Map<String, String>> getProgramStatuses() {
-//        List<Map<String, String>> programStatuses = new ArrayList<>();
+//       public List<Map<String, String>> getprogramstatuses() {
+//        List<Map<String, String>> programstatuses = new ArrayList<>();
 //        LocalDate currentDate = LocalDate.now(); // Get the current date
 //
-//        for (Program program : Programs) {
+//        for (Program program : programs) {
 //            String status;
 //            if (currentDate.isBefore(convertDateToLocalDate(program.getStartDate()))) {
 //                status = "Upcoming";
@@ -203,13 +196,13 @@ public class Admin implements AdminService {
 //                status = "Completed";
 //            }
 //
-//            programStatuses.add(Map.of(
-//                    "Program Name", program.getTitle(),
+//            programstatuses.add(Map.of(
+//                    "Program NAME", program.getTitle(),
 //                    "Status", status
 //            ));
 //        }
 //
-//        return programStatuses;
+//        return programstatuses;
 //    }
 
 
@@ -301,49 +294,49 @@ public class Admin implements AdminService {
         System.out.println("+------------------------+------------------------------------+");
     }
 
-    public String getEmail() {
-        return email;
+    public String getEMAIL() {
+        return EMAIL;
     }
-    public String getName() {
-        return name;
+    public String getNAME() {
+        return NAME;
     }
-    public int getPassword() {
-        return password;
+    public int getPASSWORD() {
+        return PASSWORD;
     }
 
-    public boolean isSignedIn(String email){
+    public boolean isSignedIn(String EMAIL){
         boolean isLoggedIn = false;
-        if(instructorRepository.findInstructorByEmail(email)==null){
-            if(clientRepository.findClientByEmail(email)==null){
+        if(instructorRepository.findInstructorByEmail(EMAIL)==null){
+            if(clientRepository.findClientByEmail(EMAIL)==null){
                 isLoggedIn= false;
             }
             else isLoggedIn= true;
         }
         return isLoggedIn;
     }
-    public boolean signUp(Role role,String name, String email,Integer Age , String password){
+    public boolean signUp(Role role,String NAME, String EMAIL,Integer Age , String PASSWORD){
         boolean signUpResult;
 
-        if (!email.endsWith("@gmail.com") || Age < 18 || password.length() < 8) {
+        if (!EMAIL.endsWith("@gmail.com") || Age < 18 || PASSWORD.length() < 8) {
             signUpResult = false;
-            System.out.println( "The operation is not allowed: Invalid email, age must be 18 or older or password must be at least 8 characters.");
+            System.out.println( "The operation is not allowed: Invalid EMAIL, age must be 18 or older or PASSWORD must be at least 8 characters.");
         } else {
 
-            if(isSignedIn(email)){
+            if(isSignedIn(EMAIL)){
                 System.out.println("You are already signed in.");
                 return false;
             }
             if(role == Role.INSTRUCTOR) {
-                Instructor instructor = new Instructor(email, password, name, Age, UserStatus.Pending);
+                Instructor instructor = new Instructor(EMAIL, PASSWORD, NAME, Age, UserStatus.Pending);
                 instructorRepository.addInstructor(instructor);
             }
             else if(role == Role.CLIENT) {
-                Client client = new Client(name, email, Age, password, UserStatus.Pending);
+                Client client = new Client(NAME, EMAIL, Age, PASSWORD, UserStatus.Pending);
                 this.clientRepository.addClient(client);
             }
 //            String subject = "Approval Notification";
 //            String messageContent = "Your account has been approved!";
-//            sendEmail(email, subject, messageContent);
+//            sendEMAIL(EMAIL, subject, messageContent);
             System.out.println("The Admin will approve your account as soon as possible.");
             signUpResult = true;
         }
@@ -352,17 +345,17 @@ public class Admin implements AdminService {
 
     }
 
-    public boolean signIn(Role role,String email, String password) {
-        Instructor instructor = instructorRepository.findInstructorByEmail(email);
-        Client client = clientRepository.findClientByEmail(email);
+    public boolean signIn(Role role,String EMAIL, String PASSWORD) {
+        Instructor instructor = instructorRepository.findInstructorByEmail(EMAIL);
+        Client client = clientRepository.findClientByEmail(EMAIL);
         if (instructor == null && client == null && role!=Role.ADMIN) {
-            System.out.println("Invalid email or password.5454");
+            System.out.println("Invalid EMAIL or PASSWORD.5454");
             return false;
         }
         switch (role){
             case INSTRUCTOR:
                 assert instructor != null;
-                if(instructor.getPassword().equals(password)){
+                if(instructor.getPassword().equals(PASSWORD)){
                     instructor.setLoggedIn(true);
                     System.out.println("You have signed in successfully.");
                     return true;
@@ -370,20 +363,20 @@ public class Admin implements AdminService {
 
             case CLIENT:
                 assert client != null;
-                if(client.getPassword().equals(password)){
+                if(client.getPassword().equals(PASSWORD)){
                     client.setLoggedIn(true);
                     System.out.println("You have signed in successfully.");
                     return true;
                 }
 
             case ADMIN:
-                if(password.equals("123456") ){
+                if(PASSWORD.equals("123456") ){
                     this.loggedIn=true;
                     System.out.println("You have signed in successfully.");
                     return true;
                 }
                 else {
-                    System.out.println("Invalid email or password.");
+                    System.out.println("Invalid EMAIL or PASSWORD.");
                     return false;
                 }
 
@@ -397,16 +390,16 @@ public class Admin implements AdminService {
 
 
 //    /**
-//     * Sends an email to the specified recipient with a given subject and message content.
+//     * Sends an EMAIL to the specified recipient with a given subject and message content.
 //     *
-//     * @param recipientEmail the email address of the recipient
-//     * @param subject the subject of the email
-//     * @param messageContent the content of the email message
+//     * @param recipientEMAIL the EMAIL address of the recipient
+//     * @param subject the subject of the EMAIL
+//     * @param messageContent the content of the EMAIL message
 //     */
-//    public static void sendEmail(String recipientEmail, String subject, String messageContent) {
+//    public static void sendEMAIL(String recipientEMAIL, String subject, String messageContent) {
 //
-//        String senderEmail = "g.safw2018@gmail.com";
-//        String senderPassword = "Gh1a2s3S45";
+//        String senderEMAIL = "g.safw2018@gmail.com";
+//        String senderPASSWORD = "Gh1a2s3S45";
 //
 //
 //        Properties properties = new Properties();
@@ -418,24 +411,24 @@ public class Admin implements AdminService {
 //
 //        Session session = Session.getInstance(properties, new Authenticator() {
 //            @Override
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(senderEmail, senderPassword);
+//            protected PASSWORDAuthentication getPASSWORDAuthentication() {
+//                return new PASSWORDAuthentication(senderEMAIL, senderPASSWORD);
 //            }
 //        });
 //
 //        try {
 //
 //            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress(senderEmail));
-//            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
+//            message.setFrom(new InternetAddress(senderEMAIL));
+//            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEMAIL));
 //            message.setSubject(subject);
 //            message.setText(messageContent);
 //
 //            Transport.send(message);
-//            System.out.println("Email sent successfully!");
+//            System.out.println("EMAIL sent successfully!");
 //        } catch (MessagingException e) {
 //            e.printStackTrace();
-//            System.err.println("Error while sending email: " + e.getMessage());
+//            System.err.println("Error while sending EMAIL: " + e.getMessage());
 //        }
 //
 //    }
