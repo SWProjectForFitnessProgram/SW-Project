@@ -117,7 +117,6 @@ public class Admin implements AdminService {
             return value2.compareTo(value1);
         });
 
-
         System.out.println("Top 5 programs:");
         for (int i = 0; i < Math.min(5, top5programs.size()); i++) {
             Map<String, Integer> program = top5programs.get(i);
@@ -141,7 +140,7 @@ public class Admin implements AdminService {
         }
         return revenueReport;
     }
-    public List<Map<String, String>> getprogramstatusesAsTable() {
+    public List<Map<String, String>> getProgramStatusesAsTable() {
         List<Map<String,String>> resutl = new ArrayList<>();
         for(Program p : programs){
             if(p.getStartDate().after(new Date())){
@@ -360,6 +359,7 @@ public class Admin implements AdminService {
                     System.out.println("You have signed in successfully.");
                     return true;
                 }
+                return false;
 
             case CLIENT:
                 assert client != null;
@@ -368,6 +368,7 @@ public class Admin implements AdminService {
                     System.out.println("You have signed in successfully.");
                     return true;
                 }
+                return false;
 
             case ADMIN:
                 if(PASSWORD.equals("123456") ){
@@ -380,8 +381,10 @@ public class Admin implements AdminService {
                     return false;
                 }
 
+            default: return false;
+
         }
-        return false;
+
 
     }
 
