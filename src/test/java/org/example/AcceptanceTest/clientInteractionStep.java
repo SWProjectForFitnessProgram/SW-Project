@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
-public class clientInteractionStepTest {
+public class clientInteractionStep {
 
     private static Program program;
     private static Client client;
