@@ -8,8 +8,8 @@ import java.util.*;
  */
 
 public class Admin implements AdminService {
-    private static final String programNameDuplicated = "Program Name";
-    private static final String statusDuplicated = "Status";
+    private static final String programName = "Program Name";
+    private static final String status = "Status";
 
     private static final int PASSWORD = 123456;
     private static final String EMAIL = "g.safw2018@gmail.com";
@@ -171,7 +171,7 @@ public class Admin implements AdminService {
         for (Program program : programs) {
             double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());
             revenueReport.add(Map.of(
-                    programNameDuplicated, program.getTitle(),
+                    programName, program.getTitle(),
                     "Revenue", String.valueOf(revenue)
             ));
         }
@@ -195,20 +195,20 @@ public class Admin implements AdminService {
         for(Program p : programs){
             if(p.getStartDate().after(new Date())){
                 resutl.add(Map.of(
-                        programNameDuplicated, p.getTitle(),
-                        statusDuplicated, "Upcoming"
+                        programName, p.getTitle(),
+                        status, "Upcoming"
                 ));
             }
             else if(p.getEndtDate().after(new Date())){
                 resutl.add(Map.of(
-                        programNameDuplicated, p.getTitle(),
-                        statusDuplicated, "Active"
+                        programName, p.getTitle(),
+                        status, "Active"
                 ));
             }
             else if(p.getEndtDate().before(new Date())){
                 resutl.add(Map.of(
-                        programNameDuplicated, p.getTitle(),
-                        statusDuplicated, "Completed"
+                        programName, p.getTitle(),
+                        status, "Completed"
                 ));
             }
         }
