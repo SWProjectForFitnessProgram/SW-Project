@@ -61,12 +61,12 @@ public class Instructor {
 
     }
 
-    public Instructor() {
-        this.email = "";
-        this.password = "";
-        programs = new ArrayList<>();
-
-    }
+//    public Instructor() {
+//        this.email = "";
+//        this.password = "";
+//        programs = new ArrayList<>();
+//
+//    }
 
     public List<Program> getPrograms() {
         return programs;

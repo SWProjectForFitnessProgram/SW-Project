@@ -39,7 +39,7 @@ public class Schedule {
         return scheduleType;
     }
 
-    public void setScheduleType(String scheduleType) {
+    public void setScheduleType(String scheduleType)         {
         this.scheduleType = scheduleType;
     }
 
