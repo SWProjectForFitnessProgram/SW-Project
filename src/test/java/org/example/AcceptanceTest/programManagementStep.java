@@ -17,7 +17,7 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 
-public class programManagementStepTest {
+public class programManagementStep {
     private static List<Program> programList;
     private static ProgramService programService;
     private static boolean isSetUpDone = false; // flag;
@@ -71,7 +71,7 @@ public class programManagementStepTest {
 }
 
 
-    public programManagementStepTest() {
+    public programManagementStep() {
 
     }
 

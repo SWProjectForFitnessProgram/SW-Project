@@ -10,7 +10,7 @@ import org.example.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SubscriptionManagmentTest {
+public class SubscriptionManagmentStep {
 
     private SubscriptionService subscriptionService;
     private Client client;

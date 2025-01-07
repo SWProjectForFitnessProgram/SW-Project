@@ -133,6 +133,7 @@ public class Admin implements AdminService {
             temp.put(p.getTitle(),p.getClientsEnrolled().size());
             top5programs.add(temp);
         }
+
         top5programs.sort((map1, map2) -> {
 
             Integer value1 = map1.values().iterator().next();

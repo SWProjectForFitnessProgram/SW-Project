@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.*;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.Map;
 import static org.example.UserStatus.*;
 import static org.junit.Assert.assertTrue;
 
-public class AdminUserManagementTest {
+public class AdminUserManagementStep {
 
 
     private static List<Instructor> pendingInstructors;
@@ -285,6 +285,46 @@ public class AdminUserManagementTest {
     @Then("the system should display statistics including:")
     public void theSystemShouldDisplayStatisticsIncluding(io.cucumber.datatable.DataTable dataTable) {
 
+    }
+    @Test
+    public void approveAllPendingInstructors() {
+        for (Instructor instructor : pendingInstructors) {
+            instructor.setStatus(UserStatus.Approved);
+        }
+        Assert.assertTrue("All instructors should be approved",
+                pendingInstructors.stream().allMatch(i -> i.getStatus() == UserStatus.Approved));
+    }
+    @Test
+    public void approveAllPendingClients() {
+        for (Client client : pendingClients) {
+            client.setStatus(UserStatus.Approved);
+        }
+        Assert.assertTrue("All clients should be approved",
+                pendingClients.stream().allMatch(c -> c.getStatus() == UserStatus.Approved));
+    }
+
+    @Test
+    public void addInstructorWithInvalidEmail() {
+        String invalidEmail = "invalid-email";
+        try {
+            Instructor instructor = new Instructor(invalidEmail, "password123", UserStatus.Pending);
+            admin.getInstructors().add(instructor);
+            Assert.fail("Should not allow invalid email format");
+        } catch (IllegalArgumentException e) {
+            Assert.assertEquals("Invalid email format: " + invalidEmail, e.getMessage());
+        }
+    }
+    @Test
+    public void updateNonexistentInstructor() {
+        String email = "nonexistent-instructor@email.com";
+        boolean updated = admin.getInstructorRepository().updateInstructor(email, "newPass", "newName");
+        Assert.assertFalse("Update should fail for nonexistent account", updated);
+    }
+    @Test
+    public void updateNonexistentClient() {
+        String email = "nonexistent-client@email.com";
+        boolean updated = admin.getClientsRepository().updateClient(email, "newPass", "newName");
+        Assert.assertFalse("Update should fail for nonexistent account", updated);
     }
 
 }
