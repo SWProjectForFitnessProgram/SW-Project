@@ -1,6 +1,7 @@
 package org.example;
-
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * Represents the admin of the system, responsible for managing instructors, clients, articles,
  * health tips, recipes, complaints, programs, and generating various reports. Implements the
@@ -10,10 +11,9 @@ import java.util.*;
 public class Admin implements AdminService {
     private static final int PASSWORD = 123456;
     private static final String EMAIL = "g.safw2018@gmail.com";
-
     private static final String NAME = "Ghayda";
-//    private final boolean deactivate=false;
     private boolean loggedIn=true;
+
     private String selectedOption;
     private final InstructorRepository instructorRepository;
     private final ClientRepository clientRepository;
@@ -22,7 +22,7 @@ public class Admin implements AdminService {
     private final List<Recipe> recipes = new ArrayList<>();
     private final List<Complaint> complaints = new ArrayList<>();
     private final ArrayList<Program> programs = new ArrayList<>();
-
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
 
 
     /**
@@ -141,7 +141,8 @@ public class Admin implements AdminService {
             return value2.compareTo(value1);
         });
 
-        System.out.println("Top 5 programs:");
+
+        logger.log(Level.INFO, "Top 5 programs:");
         for (int i = 0; i < Math.min(5, top5programs.size()); i++) {
             Map<String, Integer> program = top5programs.get(i);
 
@@ -332,9 +333,9 @@ public class Admin implements AdminService {
     public String getNAME() {
         return NAME;
     }
-    public int getPASSWORD() {
-        return PASSWORD;
-    }
+//    public int getPASSWORD() {
+//        return PASSWORD;
+//    }
 
     public boolean isSignedIn(String EMAIL){
         boolean isLoggedIn = false;
@@ -366,9 +367,7 @@ public class Admin implements AdminService {
                 Client client = new Client(NAME, EMAIL, Age, PASSWORD, UserStatus.Pending);
                 this.clientRepository.addClient(client);
             }
-//            String subject = "Approval Notification";
-//            String messageContent = "Your account has been approved!";
-//            sendEMAIL(EMAIL, subject, messageContent);
+
             System.out.println("The Admin will approve your account as soon as possible.");
             signUpResult = true;
         }
@@ -377,17 +376,17 @@ public class Admin implements AdminService {
 
     }
 
-    public boolean signIn(Role role,String EMAIL, String PASSWORD) {
+    public boolean signIn(Role role,String EMAIL, String password) {
         Instructor instructor = instructorRepository.findInstructorByEmail(EMAIL);
         Client client = clientRepository.findClientByEmail(EMAIL);
         if (instructor == null && client == null && role!=Role.ADMIN) {
-            System.out.println("Invalid EMAIL or PASSWORD.5454");
+            System.out.println("Invalid EMAIL or PASSWORD.");
             return false;
         }
         switch (role){
             case INSTRUCTOR:
                 assert instructor != null;
-                if(instructor.getPassword().equals(PASSWORD)){
+                if(instructor.getPassword().equals(password)){
                     instructor.setLoggedIn(true);
                     System.out.println("You have signed in successfully.");
                     return true;
@@ -396,7 +395,7 @@ public class Admin implements AdminService {
 
             case CLIENT:
                 assert client != null;
-                if(client.getPassword().equals(PASSWORD)){
+                if(client.getPassword().equals(password)){
                     client.setLoggedIn(true);
                     System.out.println("You have signed in successfully.");
                     return true;
@@ -404,7 +403,8 @@ public class Admin implements AdminService {
                 return false;
 
             case ADMIN:
-                if(PASSWORD.equals("123456") ){
+
+                if(password.equals(String.valueOf(PASSWORD) ) ){
                     this.loggedIn=true;
                     System.out.println("You have signed in successfully.");
                     return true;
@@ -424,50 +424,6 @@ public class Admin implements AdminService {
 
 
 
-
-//    /**
-//     * Sends an EMAIL to the specified recipient with a given subject and message content.
-//     *
-//     * @param recipientEMAIL the EMAIL address of the recipient
-//     * @param subject the subject of the EMAIL
-//     * @param messageContent the content of the EMAIL message
-//     */
-//    public static void sendEMAIL(String recipientEMAIL, String subject, String messageContent) {
-//
-//        String senderEMAIL = "g.safw2018@gmail.com";
-//        String senderPASSWORD = "Gh1a2s3S45";
-//
-//
-//        Properties properties = new Properties();
-//        properties.put("mail.smtp.auth", "true");
-//        properties.put("mail.smtp.starttls.enable", "true");
-//        properties.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your SMTP host
-//        properties.put("mail.smtp.port", "587");
-//
-//
-//        Session session = Session.getInstance(properties, new Authenticator() {
-//            @Override
-//            protected PASSWORDAuthentication getPASSWORDAuthentication() {
-//                return new PASSWORDAuthentication(senderEMAIL, senderPASSWORD);
-//            }
-//        });
-//
-//        try {
-//
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress(senderEMAIL));
-//            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEMAIL));
-//            message.setSubject(subject);
-//            message.setText(messageContent);
-//
-//            Transport.send(message);
-//            System.out.println("EMAIL sent successfully!");
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//            System.err.println("Error while sending EMAIL: " + e.getMessage());
-//        }
-//
-//    }
 
 }
 
