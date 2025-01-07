@@ -12,6 +12,12 @@ public class Schedule {
         this.scheduleType = scheduleType;
     }
 
+    public Schedule(Schedule schedule) {
+        this.scheduleType = schedule.getScheduleType();
+        this.time = schedule.getTime();
+        this.days = schedule.getDays();
+    }
+
     // Getters and Setters
     public String[] getDays() {
         return days;

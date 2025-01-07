@@ -52,6 +52,13 @@ public class Client {
         this.email = email;
         this.Age = Age;
         enrolledPrograms = new ArrayList<>();
+    }
+    public Client(String name,Long id,String email,int Age) {
+        this.clientName = name;
+        this.email = email;
+        this.Age = Age;
+        this.id = id;
+        enrolledPrograms = new ArrayList<>();
 
     }
     public Client(String name) {
@@ -62,7 +69,6 @@ public class Client {
     {
         if (!enrolledPrograms.contains(program)) {
             enrolledPrograms.add(program);
-//            System.out.println( clientName + " enrolled in program: " + program.getTitle());
         } else {
             System.out.println( clientName + " is already enrolled in program: " + program.getTitle());
         }
