@@ -29,8 +29,17 @@ Feature: User Sign-Up and Sign-In Process
       | Age        | 17            |
       | Password   | short         |
     When the "instructor" attempts to sign up
-    Then the operation should fail
+    Then Sign up operation should fail
     And the user should see "The operation is not allowed: Invalid email, age must be 18 or older or password must be at least 8 characters."
+  Scenario: Sign up unsuccessfully
+    Given "instructor" provides the following details:
+      | Name       | Jane Smith    |
+      | Email      | talaalhendiuni4@gmail.com |
+      | Age        | 25            |
+      | Password   | clientpass123 |
+    When the "instructor" attempts to sign up
+    Then Sign up operation should fail
+    And the user should see "You are already signed in."
 
   Scenario: Sign in successfully
     Given the following accounts exist:
