@@ -12,6 +12,10 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents an Instructor in the system, who can manage programs, interact with clients,
+ * and handle subscription plans and status within the platform.
+ */
 //@Entity
 public class Instructor {
     String name;
@@ -45,6 +49,16 @@ public class Instructor {
         this.password = password;
         programs = new ArrayList<>();
        this.name = name;
+
+    }
+    public Instructor(String email, String password,String name,Integer Age,UserStatus status) {
+        this.email = email;
+        this.password = password;
+        programs = new ArrayList<>();
+        this.name = name;
+        this.Age = Age;
+        this.status = status;
+
     }
 
     public Instructor() {
@@ -144,5 +158,9 @@ public class Instructor {
 
     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
+    }
+
+    public void setLoggedIn(boolean b) {
+        LoggedIn = true;
     }
 }

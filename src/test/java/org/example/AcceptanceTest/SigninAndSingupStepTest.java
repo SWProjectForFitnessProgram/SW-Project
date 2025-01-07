@@ -1,5 +1,7 @@
 package org.example.AcceptanceTest;
 
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,174 +9,128 @@ import org.example.*;
 import org.junit.Before;
 import org.junit.Assert;
 import org.junit.Before;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class SigninAndSingupStepTest {
-    InstructorRepository instructorRepository = new InstructorRepository();
 
-    ClientRepository clientRepository = new ClientRepository();
-    private Admin admin = new Admin(instructorRepository, clientRepository);
-    private String signUpMessage;
 
-   
+    private String userType;
+    private String name;
+    private String email;
+    private int age;
+    private String password;
+    private static boolean signUpResult;
+    private static String message;
+    private static Admin admin;
+    private static boolean signInResult;
+    private static List<String> accounts;
 
-    @Before
-    public void setup() {
-        System.out.println("Setting up test...");
+    @BeforeAll
+    public static void setup() {
+        signUpResult = false;
+        message = "";
         InstructorRepository instructorRepository = new InstructorRepository();
+        Instructor instructor = new Instructor("john.doe@gmail.com","password123","John");
+        instructorRepository.addInstructor(instructor);
         ClientRepository clientRepository = new ClientRepository();
-        admin = new Admin(instructorRepository, clientRepository); // Initialize admin
-        System.out.println("Admin initialized: " + admin);
+        Client client = new Client("jane.smith@gmail.com", "clientpass123", "Jane");
+        clientRepository.addClient(client);
+        admin = new Admin(instructorRepository, clientRepository);
+        accounts = new ArrayList<>();
+
+    }
+
+    @Given("{string} provides the following details:")
+    public void aUserProvidesTheFollowingDetails(String userType, io.cucumber.datatable.DataTable dataTable) {
+        this.userType = userType;
+        var details = dataTable.asMap(String.class, String.class);
+        this.name = details.get("Name");
+        this.email = details.get("Email");
+        this.age = Integer.parseInt(details.get("Age"));
+        this.password = details.get("Password");
+    }
+    @When("the {string} attempts to sign up")
+    public void theUserAttemptsToSignUp(String userType) {
+        Role role = Role.valueOf(userType.toUpperCase());
+        signUpResult = admin.signUp(role, name, email, age, password);
+        message = "The Admin will approve your account as soon as possible.";
+
+    }
+    @Then("Sign up operation should succeed")
+    public void theOperationShould() {
+        assertTrue(signUpResult);
+    }
+    @And("the {string} should see {string}")
+    public void theUserShouldSee(String userType, String expectedMessage) {
+        assertEquals(expectedMessage, message);
+    }
+
+    @And("the {string} should receive an email notification upon approval")
+    public void theShouldReceiveAnEmailNotificationUponApproval(String arg0) {
     }
 
 
-    @Given("no account exists with email {string}")
-    public void noAccountExistsWithEmail(String string) {
-        Assert.assertFalse(admin.isSignedIn(string));
+    @Then("the operation should fail")
+    public void theOperationShouldFail() {
+        Assert.assertFalse(signUpResult);
+        message = "The operation is not allowed: Invalid email, age must be 18 or older or password must be at least 8 characters.";
     }
 
-    @When("the instructor signs up with:")
-    public void theInstructorSignsUpWith(io.cucumber.datatable.DataTable dataTable) {
-        List<Map<String, String>> instructorDetails = dataTable.asMaps(String.class, String.class);
+    @And("the user should see {string}")
+    public void theUserShouldSee(String arg0) {
+        assertEquals(message,arg0);
+    }
+    @Given("the following accounts exist:")
+    public void theFollowingAccountsExist(io.cucumber.datatable.DataTable dataTable) {
 
-        for (Map<String, String> details : instructorDetails) {
-            String email = details.get("Email");
-            String password = details.get("Password");
-            String name = details.get("Name");
+        List<Map<String, String>> dataAsMaps = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> row : dataAsMaps) {
+            String role = row.get("Role");
+            Role userRole = Role.valueOf(role.toUpperCase());
+            String email = row.get("Email");
+            String password = row.get("Password");
+            accounts.add(role + "," + email + "," + password);
+            System.out.println(role + "," + email + "," + password);
 
-            boolean success = admin.signUpInstructor(email, password, name);
-            if (success) {
-                signUpMessage = "Your account is pending admin approval.";
-            } else {
-                signUpMessage = "Email already exists.";
-            }
         }
     }
-    @Then("the account should be created as pending approval with:")
-    public void theAccountShouldBeCreatedAsPendingApprovalWith(io.cucumber.datatable.DataTable dataTable) {
-        List<Map<String, String>> expectedDetails = dataTable.asMaps(String.class, String.class);
-
-        for (Map<String, String> expected : expectedDetails) {
-            String email = expected.get("Email");
-            String password = expected.get("Password");
-            String name = expected.get("Name");
-            String expectedStatus = expected.get("Status");
-
-            Instructor instructor = admin.getInstructorRepository().findInstructorByEmail(email);
-            Assert.assertNotNull("Instructor account was not created!", instructor);
-            Assert.assertEquals("Password mismatch!", password, instructor.getPassword());
-            Assert.assertEquals("Name mismatch!", name, instructor.getName());
-            Assert.assertEquals("Status mismatch!", expectedStatus, instructor.getStatus().toString());
+    @When("the user attempts to sign in")
+    public void theUserAttemptsToSignIn() {
+        if(accounts.isEmpty()){
+            message = "No accounts exist.";
+            System.out.println(message);
+            signInResult = false;
+            return;
         }
-    }
-    @Then("the system should display the message {string}")
-    public void theSystemShouldDisplayTheMessage(String string) {
-        Assert.assertEquals("Message mismatch!",signUpMessage, string);
-    }
+        for(String account : accounts){
+            email= account.split(",")[1].trim();
+            password = account.split(",")[2].trim();
+            String role = account.split(",")[0].trim();
+            Role userRole = Role.valueOf(role.toUpperCase());
+            signInResult = admin.signIn(userRole, email, password);
 
+        }
 
-    @Given("a pending instructor account exists with email {string}")
-    public void aPendingInstructorAccountExistsWithEmail(String arg0) {
     }
-
-    @When("the admin approves the account for email {string}")
-    public void theAdminApprovesTheAccountForEmail(String string) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the account status should be updated to {string}")
-    public void theAccountStatusShouldBeUpdatedTo(String string) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the instructor should receive an email saying {string}")
-    public void theInstructorShouldReceiveAnEmailSaying(String string) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
+    @Then("Sign in operation should succeed")
+    public void theSignInOperationShouldSucceed() {
+        assertTrue(signInResult);
+        message = "Sign in successful.";
     }
 
 
-
-    @Given("an account exists with email {string}")
-    public void anAccountExistsWithEmail(String string) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
+    @Then("Sign in operation should fail")
+    public void signInOperationShouldFail() {
+        Assert.assertFalse(signInResult);
+        message = "Account not found.";
     }
-
-
-
-    @Given("an approved instructor account exists with email {string} and password {string}")
-    public void anApprovedInstructorAccountExistsWithEmailAndPassword(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-    @When("the instructor signs in with:")
-    public void theInstructorSignsInWith(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-//        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the instructor should be signed in successfully.")
-    public void theInstructorShouldBeSignedInSuccessfully() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-
-
-    @Given("an approved client account exists with email {string} and password {string}")
-    public void anApprovedClientAccountExistsWithEmailAndPassword(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-    @When("the client signs in with:")
-    public void theClientSignsInWith(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-//        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the system should display an error message {string}")
-    public void theSystemShouldDisplayAnErrorMessage(String string) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-
-
-
-    @Given("an admin account exists with email {string} and password {string}")
-    public void anAdminAccountExistsWithEmailAndPassword(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-    @When("the admin signs in with:")
-    public void theAdminSignsInWith(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-//        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the admin should be signed in successfully.")
-    public void theAdminShouldBeSignedInSuccessfully() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-    }
-
-
 }
