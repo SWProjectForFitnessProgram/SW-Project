@@ -8,8 +8,8 @@ import java.util.*;
  */
 
 public class Admin implements AdminService {
-    private final String programNameDuplicated = "Program Name";
-    private final String statusDuplicated = "Status";
+    private static final String programNameDuplicated = "Program Name";
+    private static final String statusDuplicated = "Status";
 
     private static final int PASSWORD = 123456;
     private static final String EMAIL = "g.safw2018@gmail.com";
