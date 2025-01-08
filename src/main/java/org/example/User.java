@@ -1,9 +1,6 @@
 package org.example;
 
 public class User {
-
-
-
     private String id;
     private String password;
     private boolean loggedIn = false;

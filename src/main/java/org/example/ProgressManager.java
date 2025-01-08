@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Manages user progress data, achievements, and history in a fitness program.
  *
- * Author: Taqwa Odeh
+ * @author  Taqwa Odeh
  */
 public class ProgressManager {
     /**

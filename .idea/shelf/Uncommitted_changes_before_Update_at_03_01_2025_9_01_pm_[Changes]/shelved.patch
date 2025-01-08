@@ -1,0 +1,428 @@
+Index: src/main/java/org/example/Client.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport io.cucumber.java.bs.A;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class Client {\r\n    private List<Program> enrolledPrograms ;\r\n    private int workoutsCompleted;\r\n    private int totalWorkouts;\r\n    private int sessionsAttended;\r\n    private int totalSessions;\r\n    private String receivedMessage;\r\n    private Long id;\r\n    private SubscriptionPlan subscriptionPlan;\r\n    //    @Column(nullable = false, unique = true)\r\n    String email;\r\n    String clientName;\r\n    //    @Column(nullable = false)\r\n    String password;\r\n    //    String meesage;\r\n    int Age;\r\n    boolean approved =false ;\r\n    private List<String> messages = new ArrayList<>();\r\n    private List<String> feedbacks = new ArrayList<>();\r\n\r\n    //    @Enumerated(EnumType.STRING)\r\n    private UserStatus status;\r\n//    private String feedback;\r\n\r\n    public Client(String email, String password) {\r\n        this.email = email;\r\n        this.password = password;\r\n        enrolledPrograms = new ArrayList<>();\r\n    }\r\n    public Client(String email, String password,String clientName) {\r\n        this.clientName = clientName;\r\n        this.email = email;\r\n        this.password = password;\r\n    }\r\n    public Client(String email, String password,UserStatus status) {\r\n        this.email = email;\r\n        this.password = password;\r\n        this.status = status;\r\n    }\r\n    public Client(String name,String email,int Age) {\r\n        this.clientName = name;\r\n        this.email = email;\r\n        this.Age = Age;\r\n        enrolledPrograms = new ArrayList<>();\r\n\r\n    }\r\n    public Client(String name) {\r\n        clientName = name;\r\n        enrolledPrograms = new ArrayList<>();\r\n    }\r\n    public void enrollProgram(Program program)\r\n    {\r\n        if (!enrolledPrograms.contains(program)) {\r\n            enrolledPrograms.add(program);\r\n            System.out.println( clientName + \" enrolled in program: \" + program.getTitle());\r\n        } else {\r\n            System.out.println( clientName + \" is already enrolled in program: \" + program.getTitle());\r\n        }\r\n    }\r\n    public List<Program> getEnrolledPrograms() {\r\n        return enrolledPrograms;\r\n    }\r\n    public void displayEnrolledPrograms() {\r\n        System.out.println( clientName + \"'s Enrolled Programs:\");\r\n        for (Program program : enrolledPrograms) {\r\n            System.out.println(\"- \" + program.getTitle());\r\n        }\r\n    }\r\n    public int getWorkoutsCompleted() { return workoutsCompleted; }\r\n\r\n    public void setId(Long id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public Long getId() {\r\n        return id;\r\n    }\r\n\r\n    public String  getName() {\r\n        return clientName;\r\n    }\r\n    public void setClientName (String name)\r\n    {\r\n        clientName = name;\r\n    }\r\n\r\n    public void setMessage(String message) {\r\n        messages.add(message);\r\n    }\r\n\r\n\r\n    public boolean hasReceivedfeedback(String feedback) {\r\n        if (feedbacks.contains(feedback))\r\n        {\r\n            return true;\r\n        }\r\n        else\r\n            return false;\r\n    }\r\n    public void receiveMessage(String message) {\r\n        messages.add(message);\r\n    }\r\n\r\n    public void receiveFeedback(String feedback) {\r\n        feedbacks.add(feedback);\r\n    }\r\n\r\n    public boolean hasReceivedMessage(String message) {\r\n        return messages.contains(message);\r\n    }\r\n\r\n    public boolean hasReceivedFeedback(String feedback) {\r\n        return feedbacks.contains(feedback);\r\n    }\r\n\r\n    public void setWorkoutsCompleted(int doneWorkouts, int allWorkouts) {\r\n        this.workoutsCompleted = doneWorkouts;\r\n        this.totalWorkouts = allWorkouts;\r\n    }\r\n\r\n    public int getSessionsAttended() { return sessionsAttended; }\r\n    public void setSessionsAttended(int sessionsAttended, int totalSessions) {\r\n        this.sessionsAttended = sessionsAttended;\r\n        this.totalSessions = totalSessions;\r\n    }\r\n    public double getCompletionRate() {\r\n        if (totalWorkouts == 0) return 0;\r\n        return (double) workoutsCompleted / totalWorkouts * 100;\r\n    }\r\n    public double getAttendanceRate() {\r\n        if (totalSessions == 0) {\r\n            return 0; // Avoid division by zero\r\n        }\r\n        return (double) sessionsAttended / totalSessions * 100;\r\n    }\r\n\r\n    public String getReceivedMessage() { return receivedMessage; }\r\n    public void setReceivedMessage(String message) { this.receivedMessage = message; }\r\n\r\n    public boolean isApproved() {\r\n        return approved;\r\n    }\r\n\r\n    public void approve() {\r\n        this.approved = true;\r\n    }\r\n\r\n    public Object getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public void setPassword(String newPassword) {\r\n        this.password = newPassword;\r\n    }\r\n\r\n\r\n    public void setName(String newName) {\r\n        this.clientName = newName;\r\n    }\r\n    public boolean isActive() {\r\n        if(status==UserStatus.Approved){\r\n            return true;\r\n        }\r\n        else return false;\r\n    }\r\n\r\n\r\n\r\n\r\n    public void setStatus(UserStatus status) {\r\n        this.status = status;\r\n    }\r\n    public UserStatus getStatus() {\r\n        return status;\r\n    }\r\n    public SubscriptionPlan getSubscriptionPlan() {\r\n        return subscriptionPlan;\r\n    }\r\n    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {\r\n        this.subscriptionPlan = subscriptionPlan;\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Client.java b/src/main/java/org/example/Client.java
+--- a/src/main/java/org/example/Client.java	(revision c5886a3a7e75c130767fee6a0c6cd29a5a5e38c4)
++++ b/src/main/java/org/example/Client.java	(date 1735930755722)
+@@ -6,6 +6,10 @@
+ import java.util.List;
+ 
+ public class Client {
++    private boolean recievedNotification = false; //flag
++    private String notification;
++    private SubscriptionPlan subscriptionPlan;
++
+     private List<Program> enrolledPrograms ;
+     private int workoutsCompleted;
+     private int totalWorkouts;
+@@ -13,7 +17,6 @@
+     private int totalSessions;
+     private String receivedMessage;
+     private Long id;
+-    private SubscriptionPlan subscriptionPlan;
+     //    @Column(nullable = false, unique = true)
+     String email;
+     String clientName;
+@@ -160,10 +163,18 @@
+         this.password = newPassword;
+     }
+ 
+-
+     public void setName(String newName) {
+         this.clientName = newName;
+     }
++    public boolean hasRecievedNotification()
++    {
++        return recievedNotification;
++    }
++    public void setNotification(String notification)
++    {
++        this.notification = notification;
++        recievedNotification = true;
++    }
+     public boolean isActive() {
+         if(status==UserStatus.Approved){
+             return true;
+@@ -186,5 +197,4 @@
+     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
+         this.subscriptionPlan = subscriptionPlan;
+     }
+-
+ }
+\ No newline at end of file
+Index: src/main/java/org/example/Admin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\n//import org.springframework.stereotype.Service;\r\n\r\nimport io.cucumber.core.backend.Pending;\r\n\r\nimport java.time.ZoneId;\r\nimport java.util.*;\r\nimport java.time.LocalDate;\r\n//@Service\r\npublic class Admin implements AdminService {\r\n    private final int password = 123456;\r\n    private final String email = \"g.safw2018@gmail.com\";\r\n    private final String name = \"Ghayda\";\r\n    public boolean deactivate=false;\r\n    private boolean loggedIn=true;\r\n    private String selectedOption;\r\n    private final InstructorRepository instructorRepository;\r\n    private final ClientRepository clientRepository;\r\n    private List<Article> articles = new ArrayList<>();\r\n    private List<HealthTip> tips = new ArrayList<>();\r\n    private List<Recipe> recipes = new ArrayList<>();\r\n    private List<Complaint> complaints = new ArrayList<>();\r\n    private ArrayList<Program> Programs;\r\n\r\n\r\n//    private static Admin instance;\r\n//\r\n//\r\n//\r\n//    // Allow replacing the instance for testing\r\n//    public static void setInstance(Admin adminMock) {\r\n//        instance = adminMock;\r\n//    }\r\n//    //Ghayda need to edit the default constructor\r\n//    public Admin getInstance(InstructorRepository instructorRepository, ClientRepository clientRepository){ //singleton class\r\n//        if(instance == null){\r\n//            instance = new Admin(instructorRepository,clientRepository);\r\n//            return instance;\r\n//        }\r\n//        else {\r\n//            System.out.println(\"Instance already created!\");\r\n//            return null;\r\n//        }\r\n//    }\r\n\r\n    public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {\r\n        this.instructorRepository = instructorRepository;\r\n        this.clientRepository = clientRepository;\r\n    }\r\n\r\n    public void approveAdminLogin(){\r\n        loggedIn=true;\r\n    }\r\n\r\n    public boolean isLoggedIn(){\r\n        return loggedIn;\r\n    }\r\n    //1\r\n    @Override\r\n    public List<Instructor> getPendingInstructors() {\r\n        return instructorRepository.findPendingInstructors();\r\n    }\r\n    //1\r\n    @Override\r\n    public List<Client> getPendingClients() {\r\n        return clientRepository.findPendingClients();\r\n    }\r\n    //1\r\n    @Override\r\n    public void approveInstructor(Long id) {\r\n        Instructor instructor = instructorRepository.findById(id);\r\n        if (instructor != null) {\r\n            instructor.approve();\r\n            System.out.println(\"Instructor approved successfully.\");\r\n        } else {\r\n            System.out.println(\"Instructor not found.\");\r\n        }\r\n    }\r\n    //1\r\n    public void approveClient(Long id) {\r\n        Client client = clientRepository.findById(id);\r\n        if (client != null) {\r\n            client.approve();\r\n            System.out.println(\"Client approved successfully.\");\r\n        } else {\r\n            System.out.println(\"Client not found.\");\r\n        }\r\n    }\r\n//1\r\n    @Override\r\n    public Collection<Instructor> getInstructors() {\r\n        return instructorRepository.getAllInstructors();\r\n    }\r\n    @Override\r\n    public InstructorRepository getInstructorRepository() {\r\n        return instructorRepository;\r\n    }\r\n    @Override\r\n    public Collection<Client> getClients() {\r\n        return clientRepository.getAllClients();    }\r\n    @Override\r\n    public ClientRepository getClientsRepository() {\r\n        return clientRepository;\r\n    }\r\n\r\n//----------------------\r\n\r\n    @Override\r\n    public Object getUserActivityReport() {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public Map<Program, Double> getProgramEnrollmentStatistics() {\r\n        // Map to hold program and enrollment count\r\n        Map<Program, Double> programEnrollmentStatistics = new HashMap<>();\r\n\r\n        // Iterate through all clients\r\n        for (Program p : Programs) {\r\n            programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());\r\n        }\r\n\r\n        return programEnrollmentStatistics; // Return the statistics\r\n    }\r\n    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {\r\n            Map<Program, Double> statistics = getProgramEnrollmentStatistics();\r\n\r\n            List<Map<String, String>> table = new ArrayList<>();\r\n            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {\r\n                Map<String, String> row = new HashMap<>();\r\n                row.put(\"Program Name\", entry.getKey().getTitle());\r\n                row.put(\"Enrollment Count\", entry.getValue().toString());\r\n                table.add(row);\r\n            }\r\n\r\n            return table;\r\n    }\r\n\r\n\r\n    @Override\r\n    public List<Map<String, String>> generateRevenueReport(String timePeriod) {\r\n        List<Map<String, String>> revenueReport = new ArrayList<>();\r\n        if (\"last quarter\".equalsIgnoreCase(timePeriod)) {\r\n            for (Program program : Programs) {\r\n                double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());\r\n                revenueReport.add(Map.of(\r\n                        \"Program Name\", program.getTitle(),\r\n                        \"Revenue\", String.valueOf(revenue)\r\n                ));\r\n            }\r\n        }\r\n        return revenueReport;\r\n    }\r\n\r\n    @Override\r\n       public List<Map<String, String>> getProgramStatuses() {\r\n        List<Map<String, String>> programStatuses = new ArrayList<>();\r\n        LocalDate currentDate = LocalDate.now(); // Get the current date\r\n\r\n        for (Program program : Programs) {\r\n            String status;\r\n            if (currentDate.isBefore(convertDateToLocalDate(program.getStartDate()))) {\r\n                status = \"Upcoming\";\r\n            } else if (!currentDate.isAfter(convertDateToLocalDate(program.getEndtDate()))) {\r\n                status = \"Active\";\r\n            } else {\r\n                status = \"Completed\";\r\n            }\r\n\r\n            programStatuses.add(Map.of(\r\n                    \"Program Name\", program.getTitle(),\r\n                    \"Status\", status\r\n            ));\r\n        }\r\n\r\n        return programStatuses;\r\n    }\r\n\r\n    public String getDisplayedMessage() {\r\n        return \"No pending instructor accounts\";\r\n    }\r\n\r\n\r\n    public static LocalDate convertDateToLocalDate(Date date) {\r\n        return date.toInstant()                        // Convert Date to Instant\r\n                .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime\r\n                .toLocalDate();                   // Convert ZonedDateTime to LocalDate\r\n    }\r\n\r\n    @Override\r\n    public void addArticle(Article article) {\r\n        articles.add(article);\r\n    }\r\n    public void addTip(HealthTip tip) {\r\n        tips.add(tip);\r\n    }\r\n    public void addRecipe(Recipe recipe) {\r\n        recipes.add(recipe);\r\n    }\r\n    public void addComplaint(Complaint complaint) {\r\n        complaints.add(complaint);\r\n    }\r\n    public void approveArticle(Article article) {\r\n        article.setStatus(UserStatus.valueOf(\"Approved\"));\r\n    }\r\n    public void rejectArticle(Article article) {\r\n        article.setStatus(UserStatus.valueOf(\"Rejected\"));\r\n    }\r\n    public void approveTip(HealthTip tip) {\r\n        tip.setStatus(\"Approved\");\r\n    }\r\n    public void rejectRecipe(Recipe recipe) {\r\n        recipe.setStatus(\"Rejected\");\r\n    }\r\n    public void resolveComplaint(Complaint complaint) {\r\n        complaint.setStatus(\"Resolved\");\r\n    }\r\n\r\n    public void setSelectedOption(String selectedOption) {\r\n        this.selectedOption = selectedOption;\r\n    }\r\n    public String getSelectedOption() {\r\n        return selectedOption;\r\n    }\r\n\r\n    public void generateUserActivityReport() {\r\n        System.out.println(\"+------------------------+------------------------------------+\");\r\n        System.out.println(\"| Metric                 | Description                        |\");\r\n        System.out.println(\"+------------------------+------------------------------------+\");\r\n        List<Map<String, String>> statistics = new ArrayList<>();\r\n\r\n        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();\r\n        Integer totalInactiveUsers =0;\r\n        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());\r\n\r\n        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());\r\n\r\n        for(Instructor instructor : instructorList){\r\n            if(!instructor.isApproved()){\r\n                totalInactiveUsers++;\r\n            }\r\n        }\r\n        for(Client client : clientList){\r\n            if(!client.isActive()){\r\n                totalInactiveUsers++;\r\n            }\r\n        }\r\n        statistics.add(Map.of(\r\n                \"Metric\", \"Total Active Users\",\r\n                \"Description\", totalActiveUsers.toString()\r\n        ));\r\n        statistics.add(Map.of(\r\n                \"Metric\", \"Total Inactive Users\",\r\n                \"Description\", totalInactiveUsers.toString()\r\n        ));\r\n        statistics.add(Map.of(\r\n                \"Metric\", \"User Engagement Rate\",\r\n                \"Description\", \"50%\"\r\n        ));\r\n\r\n       // System.out.printf(\"| %-22s | %-34s |\\n\", Metric, description);\r\n\r\n        System.out.println(\"+------------------------+------------------------------------+\");\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n    public String getName() {\r\n        return name;\r\n    }\r\n    public int getPassword() {\r\n        return password;\r\n    }\r\n\r\n    public boolean isSignedIn(String email){\r\n        if(instructorRepository.findInstructorByEmail(email)==null){\r\n            if(clientRepository.findClientByEmail(email)==null){\r\n                return false;\r\n            }\r\n            else return true;\r\n        }\r\n        return true;\r\n    }\r\n    public boolean signUpInstructor(String name, String email, String password) {\r\n        if (!this.isSignedIn(email)) {\r\n            Instructor instructor = new Instructor(name, email, password);\r\n            instructor.setStatus(UserStatus.Pending);\r\n            instructorRepository.addInstructor(instructor);\r\n            return true;\r\n        }\r\n        else return false;\r\n    }\r\n    public boolean signUpClient(String name, String email, String password) {\r\n        if (!this.isSignedIn(email)) {\r\n            Client client = new Client(name, email, password);\r\n            client.setStatus(UserStatus.Pending);\r\n            clientRepository.addClient(client);\r\n            return true;\r\n        }\r\n        else return false;\r\n    }\r\n//    public void generateInstructorActivityReport() {\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        System.out.println(\"| Metric                 | Description                        |\");\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        List<Map<String, String>> statistics = new ArrayList<>();\r\n//\r\n//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();\r\n//        Integer totalInactiveUsers =0;\r\n//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());\r\n//\r\n//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());\r\n//\r\n//        for(Instructor instructor : instructorList){\r\n//            if(!instructor.isApproved()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        for(Client client : clientList){\r\n//            if(!client.isActive()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Active Users\",\r\n//                \"Description\", totalActiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Inactive Users\",\r\n//                \"Description\", totalInactiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"User Engagement Rate\",\r\n//                \"Description\", \"50%\"\r\n//        ));\r\n//\r\n//        // System.out.printf(\"| %-22s | %-34s |\\n\", Metric, description);\r\n//\r\n//\r\n//        // Print table footer\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//    }\r\n//\r\n//    public void generateClientActivityReport() {\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        System.out.println(\"| Metric                 | Description                        |\");\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        List<Map<String, String>> statistics = new ArrayList<>();\r\n//\r\n//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();\r\n//        Integer totalInactiveUsers =0;\r\n//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());\r\n//\r\n//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());\r\n//\r\n//        for(Instructor instructor : instructorList){\r\n//            if(!instructor.isApproved()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        for(Client client : clientList){\r\n//            if(!client.isActive()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Active Users\",\r\n//                \"Description\", totalActiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Inactive Users\",\r\n//                \"Description\", totalInactiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"User Engagement Rate\",\r\n//                \"Description\", \"50%\"\r\n//        ));\r\n//\r\n//        // System.out.printf(\"| %-22s | %-34s |\\n\", Metric, description);\r\n//\r\n//\r\n//        // Print table footer\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Admin.java b/src/main/java/org/example/Admin.java
+--- a/src/main/java/org/example/Admin.java	(revision c5886a3a7e75c130767fee6a0c6cd29a5a5e38c4)
++++ b/src/main/java/org/example/Admin.java	(date 1735930755743)
+@@ -11,6 +11,7 @@
+ public class Admin implements AdminService {
+     private final int password = 123456;
+     private final String email = "g.safw2018@gmail.com";
++
+     private final String name = "Ghayda";
+     public boolean deactivate=false;
+     private boolean loggedIn=true;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"admin 3rd feature (production code done)\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GitHubPullRequestState\"><![CDATA[{\r\n  \"prStates\": [\r\n    {\r\n      \"id\": {\r\n        \"id\": \"PR_kwDONTwW486GnF8s\",\r\n        \"number\": 44\r\n      },\r\n      \"lastSeen\": 1735930031703\r\n    }\r\n  ]\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;\r\n  },\r\n  &quot;recentNewPullRequestHead&quot;: {\r\n    &quot;server&quot;: {\r\n      &quot;useHttp&quot;: false,\r\n      &quot;host&quot;: &quot;github.com&quot;,\r\n      &quot;port&quot;: null,\r\n      &quot;suffix&quot;: null\r\n    },\r\n    &quot;owner&quot;: &quot;TalaAlhendi&quot;,\r\n    &quot;repository&quot;: &quot;SW-Project&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2qSJUgKlFXO8XHQzPIM5jPamcbX\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Cucumber Java.Feature: clientInteraction.executor\": \"Run\",\r\n    \"JUnit.acceptanceTest.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"#50 on Admin\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"JUnit.acceptanceTest\">\r\n    <configuration name=\"Feature: clientInteraction\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature\" />\r\n      <option name=\"GLUE\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: clientInteraction\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"acceptanceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Fitness\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AcceptanceTest.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.AcceptanceTest.acceptanceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.acceptanceTest\" />\r\n        <item itemvalue=\"Cucumber Java.Feature: clientInteraction\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734620442002</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734620442002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Admin test and production code\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734644545713</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734644545713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"edit on programManagementStepTest\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734646611195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734646611195</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"edit on programManagementStepTest\" />\r\n      <created>1734650063351</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1734650063351</updated>\r\n      <workItem from=\"1734650065119\" duration=\"3975000\" />\r\n      <workItem from=\"1734702334331\" duration=\"2151000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"add depend. + finish a feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734688544556</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734688544556</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734689341616</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734689341616</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"editing the whole project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734704132936</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734704132936</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Admin production code #2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734717246337</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734717246338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Admin complete feature #2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734723340961</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734723340961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"admin 3rd feature (production code done)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734728881715</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734728881715</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"10\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"OPEN_GENERIC_TABS\">\r\n      <map>\r\n        <entry key=\"e5912781-b57d-45f2-90dc-6c3f69a07d00\" value=\"TOOL_WINDOW\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"HIGHLIGHTERS\">\r\n                <map>\r\n                  <entry key=\"MERGE_COMMITS\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"e5912781-b57d-45f2-90dc-6c3f69a07d00\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Admin test and production code\" />\r\n    <MESSAGE value=\"edit on programManagementStepTest\" />\r\n    <MESSAGE value=\"add depend. + finish a feature\" />\r\n    <MESSAGE value=\"Admin testcode\" />\r\n    <MESSAGE value=\"editing the whole project\" />\r\n    <MESSAGE value=\"Admin production code #2\" />\r\n    <MESSAGE value=\"Admin complete feature #2\" />\r\n    <MESSAGE value=\"edit cucumber.html\" />\r\n    <MESSAGE value=\"admin 3rd feature (production code done)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"admin 3rd feature (production code done)\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c5886a3a7e75c130767fee6a0c6cd29a5a5e38c4)
++++ b/.idea/workspace.xml	(date 1735930797900)
+@@ -4,8 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="admin 3rd feature (production code done)">
++    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="clientInteractionStepTest done">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -33,17 +35,6 @@
+     &quot;assignee&quot;: &quot;Ghayda-Saify&quot;
+   }
+ }</component>
+-  <component name="GitHubPullRequestState"><![CDATA[{
+-  "prStates": [
+-    {
+-      "id": {
+-        "id": "PR_kwDONTwW486GnF8s",
+-        "number": 44
+-      },
+-      "lastSeen": 1735930031703
+-    }
+-  ]
+-}]]></component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,
+@@ -62,6 +53,9 @@
+ }</component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 5
+@@ -74,24 +68,50 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Cucumber Java.Feature: clientInteraction.executor": "Run",
+-    "JUnit.acceptanceTest.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "#50 on Admin",
+-    "kotlin-language-version-configured": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "preferences.pluginManager",
+-    "vue.rearranger.settings.migration": "true"
+-  }
+-}]]></component>
+-  <component name="RunManager" selected="JUnit.acceptanceTest">
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;JUnit.acceptanceTest.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="CreateClassDialog.RecentsKey">
++      <recent name="org.example.AcceptanceTest" />
++    </key>
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="org.example.AcceptanceTest" />
++      <recent name="org.example" />
++    </key>
++  </component>
++  <component name="RunManager" selected="Cucumber Java.Feature: notificationsAndUpdates">
++    <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
++      <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: ProgramManagment" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="Feature: clientInteraction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+       <option name="CUCUMBER_CORE_VERSION" value="5" />
+       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature" />
+@@ -100,6 +120,44 @@
+       <module name="Fitness" />
+       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+       <option name="SUGGESTED_NAME" value="Feature: clientInteraction" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Feature: notificationsAndUpdates" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/notificationsAndUpdates.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
++      <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: notificationsAndUpdates" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="io.cucumber.core.cli.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Feature: progressTracking" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
++      <option name="CUCUMBER_CORE_VERSION" value="5" />
++      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature" />
++      <option name="GLUE" value="org.example.AcceptanceTest" />
++      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
++      <module name="Fitness" />
++      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
++      <option name="SUGGESTED_NAME" value="Feature: progressTracking" />
+       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+       <extension name="coverage">
+         <pattern>
+@@ -128,8 +186,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Cucumber Java.Feature: notificationsAndUpdates" />
++        <item itemvalue="Cucumber Java.Feature: progressTracking" />
++        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
++        <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
+         <item itemvalue="JUnit.acceptanceTest" />
+-        <item itemvalue="Cucumber Java.Feature: clientInteraction" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -175,6 +236,12 @@
+       <updated>1734650063351</updated>
+       <workItem from="1734650065119" duration="3975000" />
+       <workItem from="1734702334331" duration="2151000" />
++      <workItem from="1735122564956" duration="4556000" />
++      <workItem from="1735286230374" duration="665000" />
++      <workItem from="1735670733331" duration="1228000" />
++      <workItem from="1735764950408" duration="2918000" />
++      <workItem from="1735806297981" duration="11171000" />
++      <workItem from="1735902234019" duration="9716000" />
+     </task>
+     <task id="LOCAL-00004" summary="add depend. + finish a feature">
+       <option name="closed" value="true" />
+@@ -200,31 +267,119 @@
+       <option name="project" value="LOCAL" />
+       <updated>1734704132936</updated>
+     </task>
+-    <task id="LOCAL-00007" summary="Admin production code #2">
++    <task id="LOCAL-00007" summary="third feature done with 3 scenarios">
+       <option name="closed" value="true" />
+-      <created>1734717246337</created>
++      <created>1734728415662</created>
+       <option name="number" value="00007" />
+       <option name="presentableId" value="LOCAL-00007" />
+       <option name="project" value="LOCAL" />
+-      <updated>1734717246338</updated>
++      <updated>1734728415662</updated>
+     </task>
+-    <task id="LOCAL-00008" summary="Admin complete feature #2">
++    <task id="LOCAL-00008" summary="third feature done with 3 scenarios">
+       <option name="closed" value="true" />
+-      <created>1734723340961</created>
++      <created>1734728797228</created>
+       <option name="number" value="00008" />
+       <option name="presentableId" value="LOCAL-00008" />
+       <option name="project" value="LOCAL" />
+-      <updated>1734723340961</updated>
++      <updated>1734728797228</updated>
+     </task>
+-    <task id="LOCAL-00009" summary="admin 3rd feature (production code done)">
++    <task id="LOCAL-00009" summary="fix the errors">
+       <option name="closed" value="true" />
+-      <created>1734728881715</created>
++      <created>1735767546184</created>
+       <option name="number" value="00009" />
+       <option name="presentableId" value="LOCAL-00009" />
+       <option name="project" value="LOCAL" />
+-      <updated>1734728881715</updated>
++      <updated>1735767546184</updated>
++    </task>
++    <task id="LOCAL-00010" summary="fix the errors">
++      <option name="closed" value="true" />
++      <created>1735767594499</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1735767594499</updated>
++    </task>
++    <task id="LOCAL-00011" summary="fix the errors">
++      <option name="closed" value="true" />
++      <created>1735767636307</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1735767636307</updated>
+     </task>
+-    <option name="localTasksCounter" value="10" />
++    <task id="LOCAL-00012" summary="fix the errors">
++      <option name="closed" value="true" />
++      <created>1735767692723</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1735767692723</updated>
++    </task>
++    <task id="LOCAL-00013" summary="edit the first feature with schedule details and test everything is passed">
++      <option name="closed" value="true" />
++      <created>1735821910847</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1735821910847</updated>
++    </task>
++    <task id="LOCAL-00014" summary="edit the first feature with schedule details and test everything is passed">
++      <option name="closed" value="true" />
++      <created>1735823700245</created>
++      <option name="number" value="00014" />
++      <option name="presentableId" value="LOCAL-00014" />
++      <option name="project" value="LOCAL" />
++      <updated>1735823700245</updated>
++    </task>
++    <task id="LOCAL-00015" summary="make the edits for 3 features and everything passed">
++      <option name="closed" value="true" />
++      <created>1735845559911</created>
++      <option name="number" value="00015" />
++      <option name="presentableId" value="LOCAL-00015" />
++      <option name="project" value="LOCAL" />
++      <updated>1735845559911</updated>
++    </task>
++    <task id="LOCAL-00016" summary="4th feature">
++      <option name="closed" value="true" />
++      <created>1735846623029</created>
++      <option name="number" value="00016" />
++      <option name="presentableId" value="LOCAL-00016" />
++      <option name="project" value="LOCAL" />
++      <updated>1735846623029</updated>
++    </task>
++    <task id="LOCAL-00017" summary="Instructor">
++      <option name="closed" value="true" />
++      <created>1735847800458</created>
++      <option name="number" value="00017" />
++      <option name="presentableId" value="LOCAL-00017" />
++      <option name="project" value="LOCAL" />
++      <updated>1735847800458</updated>
++    </task>
++    <task id="LOCAL-00018" summary="fix">
++      <option name="closed" value="true" />
++      <created>1735848032080</created>
++      <option name="number" value="00018" />
++      <option name="presentableId" value="LOCAL-00018" />
++      <option name="project" value="LOCAL" />
++      <updated>1735848032080</updated>
++    </task>
++    <task id="LOCAL-00019" summary="fix">
++      <option name="closed" value="true" />
++      <created>1735849077043</created>
++      <option name="number" value="00019" />
++      <option name="presentableId" value="LOCAL-00019" />
++      <option name="project" value="LOCAL" />
++      <updated>1735849077043</updated>
++    </task>
++    <task id="LOCAL-00020" summary="clientInteractionStepTest done">
++      <option name="closed" value="true" />
++      <created>1735849999764</created>
++      <option name="number" value="00020" />
++      <option name="presentableId" value="LOCAL-00020" />
++      <option name="project" value="LOCAL" />
++      <updated>1735849999764</updated>
++    </task>
++    <option name="localTasksCounter" value="21" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -268,14 +423,24 @@
+     <MESSAGE value="add depend. + finish a feature" />
+     <MESSAGE value="Admin testcode" />
+     <MESSAGE value="editing the whole project" />
+-    <MESSAGE value="Admin production code #2" />
+-    <MESSAGE value="Admin complete feature #2" />
+-    <MESSAGE value="edit cucumber.html" />
+-    <MESSAGE value="admin 3rd feature (production code done)" />
+-    <option name="LAST_COMMIT_MESSAGE" value="admin 3rd feature (production code done)" />
++    <MESSAGE value="third feature done with 3 scenarios" />
++    <MESSAGE value="fix the errors" />
++    <MESSAGE value="edit the first feature with schedule details and test everything is passed" />
++    <MESSAGE value="make the edits for 3 features and everything passed" />
++    <MESSAGE value="4th feature" />
++    <MESSAGE value="Instructor" />
++    <MESSAGE value="fix" />
++    <MESSAGE value="clientInteractionStepTest done" />
++    <option name="LAST_COMMIT_MESSAGE" value="clientInteractionStepTest done" />
+   </component>
+-  <component name="XSLT-Support.FileAssociations.UIState">
+-    <expand />
+-    <select />
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <breakpoint enabled="true" type="java-exception">
++          <properties class="java.lang.NullPointerException" package="java.lang" />
++          <option name="timeStamp" value="2" />
++        </breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
