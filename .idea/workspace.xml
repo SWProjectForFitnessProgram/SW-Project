@@ -37,38 +37,38 @@
   "lastFilter": {}
 }]]></component>
   <component name="GitHubPullRequestState">{
-  &quot;prStates&quot;: [
+    &quot;prStates&quot;: [
     {
-      &quot;id&quot;: {
-        &quot;id&quot;: &quot;PR_kwDONTwW486GnF8s&quot;,
-        &quot;number&quot;: 44
-      },
-      &quot;lastSeen&quot;: 1735930031703
+    &quot;id&quot;: {
+    &quot;id&quot;: &quot;PR_kwDONTwW486GnF8s&quot;,
+    &quot;number&quot;: 44
+    },
+    &quot;lastSeen&quot;: 1735930031703
     }
-  ]
-}</component>
+    ]
+    }</component>
   <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,
     &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;
-  },
-  &quot;recentNewPullRequestHead&quot;: {
+    },
+    &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
+    &quot;useHttp&quot;: false,
+    &quot;host&quot;: &quot;github.com&quot;,
+    &quot;port&quot;: null,
+    &quot;suffix&quot;: null
     },
     &quot;owner&quot;: &quot;TalaAlhendi&quot;,
     &quot;repository&quot;: &quot;SW-Project&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
+    &quot;associatedIndex&quot;: 5
+    }</component>
   <component name="ProjectId" id="2qSJUgKlFXO8XHQzPIM5jPamcbX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
