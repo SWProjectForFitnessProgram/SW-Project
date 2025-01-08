@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="edit programMonitoring stepTest">
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="doc and main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageOptionsProvider">
-    <option name="myAddOrReplace" value="1" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -33,9 +34,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;
+  }
+}</component>
   <component name="GitHubPullRequestState">{
   &quot;prStates&quot;: [
     {
@@ -79,32 +83,53 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Cucumber Java.Feature: clientInteraction.executor": "Run",
-    "JUnit.acceptanceTest.executor": "Coverage",
+    "JUnit.acceptanceTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.20379747",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "settings.json.schema.catalog",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.acceptanceTest">
+  <component name="RunManager" selected="Cucumber Java.Feature: progressTracking">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Fitness" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature: ProgramManagment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature" />
+      <option name="GLUE" value="org.example.AcceptanceTest" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="Fitness" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: ProgramManagment" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,7 +156,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="acceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: progressTracking" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature" />
+      <option name="GLUE" value="org.example.AcceptanceTest" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="Fitness" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: progressTracking" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="acceptanceTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="Fitness" />
       <extension name="coverage">
         <pattern>
@@ -139,15 +183,11 @@
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
-          <option name="PATTERN" value="org.example.AcceptanceTest.acceptanceTest" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="org.example.Program" />
+          <option name="PATTERN" value="org.example.Admin" />
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
-          <option name="PATTERN" value="org.example.Admin" />
+          <option name="PATTERN" value="org.example.AdminService" />
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
@@ -171,6 +211,10 @@
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
+          <option name="PATTERN" value="org.example.FeedbackAndReviewsManager" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
           <option name="PATTERN" value="org.example.HealthTip" />
           <option name="ENABLED" value="true" />
         </pattern>
@@ -181,6 +225,10 @@
         <pattern>
           <option name="PATTERN" value="org.example.InstructorRepository" />
           <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.Main" />
+          <option name="ENABLED" value="false" />
         </pattern>
         <pattern>
           <option name="PATTERN" value="org.example.Profile" />
@@ -207,7 +255,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
+          <option name="PATTERN" value="org.example.Role" />
+          <option name="ENABLED" value="false" />
+        </pattern>
+        <pattern>
           <option name="PATTERN" value="org.example.Schedule" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.SubscriptionPlan" />
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
@@ -217,6 +273,30 @@
         <pattern>
           <option name="PATTERN" value="org.example.User" />
           <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.UserStatus" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.AdminService" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.AcceptanceTest.programManagementStep" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="false" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.*" />
+          <option name="ENABLED" value="false" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="false" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example.AcceptanceTest" />
@@ -229,13 +309,16 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Cucumber Java.Feature: progressTracking" />
+      <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
       <item itemvalue="Cucumber Java.Feature: clientInteraction" />
       <item itemvalue="JUnit.acceptanceTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.acceptanceTest" />
+        <item itemvalue="Cucumber Java.Feature: progressTracking" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
         <item itemvalue="Cucumber Java.Feature: clientInteraction" />
       </list>
     </recent_temporary>
@@ -282,6 +365,13 @@
       <updated>1734650063351</updated>
       <workItem from="1734650065119" duration="3975000" />
       <workItem from="1734702334331" duration="2151000" />
+      <workItem from="1736248963503" duration="10801000" />
+      <workItem from="1736274944900" duration="1231000" />
+      <workItem from="1736276509918" duration="600000" />
+      <workItem from="1736277119189" duration="63000" />
+      <workItem from="1736277191642" duration="9668000" />
+      <workItem from="1736327528119" duration="3974000" />
+      <workItem from="1736351900750" duration="3847000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -363,26 +453,125 @@
       <option name="project" value="LOCAL" />
       <updated>1735942363557</updated>
     </task>
-    <task id="LOCAL-00014" summary="edit programMonitoring stepTest">
+    <task id="LOCAL-00014" summary="MAIN MENU">
       <option name="closed" value="true" />
-      <created>1736185789437</created>
+      <created>1736249140007</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1736185789438</updated>
+      <updated>1736249140007</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="MAIN MENU">
+      <option name="closed" value="true" />
+      <created>1736251471896</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1736251471896</updated>
+    </task>
+    <task id="LOCAL-00016" summary="done Instructor menu">
+      <option name="closed" value="true" />
+      <created>1736258285638</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1736258285638</updated>
+    </task>
+    <task id="LOCAL-00017" summary="done Instructor menu">
+      <option name="closed" value="true" />
+      <created>1736259178483</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1736259178483</updated>
+    </task>
+    <task id="LOCAL-00018" summary="improving coverage">
+      <option name="closed" value="true" />
+      <created>1736280083760</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1736280083760</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736283867264</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1736283867264</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736283905294</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1736283905295</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736284154810</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1736284154810</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736284901595</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1736284901595</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736290461878</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1736290461878</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736291358159</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1736291358159</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736292165979</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1736292165979</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1736333284764</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1736333284764</updated>
+    </task>
+    <task id="LOCAL-00027" summary="doc and main">
+      <option name="closed" value="true" />
+      <created>1736355412710</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1736355412710</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="e5912781-b57d-45f2-90dc-6c3f69a07d00" value="TOOL_WINDOW" />
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -401,15 +590,11 @@
             </State>
           </value>
         </entry>
-        <entry key="e5912781-b57d-45f2-90dc-6c3f69a07d00">
-          <value>
-            <State />
-          </value>
-        </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Admin test and production code" />
     <MESSAGE value="edit on programManagementStepTest" />
     <MESSAGE value="add depend. + finish a feature" />
@@ -422,23 +607,34 @@
     <MESSAGE value="Main Edit" />
     <MESSAGE value="workspace" />
     <MESSAGE value="sign in and sing out analysis" />
-    <MESSAGE value="edit programMonitoring stepTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit programMonitoring stepTest" />
+    <MESSAGE value="MAIN MENU" />
+    <MESSAGE value="done Instructor menu" />
+    <MESSAGE value="improving coverage" />
+    <MESSAGE value="Refactoring" />
+    <MESSAGE value="doc and main" />
+    <option name="LAST_COMMIT_MESSAGE" value="doc and main" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Fitness$acceptanceTest.ic" NAME="acceptanceTest Coverage Results" MODIFIED="1736187483801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/Fitness$acceptanceTest.ic" NAME="acceptanceTest Coverage Results" MODIFIED="1736061155875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>org.example.AcceptanceTest.*</FILTER>
-      <FILTER>org.example.Program</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SW_Project2$Feature__ProgramManagment.ic" NAME="Feature: ProgramManagment Coverage Results" MODIFIED="1736197520064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>io.cucumber.core.cli.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SW_Project2$acceptanceTest.ic" NAME="acceptanceTest Coverage Results" MODIFIED="1736291842208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.AcceptanceTest.*</FILTER>
       <FILTER>org.example.Admin</FILTER>
+      <FILTER>org.example.AdminService</FILTER>
       <FILTER>org.example.Article</FILTER>
       <FILTER>org.example.Client</FILTER>
       <FILTER>org.example.ClientRepository</FILTER>
       <FILTER>org.example.Complaint</FILTER>
       <FILTER>org.example.Content</FILTER>
+      <FILTER>org.example.FeedbackAndReviewsManager</FILTER>
       <FILTER>org.example.HealthTip</FILTER>
       <FILTER>org.example.Instructor</FILTER>
       <FILTER>org.example.InstructorRepository</FILTER>
@@ -449,8 +645,12 @@
       <FILTER>org.example.ProgressManager</FILTER>
       <FILTER>org.example.Recipe</FILTER>
       <FILTER>org.example.Schedule</FILTER>
+      <FILTER>org.example.SubscriptionPlan</FILTER>
       <FILTER>org.example.SubscriptionService</FILTER>
       <FILTER>org.example.User</FILTER>
+      <FILTER>org.example.UserStatus</FILTER>
+      <FILTER>org.example.AdminService</FILTER>
+      <FILTER>org.example.AcceptanceTest.programManagementStep</FILTER>
     </SUITE>
   </component>
 </project>
