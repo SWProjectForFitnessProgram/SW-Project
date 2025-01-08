@@ -9,6 +9,7 @@ import org.example.*;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
 
 public class clientInteractionStep {
 
@@ -18,40 +19,6 @@ public class clientInteractionStep {
     String message;
     String feedback;
     private final ProgressManager progressManager = new ProgressManager();
-
-//    @Before
-//    public static void setupBefore() {
-//        // Add mock data to the programService and programList
-//        // Create Contents first
-//        Content mockContent = new Content("https://youtu.be/f3zOrYCwquE","https://unsplash.com/s/photos/gym","https://www.everydayhealth.com/fitness/guide/");
-//        Schedule mockSchedule = new Schedule(new String[]{"Sunday","Tuesday","Thursday"},"5:00 Pm - 7:00 Pm","Online");
-//
-//        Program mockProgram = new Program(
-//                "Get Fit & Moving Challenge",
-//                "30 days",
-//                "Beginners",
-//                "Weight Loss, Full Body",
-//                mockContent,
-//                mockSchedule,
-//                "29.99 $"
-//        );
-//        client = new Client("Alice", "alice@example.com",25);
-//        instructor = new Instructor("John Doe", "johndoe@example.com",30);
-//        mockProgram.enrollClient(client);
-//        instructor.setProgram(mockProgram);
-//        client.enrollProgram(mockProgram);
-//
-//    }
-//    @Given("an instructor is logged in")
-//    public void an_instructor_is_logged_in() {
-//        // Write code here that turns the phrase above into concrete actions
-////        instructorLoggedIn = true;
-////        System.out.println("Instructor is logged in");
-//        instructor = new Instructor("John Doe", "johndoe@example.com",30);
-    ////        if(!instructor.isLoggedIn)
-//        instructor.setLoggedIn(true);
-//
-//    }
 
 
     @And("the instructor has an active program {string} with enrolled clients")
@@ -99,7 +66,7 @@ public class clientInteractionStep {
         // Write code here that turns the phrase above into concrete actions
         assertTrue(client.hasReceivedMessage(message));
     }
-    //////////////////////////
+
     @And("the instructor has an active program {string} with a discussion forum")
     public void theInstructorHasAnActiveProgramWithADiscussionForum(String programName)
     {
@@ -136,19 +103,10 @@ public class clientInteractionStep {
     public void all_enrolled_clients_should_see_the_message_on_the_forum() {
         // Write code here that turns the phrase above into concrete actions
         assertTrue(client.hasReceivedMessage(message));
-//        verify(program).addForumMessage("Weekly Motivation", "Stay consistent, and you will see results!");
     }
 
     @And("the instructor has access to a client's progress report for {string}")
     public void theInstructorHasAccessToAClientSProgressReportFor(String clientName) {
-//        client = instructor.getClientByName(clientName);
-//        if (client == null) {
-//            throw new IllegalArgumentException("Client " + clientName + " not found.");
-//        }
-//
-//        if (!instructor.isClientInProgram(client)) { // Crucial check!
-//            throw new IllegalArgumentException("Client " + clientName + " is not enrolled in the instructor's program.");
-//        }
         Map<String, String> progressData = progressManager.getProgressData();
         if (progressData == null) {
             throw new IllegalArgumentException("Progress data not found for client: " + clientName);
