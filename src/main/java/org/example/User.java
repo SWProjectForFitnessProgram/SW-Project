@@ -29,12 +29,6 @@ public class User {
         this.password = password;
     }
 
-//    public String getSubscriptionPlan() {
-//        return subscription != null ? subscription.getPlanName() : "No subscription";
-//    }
-
-
-
 
     public boolean login(String id, String password) {
         boolean result = false;

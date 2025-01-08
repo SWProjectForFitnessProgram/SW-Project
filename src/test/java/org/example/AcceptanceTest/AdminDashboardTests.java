@@ -17,7 +17,7 @@ import java.util.Map;
 import static org.example.UserStatus.*;
 import static org.junit.Assert.assertTrue;
 
-public class AdminUserManagementStep {
+public class AdminDashboardTests {
 
 
     private static List<Instructor> pendingInstructors;

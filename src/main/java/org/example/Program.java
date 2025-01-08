@@ -32,7 +32,6 @@ public class Program {
      */
     public Program()
     {
-        //new Program("Get Fit & Moving Challenge", "30 days", "Beginners", "Weight Loss, Full Body", "https://youtu.be/f3zOrYCwquE", "29.99 $")
         programTitle = "Get Fit & Moving Challenge";
         duration = "30 days";
         difficultyLevel = "Beginners";
@@ -174,7 +173,7 @@ public class Program {
 
         if (!clientsEnrolled.contains(client)) {
             clientsEnrolled.add(client);
-//            System.out.println(client.getName() + " has been enrolled in the program.");
+            System.out.println(client.getName() + " has been enrolled in the program.");
         } else {
             System.out.println(client.getName() + " is already enrolled in the program.");
         }
