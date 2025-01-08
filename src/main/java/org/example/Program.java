@@ -9,6 +9,8 @@ import java.util.List;
  * The Program class represents a fitness program that clients can enroll in.
  * It includes details about the program such as its title, duration, difficulty level, goals,
  * schedule, content, price, and other related information.
+ *
+ * @author Tala Alhendi
  */
 public class Program {
     List<Client> clientsEnrolled;
@@ -67,7 +69,7 @@ public class Program {
         clientsEnrolled = new ArrayList<>();
     }
     /**
-     * Sets*/
+     * Setters*/
     public void setSchedule(Schedule schedule)
     {
         this.schedule = schedule;

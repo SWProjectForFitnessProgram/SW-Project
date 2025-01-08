@@ -15,37 +15,36 @@ public class Main {
 
 
     public static void main(String[] args) {
-
         initializeMockData();
         Scanner scanner = new Scanner(System.in);
-       while(true)
-       {
-           String mainChoice;
-           System.out.println("==== Fitness Management System ====");
-           System.out.println("1. Admin");
-           System.out.println("2. Instructor");
-           System.out.println("3. Client");
-           System.out.println("4. Exit");
-           System.out.print("Select an option : ");
-           mainChoice = scanner.next();
-           switch (mainChoice) {
-               case "1" :
-                   adminMenu(scanner);
-                   break;
-               case "2" :
-                   instructorMenu(scanner);
-                   break;
-               case "3" :
-                   clientMenu(scanner);
-                   break;
-               case "4" :
-                   System.out.println("Thank you for using our Fitness program :)");
-                   return;
-               default :
-                   System.err.println("Invalid input!\nPlease try again.");
-           }
+        while(true)
+        {
+            String mainChoice;
+            System.out.println("==== Fitness Management System ====");
+            System.out.println("1. Admin");
+            System.out.println("2. Instructor");
+            System.out.println("3. Client");
+            System.out.println("4. Exit");
+            System.out.print("Select an option : ");
+            mainChoice = scanner.next();
+            switch (mainChoice) {
+                case "1" :
+                    adminMenu(scanner);
+                    break;
+                case "2" :
+                    instructorMenu(scanner);
+                    break;
+                case "3" :
+                    clientMenu(scanner);
+                    break;
+                case "4" :
+                    System.out.println("Thank you for using our Fitness program :)");
+                    return;
+                default :
+                    System.err.println("Invalid input!\nPlease try again.");
+            }
 
-       }
+        }
     }
     private static void initializeMockData() {
         Content mockResources = new Content(
@@ -244,8 +243,8 @@ public class Main {
             clients.add(newClient);
             System.out.println("Client " + clientName + " has been successfully enrolled in the program: " + programName);
         } else {
-                System.err.println("There is no such program in your programs list");
-            }
+            System.err.println("There is no such program in your programs list");
+        }
 
     }
 
@@ -665,4 +664,5 @@ public class Main {
     }
 
 }
+
 

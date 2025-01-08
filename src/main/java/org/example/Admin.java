@@ -6,6 +6,8 @@ import java.util.logging.Logger;
  * Represents the admin of the system, responsible for managing instructors, clients, articles,
  * health tips, recipes, complaints, programs, and generating various reports. Implements the
  * AdminService interface for defining core functionalities.
+ *
+ * @author Ghaydaa Saify
  */
 
 public class Admin implements AdminService {

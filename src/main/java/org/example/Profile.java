@@ -2,7 +2,7 @@ package org.example;
 /**
  * Represents a user's profile with personal details and fitness preferences.
  *
- * Author: Taqwa Odeh
+ * @author  Taqwa Odeh
  */
 public class Profile {
     private String name;
