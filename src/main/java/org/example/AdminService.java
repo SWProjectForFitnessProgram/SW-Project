@@ -8,8 +8,7 @@ public interface AdminService {
     //1
     List<Instructor> getPendingInstructors();
     List<Client> getPendingClients();
-//    void approveInstructor(Long id);
-//    void approveClient(Long id);
+
 
 
     InstructorRepository getInstructorRepository();
@@ -18,16 +17,6 @@ public interface AdminService {
 
     ClientRepository getClientsRepository();
 
-
-//    Object getUserActivityReport();
-//    Map<Program, Double> getProgramEnrollmentStatistics();
-
-//    List<Map<String, Double>> getProgramEnrollmentStatisticsAsTable();
-
-
-//    List<Map<String, String>> generateRevenueReport(String lastQuarter);
-//
-//    List<Map<String, String>> getProgramStatuses();
 
     void addArticle(Article article);
 

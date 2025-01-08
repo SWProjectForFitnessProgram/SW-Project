@@ -325,21 +325,22 @@ public class Admin implements AdminService {
                 "Metric", "User Engagement Rate",
                 "Description", percentage.toString() + "%"
         ));
-
-        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+        for(Map<String, String> statistic : statistics) {
+            String Metric = statistic.get("Metric");
+            String description = statistic.get("Description");
+            System.out.printf("| %-22s | %-34s |\n", Metric, description);
+        }
 
         System.out.println("+------------------------+------------------------------------+");
     }
 
-    public String getEMAIL() {
-        return EMAIL;
-    }
+//    public String getEMAIL() {
+//        return EMAIL;
+//    }
     public String getNAME() {
         return NAME;
     }
-//    public int getPASSWORD() {
-//        return PASSWORD;
-//    }
+
 
     public boolean isSignedIn(String EMAIL){
         boolean isLoggedIn = false;

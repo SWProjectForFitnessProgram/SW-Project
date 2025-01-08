@@ -18,7 +18,7 @@ public class ClientRepository {
                 .collect(Collectors.toList());
     }
     public Collection<Client> getAllClients() {
-        return new ArrayList<>(clients); //to avoid playing with the real Array so we send a copy
+        return new ArrayList<>(clients);
     }
 
     public boolean updateClient(String email, String newPassword, String newName) {
@@ -39,10 +39,5 @@ public class ClientRepository {
         return null;
     }
 
-    public Client findById(Long id) {
-        return clients.stream()
-                .filter(client -> client.getId().equals(id))
-                .findFirst()
-                .orElse(null);
-    }
+
 }

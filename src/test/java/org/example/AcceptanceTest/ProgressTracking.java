@@ -19,14 +19,7 @@ public class ProgressTracking {
     private Map<String, String> progressData;
     private List<Map<String, String>> progressHistory;
     private Map<String, List<String>> achievements = new HashMap<>();
-//    private Instructor instructor;
-//    private Client client;
-//    private String feedback;
-//
-//    public ProgressTracking()
-//    {
-//        instructor = new Instructor("Test Instructor in the client progress tracking","test@gmail.com",30);
-//    }
+
 
     @Given("I am logged in and on the {string} page")
     public void iAmLoggedInAndOnThePage(String page) {

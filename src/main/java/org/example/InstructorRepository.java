@@ -40,11 +40,5 @@ public class InstructorRepository {
         return null;
     }
 
-//
-//    public Instructor findById(Long id) {
-//        return instructors.stream()
-//                .filter(instructor -> instructor.getId().equals(id))
-//                .findFirst()
-//                .orElse(null);
-//    }
+
 }

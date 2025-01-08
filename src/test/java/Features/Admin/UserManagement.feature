@@ -93,21 +93,3 @@ Feature: User Management
       | Total Active Users | 20                                 |
       | Total Inactive Users |10                                |
       | User Engagement Rate | 50%                              |
-#  #10
-#  Scenario: View engagement statistics for instructors
-#    Given the admin has selected the "monitor instructor activity" option
-#    When the admin views the instructor engagement report
-#    Then the system should display statistics including:
-#      | Metric                 | Description                          |
-#      | Total Classes Conducted | Number of classes taught by instructors |
-#      | Total Articles Shared  | Number of articles shared by instructors |
-#      | Instructor Engagement  | Level of instructor activity         |
-#  #11
-#  Scenario: View engagement statistics for clients
-#    Given the admin has selected the "monitor client activity" option
-#    When the admin views the client engagement report
-#    Then the system should display statistics including:
-#      | Metric               | Description                               |
-#      | Total Programs Enrolled | Number of programs clients enrolled in |
-#      | Completed Programs   | Programs completed by clients           |
-#      | Client Engagement Rate | Level of client activity and interaction |

@@ -1,14 +1,6 @@
 package org.example;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.EnumType;
-//import jakarta.persistence.Enumerated;
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
-//import jakarta.persistence.Column;
-//
-//
+
 ////import org.springframework.data.annotation.Id;
-//import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +8,6 @@ import java.util.List;
  * Represents an Instructor in the system, who can manage programs, interact with clients,
  * and handle subscription plans and status within the platform.
  */
-//@Entity
 public class Instructor {
     String name;
     boolean LoggedIn;
@@ -61,12 +52,6 @@ public class Instructor {
 
     }
 
-//    public Instructor() {
-//        this.email = "";
-//        this.password = "";
-//        programs = new ArrayList<>();
-//
-//    }
 
     public List<Program> getPrograms() {
         return programs;
@@ -84,20 +69,6 @@ public class Instructor {
         else
             System.out.println("The program ' " + program.getTitle() +" '"+"you want to add already exist :)");
     }
-//    public void addProgram(String programName, List<String> clientNames)
-//    {
-//        for (Program existingProgram : programs) {
-//            if (existingProgram.getTitle().equals(programName))
-//            {
-//                // Add new clients to the existing program
-//                for (String clientName : clientNames) {
-//                    existingProgram.enrollClient(new Client(clientName, programName));
-//                }
-//                System.out.println("Clients added to existing program: " + programName);
-//                return;  // Exit once the program is found and clients are added
-//            }
-//        }
-//    }
 
     public void setName(String instructorName)
     {

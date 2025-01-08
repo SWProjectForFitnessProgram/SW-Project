@@ -28,7 +28,6 @@ public class ProgramService {
     public void updateProgram( Program programToUpdate) {
         Program existingProgram = getProgramByTitle(programToUpdate.getTitle());
         if (existingProgram != null) {
-            // Update the details of the existing program with the new programToUpdate values
             existingProgram.setDuration(programToUpdate.getDuration());
             existingProgram.setDifficultyLevel(programToUpdate.getDifficultyLevel());
             existingProgram.setGoals(programToUpdate.getGoals());
@@ -36,14 +35,12 @@ public class ProgramService {
             existingProgram.setSchedule(programToUpdate.getSchedule());
             existingProgram.setPrice(programToUpdate.getPrice());
 
-            // You can add other fields to update as needed
             System.out.println("Program updated successfully: " + existingProgram.getTitle());
         } else {
             System.out.println("Program with title '" + programToUpdate.getTitle() + "' not found.");
         }
     }
-    // Method to add a new program
-    // Delete a program
+
     public void deleteProgram(String title) {
         Program programToDelete = getProgramByTitle(title);
         if (programToDelete != null) {
@@ -54,7 +51,7 @@ public class ProgramService {
         }
         deletionStatus = "Failure";
         deletionMessage = "Program with title \"<program_title>\" not found.";
-        return ;
+
     }
     public void displayAllPrograms() {
         if (programList.isEmpty()) {
