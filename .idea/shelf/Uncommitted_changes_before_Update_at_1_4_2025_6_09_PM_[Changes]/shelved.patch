@@ -1,0 +1,555 @@
+Index: src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.AcceptanceTest;\r\n\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.Then;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.*;\r\nimport org.junit.Before;\r\nimport org.junit.Assert;\r\nimport org.junit.Before;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\nimport org.junit.Assert.*;\r\n\r\npublic class SigninAndSingupStepTest {\r\n    private Admin admin;\r\n    private String signUpMessage;\r\n\r\n   \r\n\r\n    @Before\r\n    public void setup() {\r\n        System.out.println(\"Setting up test...\");\r\n        InstructorRepository instructorRepository = new InstructorRepository();\r\n        ClientRepository clientRepository = new ClientRepository();\r\n        admin = new Admin(instructorRepository, clientRepository); // Initialize admin\r\n        System.out.println(\"Admin initialized: \" + admin);\r\n    }\r\n\r\n\r\n    @Given(\"no account exists with email {string}\")\r\n    public void noAccountExistsWithEmail(String string) {\r\n//        Assert.assertFalse(admin.isSignedIn(string));\r\n    }\r\n\r\n    @When(\"the instructor signs up with:\")\r\n    public void theInstructorSignsUpWith(io.cucumber.datatable.DataTable dataTable) {\r\n//        List<Map<String, String>> instructorDetails = dataTable.asMaps(String.class, String.class);\r\n//\r\n//        for (Map<String, String> details : instructorDetails) {\r\n//            String email = details.get(\"Email\");\r\n//            String password = details.get(\"Password\");\r\n//            String name = details.get(\"Name\");\r\n//\r\n//            boolean success = admin.signUpInstructor(email, password, name);\r\n//            if (success) {\r\n//                signUpMessage = \"Your account is pending admin approval.\";\r\n//            } else {\r\n//                signUpMessage = \"Email already exists.\";\r\n//            }\r\n        }\r\n    @Then(\"the account should be created as pending approval with:\")\r\n    public void theAccountShouldBeCreatedAsPendingApprovalWith(io.cucumber.datatable.DataTable dataTable) {\r\n//        List<Map<String, String>> expectedDetails = dataTable.asMaps(String.class, String.class);\r\n\r\n//        for (Map<String, String> expected : expectedDetails) {\r\n//            String email = expected.get(\"Email\");\r\n//            String password = expected.get(\"Password\");\r\n//            String name = expected.get(\"Name\");\r\n//            String expectedStatus = expected.get(\"Status\");\r\n//\r\n//            Instructor instructor = admin.getInstructorRepository().findInstructorByEmail(email);\r\n//            Assert.assertNotNull(\"Instructor account was not created!\", instructor);\r\n//            Assert.assertEquals(\"Password mismatch!\", password, instructor.getPassword());\r\n//            Assert.assertEquals(\"Name mismatch!\", name, instructor.getName());\r\n//            Assert.assertEquals(\"Status mismatch!\", expectedStatus, instructor.getStatus().toString());\r\n//        }\r\n    }\r\n    @Then(\"the system should display the message {string}\")\r\n    public void theSystemShouldDisplayTheMessage(String string) {\r\n//        Assert.assertEquals(\"Message mismatch!\",signUpMessage, string);\r\n    }\r\n\r\n\r\n    @Given(\"a pending instructor account exists with email {string}\")\r\n    public void aPendingInstructorAccountExistsWithEmail(String arg0) {\r\n    }\r\n\r\n    @When(\"the admin approves the account for email {string}\")\r\n    public void theAdminApprovesTheAccountForEmail(String string) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @Then(\"the account status should be updated to {string}\")\r\n    public void theAccountStatusShouldBeUpdatedTo(String string) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @Then(\"the instructor should receive an email saying {string}\")\r\n    public void theInstructorShouldReceiveAnEmailSaying(String string) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n\r\n\r\n\r\n    @Given(\"an account exists with email {string}\")\r\n    public void anAccountExistsWithEmail(String string) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n\r\n\r\n\r\n    @Given(\"an approved instructor account exists with email {string} and password {string}\")\r\n    public void anApprovedInstructorAccountExistsWithEmailAndPassword(String string, String string2) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @When(\"the instructor signs in with:\")\r\n    public void theInstructorSignsInWith(io.cucumber.datatable.DataTable dataTable) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        // For automatic transformation, change DataTable to one of\r\n        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or\r\n        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,\r\n        // Double, Byte, Short, Long, BigInteger or BigDecimal.\r\n        //\r\n        // For other transformations you can register a DataTableType.\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @Then(\"the instructor should be signed in successfully.\")\r\n    public void theInstructorShouldBeSignedInSuccessfully() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n\r\n\r\n    @Given(\"an approved client account exists with email {string} and password {string}\")\r\n    public void anApprovedClientAccountExistsWithEmailAndPassword(String string, String string2) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @When(\"the client signs in with:\")\r\n    public void theClientSignsInWith(io.cucumber.datatable.DataTable dataTable) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        // For automatic transformation, change DataTable to one of\r\n        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or\r\n        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,\r\n        // Double, Byte, Short, Long, BigInteger or BigDecimal.\r\n        //\r\n        // For other transformations you can register a DataTableType.\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @Then(\"the system should display an error message {string}\")\r\n    public void theSystemShouldDisplayAnErrorMessage(String string) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n\r\n\r\n\r\n    @Given(\"an admin account exists with email {string} and password {string}\")\r\n    public void anAdminAccountExistsWithEmailAndPassword(String string, String string2) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @When(\"the admin signs in with:\")\r\n    public void theAdminSignsInWith(io.cucumber.datatable.DataTable dataTable) {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        // For automatic transformation, change DataTable to one of\r\n        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or\r\n        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,\r\n        // Double, Byte, Short, Long, BigInteger or BigDecimal.\r\n        //\r\n        // For other transformations you can register a DataTableType.\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n    @Then(\"the admin should be signed in successfully.\")\r\n    public void theAdminShouldBeSignedInSuccessfully() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n//        throw new io.cucumber.java.PendingException();\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java b/src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java
+--- a/src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java	(revision 5ada2b525dbda0cb542570656872ad5ee201501d)
++++ b/src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java	(date 1735945377994)
+@@ -14,7 +14,10 @@
+ import org.junit.Assert.*;
+ 
+ public class SigninAndSingupStepTest {
+-    private Admin admin;
++    InstructorRepository instructorRepository = new InstructorRepository();
++
++    ClientRepository clientRepository = new ClientRepository();
++    private Admin admin = new Admin(instructorRepository, clientRepository);
+     private String signUpMessage;
+ 
+    
+@@ -31,45 +34,46 @@
+ 
+     @Given("no account exists with email {string}")
+     public void noAccountExistsWithEmail(String string) {
+-//        Assert.assertFalse(admin.isSignedIn(string));
++        Assert.assertFalse(admin.isSignedIn(string));
+     }
+ 
+     @When("the instructor signs up with:")
+     public void theInstructorSignsUpWith(io.cucumber.datatable.DataTable dataTable) {
+-//        List<Map<String, String>> instructorDetails = dataTable.asMaps(String.class, String.class);
+-//
+-//        for (Map<String, String> details : instructorDetails) {
+-//            String email = details.get("Email");
+-//            String password = details.get("Password");
+-//            String name = details.get("Name");
+-//
+-//            boolean success = admin.signUpInstructor(email, password, name);
+-//            if (success) {
+-//                signUpMessage = "Your account is pending admin approval.";
+-//            } else {
+-//                signUpMessage = "Email already exists.";
+-//            }
++        List<Map<String, String>> instructorDetails = dataTable.asMaps(String.class, String.class);
++
++        for (Map<String, String> details : instructorDetails) {
++            String email = details.get("Email");
++            String password = details.get("Password");
++            String name = details.get("Name");
++
++            boolean success = admin.signUpInstructor(email, password, name);
++            if (success) {
++                signUpMessage = "Your account is pending admin approval.";
++            } else {
++                signUpMessage = "Email already exists.";
++            }
+         }
++    }
+     @Then("the account should be created as pending approval with:")
+     public void theAccountShouldBeCreatedAsPendingApprovalWith(io.cucumber.datatable.DataTable dataTable) {
+-//        List<Map<String, String>> expectedDetails = dataTable.asMaps(String.class, String.class);
++        List<Map<String, String>> expectedDetails = dataTable.asMaps(String.class, String.class);
+ 
+-//        for (Map<String, String> expected : expectedDetails) {
+-//            String email = expected.get("Email");
+-//            String password = expected.get("Password");
+-//            String name = expected.get("Name");
+-//            String expectedStatus = expected.get("Status");
+-//
+-//            Instructor instructor = admin.getInstructorRepository().findInstructorByEmail(email);
+-//            Assert.assertNotNull("Instructor account was not created!", instructor);
+-//            Assert.assertEquals("Password mismatch!", password, instructor.getPassword());
+-//            Assert.assertEquals("Name mismatch!", name, instructor.getName());
+-//            Assert.assertEquals("Status mismatch!", expectedStatus, instructor.getStatus().toString());
+-//        }
++        for (Map<String, String> expected : expectedDetails) {
++            String email = expected.get("Email");
++            String password = expected.get("Password");
++            String name = expected.get("Name");
++            String expectedStatus = expected.get("Status");
++
++            Instructor instructor = admin.getInstructorRepository().findInstructorByEmail(email);
++            Assert.assertNotNull("Instructor account was not created!", instructor);
++            Assert.assertEquals("Password mismatch!", password, instructor.getPassword());
++            Assert.assertEquals("Name mismatch!", name, instructor.getName());
++            Assert.assertEquals("Status mismatch!", expectedStatus, instructor.getStatus().toString());
++        }
+     }
+     @Then("the system should display the message {string}")
+     public void theSystemShouldDisplayTheMessage(String string) {
+-//        Assert.assertEquals("Message mismatch!",signUpMessage, string);
++        Assert.assertEquals("Message mismatch!",signUpMessage, string);
+     }
+ 
+ 
+Index: src/main/java/org/example/AdminService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collection;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\npublic interface AdminService {\r\n    //1\r\n    List<Instructor> getPendingInstructors();\r\n    List<Client> getPendingClients();\r\n    void approveInstructor(Long id);\r\n    void approveClient(Long id);\r\n\r\n\r\n    InstructorRepository getInstructorRepository();\r\n\r\n    Collection<Client> getClients();\r\n\r\n    ClientRepository getClientsRepository();\r\n\r\n\r\n    Object getUserActivityReport();\r\n    Map<Program, Double> getProgramEnrollmentStatistics();\r\n\r\n    List<Map<String, String>> getProgramEnrollmentStatisticsAsTable();\r\n\r\n\r\n    List<Map<String, String>> generateRevenueReport(String lastQuarter);\r\n\r\n    List<Map<String, String>> getProgramStatuses();\r\n\r\n    void addArticle(Article article);\r\n\r\n    void approveArticle(Article article);\r\n\r\n    void rejectRecipe(Recipe recipe);\r\n\r\n    void addComplaint(Complaint complaint);\r\n\r\n    void addTip(HealthTip tip);\r\n\r\n    void approveTip(HealthTip tip);\r\n\r\n    void resolveComplaint(Complaint complaint);\r\n\r\n    void addRecipe(Recipe recipe);\r\n\r\n    void rejectArticle(Article article);\r\n\r\n    Collection<Instructor> getInstructors();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/AdminService.java b/src/main/java/org/example/AdminService.java
+--- a/src/main/java/org/example/AdminService.java	(revision 5ada2b525dbda0cb542570656872ad5ee201501d)
++++ b/src/main/java/org/example/AdminService.java	(date 1736006751585)
+@@ -9,8 +9,8 @@
+     //1
+     List<Instructor> getPendingInstructors();
+     List<Client> getPendingClients();
+-    void approveInstructor(Long id);
+-    void approveClient(Long id);
++//    void approveInstructor(Long id);
++//    void approveClient(Long id);
+ 
+ 
+     InstructorRepository getInstructorRepository();
+@@ -20,8 +20,8 @@
+     ClientRepository getClientsRepository();
+ 
+ 
+-    Object getUserActivityReport();
+-    Map<Program, Double> getProgramEnrollmentStatistics();
++//    Object getUserActivityReport();
++//    Map<Program, Double> getProgramEnrollmentStatistics();
+ 
+     List<Map<String, String>> getProgramEnrollmentStatisticsAsTable();
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"sign in and sing out analysis\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Merge.Settings\">\r\n    <option name=\"BRANCH\" value=\"origin/Instructor\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GitHubPullRequestState\">{\r\n  &quot;prStates&quot;: [\r\n    {\r\n      &quot;id&quot;: {\r\n        &quot;id&quot;: &quot;PR_kwDONTwW486GnF8s&quot;,\r\n        &quot;number&quot;: 44\r\n      },\r\n      &quot;lastSeen&quot;: 1735930031703\r\n    }\r\n  ]\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;\r\n  },\r\n  &quot;recentNewPullRequestHead&quot;: {\r\n    &quot;server&quot;: {\r\n      &quot;useHttp&quot;: false,\r\n      &quot;host&quot;: &quot;github.com&quot;,\r\n      &quot;port&quot;: null,\r\n      &quot;suffix&quot;: null\r\n    },\r\n    &quot;owner&quot;: &quot;TalaAlhendi&quot;,\r\n    &quot;repository&quot;: &quot;SW-Project&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2qSJUgKlFXO8XHQzPIM5jPamcbX\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Cucumber Java.Feature: clientInteraction.executor\": \"Run\",\r\n    \"JUnit.acceptanceTest.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"Admin\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"JUnit.acceptanceTest\">\r\n    <configuration name=\"Feature: clientInteraction\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature\" />\r\n      <option name=\"GLUE\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: clientInteraction\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"acceptanceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Fitness\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AcceptanceTest.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.AcceptanceTest.acceptanceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.acceptanceTest\" />\r\n        <item itemvalue=\"Cucumber Java.Feature: clientInteraction\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734620442002</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734620442002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Admin test and production code\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734644545713</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734644545713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"edit on programManagementStepTest\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734646611195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734646611195</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"edit on programManagementStepTest\" />\r\n      <created>1734650063351</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1734650063351</updated>\r\n      <workItem from=\"1734650065119\" duration=\"3975000\" />\r\n      <workItem from=\"1734702334331\" duration=\"2151000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"add depend. + finish a feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734688544556</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734688544556</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734689341616</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734689341616</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"editing the whole project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734704132936</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734704132936</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Admin production code #2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734717246337</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734717246338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Admin complete feature #2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734723340961</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734723340961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"admin 3rd feature (production code done)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734728881715</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734728881715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Main Edit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735930375111</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735930375111</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"workspace\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735930831892</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735930831892</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"sign in and sing out analysis\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735937620716</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735937620716</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"sign in and sing out analysis\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735942363557</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735942363557</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"14\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"OPEN_GENERIC_TABS\">\r\n      <map>\r\n        <entry key=\"e5912781-b57d-45f2-90dc-6c3f69a07d00\" value=\"TOOL_WINDOW\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"HIGHLIGHTERS\">\r\n                <map>\r\n                  <entry key=\"MERGE_COMMITS\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"e5912781-b57d-45f2-90dc-6c3f69a07d00\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Admin test and production code\" />\r\n    <MESSAGE value=\"edit on programManagementStepTest\" />\r\n    <MESSAGE value=\"add depend. + finish a feature\" />\r\n    <MESSAGE value=\"Admin testcode\" />\r\n    <MESSAGE value=\"editing the whole project\" />\r\n    <MESSAGE value=\"Admin production code #2\" />\r\n    <MESSAGE value=\"Admin complete feature #2\" />\r\n    <MESSAGE value=\"edit cucumber.html\" />\r\n    <MESSAGE value=\"admin 3rd feature (production code done)\" />\r\n    <MESSAGE value=\"Main Edit\" />\r\n    <MESSAGE value=\"workspace\" />\r\n    <MESSAGE value=\"sign in and sing out analysis\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"sign in and sing out analysis\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5ada2b525dbda0cb542570656872ad5ee201501d)
++++ b/.idea/workspace.xml	(date 1736006752071)
+@@ -4,7 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="sign in and sing out analysis" />
++    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="edit pom file">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AdminService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AcceptanceTest/SigninAndSingupStepTest.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -17,9 +23,6 @@
+       </list>
+     </option>
+   </component>
+-  <component name="Git.Merge.Settings">
+-    <option name="BRANCH" value="origin/Instructor" />
+-  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+@@ -34,33 +37,22 @@
+     &quot;assignee&quot;: &quot;Ghayda-Saify&quot;
+   }
+ }</component>
+-  <component name="GitHubPullRequestState">{
+-  &quot;prStates&quot;: [
+-    {
+-      &quot;id&quot;: {
+-        &quot;id&quot;: &quot;PR_kwDONTwW486GnF8s&quot;,
+-        &quot;number&quot;: 44
+-      },
+-      &quot;lastSeen&quot;: 1735930031703
+-    }
+-  ]
+-}</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,
+-    &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/SWProjectForFitnessProgram/SW-Project.git",
++    "accountId": "83da6505-7ab8-4b97-b7f8-45c77f0031ba"
+   },
+-  &quot;recentNewPullRequestHead&quot;: {
+-    &quot;server&quot;: {
+-      &quot;useHttp&quot;: false,
+-      &quot;host&quot;: &quot;github.com&quot;,
+-      &quot;port&quot;: null,
+-      &quot;suffix&quot;: null
++  "recentNewPullRequestHead": {
++    "server": {
++      "useHttp": false,
++      "host": "github.com",
++      "port": null,
++      "suffix": null
+     },
+-    &quot;owner&quot;: &quot;TalaAlhendi&quot;,
+-    &quot;repository&quot;: &quot;SW-Project&quot;
++    "owner": "TalaAlhendi",
++    "repository": "SW-Project"
+   }
+-}</component>
++}]]></component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+@@ -81,16 +73,14 @@
+     "JUnit.acceptanceTest.executor": "Run",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
+     "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "Admin",
++    "git-widget-placeholder": "main",
+     "kotlin-language-version-configured": "true",
+     "node.js.detected.package.eslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+     "settings.editor.selected.configurable": "preferences.pluginManager",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -133,6 +123,7 @@
+     <recent_temporary>
+       <list>
+         <item itemvalue="JUnit.acceptanceTest" />
++        <item itemvalue="JUnit.acceptanceTest" />
+         <item itemvalue="Cucumber Java.Feature: clientInteraction" />
+       </list>
+     </recent_temporary>
+@@ -140,8 +131,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
++        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
++        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -179,6 +170,7 @@
+       <updated>1734650063351</updated>
+       <workItem from="1734650065119" duration="3975000" />
+       <workItem from="1734702334331" duration="2151000" />
++      <workItem from="1735991445617" duration="3467000" />
+     </task>
+     <task id="LOCAL-00004" summary="add depend. + finish a feature">
+       <option name="closed" value="true" />
+@@ -228,39 +220,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1734728881715</updated>
+     </task>
+-    <task id="LOCAL-00010" summary="Main Edit">
+-      <option name="closed" value="true" />
+-      <created>1735930375111</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1735930375111</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="workspace">
+-      <option name="closed" value="true" />
+-      <created>1735930831892</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1735930831892</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="sign in and sing out analysis">
+-      <option name="closed" value="true" />
+-      <created>1735937620716</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1735937620716</updated>
+-    </task>
+-    <task id="LOCAL-00013" summary="sign in and sing out analysis">
+-      <option name="closed" value="true" />
+-      <created>1735942363557</created>
+-      <option name="number" value="00013" />
+-      <option name="presentableId" value="LOCAL-00013" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1735942363557</updated>
+-    </task>
+-    <option name="localTasksCounter" value="14" />
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: src/main/java/org/example/Admin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\n//import org.springframework.stereotype.Service;\r\n\r\nimport io.cucumber.core.backend.Pending;\r\n\r\nimport java.time.ZoneId;\r\nimport java.util.*;\r\nimport java.time.LocalDate;\r\n//@Service\r\npublic class Admin implements AdminService {\r\n    private final int password = 123456;\r\n    private final String email = \"g.safw2018@gmail.com\";\r\n\r\n    private final String name = \"Ghayda\";\r\n    public boolean deactivate=false;\r\n    private boolean loggedIn=true;\r\n    private String selectedOption;\r\n    private final InstructorRepository instructorRepository;\r\n    private final ClientRepository clientRepository;\r\n    private List<Article> articles = new ArrayList<>();\r\n    private List<HealthTip> tips = new ArrayList<>();\r\n    private List<Recipe> recipes = new ArrayList<>();\r\n    private List<Complaint> complaints = new ArrayList<>();\r\n    private ArrayList<Program> Programs;\r\n\r\n\r\n//    private static Admin instance;\r\n//\r\n//\r\n//\r\n//    // Allow replacing the instance for testing\r\n//    public static void setInstance(Admin adminMock) {\r\n//        instance = adminMock;\r\n//    }\r\n//    //Ghayda need to edit the default constructor\r\n//    public Admin getInstance(InstructorRepository instructorRepository, ClientRepository clientRepository){ //singleton class\r\n//        if(instance == null){\r\n//            instance = new Admin(instructorRepository,clientRepository);\r\n//            return instance;\r\n//        }\r\n//        else {\r\n//            System.out.println(\"Instance already created!\");\r\n//            return null;\r\n//        }\r\n//    }\r\n\r\n    public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {\r\n        this.instructorRepository = instructorRepository;\r\n        this.clientRepository = clientRepository;\r\n    }\r\n\r\n    public void approveAdminLogin(){\r\n        loggedIn=true;\r\n    }\r\n\r\n    public boolean isLoggedIn(){\r\n        return loggedIn;\r\n    }\r\n    //1\r\n    @Override\r\n    public List<Instructor> getPendingInstructors() {\r\n        return instructorRepository.findPendingInstructors();\r\n    }\r\n    //1\r\n    @Override\r\n    public List<Client> getPendingClients() {\r\n        return clientRepository.findPendingClients();\r\n    }\r\n    //1\r\n    @Override\r\n    public void approveInstructor(Long id) {\r\n        Instructor instructor = instructorRepository.findById(id);\r\n        if (instructor != null) {\r\n            instructor.approve();\r\n            System.out.println(\"Instructor approved successfully.\");\r\n        } else {\r\n            System.out.println(\"Instructor not found.\");\r\n        }\r\n    }\r\n    //1\r\n    public void approveClient(Long id) {\r\n        Client client = clientRepository.findById(id);\r\n        if (client != null) {\r\n            client.approve();\r\n            System.out.println(\"Client approved successfully.\");\r\n        } else {\r\n            System.out.println(\"Client not found.\");\r\n        }\r\n    }\r\n//1\r\n    @Override\r\n    public Collection<Instructor> getInstructors() {\r\n        return instructorRepository.getAllInstructors();\r\n    }\r\n    @Override\r\n    public InstructorRepository getInstructorRepository() {\r\n        return instructorRepository;\r\n    }\r\n    @Override\r\n    public Collection<Client> getClients() {\r\n        return clientRepository.getAllClients();    }\r\n    @Override\r\n    public ClientRepository getClientsRepository() {\r\n        return clientRepository;\r\n    }\r\n\r\n//----------------------\r\n\r\n    @Override\r\n    public Object getUserActivityReport() {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public Map<Program, Double> getProgramEnrollmentStatistics() {\r\n        // Map to hold program and enrollment count\r\n        Map<Program, Double> programEnrollmentStatistics = new HashMap<>();\r\n\r\n        // Iterate through all clients\r\n        for (Program p : Programs) {\r\n            programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());\r\n        }\r\n\r\n        return programEnrollmentStatistics; // Return the statistics\r\n    }\r\n    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {\r\n            Map<Program, Double> statistics = getProgramEnrollmentStatistics();\r\n\r\n            List<Map<String, String>> table = new ArrayList<>();\r\n            for (Map.Entry<Program, Double> entry : statistics.entrySet()) {\r\n                Map<String, String> row = new HashMap<>();\r\n                row.put(\"Program Name\", entry.getKey().getTitle());\r\n                row.put(\"Enrollment Count\", entry.getValue().toString());\r\n                table.add(row);\r\n            }\r\n\r\n            return table;\r\n    }\r\n\r\n\r\n    @Override\r\n    public List<Map<String, String>> generateRevenueReport(String timePeriod) {\r\n        List<Map<String, String>> revenueReport = new ArrayList<>();\r\n        if (\"last quarter\".equalsIgnoreCase(timePeriod)) {\r\n            for (Program program : Programs) {\r\n                double revenue = program.getClientsEnrolled().size() *Double.parseDouble( program.getPrice());\r\n                revenueReport.add(Map.of(\r\n                        \"Program Name\", program.getTitle(),\r\n                        \"Revenue\", String.valueOf(revenue)\r\n                ));\r\n            }\r\n        }\r\n        return revenueReport;\r\n    }\r\n\r\n    @Override\r\n       public List<Map<String, String>> getProgramStatuses() {\r\n        List<Map<String, String>> programStatuses = new ArrayList<>();\r\n        LocalDate currentDate = LocalDate.now(); // Get the current date\r\n\r\n        for (Program program : Programs) {\r\n            String status;\r\n            if (currentDate.isBefore(convertDateToLocalDate(program.getStartDate()))) {\r\n                status = \"Upcoming\";\r\n            } else if (!currentDate.isAfter(convertDateToLocalDate(program.getEndtDate()))) {\r\n                status = \"Active\";\r\n            } else {\r\n                status = \"Completed\";\r\n            }\r\n\r\n            programStatuses.add(Map.of(\r\n                    \"Program Name\", program.getTitle(),\r\n                    \"Status\", status\r\n            ));\r\n        }\r\n\r\n        return programStatuses;\r\n    }\r\n\r\n    public String getDisplayedMessage() {\r\n        return \"No pending instructor accounts\";\r\n    }\r\n\r\n\r\n    public static LocalDate convertDateToLocalDate(Date date) {\r\n        return date.toInstant()                        // Convert Date to Instant\r\n                .atZone(ZoneId.systemDefault())   // Convert Instant to ZonedDateTime\r\n                .toLocalDate();                   // Convert ZonedDateTime to LocalDate\r\n    }\r\n\r\n    @Override\r\n    public void addArticle(Article article) {\r\n        articles.add(article);\r\n    }\r\n    public void addTip(HealthTip tip) {\r\n        tips.add(tip);\r\n    }\r\n    public void addRecipe(Recipe recipe) {\r\n        recipes.add(recipe);\r\n    }\r\n    public void addComplaint(Complaint complaint) {\r\n        complaints.add(complaint);\r\n    }\r\n    public void approveArticle(Article article) {\r\n        article.setStatus(UserStatus.valueOf(\"Approved\"));\r\n    }\r\n    public void rejectArticle(Article article) {\r\n        article.setStatus(UserStatus.valueOf(\"Rejected\"));\r\n    }\r\n    public void approveTip(HealthTip tip) {\r\n        tip.setStatus(\"Approved\");\r\n    }\r\n    public void rejectRecipe(Recipe recipe) {\r\n        recipe.setStatus(\"Rejected\");\r\n    }\r\n    public void resolveComplaint(Complaint complaint) {\r\n        complaint.setStatus(\"Resolved\");\r\n    }\r\n\r\n    public void setSelectedOption(String selectedOption) {\r\n        this.selectedOption = selectedOption;\r\n    }\r\n    public String getSelectedOption() {\r\n        return selectedOption;\r\n    }\r\n\r\n    public void generateUserActivityReport() {\r\n        System.out.println(\"+------------------------+------------------------------------+\");\r\n        System.out.println(\"| Metric                 | Description                        |\");\r\n        System.out.println(\"+------------------------+------------------------------------+\");\r\n        List<Map<String, String>> statistics = new ArrayList<>();\r\n\r\n        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();\r\n        Integer totalInactiveUsers =0;\r\n        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());\r\n\r\n        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());\r\n        Double percentage = 0.0;\r\n        for(Instructor instructor : instructorList){\r\n            if(!instructor.isApproved()){\r\n                totalInactiveUsers++;\r\n            }\r\n        }\r\n        for(Client client : clientList){\r\n            if(!client.isActive()){\r\n                totalInactiveUsers++;\r\n            }\r\n            else{\r\n                percentage += Double.parseDouble(String.valueOf((client.getWorkoutsCompleted()+client.getSessionsAttended())/(client.getTotalSessions()+client.getTotalWorkouts())));\r\n            }\r\n\r\n        }\r\n        percentage = percentage/clientList.size();\r\n        statistics.add(Map.of(\r\n                \"Metric\", \"Total Active Users\",\r\n                \"Description\", totalActiveUsers.toString()\r\n        ));\r\n        statistics.add(Map.of(\r\n                \"Metric\", \"Total Inactive Users\",\r\n                \"Description\", totalInactiveUsers.toString()\r\n        ));\r\n\r\n        statistics.add(Map.of(\r\n                \"Metric\", \"User Engagement Rate\",\r\n                \"Description\", percentage.toString() + \"%\"\r\n        ));\r\n\r\n       // System.out.printf(\"| %-22s | %-34s |\\n\", Metric, description);\r\n\r\n        System.out.println(\"+------------------------+------------------------------------+\");\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n    public String getName() {\r\n        return name;\r\n    }\r\n    public int getPassword() {\r\n        return password;\r\n    }\r\n\r\n    public boolean isSignedIn(String email){\r\n        if(instructorRepository.findInstructorByEmail(email)==null){\r\n            if(clientRepository.findClientByEmail(email)==null){\r\n                return false;\r\n            }\r\n            else return true;\r\n        }\r\n        return true;\r\n    }\r\n    public boolean signUpInstructor(String name, String email, String password) {\r\n        if (!this.isSignedIn(email)) {\r\n            Instructor instructor = new Instructor(name, email, password);\r\n            instructor.setStatus(UserStatus.Pending);\r\n            instructorRepository.addInstructor(instructor);\r\n            return true;\r\n        }\r\n        else return false;\r\n    }\r\n    public boolean signUpClient(String name, String email, String password) {\r\n        if (!this.isSignedIn(email)) {\r\n            Client client = new Client(name, email, password);\r\n            client.setStatus(UserStatus.Pending);\r\n            clientRepository.addClient(client);\r\n            return true;\r\n        }\r\n        else return false;\r\n    }\r\n//    public void generateInstructorActivityReport() {\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        System.out.println(\"| Metric                 | Description                        |\");\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        List<Map<String, String>> statistics = new ArrayList<>();\r\n//\r\n//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();\r\n//        Integer totalInactiveUsers =0;\r\n//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());\r\n//\r\n//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());\r\n//\r\n//        for(Instructor instructor : instructorList){\r\n//            if(!instructor.isApproved()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        for(Client client : clientList){\r\n//            if(!client.isActive()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Active Users\",\r\n//                \"Description\", totalActiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Inactive Users\",\r\n//                \"Description\", totalInactiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"User Engagement Rate\",\r\n//                \"Description\", \"50%\"\r\n//        ));\r\n//\r\n//        // System.out.printf(\"| %-22s | %-34s |\\n\", Metric, description);\r\n//\r\n//\r\n//        // Print table footer\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//    }\r\n//\r\n//    public void generateClientActivityReport() {\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        System.out.println(\"| Metric                 | Description                        |\");\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//        List<Map<String, String>> statistics = new ArrayList<>();\r\n//\r\n//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();\r\n//        Integer totalInactiveUsers =0;\r\n//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());\r\n//\r\n//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());\r\n//\r\n//        for(Instructor instructor : instructorList){\r\n//            if(!instructor.isApproved()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        for(Client client : clientList){\r\n//            if(!client.isActive()){\r\n//                totalInactiveUsers++;\r\n//            }\r\n//        }\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Active Users\",\r\n//                \"Description\", totalActiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"Total Inactive Users\",\r\n//                \"Description\", totalInactiveUsers.toString()\r\n//        ));\r\n//        statistics.add(Map.of(\r\n//                \"Metric\", \"User Engagement Rate\",\r\n//                \"Description\", \"50%\"\r\n//        ));\r\n//\r\n//        // System.out.printf(\"| %-22s | %-34s |\\n\", Metric, description);\r\n//\r\n//\r\n//        // Print table footer\r\n//        System.out.println(\"+------------------------+------------------------------------+\");\r\n//    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Admin.java b/src/main/java/org/example/Admin.java
+--- a/src/main/java/org/example/Admin.java	(revision 5ada2b525dbda0cb542570656872ad5ee201501d)
++++ b/src/main/java/org/example/Admin.java	(date 1736006751556)
+@@ -1,9 +1,4 @@
+ package org.example;
+-
+-//import org.springframework.stereotype.Service;
+-
+-import io.cucumber.core.backend.Pending;
+-
+ import java.time.ZoneId;
+ import java.util.*;
+ import java.time.LocalDate;
+@@ -25,25 +20,6 @@
+     private ArrayList<Program> Programs;
+ 
+ 
+-//    private static Admin instance;
+-//
+-//
+-//
+-//    // Allow replacing the instance for testing
+-//    public static void setInstance(Admin adminMock) {
+-//        instance = adminMock;
+-//    }
+-//    //Ghayda need to edit the default constructor
+-//    public Admin getInstance(InstructorRepository instructorRepository, ClientRepository clientRepository){ //singleton class
+-//        if(instance == null){
+-//            instance = new Admin(instructorRepository,clientRepository);
+-//            return instance;
+-//        }
+-//        else {
+-//            System.out.println("Instance already created!");
+-//            return null;
+-//        }
+-//    }
+ 
+     public Admin(InstructorRepository instructorRepository, ClientRepository clientRepository) {
+         this.instructorRepository = instructorRepository;
+@@ -68,26 +44,26 @@
+         return clientRepository.findPendingClients();
+     }
+     //1
+-    @Override
+-    public void approveInstructor(Long id) {
+-        Instructor instructor = instructorRepository.findById(id);
+-        if (instructor != null) {
+-            instructor.approve();
+-            System.out.println("Instructor approved successfully.");
+-        } else {
+-            System.out.println("Instructor not found.");
+-        }
+-    }
+-    //1
+-    public void approveClient(Long id) {
+-        Client client = clientRepository.findById(id);
+-        if (client != null) {
+-            client.approve();
+-            System.out.println("Client approved successfully.");
+-        } else {
+-            System.out.println("Client not found.");
+-        }
+-    }
++//    @Override
++//    public void approveInstructor(Long id) {
++//        Instructor instructor = instructorRepository.findById(id);
++//        if (instructor != null) {
++//            instructor.approve();
++//            System.out.println("Instructor approved successfully.");
++//        } else {
++//            System.out.println("Instructor not found.");
++//        }
++//    }
++    //1
++//    public void approveClient(Long id) {
++//        Client client = clientRepository.findById(id);
++//        if (client != null) {
++//            client.approve();
++//            System.out.println("Client approved successfully.");
++//        } else {
++//            System.out.println("Client not found.");
++//        }
++//    }
+ //1
+     @Override
+     public Collection<Instructor> getInstructors() {
+@@ -107,26 +83,18 @@
+ 
+ //----------------------
+ 
+-    @Override
+-    public Object getUserActivityReport() {
+-        return null;
+-    }
++//    @Override
++//    public Object getUserActivityReport() {
++//        return null;
++//    }
+ 
+-    @Override
+-    public Map<Program, Double> getProgramEnrollmentStatistics() {
+-        // Map to hold program and enrollment count
+-        Map<Program, Double> programEnrollmentStatistics = new HashMap<>();
+-
+-        // Iterate through all clients
+-        for (Program p : Programs) {
+-            programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());
+-        }
+-
+-        return programEnrollmentStatistics; // Return the statistics
+-    }
+-    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
+-            Map<Program, Double> statistics = getProgramEnrollmentStatistics();
+-
++
++    public List<Map<String, String>> getProgramEnrollmentStatisticsAsTable() {
++            Map<Program, Double> programEnrollmentStatistics = new HashMap<>();
++            for (Program p : Programs) {
++                programEnrollmentStatistics.put(p, Double.parseDouble(p.getPrice())*p.getClientsEnrolled().size());
++            }
++            Map<Program, Double> statistics = programEnrollmentStatistics;
+             List<Map<String, String>> table = new ArrayList<>();
+             for (Map.Entry<Program, Double> entry : statistics.entrySet()) {
+                 Map<String, String> row = new HashMap<>();
+@@ -178,9 +146,9 @@
+         return programStatuses;
+     }
+ 
+-    public String getDisplayedMessage() {
+-        return "No pending instructor accounts";
+-    }
++//    public String getDisplayedMessage() {
++//        return "No pending instructor accounts";
++//    }
+ 
+ 
+     public static LocalDate convertDateToLocalDate(Date date) {
+@@ -308,89 +276,5 @@
+         }
+         else return false;
+     }
+-//    public void generateInstructorActivityReport() {
+-//        System.out.println("+------------------------+------------------------------------+");
+-//        System.out.println("| Metric                 | Description                        |");
+-//        System.out.println("+------------------------+------------------------------------+");
+-//        List<Map<String, String>> statistics = new ArrayList<>();
+-//
+-//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+-//        Integer totalInactiveUsers =0;
+-//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+-//
+-//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+-//
+-//        for(Instructor instructor : instructorList){
+-//            if(!instructor.isApproved()){
+-//                totalInactiveUsers++;
+-//            }
+-//        }
+-//        for(Client client : clientList){
+-//            if(!client.isActive()){
+-//                totalInactiveUsers++;
+-//            }
+-//        }
+-//        statistics.add(Map.of(
+-//                "Metric", "Total Active Users",
+-//                "Description", totalActiveUsers.toString()
+-//        ));
+-//        statistics.add(Map.of(
+-//                "Metric", "Total Inactive Users",
+-//                "Description", totalInactiveUsers.toString()
+-//        ));
+-//        statistics.add(Map.of(
+-//                "Metric", "User Engagement Rate",
+-//                "Description", "50%"
+-//        ));
+-//
+-//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+-//
+-//
+-//        // Print table footer
+-//        System.out.println("+------------------------+------------------------------------+");
+-//    }
+-//
+-//    public void generateClientActivityReport() {
+-//        System.out.println("+------------------------+------------------------------------+");
+-//        System.out.println("| Metric                 | Description                        |");
+-//        System.out.println("+------------------------+------------------------------------+");
+-//        List<Map<String, String>> statistics = new ArrayList<>();
+-//
+-//        Integer totalActiveUsers = instructorRepository.getAllInstructors().size()+clientRepository.getAllClients().size();
+-//        Integer totalInactiveUsers =0;
+-//        ArrayList<Instructor> instructorList = new ArrayList<>(instructorRepository.getAllInstructors());
+-//
+-//        ArrayList<Client> clientList = new ArrayList<>(clientRepository.getAllClients());
+-//
+-//        for(Instructor instructor : instructorList){
+-//            if(!instructor.isApproved()){
+-//                totalInactiveUsers++;
+-//            }
+-//        }
+-//        for(Client client : clientList){
+-//            if(!client.isActive()){
+-//                totalInactiveUsers++;
+-//            }
+-//        }
+-//        statistics.add(Map.of(
+-//                "Metric", "Total Active Users",
+-//                "Description", totalActiveUsers.toString()
+-//        ));
+-//        statistics.add(Map.of(
+-//                "Metric", "Total Inactive Users",
+-//                "Description", totalInactiveUsers.toString()
+-//        ));
+-//        statistics.add(Map.of(
+-//                "Metric", "User Engagement Rate",
+-//                "Description", "50%"
+-//        ));
+-//
+-//        // System.out.printf("| %-22s | %-34s |\n", Metric, description);
+-//
+-//
+-//        // Print table footer
+-//        System.out.println("+------------------------+------------------------------------+");
+-//    }
+-
+ }
+ 
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\n//TIP To <b>Run</b> code, press <shortcut actionId=\"Run\"/> or\r\n// click the <icon src=\"AllIcons.Actions.Execute\"/> icon in the gutter.\r\n\r\nimport java.util.Map;\r\nimport java.util.Scanner;\r\n\r\n\r\npublic class Main {\r\n    private static User currentUser = new User();\r\n    private static Profile currentProfile = new Profile();\r\n    private static ProgramManager programManager = new ProgramManager();\r\n    private static FeedbackAndReviewsManager feedbackManager = new FeedbackAndReviewsManager();\r\n    private static ProgressManager progressManager = new ProgressManager();\r\n\r\n    public static void main(String[] args) {\r\n        //TIP Press <shortcut actionId=\"ShowIntentionActions\"/> with your caret at the highlighted text\r\n        // to see how IntelliJ IDEA suggests fixing it.\r\n        System.out.printf(\"Hello and welcome!\");\r\n        Scanner scanner = new Scanner(System.in);\r\n\r\n        for (int i = 1; i <= 5; i++) {\r\n            //TIP Press <shortcut actionId=\"Debug\"/> to start debugging your code. We have set one <icon src=\"AllIcons.Debugger.Db_set_breakpoint\"/> breakpoint\r\n            // for you, but you can always add more by pressing <shortcut actionId=\"ToggleLineBreakpoint\"/>.\r\n            System.out.println(\"i = \" + i);\r\n        }\r\n        login(scanner);\r\n\r\n\r\n        menu(scanner);\r\n\r\n    }\r\n\r\n    public static void login(Scanner scanner) {\r\n        System.out.print(\"Enter your User ID: \");\r\n        String id = scanner.nextLine();\r\n        System.out.print(\"Enter your Password: \");\r\n        String password = scanner.nextLine();\r\n\r\n\r\n        if (currentUser.login(id, password)) {\r\n            System.out.println(\"Login Successful!\");\r\n        } else {\r\n            System.out.println(\"Invalid login credentials.\");\r\n            return;\r\n        }\r\n    }\r\n\r\n\r\n    private static void menu(Scanner scanner) {\r\n        while (true) {\r\n            System.out.println(\"\\nMain Menu:\");\r\n            System.out.println(\"1. View Profile\");\r\n            System.out.println(\"2. Customize Profile\");\r\n            System.out.println(\"3. View Program Details\");\r\n            System.out.println(\"4. Rate Program\");\r\n            System.out.println(\"5. Track Progress\");\r\n            System.out.println(\"6. View Progress Summary\");\r\n            System.out.println(\"7. Exit\");\r\n\r\n            System.out.print(\"Enter your choice: \");\r\n            int choice = scanner.nextInt();\r\n            scanner.nextLine(); // تنظيف السطر بعد إدخال الرقم\r\n\r\n            switch (choice) {\r\n                case 1:\r\n                    viewProfile();\r\n                    break;\r\n                case 2:\r\n                    customizeProfile(scanner);\r\n                    break;\r\n                case 3:\r\n                    viewProgramDetails(scanner);\r\n                    break;\r\n                case 4:\r\n                    rateProgram(scanner);\r\n                    break;\r\n                case 5:\r\n                    trackProgress(scanner);\r\n                    break;\r\n                case 6:\r\n                    viewProgressSummary();\r\n                    break;\r\n                case 7:\r\n                    System.out.println(\"Exiting...\");\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Invalid choice. Please try again.\");\r\n            }\r\n        }\r\n    }\r\n\r\n    private static void viewProfile() {\r\n        System.out.println(\"Displaying Profile Information...\");\r\n        System.out.println(\"Name: \" + currentProfile.getName());\r\n        System.out.println(\"Age: \" + currentProfile.getAge());\r\n        System.out.println(\"Fitness Goal: \" + currentProfile.getFitnessGoal());\r\n        System.out.println(\"Dietary Preferences: \" + currentProfile.getDietaryPreferences());\r\n        System.out.println(\"Dietary Restrictions: \" + currentProfile.getDietaryRestrictions());\r\n    }\r\n\r\n    private static void customizeProfile(Scanner scanner) {\r\n        System.out.println(\"Customizing Profile...\");\r\n        System.out.print(\"Enter new fitness goal: \");\r\n        String fitnessGoal = scanner.nextLine();\r\n        currentProfile.setFitnessGoal(fitnessGoal);\r\n\r\n        System.out.print(\"Enter new dietary preferences: \");\r\n        String dietaryPreferences = scanner.nextLine();\r\n        currentProfile.setDietaryPreferences(dietaryPreferences);\r\n\r\n        System.out.print(\"Enter new dietary restrictions: \");\r\n        String dietaryRestrictions = scanner.nextLine();\r\n        currentProfile.setDietaryRestrictions(dietaryRestrictions);\r\n\r\n        System.out.println(\"Profile customized successfully!\");\r\n    }\r\n\r\n    private static void viewProgramDetails(Scanner scanner) {\r\n        System.out.print(\"Enter Program Name: \");\r\n        String programName = scanner.nextLine();\r\n\r\n        Map<String, String> programDetails = programManager.getProgramDetails(programName);\r\n        if (programDetails != null) {\r\n            System.out.println(\"Program Details:\");\r\n            programDetails.forEach((key, value) -> System.out.println(key + \": \" + value));\r\n        } else {\r\n            System.out.println(\"Program not found.\");\r\n        }\r\n    }\r\n\r\n    private static void rateProgram(Scanner scanner) {\r\n        System.out.print(\"Enter Program Name: \");\r\n        String programName = scanner.nextLine();\r\n        System.out.print(\"Enter Rating (1-5): \");\r\n        int rating = scanner.nextInt();\r\n        scanner.nextLine();\r\n\r\n\r\n        feedbackManager.addRating(programName, rating);\r\n        double averageRating = feedbackManager.getAverageRating(programName);\r\n\r\n        System.out.println(\"Program '\" + programName + \"' rated with a score of \" + rating + \" stars.\");\r\n        System.out.println(\"The updated average rating is: \" + averageRating);\r\n    }\r\n\r\n    private static void trackProgress(Scanner scanner) {\r\n        System.out.print(\"Enter your current weight: \");\r\n        String weight = scanner.nextLine();\r\n\r\n        System.out.print(\"Enter your current BMI: \");\r\n        String bmi = scanner.nextLine();\r\n\r\n        System.out.print(\"Enter your attendance percentage: \");\r\n        String attendance = scanner.nextLine();\r\n\r\n        progressManager.inputProgressData(weight, bmi, attendance);\r\n        progressManager.recordProgressHistory(\"2025-01-02\", weight, bmi, attendance);\r\n\r\n        System.out.println(\"Progress recorded successfully!\");\r\n    }\r\n\r\n    private static void viewProgressSummary() {\r\n        Map<String, String> summary = progressManager.generateSummary(3, 5, \"3kg\", \"0.6\");\r\n        System.out.println(\"Progress Summary: \");\r\n        summary.forEach((key, value) -> System.out.println(key + \": \" + value));\r\n    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	(revision 5ada2b525dbda0cb542570656872ad5ee201501d)
++++ b/src/main/java/org/example/Main.java	(date 1736006224465)
+@@ -1,12 +1,7 @@
+ package org.example;
+-
+-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+-
+ import java.util.Map;
+ import java.util.Scanner;
+ 
+-
+ public class Main {
+     private static User currentUser = new User();
+     private static Profile currentProfile = new Profile();

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/ASUS/IdeaProjects/Fitness/src/main/java/org/example</OriginalElement>
+  <nodes>
+    <node x="639.5" y="1350.0">org.example.Program</node>
+    <node x="277.5" y="514.0">org.example.Instructor</node>
+    <node x="2555.0" y="3630.0">org.example.User</node>
+    <node x="2070.0" y="3594.0">org.example.ProgressManager</node>
+    <node x="203.5" y="2202.0">org.example.Client</node>
+    <node x="-39.5" y="4622.0">org.example.Admin</node>
+    <node x="2425.5" y="3974.5">org.example.Profile</node>
+    <node x="1379.0" y="4070.5">org.example.Recipe</node>
+    <node x="2596.5" y="4767.0">org.example.Main</node>
+    <node x="1087.5" y="4046.5">org.example.Complaint</node>
+    <node x="82.5" y="-14.0">org.example.SubscriptionPlan</node>
+    <node x="947.0" y="250.0">org.example.Content</node>
+    <node x="248.0" y="4022.5">org.example.ClientRepository</node>
+    <node x="656.0" y="4034.5">org.example.InstructorRepository</node>
+    <node x="1939.5" y="4070.5">org.example.Article</node>
+    <node x="2698.0" y="4059.0">org.example.ProgramManager</node>
+    <node x="1649.5" y="4070.5">org.example.HealthTip</node>
+    <node x="1660.5" y="11.0">org.example.UserStatus</node>
+    <node x="2581.0" y="2791.0">org.example.Role</node>
+    <node x="3022.0" y="3655.0">org.example.FeedbackAndReviewsManager</node>
+    <node x="2254.5" y="4414.5">org.example.SubscriptionService</node>
+    <node x="718.5" y="718.0">org.example.Schedule</node>
+    <node x="-145.0" y="3927.0">org.example.AdminService</node>
+    <node x="698.0" y="2670.0">org.example.ProgramService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.example.HealthTip" target="org.example.UserStatus" relationship="TO_ONE">
+      <point x="0.0" y="-56.5" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.ProgramService" target="org.example.Program" relationship="TO_MANY">
+      <point x="0.0" y="-177.0" />
+      <point x="848.0" y="2647.0" />
+      <point x="1028.0" y="2647.0" />
+      <point x="1028.0" y="2087.0" />
+      <point x="1088.0" y="2087.0" />
+      <point x="1088.0" y="1287.0" />
+      <point x="743.75" y="1287.0" />
+      <point x="-104.25" y="-357.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.Complaint" relationship="TO_MANY">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="4247.0" />
+      <point x="1068.0" y="4247.0" />
+      <point x="1068.0" y="4007.0" />
+      <point x="1208.0" y="4007.0" />
+      <point x="0.0" y="-80.5" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.Profile" relationship="CREATE">
+      <point x="-65.75" y="-260.0" />
+      <point x="2662.25" y="4747.0" />
+      <point x="2668.0" y="4747.0" />
+      <point x="2668.0" y="4327.0" />
+      <point x="2476.75" y="4327.0" />
+      <point x="-51.25" y="152.5" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.ClientRepository" relationship="TO_ONE">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="4247.0" />
+      <point x="588.0" y="4247.0" />
+      <point x="588.0" y="3987.0" />
+      <point x="408.0" y="3987.0" />
+      <point x="0.0" y="-104.5" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.Program" relationship="TO_MANY">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="2087.0" />
+      <point x="1088.0" y="2087.0" />
+      <point x="1088.0" y="1287.0" />
+      <point x="743.75" y="1287.0" />
+      <point x="-104.25" y="-357.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.FeedbackAndReviewsManager" relationship="TO_ONE">
+      <point x="65.75" y="-260.0" />
+      <point x="2793.75" y="4747.0" />
+      <point x="2988.0" y="4747.0" />
+      <point x="2988.0" y="4307.0" />
+      <point x="3241.0" y="4307.0" />
+      <point x="73.0" y="92.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.InstructorRepository" relationship="TO_ONE">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="4247.0" />
+      <point x="628.0" y="4247.0" />
+      <point x="628.0" y="4007.0" />
+      <point x="828.0" y="4007.0" />
+      <point x="0.0" y="-92.5" />
+    </edge>
+    <edge source="org.example.Program" target="org.example.Content" relationship="CREATE">
+      <point x="104.25" y="-357.0" />
+      <point x="952.25" y="1327.0" />
+      <point x="948.0" y="1327.0" />
+      <point x="948.0" y="1027.0" />
+      <point x="1128.5" y="1027.0" />
+      <point x="60.5" y="117.0" />
+    </edge>
+    <edge source="org.example.Client" target="org.example.UserStatus" relationship="TO_ONE">
+      <point x="0.0" y="-645.0" />
+      <point x="368.0" y="2147.0" />
+      <point x="268.0" y="2147.0" />
+      <point x="268.0" y="1647.0" />
+      <point x="248.0" y="1647.0" />
+      <point x="248.0" y="227.0" />
+      <point x="1768.0" y="227.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.Program" target="org.example.Schedule" relationship="TO_ONE">
+      <point x="-104.25" y="-357.0" />
+      <point x="743.75" y="1327.0" />
+      <point x="788.0" y="1327.0" />
+      <point x="788.0" y="1007.0" />
+      <point x="783.25" y="1007.0" />
+      <point x="-64.75" y="129.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.User" relationship="CREATE">
+      <point x="-65.75" y="-260.0" />
+      <point x="2662.25" y="4747.0" />
+      <point x="2668.0" y="4747.0" />
+      <point x="0.0" y="117.0" />
+    </edge>
+    <edge source="org.example.Article" target="org.example.UserStatus" relationship="TO_ONE">
+      <point x="0.0" y="-56.5" />
+      <point x="2048.0" y="227.0" />
+      <point x="1768.0" y="227.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.User" relationship="TO_ONE">
+      <point x="65.75" y="-260.0" />
+      <point x="2793.75" y="4747.0" />
+      <point x="2988.0" y="4747.0" />
+      <point x="2988.0" y="4307.0" />
+      <point x="3348.0" y="4307.0" />
+      <point x="3348.0" y="3607.0" />
+      <point x="2668.0" y="3607.0" />
+      <point x="0.0" y="-117.0" />
+    </edge>
+    <edge source="org.example.Complaint" target="org.example.UserStatus" relationship="TO_ONE">
+      <point x="0.0" y="-80.5" />
+      <point x="1208.0" y="227.0" />
+      <point x="1768.0" y="227.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.ProgressManager" relationship="TO_ONE">
+      <point x="65.75" y="-260.0" />
+      <point x="2793.75" y="4747.0" />
+      <point x="2988.0" y="4747.0" />
+      <point x="2988.0" y="4307.0" />
+      <point x="2397.0" y="4307.0" />
+      <point x="109.0" y="153.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.HealthTip" relationship="TO_MANY">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="4247.0" />
+      <point x="1628.0" y="4247.0" />
+      <point x="1628.0" y="4047.0" />
+      <point x="1768.0" y="4047.0" />
+      <point x="0.0" y="-56.5" />
+    </edge>
+    <edge source="org.example.Program" target="org.example.Content" relationship="TO_ONE">
+      <point x="-104.25" y="-357.0" />
+      <point x="743.75" y="1327.0" />
+      <point x="788.0" y="1327.0" />
+      <point x="788.0" y="1007.0" />
+      <point x="1007.5" y="1007.0" />
+      <point x="-60.5" y="117.0" />
+    </edge>
+    <edge source="org.example.InstructorRepository" target="org.example.Instructor" relationship="TO_MANY">
+      <point x="0.0" y="-92.5" />
+      <point x="828.0" y="3987.0" />
+      <point x="668.0" y="3987.0" />
+      <point x="668.0" y="2827.0" />
+      <point x="568.0" y="2827.0" />
+      <point x="568.0" y="1207.0" />
+      <point x="563.25" y="1207.0" />
+      <point x="95.25" y="333.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.Recipe" relationship="TO_MANY">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="4247.0" />
+      <point x="1348.0" y="4247.0" />
+      <point x="1348.0" y="4047.0" />
+      <point x="1488.0" y="4047.0" />
+      <point x="0.0" y="-56.5" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.Profile" relationship="TO_ONE">
+      <point x="65.75" y="-260.0" />
+      <point x="2793.75" y="4747.0" />
+      <point x="2988.0" y="4747.0" />
+      <point x="2988.0" y="4307.0" />
+      <point x="2579.25" y="4307.0" />
+      <point x="51.25" y="152.5" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.Article" relationship="TO_MANY">
+      <point x="151.66666666666669" y="-405.0" />
+      <point x="339.66666666666674" y="4587.0" />
+      <point x="1028.0" y="4587.0" />
+      <point x="1028.0" y="4247.0" />
+      <point x="1908.0" y="4247.0" />
+      <point x="1908.0" y="4047.0" />
+      <point x="2048.0" y="4047.0" />
+      <point x="0.0" y="-56.5" />
+    </edge>
+    <edge source="org.example.Instructor" target="org.example.Program" relationship="TO_MANY">
+      <point x="95.25" y="333.0" />
+      <point x="563.25" y="1267.0" />
+      <point x="743.75" y="1267.0" />
+      <point x="-104.25" y="-357.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.Instructor" relationship="CREATE">
+      <point x="0.0" y="-405.0" />
+      <point x="188.0" y="1667.0" />
+      <point x="372.75" y="1667.0" />
+      <point x="-95.25" y="333.0" />
+    </edge>
+    <edge source="org.example.Program" target="org.example.Instructor" relationship="TO_ONE">
+      <point x="-104.25" y="-357.0" />
+      <point x="743.75" y="1327.0" />
+      <point x="788.0" y="1327.0" />
+      <point x="788.0" y="1247.0" />
+      <point x="568.0" y="1247.0" />
+      <point x="568.0" y="1207.0" />
+      <point x="563.25" y="1207.0" />
+      <point x="95.25" y="333.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.AdminService" relationship="REALIZATION">
+      <point x="-151.66666666666669" y="-405.0" />
+      <point x="36.333333333333314" y="4587.0" />
+      <point x="8.0" y="4587.0" />
+      <point x="0.0" y="200.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.ProgramManager" relationship="TO_ONE">
+      <point x="65.75" y="-260.0" />
+      <point x="2793.75" y="4747.0" />
+      <point x="2988.0" y="4747.0" />
+      <point x="2988.0" y="4307.0" />
+      <point x="2983.0" y="4307.0" />
+      <point x="95.0" y="68.0" />
+    </edge>
+    <edge source="org.example.User" target="org.example.Role" relationship="TO_ONE">
+      <point x="0.0" y="-117.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.FeedbackAndReviewsManager" relationship="CREATE">
+      <point x="-65.75" y="-260.0" />
+      <point x="2662.25" y="4747.0" />
+      <point x="2668.0" y="4747.0" />
+      <point x="2668.0" y="4327.0" />
+      <point x="3095.0" y="4327.0" />
+      <point x="-73.0" y="92.0" />
+    </edge>
+    <edge source="org.example.Program" target="org.example.Client" relationship="TO_MANY">
+      <point x="-104.25" y="-357.0" />
+      <point x="743.75" y="1307.0" />
+      <point x="608.0" y="1307.0" />
+      <point x="608.0" y="1727.0" />
+      <point x="368.0" y="1727.0" />
+      <point x="0.0" y="-645.0" />
+    </edge>
+    <edge source="org.example.Client" target="org.example.Program" relationship="TO_MANY">
+      <point x="0.0" y="-645.0" />
+      <point x="368.0" y="2147.0" />
+      <point x="268.0" y="2147.0" />
+      <point x="268.0" y="2107.0" />
+      <point x="1028.0" y="2107.0" />
+      <point x="1028.0" y="2087.0" />
+      <point x="1088.0" y="2087.0" />
+      <point x="1088.0" y="1287.0" />
+      <point x="743.75" y="1287.0" />
+      <point x="-104.25" y="-357.0" />
+    </edge>
+    <edge source="org.example.Instructor" target="org.example.UserStatus" relationship="TO_ONE">
+      <point x="95.25" y="333.0" />
+      <point x="563.25" y="1227.0" />
+      <point x="688.0" y="1227.0" />
+      <point x="688.0" y="187.0" />
+      <point x="1768.0" y="187.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.ProgramManager" relationship="CREATE">
+      <point x="-65.75" y="-260.0" />
+      <point x="2662.25" y="4747.0" />
+      <point x="2668.0" y="4747.0" />
+      <point x="2668.0" y="4327.0" />
+      <point x="2793.0" y="4327.0" />
+      <point x="-95.0" y="68.0" />
+    </edge>
+    <edge source="org.example.Instructor" target="org.example.SubscriptionPlan" relationship="TO_ONE">
+      <point x="95.25" y="333.0" />
+      <point x="563.25" y="1227.0" />
+      <point x="688.0" y="1227.0" />
+      <point x="688.0" y="207.0" />
+      <point x="208.0" y="207.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="org.example.Recipe" target="org.example.UserStatus" relationship="TO_ONE">
+      <point x="0.0" y="-56.5" />
+      <point x="1488.0" y="227.0" />
+      <point x="1768.0" y="227.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="org.example.Admin" target="org.example.Client" relationship="CREATE">
+      <point x="0.0" y="-405.0" />
+      <point x="188.0" y="4587.0" />
+      <point x="228.0" y="4587.0" />
+      <point x="228.0" y="4007.0" />
+      <point x="368.0" y="4007.0" />
+      <point x="0.0" y="645.0" />
+    </edge>
+    <edge source="org.example.Program" target="org.example.Schedule" relationship="CREATE">
+      <point x="104.25" y="-357.0" />
+      <point x="952.25" y="1327.0" />
+      <point x="948.0" y="1327.0" />
+      <point x="948.0" y="1027.0" />
+      <point x="912.75" y="1027.0" />
+      <point x="64.75" y="129.0" />
+    </edge>
+    <edge source="org.example.Client" target="org.example.SubscriptionPlan" relationship="TO_ONE">
+      <point x="0.0" y="-645.0" />
+      <point x="368.0" y="2147.0" />
+      <point x="268.0" y="2147.0" />
+      <point x="268.0" y="2127.0" />
+      <point x="228.0" y="2127.0" />
+      <point x="228.0" y="1687.0" />
+      <point x="208.0" y="1687.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.ProgressManager" relationship="CREATE">
+      <point x="-65.75" y="-260.0" />
+      <point x="2662.25" y="4747.0" />
+      <point x="2668.0" y="4747.0" />
+      <point x="2668.0" y="4327.0" />
+      <point x="2179.0" y="4327.0" />
+      <point x="-109.0" y="153.0" />
+    </edge>
+    <edge source="org.example.ClientRepository" target="org.example.Client" relationship="TO_MANY">
+      <point x="0.0" y="-104.5" />
+      <point x="408.0" y="3967.0" />
+      <point x="548.0" y="3967.0" />
+      <point x="548.0" y="2167.0" />
+      <point x="368.0" y="2167.0" />
+      <point x="0.0" y="-645.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.13245517746066593" showDependencies="true" x="1611.5" y="2719.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
