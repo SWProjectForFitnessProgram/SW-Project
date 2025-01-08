@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Manages feedback and reviews for fitness programs, including ratings, reviews, and suggestions.
  *
- * Author: Taqwa Odeh
+ * @author  Taqwa Odeh
  */
 public class FeedbackAndReviewsManager {
     /**
