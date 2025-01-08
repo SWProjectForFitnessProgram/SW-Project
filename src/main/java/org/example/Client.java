@@ -1,12 +1,10 @@
 package org.example;
 
-import io.cucumber.java.bs.A;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-    private boolean recievedNotification = false; //flag
+    private boolean receivedNotification = false; //flag
     private String notification;
     private SubscriptionPlan subscriptionPlan;
 
@@ -23,12 +21,9 @@ public class Client {
     int Age;
     boolean approved =false ;
     boolean LoggedIn;
-    private List<String> messages = new ArrayList<>();
-    private List<String> feedbacks = new ArrayList<>();
-
-    //    @Enumerated(EnumType.STRING)
+    private final List<String> messages = new ArrayList<>();
+    private final List<String> feedbacks = new ArrayList<>();
     private UserStatus status;
-//    private String feedback;
 
     public Client(String email, String password) {
         this.email = email;
@@ -176,12 +171,12 @@ public class Client {
     }
     public boolean hasRecievedNotification()
     {
-        return recievedNotification;
+        return receivedNotification;
     }
     public void setNotification(String notification)
     {
         this.notification = notification;
-        recievedNotification = true;
+        receivedNotification = true;
     }
     public boolean isActive() {
         if(status==UserStatus.Approved){

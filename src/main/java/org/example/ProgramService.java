@@ -3,19 +3,42 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Provides services for managing programs, including adding, updating, deleting,
+ * and retrieving programs. This service can handle a list of programs and allows
+ * operations such as displaying program details, searching for programs, and
+ * managing their deletion status.
+ *
+ * @author Tala Ahendi
+ */
 public class ProgramService {
     private List<Client> clients = new ArrayList<>();
     private String deletionStatus;
     private String deletionMessage;
     private final List<Program> programList;
+
+    /**
+     * Constructs a ProgramService instance and initializes the list of programs.
+     */
     public ProgramService() {
         programList = new ArrayList<>();
     }
-    public void addProgram(Program program) {
 
+    /**
+     * Adds a new program to the list of programs.
+     *
+     * @param program The program to be added.
+     */
+    public void addProgram(Program program) {
         programList.add(program);
     }
 
+    /**
+     * Retrieves a program by its title.
+     *
+     * @param programTitle The title of the program to retrieve.
+     * @return The program with the specified title, or null if no such program exists.
+     */
     public Program getProgramByTitle(String programTitle) {
         for (Program program : programList) {
             if (program.getTitle().equals(programTitle)) {
@@ -25,7 +48,12 @@ public class ProgramService {
         return null;
     }
 
-    public void updateProgram( Program programToUpdate) {
+    /**
+     * Updates an existing program's details.
+     *
+     * @param programToUpdate The program with updated details.
+     */
+    public void updateProgram(Program programToUpdate) {
         Program existingProgram = getProgramByTitle(programToUpdate.getTitle());
         if (existingProgram != null) {
             existingProgram.setDuration(programToUpdate.getDuration());
@@ -41,18 +69,26 @@ public class ProgramService {
         }
     }
 
+    /**
+     * Deletes a program by its title.
+     *
+     * @param title The title of the program to delete.
+     */
     public void deleteProgram(String title) {
         Program programToDelete = getProgramByTitle(title);
         if (programToDelete != null) {
             programList.remove(programToDelete);
             deletionStatus = "Success";
-            deletionMessage="Program deleted successfully";
-            return ;
+            deletionMessage = "Program deleted successfully";
+            return;
         }
         deletionStatus = "Failure";
-        deletionMessage = "Program with title \"<program_title>\" not found.";
-
+        deletionMessage = "Program with title \"" + title + "\" not found.";
     }
+
+    /**
+     * Displays the details of all programs in the list.
+     */
     public void displayAllPrograms() {
         if (programList.isEmpty()) {
             System.out.println("No programs available.");
@@ -63,8 +99,11 @@ public class ProgramService {
             }
         }
     }
-    public void displayAllProgramsNames()
-    {
+
+    /**
+     * Displays the titles of all programs in the list.
+     */
+    public void displayAllProgramsNames() {
         if (programList.isEmpty()) {
             System.out.println("No programs available.");
         } else {
@@ -74,6 +113,13 @@ public class ProgramService {
             }
         }
     }
+
+    /**
+     * Converts the details of a program to a string format.
+     *
+     * @param program The program to convert to a string.
+     * @return A string containing the details of the program.
+     */
     public String programDetailsAsString(Program program) {
         return String.format(
                 "Title: %s, Duration: %s, Difficulty Level: %s, Goals: %s, Schedule: %s, Content: %s, Price: %s",
@@ -87,22 +133,36 @@ public class ProgramService {
         );
     }
 
-
+    /**
+     * Returns the deletion status of the last delete operation.
+     *
+     * @return The deletion status ("Success" or "Failure").
+     */
     public String getDeletionStatus() {
         return deletionStatus;
     }
 
+    /**
+     * Returns the message corresponding to the last delete operation.
+     *
+     * @return The deletion message.
+     */
     public String getDeletionMessage() {
         return deletionMessage;
     }
 
+    /**
+     * Finds a program by its title, ignoring case.
+     *
+     * @param programTitle The title of the program to find.
+     * @return The program with the specified title, or null if no such program exists.
+     */
     public Program findProgramByTitle(String programTitle) {
         for (Program program : programList) {
             if (program.getTitle().equalsIgnoreCase(programTitle)) {
                 return program;
             }
         }
-        // If no program found with the given title, return null
         return null;
     }
 }

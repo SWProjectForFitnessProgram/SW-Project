@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * Manages fitness programs including filtering and retrieving details.
  *
- * Author: Taqwa Odeh
+ * @author Taqwa Odeh
  */
 public class ProgramManager {
 
