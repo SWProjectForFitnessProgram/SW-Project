@@ -89,7 +89,6 @@ public class programManagementStep {
                     programDetails.get("Video Tutorials")
             );
 
-            // Create Schedule object
             Schedule schedule = new Schedule(
                     programDetails.get("Days").split(","), // days are comma-separated
                     programDetails.get("Time"),
@@ -121,7 +120,6 @@ public class programManagementStep {
         Program program = programService.findProgramByTitle(programTitle);
         assertNotNull("The program with title ' " + programTitle + " ' wasn't found!", program);
 
-        // Verify the program details
         assertEquals("The program title doesn't match.", programTitle, program.getTitle());
         System.out.println("Program verified successfully: " + program.getTitle());
     }
@@ -138,14 +136,13 @@ public class programManagementStep {
     public void theInstructorUpdatesTheProgramWithTheFollowingDetails(io.cucumber.datatable.DataTable dataTable) {
         programDetails = dataTable.asMap(String.class, String.class);
         if (programToUpdate != null) {
-            // Update Resources object
+            // Update Resources
             Content updatedContent = new Content(
                     programDetails.get("Images"),
                     programDetails.get("Documentation"),
                     programDetails.get("Video Tutorials")
             );
 
-            // Update Schedule object
             Schedule updatedSchedule = new Schedule(
                     programDetails.get("Days").split(","),
                     programDetails.get("Time"),
@@ -171,18 +168,13 @@ public class programManagementStep {
         assertEquals("The program title wasn't updated.", programDetails.get("Program title"), programToUpdate.getTitle());
         assertEquals("The schedule type wasn't updated.", programDetails.get("Schedule Type"), programToUpdate.getSchedule().getScheduleType());
         System.out.println("Program updated successfully: " + programToUpdate.getTitle());
-
-
-
-
-
     }
 
     @When("a fitness program with the title {string} doesn't exist")
     public void aFitnessProgramWithTheTitleDoesnTExist(String programTitle) {
         System.out.println("the 3rd Scenario\n");
         title = programTitle;
-        // Check that the program does not exist
+
         programToUpdate = programService.findProgramByTitle(programTitle);
         assertNull("Program should not exist!", programToUpdate);
     }
@@ -212,17 +204,19 @@ public class programManagementStep {
 
         // Assert expected and actual results
         if (expectedStatus.equals("Success")) {
-            // Check if program is actually deleted (optional)
+
             Program deletedProgram = programList.stream()
                     .filter(p -> p.getTitle().equals(title))
                     .findFirst()
                     .orElse(null);
             assertNull("Program should be deleted successfully!", deletedProgram);
+            System.out.println(actualMessage);
         } else {
-            System.out.println("The Deletion is Failed !");
+            System.out.println(actualMessage);
         }
         assertEquals(expectedStatus, actualStatus);
-//        assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
+
 
 }

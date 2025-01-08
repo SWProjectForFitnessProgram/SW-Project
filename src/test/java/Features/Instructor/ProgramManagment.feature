@@ -60,5 +60,5 @@ Feature: Program Management
     Examples:
       | program_title             | expected_status | expected_message                                     |
       | Get Fit & Moving Challenge | Success           | Program deleted successfully                        |
-      | Non-Existing Program      | Failure           | Program with title "<program_title>" not found. |
+      | Non-Existing Program      | Failure           | Program with title "Non-Existing Program" not found. |
 
