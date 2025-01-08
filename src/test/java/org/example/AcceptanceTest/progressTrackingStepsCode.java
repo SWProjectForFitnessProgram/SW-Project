@@ -19,8 +19,8 @@ import static org.junit.Assert.assertNotNull;
 
 public class progressTrackingStepsCode {
     private static Map<String, Client> clients;
-    private String displayedMessage; // to the instructor
-    private String receivedMessage; // received by clients
+    private String displayedMessage; // For messages displayed to the instructor
+    private String receivedMessage; // For messages received by clients
 
     private static boolean isSetUpDone = false; // flag;
 
@@ -33,7 +33,7 @@ public class progressTrackingStepsCode {
         assertNotNull(instructor); // Check if instructor is created
         clients = new HashMap<>();
 
-        // Create client data
+        // Create client data as a List of HashMaps
 
         List<Map<String, String>> clientDataList = new ArrayList<>();
 

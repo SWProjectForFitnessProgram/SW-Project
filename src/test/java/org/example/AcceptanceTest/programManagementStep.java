@@ -61,11 +61,9 @@ public class programManagementStep {
             System.out.println("Set Up is completed for the mock data");
 
             mockProgram.getSchedule().setScheduleType("Full");
-            mockProgram.getSchedule().setTime("2025-01-01");
+            mockProgram.getSchedule().setTime("5:00 pm - 7:00 pm");
             mockProgram.getSchedule().setDays(new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"});
-            mockProgram.getSchedule().getTime();
             mockProgram.getSchedule().getDays();
-            mockProgram.getSchedule().getScheduleType();
 
         }
 }
