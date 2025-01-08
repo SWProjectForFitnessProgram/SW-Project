@@ -1,0 +1,712 @@
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\nimport java.util.*;\r\n\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) {\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	(revision 8d4e26ba0d36fa13c8ac63124626fa12aa8ff4a1)
++++ b/src/main/java/org/example/Main.java	(date 1736361484068)
+@@ -3,15 +3,665 @@
+ 
+ 
+ public class Main {
++    private static List<Client> clients = new ArrayList<>();
++    private static List<Program> programs = new ArrayList<>();
++    private static List<Instructor> instructors = new ArrayList<>();
++    private static ProgramService programService = new ProgramService();
++    private static User currentUser = new User();
++    private static Profile currentProfile = new Profile();
++    private static ProgramManager programManager = new ProgramManager();
++    private static FeedbackAndReviewsManager feedbackManager = new FeedbackAndReviewsManager();
++    private static ProgressManager progressManager = new ProgressManager();
++
+ 
+     public static void main(String[] args) {
++        initializeMockData();
++        Scanner scanner = new Scanner(System.in);
++        while(true)
++        {
++            String mainChoice;
++            System.out.println("==== Fitness Management System ====");
++            System.out.println("1. Admin");
++            System.out.println("2. Instructor");
++            System.out.println("3. Client");
++            System.out.println("4. Exit");
++            System.out.print("Select an option : ");
++            mainChoice = scanner.next();
++            switch (mainChoice) {
++                case "1" :
++                    adminMenu(scanner);
++                    break;
++                case "2" :
++                    instructorMenu(scanner);
++                    break;
++                case "3" :
++                    clientMenu(scanner);
++                    break;
++                case "4" :
++                    System.out.println("Thank you for using our Fitness program :)");
++                    return;
++                default :
++                    System.err.println("Invalid input!\nPlease try again.");
++            }
++
++        }
++    }
++    private static void initializeMockData() {
++        Content mockResources = new Content(
++                "https://youtu.be/f3zOrYCwquE",
++                "https://unsplash.com/s/photos/gym",
++                "https://www.everydayhealth.com/fitness/guide/"
++        );
++
++        Schedule mockSchedule1 = new Schedule(
++                new String[]{"Sunday", "Tuesday", "Thursday"},
++                "8:00 AM - 10:00 AM",
++                "Online"
++        );
++        Schedule mockSchedule2 = new Schedule(
++                new String[]{"Sunday", "Tuesday", "Thursday"},
++                "5:00 PM - 7:00 PM",
++                "Online"
++        );
++
++        Program mockProgram1 = new Program(
++                "Get Fit & Moving Challenge",
++                "30 days",
++                "Beginners",
++                "Weight Loss, Full Body",
++                mockResources,
++                mockSchedule1,
++                "29.99 $"
++        );
++
++        Program mockProgram2 = new Program(
++                "Strength & Endurance Training",
++                "6 weeks",
++                "Intermediate",
++                "Strength, Endurance",
++                mockResources,
++                mockSchedule2,
++                "39.99 $"
++        );
++
++        Client client1 = new Client("Alice", "alice@example.com", 25);
++        client1.setId(Long.parseLong("12215614"));
++        Client client2 = new Client("Bob", "bob@example.com", 30);
++        client2.setId(Long.parseLong("12213611"));
++        Client client3 = new Client("Charlie", "charlie@example.com", 35);
++        client3.setId(Long.parseLong("12112569"));
++
++        Instructor instructor1 = new Instructor("John Doe", "johndoe@example.com", 30);
++        Instructor instructor2 = new Instructor("Jane Smith", "janesmith@example.com", 28);
++
++        mockProgram1.enrollClient(client1);
++        mockProgram1.enrollClient(client2);
++        mockProgram2.enrollClient(client3);
++
++        instructor1.addnewProgram(mockProgram1);
++        instructor2.addnewProgram(mockProgram2);
++
++        client1.enrollProgram(mockProgram1);
++        client2.enrollProgram(mockProgram1);
++        client3.enrollProgram(mockProgram2);
++
++        programService.addProgram(mockProgram1);
++        programService.addProgram(mockProgram2);
++
++        programs.add(mockProgram1);
++        programs.add(mockProgram2);
++        clients.add(client1);
++        clients.add(client2);
++        clients.add(client3);
++        instructors.add(instructor1);
++        instructors.add(instructor2);
++    }
+ 
++    private static void instructorMenu(Scanner scanner) {
++        while (true)
++        {
++            System.out.println("\n\t\"Instructor Menu\"");
++            System.out.println("1. View Your Programs");
++            System.out.println("2. Add new Program");
++            System.out.println("3. Update A Program");
++            System.out.println("4. Delete A Program");
++            System.out.println("5. View Enrolled Clients");
++            System.out.println("6. Enroll a new Client");
++            System.out.println("7. delete a client");
++            System.out.println("8. Exit");
++            System.out.print("Select an option: ");
++            String choice = scanner.next();
++            scanner.nextLine();
++            switch (choice)
++            {
++                case "1":
++                    viewAllPrograms();
++                    break;
++                case "2":
++                    addNewProgram();
++                    break;
++                case "3":
++                    updateProgram();
++                    break;
++                case "4":
++                    deleteProgram();
++                    break;
++                case "5":
++                    viewClientsEnrolled();
++                    break;
++                case "6":
++                    enrollNewClient();
++                    break;
++                case "7":
++                    deleteClientByName();
++                    break;
++                case "8":
++                    return;
++                default:
++                    System.err.println("Invalid input!\nPlease try again.");
+ 
++            }
+ 
++        }
+     }
+ 
++    private static void deleteClientByName() {
++        Scanner scanner = new Scanner(System.in);
+ 
++        System.out.println("Choose a program to delete a client from:");
++        programService.displayAllProgramsNames();
+ 
++        System.out.println("Enter the program name (make sure to write it correctly):");
++        String programName = scanner.nextLine();
++
++        Program chosenProgram = programService.findProgramByTitle(programName);
++        if (chosenProgram != null) {
++
++            if (chosenProgram.getClientsEnrolled().isEmpty()) {
++                System.out.println("No clients are enrolled in this program.");
++                return;
++            }
++
++            System.out.println("List of enrolled clients:");
++            for (Client client : chosenProgram.getClientsEnrolled()) {
++                System.out.println("- " + client.getName() + " (ID: " + client.getId() + ")");
++            }
++
++            System.out.println("Enter the client's name to delete:");
++            String clientName = scanner.nextLine();
++
++            // Step 6: Search for the client by name and remove them.
++            boolean clientFound = false;
++            Iterator<Client> iterator = chosenProgram.getClientsEnrolled().iterator();
++            while (iterator.hasNext()) {
++                Client client = iterator.next();
++                if (client.getName().equalsIgnoreCase(clientName)) {
++                    iterator.remove();
++                    clientFound = true;
++                    System.out.println("Client " + clientName + " has been successfully removed.");
++                    break;
++                }
++            }
++
++            if (!clientFound) {
++                System.err.println("No client with the name " + clientName + " found in this program.");
++            }
++        } else {
++            System.err.println("There is no such program in your programs list.");
++        }
++    }
++
++
++    private static void enrollNewClient() {
++        Scanner scanner = new Scanner(System.in);
++
++        System.out.println("Choose a program to enroll a new client into:");
++        programService.displayAllProgramsNames();
++
++        System.out.println("Enter the program name: 'Make sure to write the name correctly'");
++        String programName = scanner.nextLine();
++
++        Program chosenProgram = programService.findProgramByTitle(programName);
++        if (chosenProgram != null) {
++
++            // Step 3: Gather client information.
++            System.out.print("Enter the Client's Name: ");
++            String clientName = scanner.nextLine();
++
++            System.out.print("Enter the Client's ID: ");
++            String clientId = scanner.nextLine();
++
++            System.out.print("Enter the Client's Email: ");
++            String clientEmail = scanner.nextLine();
++
++            System.out.print("Enter the Client's Age: ");
++            String clientAge = scanner.nextLine();
++
++            // Step 4: Create a new Client object and add to the program.
++            Client newClient = new Client(clientName,Long.parseLong(clientId),clientEmail,Integer.parseInt(clientAge));
++            chosenProgram.clientsEnrolled.add(newClient);
++            clients.add(newClient);
++            System.out.println("Client " + clientName + " has been successfully enrolled in the program: " + programName);
++        } else {
++            System.err.println("There is no such program in your programs list");
++        }
++
++    }
++
++    private static void viewClientsEnrolled() {
++        Scanner scanner = new Scanner(System.in);
++
++        System.out.println("Choose the program you want to view the enrolled clients for: ");
++        programService.displayAllProgramsNames();
++
++        System.out.println("Write the program name that you want to view the enrolled clients: 'Make sure to write the name correctly' ");
++        String programName = scanner.nextLine();
++
++        Program chosenProgram = programService.findProgramByTitle(programName);
++        if(chosenProgram != null)
++        {
++            List<Client> clientsEnrolledFotChosenProgram = chosenProgram.clientsEnrolled;
++            if (clientsEnrolledFotChosenProgram.isEmpty()) {
++                System.out.println("No clients enrolled.");
++            } else {
++                System.out.println("Enrolled Clients:");
++                for (Client client : clientsEnrolledFotChosenProgram) {
++                    System.out.println(client.getName());
++                }
++            }
++        }
++        else {
++            System.err.println("There is no such program in your programs list");
++        }
++    }
++
++    private static void deleteProgram() {
++        Scanner scanner = new Scanner(System.in);
++
++        System.out.println("Choose the program you want to delete to: ");
++        programService.displayAllProgramsNames();
++
++        System.out.println("Write the program name that you want Delete: 'Make sure to write the name correctly' ");
++        String programName = scanner.nextLine();
++
++        Program chosenProgram = programService.findProgramByTitle(programName);
++        if(chosenProgram != null)
++        {
++            programService.deleteProgram(chosenProgram.getTitle());
++            System.out.println("The Program has been deleted Successfully :)");
++        }
++        else
++        {
++            System.err.println("There is no such program in your programs list");
++        }
++
++
++    }
++
++    private static void updateProgram() {
++        Scanner scanner = new Scanner(System.in);
++
++        System.out.println("Choose the program you want to make changes to: ");
++        programService.displayAllProgramsNames();
++
++        System.out.println("Write the program name that you want to make edits to: 'Make sure to write the name correctly' ");
++        String programName = scanner.nextLine();
++
++        Program chosenProgram = programService.findProgramByTitle(programName);
++        if(chosenProgram != null)
++        {
++            System.out.println(programService.programDetailsAsString(chosenProgram));
++            System.out.println("Please choose what do you want to edit : ");
++            System.out.println("1. Edit Program Name");
++            System.out.println("2. Edit Program Description");
++            System.out.println("3. Edit Program Content");
++            System.out.println("4. Edit Program Schedule");
++            System.out.println("5. Edit Program Cost");
++            System.out.println("6. Cancel");
++            System.out.print("Select an option: ");
++
++            String choice = scanner.nextLine();
++            switch (choice)
++            {
++                case "1":
++                    System.out.print(chosenProgram.getTitle() + "\nThe new Title is ");
++                    programName = scanner.nextLine();
++                    chosenProgram.setProgramTitle(programName);
++                    System.out.println("The Program Name Updated Successfully :)");
++                    break;
++                case "2":
++                    System.out.print(chosenProgram.getDuration() + "\nThe new Duration: ");
++                    chosenProgram.setDuration(scanner.nextLine());
++
++                    System.out.print(chosenProgram.getDifficultyLevel() + "\nThe new Difficulty Level: ");
++                    chosenProgram.setDifficultyLevel(scanner.nextLine());
++
++                    System.out.print(chosenProgram.getGoals() + "\nThe new Goal: ");
++                    chosenProgram.setGoals(scanner.nextLine());
++
++                    System.out.println("The Program's Description Updated Successfully :)");
++
++                    break;
++                case "3":
++                    System.out.println(chosenProgram.getContent());
++                    Content content = new Content(chosenProgram.getContent());
++
++                    System.out.print(content.getVideoTutorials() + "\nThe new video's tutorial URL: ");
++                    content.setVideoTutorial(scanner.nextLine());
++
++                    System.out.print(content.getImages() + "\nThe new Image's URL: ");
++                    content.setImages(scanner.nextLine());
++
++                    System.out.print(content.getDocumentation() + "\nThe new Documentation's URL: ");
++                    content.setDocumentation(scanner.nextLine());
++
++                    chosenProgram.setContent(content);
++
++                    System.out.println("The Program's Content Updated Successfully :)");
++                    break;
++                case "4":
++                    System.out.println(chosenProgram.getSchedule());
++                    Schedule chosenProgramSchedule = new Schedule(chosenProgram.getSchedule());
++
++
++                    System.out.println(Arrays.toString(chosenProgramSchedule.getDays()) + "\nThe new Days: ");
++                    String input = scanner.nextLine();
++                    String[] days = input.split(",");
++                    /////To trim spaces :)
++                    for (int i = 0; i < days.length; i++) {
++                        days[i] = days[i].trim();
++                    }
++                    chosenProgramSchedule.setDays(days);
++
++                    System.out.println(chosenProgramSchedule.getTime());
++                    System.out.println("Select a new time slot:");
++                    System.out.println("1.  6:00 AM -  8:00 AM");
++                    System.out.println("2. 10:00 AM - 12:00 PM");
++                    System.out.println("3.  7:00 PM -  9:00 PM");
++                    System.out.println("4.  5:00 PM -  7:00 PM");
++                    input =  scanner.nextLine();
++                    String time ;
++                    switch (input)
++                    {
++                        case "1":
++                            chosenProgramSchedule.setTime("6:00 AM -  8:00 AM");
++                            break;
++                        case "2":
++                            chosenProgramSchedule.setTime("10:00 AM - 12:00 PM");
++                            break;
++                        case "3":
++                            chosenProgramSchedule.setTime("5:00 PM -  7:00 PM");
++                            break;
++                        case "4":
++                            chosenProgramSchedule.setTime("8:00 PM -  10:00 PM");
++                            break;
++                        default:
++                            break;
++                    }
++
++                    System.out.println(chosenProgramSchedule.getScheduleType() + "\nThe new Schedule Type (online or in-person): ");
++                    chosenProgramSchedule.setScheduleType(scanner.nextLine());
++
++                    chosenProgram.setSchedule(chosenProgramSchedule);
++
++                    System.out.println("The Schedule Have been updated Successfully :)");
++
++                    break;
++                case "5":
++                    System.out.println(chosenProgram.getPrice() + "\nEnter The new program price");
++                    chosenProgram.setPrice(scanner.nextLine());
++
++                    System.out.println("The Program's Price Have been updated Successfully :)");
++
++                    break;
++                case "6":
++                    return;
++                default:
++                    System.err.println("Invalid input!\nPlease try again.");
++            }
++
++        }
++        else
++        {
++            System.err.println("There is no such program in your programs list");
++        }
++
++    }
++
++    private static void addNewProgram() {
++        Scanner scanner = new Scanner(System.in);
++        System.out.println("\nLet's Enter Our New Program Details :)");
++
++        System.out.print("Enter the Program Title :\t");
++        String programName = scanner.nextLine();
++
++        System.out.print("\nEnter The Duration (e.g. 5 weeks) :\t");
++        String duration = scanner.nextLine();
++
++        System.out.print("\nEnter The Target Audience (e.g. Beginners):\t");
++        String difficultyLevel = scanner.nextLine();
++
++        System.out.print("\nEnter The Program Type (e.g. Weight Loss):\t");
++        String goal = scanner.nextLine();
++
++        System.out.print("\nEnter The Suitable Price for it (e.g. 30.33 $):\t");
++        String price = scanner.nextLine();
++
++
++        System.out.print("\nEnter The Training Days: (e.g. Tuesday, monday )\t");
++        String input = scanner.nextLine();
++        String[] days = input.split(",");
++        /////To trim spaces :)
++        for (int i = 0; i < days.length; i++) {
++            days[i] = days[i].trim();
++        }
++
++        System.out.println("\nSelect a time slot:");
++        System.out.println("1.  6:00 AM -  8:00 AM");
++        System.out.println("2. 10:00 AM - 12:00 PM");
++        System.out.println("3.  7:00 PM -  9:00 PM");
++        System.out.println("4.  5:00 PM -  7:00 PM");
++        input =  scanner.nextLine();
++        String time = new String();
++        switch (input)
++        {
++            case "1":
++                time = "6:00 AM -  8:00 AM";
++                break;
++            case "2":
++                time = "10:00 AM - 12:00 PM";
++                break;
++            case "3":
++                time = "5:00 PM -  7:00 PM";
++                break;
++            case "4":
++                time = "8:00 PM -  10:00 PM";
++                break;
++            default:
++                break;
++
++        }
++        System.out.println("\nEnter if you want it Online or In-person :\t");
++        String scheduleType = scanner.nextLine();
++
++        Schedule schedule = new Schedule(days,time,scheduleType);
++
++        System.out.println("\nPress 1 if you want to add the Content URLs\nPress 2 or any button to keep the default\n");
++        String choice = scanner.nextLine();
++        String url1,url2,url3;
++        Content content;
++        if(choice.equals("1"))
++        {
++            System.out.print("\nEnter The Video's URL on Youtube:\t");
++            url1 = scanner.nextLine();
++
++            System.out.print("\nEnter The Document's URL:\t");
++            url2 = scanner.nextLine();
++
++            System.out.print("\nEnter The Image's URL:\t");
++            url3 = scanner.nextLine();
++
++            content = new Content(url1,url2,url3);
++        }
++        else
++        {
++            content = new Content("https://youtu.be/f3zOrYCwquE", "https://unsplash.com/s/photos/gym", "https://www.everydayhealth.com/fitness/guide/");
++        }
++        Program newProgram = new Program(programName,duration,difficultyLevel,goal,content,schedule,price);
++        programService.addProgram(newProgram);
++        programs.add(newProgram);
++        System.out.println("\nNew program added successfully!");
++    }
++
++    private static void viewAllPrograms() {
++        programService.displayAllProgramsNames();
++        System.out.println("\nPress 1 if you want to display all programs details \nPress any other button to return to the Instructor menu");
++        Scanner scanner = new Scanner(System.in);
++        String choice = scanner.next();
++        scanner.nextLine();
++        if (choice.equals("1"))
++        {
++            programService.displayAllPrograms();
++        }
++    }
++
++    private static void adminMenu(Scanner scanner) {
++    }
++
++    public static void login(Scanner scanner) {
++        System.out.print("Enter your User ID: ");
++        String id = scanner.nextLine();
++        System.out.print("Enter your Password: ");
++        String password = scanner.nextLine();
++
++
++        if (currentUser.login(id, password)) {
++            System.out.println("Login Successful!");
++        } else {
++            System.out.println("Invalid login credentials.");
++            return;
++        }
++    }
++
++
++    private static void clientMenu(Scanner scanner) {
++        while (true) {
++            System.out.println("\nClient Menu:");
++            System.out.println("1. View Profile");
++            System.out.println("2. Customize Profile");
++            System.out.println("3. View Program Details");
++            System.out.println("4. Rate Program");
++            System.out.println("5. Track Progress");
++            System.out.println("6. View Progress Summary");
++            System.out.println("7. Exit");
++
++            System.out.print("Enter your choice: ");
++            int choice = scanner.nextInt();
++            scanner.nextLine();
++
++            switch (choice) {
++                case 1:
++                    viewProfile();
++                    break;
++                case 2:
++                    customizeProfile(scanner);
++                    break;
++                case 3:
++                    viewProgramDetails(scanner);
++                    break;
++                case 4:
++                    rateProgram(scanner);
++                    break;
++                case 5:
++                    trackProgress(scanner);
++                    break;
++                case 6:
++                    viewProgressSummary();
++                    break;
++                case 7:
++                    System.out.println("Exiting...");
++                    return;
++                default:
++                    System.out.println("Invalid choice. Please try again.");
++            }
++        }
++    }
++
++    private static void viewProfile() {
++        System.out.println("Displaying Profile Information...");
++        System.out.println("Name: " + currentProfile.getName());
++        System.out.println("Age: " + currentProfile.getAge());
++        System.out.println("Fitness Goal: " + currentProfile.getFitnessGoal());
++        System.out.println("Dietary Preferences: " + currentProfile.getDietaryPreferences());
++        System.out.println("Dietary Restrictions: " + currentProfile.getDietaryRestrictions());
++    }
++
++    private static void customizeProfile(Scanner scanner) {
++        System.out.println("Customizing Profile...");
++        System.out.print("Enter new fitness goal: ");
++        String fitnessGoal = scanner.nextLine();
++        currentProfile.setFitnessGoal(fitnessGoal);
++
++        System.out.print("Enter new dietary preferences: ");
++        String dietaryPreferences = scanner.nextLine();
++        currentProfile.setDietaryPreferences(dietaryPreferences);
++
++        System.out.print("Enter new dietary restrictions: ");
++        String dietaryRestrictions = scanner.nextLine();
++        currentProfile.setDietaryRestrictions(dietaryRestrictions);
++
++        System.out.println("Profile customized successfully!");
++    }
++
++    private static void viewProgramDetails(Scanner scanner) {
++        System.out.print("Enter Program Name: ");
++        String programName = scanner.nextLine();
++
++        Map<String, String> programDetails = programManager.getProgramDetails(programName);
++        if (programDetails != null) {
++            System.out.println("Program Details:");
++            programDetails.forEach((key, value) -> System.out.println(key + ": " + value));
++        } else {
++            System.out.println("Program not found.");
++        }
++    }
++
++    private static void rateProgram(Scanner scanner) {
++        System.out.print("Enter Program Name: ");
++        String programName = scanner.nextLine();
++        System.out.print("Enter Rating (1-5): ");
++        int rating = scanner.nextInt();
++        scanner.nextLine();
++
++
++        feedbackManager.addRating(programName, rating);
++        double averageRating = feedbackManager.getAverageRating(programName);
++
++        System.out.println("Program '" + programName + "' rated with a score of " + rating + " stars.");
++        System.out.println("The updated average rating is: " + averageRating);
++    }
++
++    private static void trackProgress(Scanner scanner) {
++        System.out.print("Enter your current weight: ");
++        String weight = scanner.nextLine();
++
++        System.out.print("Enter your current BMI: ");
++        String bmi = scanner.nextLine();
++
++        System.out.print("Enter your attendance percentage: ");
++        String attendance = scanner.nextLine();
++
++        progressManager.inputProgressData(weight, bmi, attendance);
++        progressManager.recordProgressHistory("2025-01-02", weight, bmi, attendance);
++
++        System.out.println("Progress recorded successfully!");
++    }
++
++    private static void viewProgressSummary() {
++        Map<String, String> summary = progressManager.generateSummary(3, 5, "3kg", "0.6");
++        System.out.println("Progress Summary: ");
++        summary.forEach((key, value) -> System.out.println(key + ": " + value));
++    }
+ 
+ }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AnalysisUIOptions\">\r\n    <option name=\"ANALYZE_TEST_SOURCES\" value=\"false\" />\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"doc and main\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Merge.Settings\">\r\n    <option name=\"BRANCH\" value=\"origin/Instructor\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ghayda-Saify&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GitHubPullRequestState\">{\r\n  &quot;prStates&quot;: [\r\n    {\r\n      &quot;id&quot;: {\r\n        &quot;id&quot;: &quot;PR_kwDONTwW486GnF8s&quot;,\r\n        &quot;number&quot;: 44\r\n      },\r\n      &quot;lastSeen&quot;: 1735930031703\r\n    }\r\n  ]\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/TalaAlhendi/SW-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;83da6505-7ab8-4b97-b7f8-45c77f0031ba&quot;\r\n  },\r\n  &quot;recentNewPullRequestHead&quot;: {\r\n    &quot;server&quot;: {\r\n      &quot;useHttp&quot;: false,\r\n      &quot;host&quot;: &quot;github.com&quot;,\r\n      &quot;port&quot;: null,\r\n      &quot;suffix&quot;: null\r\n    },\r\n    &quot;owner&quot;: &quot;TalaAlhendi&quot;,\r\n    &quot;repository&quot;: &quot;SW-Project&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2qSJUgKlFXO8XHQzPIM5jPamcbX\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Cucumber Java.Feature: clientInteraction.executor\": \"Run\",\r\n    \"JUnit.acceptanceTest.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"settings.json.schema.catalog\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Cucumber Java.Feature: progressTracking\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Feature: ProgramManagment\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/ProgramManagment.feature\" />\r\n      <option name=\"GLUE\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: ProgramManagment\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Feature: clientInteraction\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/clientInteraction.feature\" />\r\n      <option name=\"GLUE\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: clientInteraction\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Feature: progressTracking\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/Features/Instructor/progressTracking.feature\" />\r\n      <option name=\"GLUE\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"Fitness\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Feature: progressTracking\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"acceptanceTest\" type=\"JUnit\" factoryName=\"JUnit\" nameIsGenerated=\"true\">\r\n      <module name=\"Fitness\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AcceptanceTest.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Admin\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AdminService\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Article\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Client\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.ClientRepository\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Complaint\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Content\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.FeedbackAndReviewsManager\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.HealthTip\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Instructor\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.InstructorRepository\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Main\" />\r\n          <option name=\"ENABLED\" value=\"false\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Profile\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Program\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.ProgramManager\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.ProgramService\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.ProgressManager\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Recipe\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Role\" />\r\n          <option name=\"ENABLED\" value=\"false\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Schedule\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.SubscriptionPlan\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.SubscriptionService\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.User\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.UserStatus\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AdminService\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.AcceptanceTest.programManagementStep\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"false\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.*\" />\r\n          <option name=\"ENABLED\" value=\"false\" />\r\n        </pattern>\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"false\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"org.example.AcceptanceTest\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.AcceptanceTest.acceptanceTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Cucumber Java.Feature: progressTracking\" />\r\n      <item itemvalue=\"Cucumber Java.Feature: ProgramManagment\" />\r\n      <item itemvalue=\"Cucumber Java.Feature: clientInteraction\" />\r\n      <item itemvalue=\"JUnit.acceptanceTest\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Cucumber Java.Feature: progressTracking\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Cucumber Java.Feature: ProgramManagment\" />\r\n        <item itemvalue=\"Cucumber Java.Feature: clientInteraction\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734620442002</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734620442002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Admin test and production code\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734644545713</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734644545713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"edit on programManagementStepTest\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734646611195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734646611195</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"96ebe654-e637-4521-b05f-2ed7fce7b6f8\" name=\"Changes\" comment=\"edit on programManagementStepTest\" />\r\n      <created>1734650063351</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1734650063351</updated>\r\n      <workItem from=\"1734650065119\" duration=\"3975000\" />\r\n      <workItem from=\"1734702334331\" duration=\"2151000\" />\r\n      <workItem from=\"1736248963503\" duration=\"10801000\" />\r\n      <workItem from=\"1736274944900\" duration=\"1231000\" />\r\n      <workItem from=\"1736276509918\" duration=\"600000\" />\r\n      <workItem from=\"1736277119189\" duration=\"63000\" />\r\n      <workItem from=\"1736277191642\" duration=\"9668000\" />\r\n      <workItem from=\"1736327528119\" duration=\"3974000\" />\r\n      <workItem from=\"1736351900750\" duration=\"6712000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"add depend. + finish a feature\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734688544556</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734688544556</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Admin testcode\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734689341616</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734689341616</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"editing the whole project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734704132936</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734704132936</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Admin production code #2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734717246337</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734717246338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Admin complete feature #2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734723340961</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734723340961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"admin 3rd feature (production code done)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734728881715</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734728881715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Main Edit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735930375111</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735930375111</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"workspace\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735930831892</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735930831892</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"sign in and sing out analysis\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735937620716</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735937620716</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"sign in and sing out analysis\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1735942363557</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1735942363557</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"MAIN MENU\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736249140007</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736249140007</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"MAIN MENU\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736251471896</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736251471896</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"done Instructor menu\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736258285638</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736258285638</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"done Instructor menu\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736259178483</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736259178483</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"improving coverage\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736280083760</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736280083760</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736283867264</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736283867264</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736283905294</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736283905295</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736284154810</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736284154810</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736284901595</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736284901595</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736290461878</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736290461878</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736291358159</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736291358159</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736292165979</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736292165979</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"Refactoring\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736333284764</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736333284764</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"doc and main\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736355412710</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736355412710</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"doc and main\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736355854225</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736355854225</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00029\" summary=\"doc and main\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736355860156</created>\r\n      <option name=\"number\" value=\"00029\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00029\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736355860156</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00030\" summary=\"doc and main\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736355868181</created>\r\n      <option name=\"number\" value=\"00030\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00030\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736355868181</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00031\" summary=\"doc and main\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736360647958</created>\r\n      <option name=\"number\" value=\"00031\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00031\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736360647958</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00032\" summary=\"doc and main\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736361480688</created>\r\n      <option name=\"number\" value=\"00032\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00032\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736361480688</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"33\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"HIGHLIGHTERS\">\r\n                <map>\r\n                  <entry key=\"MERGE_COMMITS\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Admin test and production code\" />\r\n    <MESSAGE value=\"edit on programManagementStepTest\" />\r\n    <MESSAGE value=\"add depend. + finish a feature\" />\r\n    <MESSAGE value=\"Admin testcode\" />\r\n    <MESSAGE value=\"editing the whole project\" />\r\n    <MESSAGE value=\"Admin production code #2\" />\r\n    <MESSAGE value=\"Admin complete feature #2\" />\r\n    <MESSAGE value=\"edit cucumber.html\" />\r\n    <MESSAGE value=\"admin 3rd feature (production code done)\" />\r\n    <MESSAGE value=\"Main Edit\" />\r\n    <MESSAGE value=\"workspace\" />\r\n    <MESSAGE value=\"sign in and sing out analysis\" />\r\n    <MESSAGE value=\"MAIN MENU\" />\r\n    <MESSAGE value=\"done Instructor menu\" />\r\n    <MESSAGE value=\"improving coverage\" />\r\n    <MESSAGE value=\"Refactoring\" />\r\n    <MESSAGE value=\"doc and main\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"doc and main\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/Fitness$acceptanceTest.ic\" NAME=\"acceptanceTest Coverage Results\" MODIFIED=\"1736061155875\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"true\">\r\n      <FILTER>org.example.AcceptanceTest.*</FILTER>\r\n    </SUITE>\r\n    <SUITE FILE_PATH=\"coverage/SW_Project2$Feature__ProgramManagment.ic\" NAME=\"Feature: ProgramManagment Coverage Results\" MODIFIED=\"1736197520064\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>io.cucumber.core.cli.*</FILTER>\r\n    </SUITE>\r\n    <SUITE FILE_PATH=\"coverage/SW_Project2$acceptanceTest.ic\" NAME=\"acceptanceTest Coverage Results\" MODIFIED=\"1736291842208\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>org.example.AcceptanceTest.*</FILTER>\r\n      <FILTER>org.example.Admin</FILTER>\r\n      <FILTER>org.example.AdminService</FILTER>\r\n      <FILTER>org.example.Article</FILTER>\r\n      <FILTER>org.example.Client</FILTER>\r\n      <FILTER>org.example.ClientRepository</FILTER>\r\n      <FILTER>org.example.Complaint</FILTER>\r\n      <FILTER>org.example.Content</FILTER>\r\n      <FILTER>org.example.FeedbackAndReviewsManager</FILTER>\r\n      <FILTER>org.example.HealthTip</FILTER>\r\n      <FILTER>org.example.Instructor</FILTER>\r\n      <FILTER>org.example.InstructorRepository</FILTER>\r\n      <FILTER>org.example.Profile</FILTER>\r\n      <FILTER>org.example.Program</FILTER>\r\n      <FILTER>org.example.ProgramManager</FILTER>\r\n      <FILTER>org.example.ProgramService</FILTER>\r\n      <FILTER>org.example.ProgressManager</FILTER>\r\n      <FILTER>org.example.Recipe</FILTER>\r\n      <FILTER>org.example.Schedule</FILTER>\r\n      <FILTER>org.example.SubscriptionPlan</FILTER>\r\n      <FILTER>org.example.SubscriptionService</FILTER>\r\n      <FILTER>org.example.User</FILTER>\r\n      <FILTER>org.example.UserStatus</FILTER>\r\n      <FILTER>org.example.AdminService</FILTER>\r\n      <FILTER>org.example.AcceptanceTest.programManagementStep</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8d4e26ba0d36fa13c8ac63124626fa12aa8ff4a1)
++++ b/.idea/workspace.xml	(date 1736363994796)
+@@ -371,7 +371,7 @@
+       <workItem from="1736277119189" duration="63000" />
+       <workItem from="1736277191642" duration="9668000" />
+       <workItem from="1736327528119" duration="3974000" />
+-      <workItem from="1736351900750" duration="6712000" />
++      <workItem from="1736351900750" duration="8046000" />
+     </task>
+     <task id="LOCAL-00004" summary="add depend. + finish a feature">
+       <option name="closed" value="true" />
+@@ -605,7 +605,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1736361480688</updated>
+     </task>
+-    <option name="localTasksCounter" value="33" />
++    <task id="LOCAL-00033" summary="doc and main">
++      <option name="closed" value="true" />
++      <created>1736361510456</created>
++      <option name="number" value="00033" />
++      <option name="presentableId" value="LOCAL-00033" />
++      <option name="project" value="LOCAL" />
++      <updated>1736361510456</updated>
++    </task>
++    <option name="localTasksCounter" value="34" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
