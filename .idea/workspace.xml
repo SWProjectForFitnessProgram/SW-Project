@@ -9,7 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="doc and main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/cucumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cucumber.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FeedbackAndReviewsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FeedbackAndReviewsManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -371,7 +371,7 @@
       <workItem from="1736277119189" duration="63000" />
       <workItem from="1736277191642" duration="9668000" />
       <workItem from="1736327528119" duration="3974000" />
-      <workItem from="1736351900750" duration="3847000" />
+      <workItem from="1736351900750" duration="5533000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -565,7 +565,31 @@
       <option name="project" value="LOCAL" />
       <updated>1736355412710</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="doc and main">
+      <option name="closed" value="true" />
+      <created>1736355854225</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1736355854225</updated>
+    </task>
+    <task id="LOCAL-00029" summary="doc and main">
+      <option name="closed" value="true" />
+      <created>1736355860156</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1736355860156</updated>
+    </task>
+    <task id="LOCAL-00030" summary="doc and main">
+      <option name="closed" value="true" />
+      <created>1736355868181</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1736355868181</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
