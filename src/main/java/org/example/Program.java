@@ -130,9 +130,6 @@ public class Program {
     public void setPrice(String price) {
         this.price = price;
     }
-
-    /**
-     */
     public String getDuration() {
         return duration;
     }
@@ -154,10 +151,6 @@ public class Program {
     public String getGoals() {
         return goals;
     }
-
-    /**
-     *
-     */
     public Content getContent() {
         return content;
     }
