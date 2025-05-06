@@ -1,4 +1,0 @@
-<changelist name="Uncommitted_changes_before_Update_at_1_7_2025_4_09_PM_[Changes]" date="1736258976424" recycled="true" deleted="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2025_4_09_PM_[Changes]/shelved.patch" />
-  <option name="DESCRIPTION" value="### Prepare for user sign-up and sign-in&#10;&#10;### Add user sign-up and sign-in functionality with email approval&#10;&#10;### Update user sign-in logic for various user roles&#10;&#10;### Improve authentication process for user access" />
-</changelist>

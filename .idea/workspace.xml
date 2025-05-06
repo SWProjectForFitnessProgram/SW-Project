@@ -7,104 +7,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="doc and main">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_01_2025_9_20_pm_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_01_2025_9_20_pm__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/allclasses-index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/allpackages-index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/element-list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/help-doc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-10.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-11.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-12.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-13.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-14.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-15.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-16.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-17.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-18.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-6.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-9.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery-ui.overrides.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/legal/COPYRIGHT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/legal/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/legal/jquery.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/legal/jqueryUI.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/member-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/module-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/AdminService.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Article.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Client.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/ClientRepository.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Complaint.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/FeedbackAndReviewsManager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/HealthTip.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Instructor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/InstructorRepository.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Program.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/ProgramManager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/ProgramService.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/ProgressManager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Recipe.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Role.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/Schedule.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/SubscriptionPlan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/SubscriptionService.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/User.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/UserStatus.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/AdminService.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Article.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Client.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/ClientRepository.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Complaint.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/FeedbackAndReviewsManager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/HealthTip.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Instructor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/InstructorRepository.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Program.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/ProgramManager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/ProgramService.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/ProgressManager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Recipe.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Role.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/Schedule.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/SubscriptionPlan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/SubscriptionService.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/User.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/class-use/UserStatus.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/org/example/package-use.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/overview-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/package-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/resources/glass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/resources/x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/script-dir/jquery-3.6.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/script-dir/jquery-ui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/script-dir/jquery-ui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/stylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/tag-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaDoc/type-search-index.js" afterDir="false" />
+    <list default="true" id="96ebe654-e637-4521-b05f-2ed7fce7b6f8" name="Changes" comment="edit the test">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_4_2025_12_54_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_4_2025_12_54_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_1_2_2025_9_43_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_1_2_2025_9_43_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2025_10_27_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2025_10_27_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2025_3_09_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2025_3_09_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2025_9_55_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2025_9_55_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_01_2025_8_49_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_01_2025_8_49_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_01_2025_8_58_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_01_2025_8_58_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_01_2025_9_01_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_01_2025_9_01_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_01_2025_10_35_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_01_2025_10_35_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_01_2025_12_36_am_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_01_2025_12_36_am__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_01_2025_10_09_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_01_2025_10_09_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_01_2025_8_24_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_01_2025_8_24_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_01_2025_12_46_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_01_2025_12_46_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_01_2025_9_20_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_01_2025_9_20_pm__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_10_2024_12_37_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_10_2024_12_37_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2025_12_55_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2025_12_55_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2025_6_09_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2025_6_09_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2025_4_17_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2025_4_17_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2025_4_09_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2025_4_09_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2025_4_39_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2025_4_39_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]3/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]4/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_4.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Client/Account Management.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Client/Account Management.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Features/Client/Progress Tracking.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Features/Client/Progress Tracking.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +154,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Cucumber Java.Feature: progressTracking">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Fitness" />
@@ -411,9 +366,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: progressTracking" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Cucumber Java.Feature: ProgramManagment" />
+        <item itemvalue="Cucumber Java.Feature: progressTracking" />
         <item itemvalue="Cucumber Java.Feature: clientInteraction" />
       </list>
     </recent_temporary>
@@ -466,7 +421,11 @@
       <workItem from="1736277119189" duration="63000" />
       <workItem from="1736277191642" duration="9668000" />
       <workItem from="1736327528119" duration="3974000" />
-      <workItem from="1736351900750" duration="8813000" />
+      <workItem from="1736351900750" duration="13550000" />
+      <workItem from="1736702776618" duration="7772000" />
+      <workItem from="1736752220455" duration="1019000" />
+      <workItem from="1737194869691" duration="3515000" />
+      <workItem from="1738352637066" duration="3000" />
     </task>
     <task id="LOCAL-00004" summary="add depend. + finish a feature">
       <option name="closed" value="true" />
@@ -708,7 +667,31 @@
       <option name="project" value="LOCAL" />
       <updated>1736361510456</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="doc and main">
+      <option name="closed" value="true" />
+      <created>1736364946729</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1736364946729</updated>
+    </task>
+    <task id="LOCAL-00035" summary="doc and main">
+      <option name="closed" value="true" />
+      <created>1736364958016</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1736364958016</updated>
+    </task>
+    <task id="LOCAL-00036" summary="edit the test">
+      <option name="closed" value="true" />
+      <created>1736367487474</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1736367487474</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -755,7 +738,8 @@
     <MESSAGE value="improving coverage" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="doc and main" />
-    <option name="LAST_COMMIT_MESSAGE" value="doc and main" />
+    <MESSAGE value="edit the test" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit the test" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
